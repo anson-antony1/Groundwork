@@ -1,0 +1,28 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "typescript", "oxc"],
+  "rules": {
+    "react/rules-of-hooks": "error",
+    "react/exhaustive-deps": "warn",
+    "react/jsx-key": "error",
+    "react/only-export-components": ["warn", { "allowConstantExport": true }],
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": ["**/mocks", "**/mocks/*"],
+            "message": "UI code must not import the mock backend. Go through src/api; mocks load only when VITE_API_MODE=mock."
+          }
+        ]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["src/mocks/**", "src/api/transport.ts", "src/**/*.test.ts", "src/**/*.test.tsx", "src/test/**"],
+      "rules": { "no-restricted-imports": "off" }
+    }
+  ],
+  "ignorePatterns": ["dist", "src/api/schema.gen.ts"]
+}

@@ -1,0 +1,6483 @@
+{
+ "generated_from": [
+  "fixtures/sites_50.json",
+  "fixtures/weather_snapshot.json"
+ ],
+ "snapshot_fetched_at": "2026-10-17T04:33:09.242127+00:00",
+ "sites": [
+  {
+   "id": "SITE-001",
+   "name": "Bonnet Creek Substation",
+   "latitude": 28.33536,
+   "longitude": -81.52931,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 51.1,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0.8,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 42.5,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 26.2,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 1.5,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.2,
+    "hazard_subscores": {
+     "rain": 0.7,
+     "wind": 1.6,
+     "heat": 1.1,
+     "flood": 1.9,
+     "storm": 0.7
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 0.7, wind 1.6, heat 1.1 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-002",
+   "name": "Lake Bryan Substation",
+   "latitude": 28.36018,
+   "longitude": -81.49679,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 9.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 1.48,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 42.5,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 26.5,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 1,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 1,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.3,
+    "hazard_subscores": {
+     "rain": 1.7,
+     "wind": 0.2,
+     "heat": 1.1,
+     "flood": 1.3,
+     "storm": 1.6
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 1.7, wind 0.2, heat 1.1 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-003",
+   "name": "International Drive Substation",
+   "latitude": 28.3848,
+   "longitude": -81.47362,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 0.7,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 4.3,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 43.6,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25.5,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 2.5,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "CAUTION",
+    "hazard_score": 5.6,
+    "hazard_subscores": {
+     "rain": 7.9,
+     "wind": 4,
+     "heat": 6.2,
+     "flood": 3.8,
+     "storm": 5.2
+    },
+    "access": {
+     "pickup": "NO_GO_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [
+     "Flood Watch (demo fixture)"
+    ],
+    "hazard_explanation": [
+     "Sub-scores: rain 7.9, wind 4, heat 6.2 (demo fixture)",
+     "Active alert: Flood Watch (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-004",
+   "name": "Convention Center Substation",
+   "latitude": 28.43746,
+   "longitude": -81.45278,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 1.8,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 1.78,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 48.1,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25.4,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 2.5,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.6,
+    "hazard_subscores": {
+     "rain": 2.2,
+     "wind": 2.8,
+     "heat": 4.3,
+     "flood": 2.7,
+     "storm": 1.2
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 2.2, wind 2.8, heat 4.3 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-005",
+   "name": "Windermere Substation",
+   "latitude": 28.4838,
+   "longitude": -81.45459,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 32.1,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 1.95,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 46.4,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.8,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": null,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "missing",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": null,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "missing",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": null,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "missing",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "UNKNOWN",
+    "hazard_score": null,
+    "hazard_subscores": null,
+    "access": {
+     "pickup": "UNKNOWN",
+     "heavy_truck": "UNKNOWN"
+    },
+    "missing_fields": [
+     "nws_alerts"
+    ],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "NWS alert check failed: weather UNKNOWN, never treated as safe (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-006",
+   "name": "Southwood Substation",
+   "latitude": 28.47096,
+   "longitude": -81.44084,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 48.3,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 2.35,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 47,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25.1,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 4,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": null,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "missing",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2,
+    "hazard_subscores": {
+     "rain": 1,
+     "wind": 1.7,
+     "heat": 4.2,
+     "flood": 1.8,
+     "storm": 1.7
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 1, wind 1.7, heat 4.2 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-007",
+   "name": "Wewahootee Substation DUKE",
+   "latitude": 28.41564,
+   "longitude": -81.21475,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 9.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0.83,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 43.9,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25.2,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 2,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 1.5,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "STOP_WORK",
+    "hazard_score": 7.5,
+    "hazard_subscores": {
+     "rain": 7.6,
+     "wind": 8.9,
+     "heat": 4.4,
+     "flood": 7,
+     "storm": 10
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [
+     "Severe Thunderstorm Warning (demo fixture)"
+    ],
+    "hazard_explanation": [
+     "Sub-scores: rain 7.6, wind 8.9, heat 4.4 (demo fixture)",
+     "Active alert: Severe Thunderstorm Warning (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-008",
+   "name": "Magnolia Ranch North Substation OUC",
+   "latitude": 28.41648,
+   "longitude": -81.21397,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 9.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0.83,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 43.9,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25.2,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 2,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 1.5,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2,
+    "hazard_subscores": {
+     "rain": 1,
+     "wind": 2.6,
+     "heat": 4.4,
+     "flood": 1.1,
+     "storm": 1.5
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 1, wind 2.6, heat 4.4 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-009",
+   "name": "Stanton Plant Substation",
+   "latitude": 28.49309,
+   "longitude": -81.16007,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 68,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0.8,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 45,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.7,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 5.2,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.6,
+    "hazard_subscores": {
+     "rain": 1.2,
+     "wind": 1.5,
+     "heat": 3.5,
+     "flood": 0.1,
+     "storm": 1.6
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 1.2, wind 1.5, heat 3.5 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-010",
+   "name": "Lake Nona Substation OUC",
+   "latitude": 28.37946,
+   "longitude": -81.28306,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 9.7,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "stale",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 15.13,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "stale",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 49.7,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "stale",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.6,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "stale",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "stale",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 1,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "stale",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 1,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "stale",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "UNKNOWN",
+    "hazard_score": null,
+    "hazard_subscores": null,
+    "access": {
+     "pickup": "UNKNOWN",
+     "heavy_truck": "UNKNOWN"
+    },
+    "missing_fields": [],
+    "stale": true,
+    "alert_events": [],
+    "hazard_explanation": [
+     "NWS alert check failed: weather UNKNOWN, never treated as safe (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-011",
+   "name": "Curry Ford Substation DUKE",
+   "latitude": 28.5045,
+   "longitude": -81.25334,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 0,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 1.2,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 50.8,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25.3,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 5.2,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.4,
+    "hazard_subscores": {
+     "rain": 3.7,
+     "wind": 0.5,
+     "heat": 5,
+     "flood": 1.8,
+     "storm": 0.2
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 3.7, wind 0.5, heat 5 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-012",
+   "name": "Narcoossee Substation",
+   "latitude": 28.50331,
+   "longitude": -81.28616,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 0.8,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 1.13,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 50,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 2,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 1.5,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "CAUTION",
+    "hazard_score": 5.6,
+    "hazard_subscores": {
+     "rain": 5.4,
+     "wind": 7.2,
+     "heat": 6.8,
+     "flood": 4.7,
+     "storm": 4.2
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [
+     "Wind Advisory (demo fixture)"
+    ],
+    "hazard_explanation": [
+     "Sub-scores: rain 5.4, wind 7.2, heat 6.8 (demo fixture)",
+     "Active alert: Wind Advisory (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-013",
+   "name": "Pershing Substation",
+   "latitude": 28.50158,
+   "longitude": -81.30116,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 0.8,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 1.13,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 50,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 3,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.5,
+    "hazard_subscores": {
+     "rain": 2.4,
+     "wind": 2.5,
+     "heat": 1.7,
+     "flood": 0.8,
+     "storm": 0.2
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 2.4, wind 2.5, heat 1.7 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-014",
+   "name": "Vineland Substation",
+   "latitude": 28.40663,
+   "longitude": -81.50392,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 1.8,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 6.03,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 45.4,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 26,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 2,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 1.5,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2,
+    "hazard_subscores": {
+     "rain": 3,
+     "wind": 0.1,
+     "heat": 3.3,
+     "flood": 0.8,
+     "storm": 1.9
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 3, wind 0.1, heat 3.3 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-015",
+   "name": "Clermont East Substation",
+   "latitude": 28.54739,
+   "longitude": -81.71255,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 6.5,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 2.55,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 47.5,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 22.7,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": null,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "missing",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 0,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 1.5,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "UNKNOWN",
+    "hazard_score": null,
+    "hazard_subscores": null,
+    "access": {
+     "pickup": "UNKNOWN",
+     "heavy_truck": "UNKNOWN"
+    },
+    "missing_fields": [
+     "nws_alerts"
+    ],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "NWS alert check failed: weather UNKNOWN, never treated as safe (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-016",
+   "name": "Camp Lake Substation",
+   "latitude": 28.60946,
+   "longitude": -81.7344,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 5.1,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 12.05,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 47.2,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 23.7,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 0,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 1.5,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.1,
+    "hazard_subscores": {
+     "rain": 1,
+     "wind": 0.3,
+     "heat": 4.9,
+     "flood": 2.3,
+     "storm": 1.8
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 1, wind 0.3, heat 4.9 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-017",
+   "name": "Central Florida Substation",
+   "latitude": 28.81689,
+   "longitude": -81.9552,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 18.8,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 55.1,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 22.2,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 3,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.9,
+    "hazard_subscores": {
+     "rain": 2.2,
+     "wind": 0.9,
+     "heat": 2.4,
+     "flood": 2.5,
+     "storm": 1.1
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 2.2, wind 0.9, heat 2.4 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-018",
+   "name": "MetroWest Substation",
+   "latitude": 28.49137,
+   "longitude": -81.46693,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 32.1,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 1.95,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 46.4,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.8,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 5.2,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "CAUTION",
+    "hazard_score": 5.4,
+    "hazard_subscores": {
+     "rain": 5.2,
+     "wind": 7.8,
+     "heat": 6.7,
+     "flood": 4.6,
+     "storm": 3.6
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [
+     "Flood Watch (demo fixture)"
+    ],
+    "hazard_explanation": [
+     "Sub-scores: rain 5.2, wind 7.8, heat 6.7 (demo fixture)",
+     "Active alert: Flood Watch (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-019",
+   "name": "Avalon Substation",
+   "latitude": 28.48427,
+   "longitude": -81.63475,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 34,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 2.85,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 46.8,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 23.5,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 0,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 1.4,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.8,
+    "hazard_subscores": {
+     "rain": 2.9,
+     "wind": 0.3,
+     "heat": 4.3,
+     "flood": 0.6,
+     "storm": 0.1
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 2.9, wind 0.3, heat 4.3 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-020",
+   "name": "Osceola Substation",
+   "latitude": 28.303,
+   "longitude": -81.57491,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 37.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 43.9,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25.4,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 1,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.9,
+    "hazard_subscores": {
+     "rain": 3.1,
+     "wind": 2.7,
+     "heat": 1.2,
+     "flood": 1,
+     "storm": 1.2
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 3.1, wind 2.7, heat 1.2 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-021",
+   "name": "Duval Substation FPL",
+   "latitude": 30.27239,
+   "longitude": -81.95295,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 23.7,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 56.9,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 16.8,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": null,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "missing",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": null,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "missing",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.4,
+    "hazard_subscores": {
+     "rain": 2.2,
+     "wind": 0.7,
+     "heat": 1.8,
+     "flood": 1.6,
+     "storm": 0.5
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 2.2, wind 0.7, heat 1.8 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-022",
+   "name": "Lake Buena Vista Substation",
+   "latitude": 28.37993,
+   "longitude": -81.51643,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 1.1,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 3.13,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 42.1,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25.5,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 5.2,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.5,
+    "hazard_subscores": {
+     "rain": 0.2,
+     "wind": 3.4,
+     "heat": 3.3,
+     "flood": 0.5,
+     "storm": 1
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 0.2, wind 3.4, heat 3.3 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-023",
+   "name": "Magic Kingdom Substation",
+   "latitude": 28.4268,
+   "longitude": -81.58025,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 23.9,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0.63,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 47.2,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25.6,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": null,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "missing",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": null,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "missing",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "STOP_WORK",
+    "hazard_score": 7.1,
+    "hazard_subscores": {
+     "rain": 8,
+     "wind": 7,
+     "heat": 4.9,
+     "flood": 5.3,
+     "storm": 10
+    },
+    "access": {
+     "pickup": "NO_GO_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [
+     "Severe Thunderstorm Warning (demo fixture)"
+    ],
+    "hazard_explanation": [
+     "Sub-scores: rain 8, wind 7, heat 4.9 (demo fixture)",
+     "Active alert: Severe Thunderstorm Warning (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-024",
+   "name": "Northwest Substation",
+   "latitude": 28.42757,
+   "longitude": -81.58462,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 23.9,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0.63,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 47.2,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25.5,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 5.2,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.9,
+    "hazard_subscores": {
+     "rain": 1.2,
+     "wind": 3.7,
+     "heat": 4.9,
+     "flood": 0.2,
+     "storm": 0.1
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 1.2, wind 3.7, heat 4.9 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-025",
+   "name": "Azalea Substation OUC",
+   "latitude": 28.55303,
+   "longitude": -81.29792,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 1.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0.73,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 48.9,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.7,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 5.2,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.8,
+    "hazard_subscores": {
+     "rain": 2.8,
+     "wind": 0.1,
+     "heat": 2.7,
+     "flood": 2.4,
+     "storm": 0.2
+    },
+    "access": {
+     "pickup": "NO_GO_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 2.8, wind 0.1, heat 2.7 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-026",
+   "name": "Substation No. 18 Robinson",
+   "latitude": 28.54604,
+   "longitude": -81.38158,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 37.9,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 4.73,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 49,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.2,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": null,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "missing",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": null,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "missing",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.2,
+    "hazard_subscores": {
+     "rain": 1,
+     "wind": 1.6,
+     "heat": 2,
+     "flood": 1.4,
+     "storm": 0.2
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 1, wind 1.6, heat 2 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-027",
+   "name": "Substation 69714786",
+   "latitude": 28.3757,
+   "longitude": -81.58845,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 10.2,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0.63,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 45,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25.7,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": null,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "missing",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 3,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "UNKNOWN",
+    "hazard_score": null,
+    "hazard_subscores": null,
+    "access": {
+     "pickup": "UNKNOWN",
+     "heavy_truck": "UNKNOWN"
+    },
+    "missing_fields": [
+     "nws_alerts"
+    ],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "NWS alert check failed: weather UNKNOWN, never treated as safe (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-028",
+   "name": "Admin Substation",
+   "latitude": 28.39649,
+   "longitude": -81.53339,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 3.7,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 4.53,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 43.9,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25.7,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 5.2,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.9,
+    "hazard_subscores": {
+     "rain": 1.1,
+     "wind": 2.4,
+     "heat": 3.4,
+     "flood": 2.4,
+     "storm": 0.4
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 1.1, wind 2.4, heat 3.4 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-029",
+   "name": "Taft Substation OUC",
+   "latitude": 28.374,
+   "longitude": -81.37536,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 2.6,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 7.33,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 48.2,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.9,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 2.5,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.5,
+    "hazard_subscores": {
+     "rain": 0.4,
+     "wind": 2.2,
+     "heat": 3.2,
+     "flood": 2.1,
+     "storm": 0.2
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 0.4, wind 2.2, heat 3.2 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-030",
+   "name": "Employee Substation",
+   "latitude": 28.32133,
+   "longitude": -81.33662,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 0.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 18.7,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 50,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.7,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 1.5,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "CAUTION",
+    "hazard_score": 5.7,
+    "hazard_subscores": {
+     "rain": 6.2,
+     "wind": 7,
+     "heat": 5.2,
+     "flood": 5.5,
+     "storm": 4.7
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [
+     "Heat Advisory (demo fixture)"
+    ],
+    "hazard_explanation": [
+     "Sub-scores: rain 6.2, wind 7, heat 5.2 (demo fixture)",
+     "Active alert: Heat Advisory (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-031",
+   "name": "Isleworth Substation",
+   "latitude": 28.46506,
+   "longitude": -81.54974,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 32.8,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0.63,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 48.6,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.4,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 1,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 2.2,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.1,
+    "hazard_subscores": {
+     "rain": 0.5,
+     "wind": 0.9,
+     "heat": 1.1,
+     "flood": 2.2,
+     "storm": 0.9
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 0.5, wind 0.9, heat 1.1 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-032",
+   "name": "Taft Substation DUKE",
+   "latitude": 28.37541,
+   "longitude": -81.37472,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 2.6,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 7.33,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 48.2,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.9,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 5.2,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.3,
+    "hazard_subscores": {
+     "rain": 0.9,
+     "wind": 3.5,
+     "heat": 1.9,
+     "flood": 0.9,
+     "storm": 0
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 0.9, wind 3.5, heat 1.9 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-033",
+   "name": "Substation 69970772",
+   "latitude": 28.44221,
+   "longitude": -81.63151,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 24.1,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 1.25,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 46.8,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.1,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 0,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 1.4,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.1,
+    "hazard_subscores": {
+     "rain": 2.1,
+     "wind": 3.5,
+     "heat": 2.6,
+     "flood": 0.8,
+     "storm": 1.6
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 2.1, wind 3.5, heat 2.6 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-034",
+   "name": "Hemple Substation",
+   "latitude": 28.53421,
+   "longitude": -81.5257,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 31.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 1.55,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 47.2,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 1,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 2.2,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.7,
+    "hazard_subscores": {
+     "rain": 3.1,
+     "wind": 2.9,
+     "heat": 3.6,
+     "flood": 2.2,
+     "storm": 1.7
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 3.1, wind 2.9, heat 3.6 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-035",
+   "name": "Bay Hill Substation",
+   "latitude": 28.47777,
+   "longitude": -81.50588,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 26,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0.45,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 48.2,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.7,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 0,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 1.1,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2,
+    "hazard_subscores": {
+     "rain": 1.8,
+     "wind": 2.6,
+     "heat": 4.7,
+     "flood": 0.4,
+     "storm": 0.8
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 1.8, wind 2.6, heat 4.7 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-036",
+   "name": "Orangewood Substation",
+   "latitude": 28.41796,
+   "longitude": -81.45464,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 1.8,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 1.78,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 48.1,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25.4,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 5.2,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "CAUTION",
+    "hazard_score": 5.6,
+    "hazard_subscores": {
+     "rain": 6.1,
+     "wind": 7.5,
+     "heat": 5.6,
+     "flood": 3.6,
+     "storm": 5.8
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [
+     "Heat Advisory (demo fixture)"
+    ],
+    "hazard_explanation": [
+     "Sub-scores: rain 6.1, wind 7.5, heat 5.6 (demo fixture)",
+     "Active alert: Heat Advisory (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-037",
+   "name": "Shingle Creek Substation",
+   "latitude": 28.41246,
+   "longitude": -81.42092,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 2.2,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 3.18,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 49,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.8,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 5.2,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.6,
+    "hazard_subscores": {
+     "rain": 0.3,
+     "wind": 3.4,
+     "heat": 2.1,
+     "flood": 2.9,
+     "storm": 0.3
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 0.3, wind 3.4, heat 2.1 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-038",
+   "name": "Substation 70069122",
+   "latitude": 28.4513,
+   "longitude": -81.42052,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 10.5,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 1.78,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 49.1,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25.1,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 5.2,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.8,
+    "hazard_subscores": {
+     "rain": 3.3,
+     "wind": 3.7,
+     "heat": 4,
+     "flood": 2.4,
+     "storm": 0.8
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 3.3, wind 3.7, heat 4 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-039",
+   "name": "Parkway Substation",
+   "latitude": 28.43803,
+   "longitude": -81.4165,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 28.5,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 8.38,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 49.4,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.8,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": null,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "missing",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 5.2,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "UNKNOWN",
+    "hazard_score": null,
+    "hazard_subscores": null,
+    "access": {
+     "pickup": "UNKNOWN",
+     "heavy_truck": "UNKNOWN"
+    },
+    "missing_fields": [
+     "nws_alerts"
+    ],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "NWS alert check failed: weather UNKNOWN, never treated as safe (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-040",
+   "name": "Substation 70069278",
+   "latitude": 28.42238,
+   "longitude": -81.39174,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 2.2,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 3.18,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 49,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.8,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 5.2,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.7,
+    "hazard_subscores": {
+     "rain": 1.7,
+     "wind": 0.7,
+     "heat": 4.5,
+     "flood": 0.4,
+     "storm": 1.1
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 1.7, wind 0.7, heat 4.5 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-041",
+   "name": "Substation 70079375",
+   "latitude": 28.49821,
+   "longitude": -81.44223,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 37.5,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 2.35,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 46.4,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.7,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 3,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.6,
+    "hazard_subscores": {
+     "rain": 3,
+     "wind": 3.8,
+     "heat": 3.3,
+     "flood": 2.1,
+     "storm": 0.9
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 3, wind 3.8, heat 3.3 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-042",
+   "name": "Turkey Lake Substation",
+   "latitude": 28.51271,
+   "longitude": -81.44184,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 37.5,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 2.35,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 46.4,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.7,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 1.5,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "STOP_WORK",
+    "hazard_score": 6.4,
+    "hazard_subscores": {
+     "rain": 6.7,
+     "wind": 6,
+     "heat": 3.4,
+     "flood": 5.9,
+     "storm": 10
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [
+     "Severe Thunderstorm Warning (demo fixture)"
+    ],
+    "hazard_explanation": [
+     "Sub-scores: rain 6.7, wind 6, heat 3.4 (demo fixture)",
+     "Active alert: Severe Thunderstorm Warning (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-043",
+   "name": "Substation 70081266",
+   "latitude": 28.33462,
+   "longitude": -81.39263,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 2.2,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 10.8,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 46.1,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.9,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 1.5,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.4,
+    "hazard_subscores": {
+     "rain": 2.8,
+     "wind": 2.3,
+     "heat": 3.5,
+     "flood": 1.8,
+     "storm": 1.3
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 2.8, wind 2.3, heat 3.5 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-044",
+   "name": "Substation 70081273",
+   "latitude": 28.33299,
+   "longitude": -81.37577,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 0.7,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 24.5,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 46.8,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.5,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 3,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.9,
+    "hazard_subscores": {
+     "rain": 1.8,
+     "wind": 1.2,
+     "heat": 3.5,
+     "flood": 0.9,
+     "storm": 1.9
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 1.8, wind 1.2, heat 3.5 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-045",
+   "name": "Kaley Substation",
+   "latitude": 28.51977,
+   "longitude": -81.37772,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 92.6,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "stale",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 3.93,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "stale",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 49,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "stale",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.3,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "stale",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "stale",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 1,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "stale",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 5,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "stale",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "UNKNOWN",
+    "hazard_score": null,
+    "hazard_subscores": null,
+    "access": {
+     "pickup": "UNKNOWN",
+     "heavy_truck": "UNKNOWN"
+    },
+    "missing_fields": [],
+    "stale": true,
+    "alert_events": [],
+    "hazard_explanation": [
+     "NWS alert check failed: weather UNKNOWN, never treated as safe (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-046",
+   "name": "America Substation",
+   "latitude": 28.53462,
+   "longitude": -81.38226,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 92.6,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 3.93,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 49,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.3,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": null,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "missing",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": null,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "missing",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.5,
+    "hazard_subscores": {
+     "rain": 1.8,
+     "wind": 1.4,
+     "heat": 3.5,
+     "flood": 0.4,
+     "storm": 0.5
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 1.8, wind 1.4, heat 3.5 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-047",
+   "name": "Michigan Substation OUC",
+   "latitude": 28.51257,
+   "longitude": -81.35115,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 47.2,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 3.63,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 49.7,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.9,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 1,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 4.5,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.4,
+    "hazard_subscores": {
+     "rain": 2.6,
+     "wind": 1.8,
+     "heat": 4.8,
+     "flood": 2.6,
+     "storm": 0
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 2.6, wind 1.8, heat 4.8 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-048",
+   "name": "Grant Substation OUC",
+   "latitude": 28.51646,
+   "longitude": -81.31921,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 9.1,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 1.83,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 49.7,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25.1,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 1,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 4.5,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.2,
+    "hazard_subscores": {
+     "rain": 2.2,
+     "wind": 2.2,
+     "heat": 3.6,
+     "flood": 2.7,
+     "storm": 0.3
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 2.2, wind 2.2, heat 3.6 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-049",
+   "name": "Holden Substation",
+   "latitude": 28.49385,
+   "longitude": -81.40868,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 61.9,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 3.15,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 47.2,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.9,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 4,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": null,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "missing",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "CAUTION",
+    "hazard_score": 5.7,
+    "hazard_subscores": {
+     "rain": 7.9,
+     "wind": 5.7,
+     "heat": 6.4,
+     "flood": 3.5,
+     "storm": 4.3
+    },
+    "access": {
+     "pickup": "NO_GO_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [
+     "Heat Advisory (demo fixture)"
+    ],
+    "hazard_explanation": [
+     "Sub-scores: rain 7.9, wind 5.7, heat 6.4 (demo fixture)",
+     "Active alert: Heat Advisory (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-050",
+   "name": "Sky Lake Substation",
+   "latitude": 28.44917,
+   "longitude": -81.37661,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 14.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 14.43,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 50.8,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.5,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 3,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.2,
+    "hazard_subscores": {
+     "rain": 1.5,
+     "wind": 1.9,
+     "heat": 5,
+     "flood": 2.6,
+     "storm": 0.1
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 1.5, wind 1.9, heat 5 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-051",
+   "name": "Car Care Substation",
+   "latitude": 28.3913,
+   "longitude": -81.57464,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 12.3,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 2.43,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 44.6,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 26.1,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 3,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.5,
+    "hazard_subscores": {
+     "rain": 3.9,
+     "wind": 2.5,
+     "heat": 2.4,
+     "flood": 2.9,
+     "storm": 0.5
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 3.9, wind 2.5, heat 2.4 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-052",
+   "name": "Four Corners Substation",
+   "latitude": 28.34752,
+   "longitude": -81.59131,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 11.6,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 45,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25.3,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 3,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.2,
+    "hazard_subscores": {
+     "rain": 0.2,
+     "wind": 2.3,
+     "heat": 3.3,
+     "flood": 0.4,
+     "storm": 0.1
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 0.2, wind 2.3, heat 3.3 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-053",
+   "name": "Lake Wilson Substation",
+   "latitude": 28.30012,
+   "longitude": -81.58272,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 37.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 43.9,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25.3,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": null,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "missing",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 4,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 1,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "UNKNOWN",
+    "hazard_score": null,
+    "hazard_subscores": null,
+    "access": {
+     "pickup": "UNKNOWN",
+     "heavy_truck": "UNKNOWN"
+    },
+    "missing_fields": [
+     "nws_alerts"
+    ],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "NWS alert check failed: weather UNKNOWN, never treated as safe (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-054",
+   "name": "Hunter's Creek Substation",
+   "latitude": 28.3757,
+   "longitude": -81.42347,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 1.8,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 14.98,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 48.6,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25.2,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 5.2,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.1,
+    "hazard_subscores": {
+     "rain": 3.2,
+     "wind": 3.6,
+     "heat": 2.4,
+     "flood": 0.6,
+     "storm": 0.9
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 3.2, wind 3.6, heat 2.4 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-055",
+   "name": "Pine Hills Substation",
+   "latitude": 28.5544,
+   "longitude": -81.44215,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 22.3,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 4.55,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 46.8,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.1,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": null,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "missing",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": null,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "missing",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.1,
+    "hazard_subscores": {
+     "rain": 3.8,
+     "wind": 1.1,
+     "heat": 2.3,
+     "flood": 1.5,
+     "storm": 1.3
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 3.8, wind 1.1, heat 2.3 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-056",
+   "name": "Substation 73796746",
+   "latitude": 28.36267,
+   "longitude": -81.32328,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 0.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 22.33,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 49.7,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.6,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 5.2,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "CAUTION",
+    "hazard_score": 4.9,
+    "hazard_subscores": {
+     "rain": 5.2,
+     "wind": 4.8,
+     "heat": 4.9,
+     "flood": 5.4,
+     "storm": 3.9
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [
+     "Wind Advisory (demo fixture)"
+    ],
+    "hazard_explanation": [
+     "Sub-scores: rain 5.2, wind 4.8, heat 4.9 (demo fixture)",
+     "Active alert: Wind Advisory (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-057",
+   "name": "Airport Industrial Park Substation OUC",
+   "latitude": 28.40262,
+   "longitude": -81.35424,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 31.3,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 7.52,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 47.2,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 5.2,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.7,
+    "hazard_subscores": {
+     "rain": 2.9,
+     "wind": 0.6,
+     "heat": 2.3,
+     "flood": 1.5,
+     "storm": 0.4
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 2.9, wind 0.6, heat 2.3 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-058",
+   "name": "Rice Substation",
+   "latitude": 29.72308,
+   "longitude": -81.76474,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 1.2,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 51.1,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 18.4,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 3,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.4,
+    "hazard_subscores": {
+     "rain": 0.8,
+     "wind": 1.3,
+     "heat": 2.5,
+     "flood": 2.2,
+     "storm": 0.4
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 0.8, wind 1.3, heat 2.5 (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-059",
+   "name": "Winter Park East Substation",
+   "latitude": 28.61935,
+   "longitude": -81.28473,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 8.3,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0.63,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 50.5,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25.9,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": null,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "missing",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 3,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 2,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "UNKNOWN",
+    "hazard_score": null,
+    "hazard_subscores": null,
+    "access": {
+     "pickup": "UNKNOWN",
+     "heavy_truck": "UNKNOWN"
+    },
+    "missing_fields": [
+     "nws_alerts"
+    ],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "NWS alert check failed: weather UNKNOWN, never treated as safe (demo fixture)"
+    ]
+   }
+  },
+  {
+   "id": "SITE-060",
+   "name": "Winter Springs Substation",
+   "latitude": 28.68475,
+   "longitude": -81.28521,
+   "region": null,
+   "location_origin": "OpenStreetMap power substation (via get_sites.py); coordinates are real, not a confirmed utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 27.7,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-16",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 9.62,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 48.2,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.6,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-18",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "nws_alerts",
+     "value": 0,
+     "unit": "count",
+     "source": "NWS",
+     "kind": "observed",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://www.weather.gov/documentation/services-web-api"
+    },
+    {
+     "variable": "usda_soil",
+     "value": 0,
+     "unit": "drainage wetness rank 0-4",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    },
+    {
+     "variable": "usda_clay_pct",
+     "value": 2,
+     "unit": "%",
+     "source": "USDA NRCS Soil Data Access",
+     "kind": "survey",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+     "quality": "available",
+     "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2,
+    "hazard_subscores": {
+     "rain": 2,
+     "wind": 2.2,
+     "heat": 2.6,
+     "flood": 1.7,
+     "storm": 1.5
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alert_events": [],
+    "hazard_explanation": [
+     "Sub-scores: rain 2, wind 2.2, heat 2.6 (demo fixture)"
+    ]
+   }
+  }
+ ]
+}
