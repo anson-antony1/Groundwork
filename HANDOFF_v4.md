@@ -20,13 +20,13 @@ Open: https://github.com/anson-antony1/Groundwork/pull/new/docs/status-marks . C
 ## Requirement status (README table on main: P1-P7, P11, P13 done)
 - P8: VERIFIED via API (range 13-14 mats, steps, ft units, engineering caveat, editable layers 1-3, inputs change the result). Marked on docs/status-marks.
 - P9: DONE in PR feature/p9-hours: idle_hours, labor_rate_per_hour and equipment_rate_per_hour added to the postpone side (idle_hours x (labor + equipment rate), on top of the flat amounts); backend tests pass. Still to do: UI check (8 h, $50, $25 raises the Postpone total by $600). Tell Rishi the three new field names.
-- P10: backend saves reports with site, text, timestamp, verification "unreviewed"; UI says "crew report, not an official alert". Not yet checked through the UI. AI image tagging is NOT implemented (reports.py sets category_ai None). A Gemini tagger was tried and dropped: image calls took 10-15 s and often returned 504, and the minimum deadline is 10 s. Idea for later: tag in the background after saving (needs an update method on the reports repository).
+- P10: DONE, verified through the UI (report with photo submits, shows in the site's Crew Reports feed as UNREVIEWED, "crew report, not an official alert"). AI image tagging is NOT implemented (reports.py sets category_ai None; UI shows "AI suggestion unavailable"). A Gemini tagger was tried and dropped: image calls took 10-15 s and often returned 504. Idea for later: tag in the background after saving. Success message says "on the map"; check the Ops map shows a pin.
 - P12/P15: DEMO-TRAY shows UNKNOWN ("NO SENSOR DATA") because tray-01 has sent no readings; expected without the beacon. fixtures/sensor_replay.csv (simulated, not recorded) and fixtures/display_states.json now exist on main, and replay_sensor_v2.py --loop --interval 2 --token dev-sensor-token posts the CSV as tray-01 (dashboard only; do not run with the beacon plugged in). README says the unplugged fallback is hardware/serial_bridge.py --replay fixtures/sensor_replay.csv; check that hardware/ exists. Owners: Anson and Aashita.
 - P14: not verified. Needs a timed run in live mode with wifi off following README 14.4, plus the beacon steps with Anson. API-only offline run passed earlier.
 
 ## Known problems to tell the team
 - backend/app/api/health.py reports usda_nrcs and nws as "not_built" although both work: Aashita should fix.
-- 4 TEST reports may still be in the DB: click Reset demo in the UI and confirm GET /api/v1/reports total is 0.
+- TEST reports (4 older ones plus 2 from the P10 checks) are still in the DB: click Reset demo in the UI and confirm GET /api/v1/reports total is 0.
 - test_demo.py failed once while uvicorn was running (likely shares the live DB); run tests with the server stopped.
 
 ## Running locally

@@ -52,7 +52,7 @@ The **Must** column is the team's launch contract. Demo mode is allowed, but **s
 | P7 | ✅ **Vehicle-specific access** | Ground-wetness/soil indicators + pickup/heavy-truck sensitivity policy | Changing vehicle changes access call without changing meteorological hazard score |
 | P8 | ✅ **Mat staging range** | Editable mat dimensions, effective coverage, route dimensions, layer policy, availability | UI shows range + calculation + units + engineering caveat |
 | P9 | ✅ **Mats vs postpone cost** | User inputs for rental, handling, labor, hours, equipment | Recalculates live; labels assumed values and does not call savings guaranteed |
-| P10 | **Crew hazard report** | Photo + text + GPS/site + timestamp; image tagging is advisory | Submitted report displays as map pin/feed item; report is distinguishable from verified official hazard alert |
+| P10 | ✅ **Crew hazard report** | Photo + text + GPS/site + timestamp; image tagging is advisory | Submitted report displays as map pin/feed item; report is distinguishable from verified official hazard alert |
 | P11 | ✅ **6 PM briefing** | Deterministic aggregation → optional LLM narration | A manual Generate 6 PM Plan button creates ranked priority list and mentions data gaps; automated scheduler only if time permits |
 | P12 | **Physical demo (site beacon)** | Arduino Uno reads the Grove moisture sensor (plus light and barometer once Tiers 2–3 work) and drives the Grove LCD, red/green LEDs and buzzer; a laptop serial bridge relays readings to the API and status back to the beacon (see §5) | Pouring water changes the actual sensor reading, reaches the UI, can change the demo access recommendation, and the beacon's LEDs/LCD reflect the server's status within ~2 s; recorded replay works when unplugged |
 | P13 | ✅ **Incident replay** | Saved past-storm event data with source and timestamps | Replay triggers STOP WORK and restores original live/scenario state when exited |
@@ -1054,10 +1054,10 @@ From the repo root with the venv active: `cd ~/Desktop/Groundwork && source .ven
 
 Resume notes live in `HANDOFF_v4.md`.
 
-**Done:** P1-P9, P11, P13 (P8 verified through the API: 13-14 mats, steps, ft units, engineering caveat, editable layers 1-3).
+**Done:** P1-P11, P13 (P8 verified through the API: 13-14 mats, steps, ft units, engineering caveat, editable layers 1-3).
 
 **Partial or not done**
-- **P10:** the backend saves crew reports (site, text, timestamp, verification "unreviewed"). The UI path is not checked end to end. AI image tagging is not implemented (`category_ai` stays `None`).
+- **P10 (done, one limitation):** crew reports submit through the UI and show as unreviewed crew reports, not official alerts. AI image tagging is not implemented (`category_ai` stays `None`); the UI shows "AI suggestion unavailable".
 - **P12/P15:** DEMO-TRAY shows UNKNOWN ("NO SENSOR DATA") until the beacon, or the replay script, sends readings. `hardware/` (`serial_bridge.py`, firmware, calibration) is not in the repo yet, so the README 14 unplugged-beacon fallback through `serial_bridge.py` does not exist.
 - **P14:** the timed wifi-off run (README 14.4) is not verified.
 
