@@ -18,10 +18,9 @@ services:
         generateValue: true # the code default is public, and it guards demo reset
       - key: GROUNDWORK_RATE_LIMIT_PER_MINUTE
         value: "6000" # judges on venue Wi-Fi share one IP
-      # Render picks the hostnames (groundwork.onrender.com was taken), so the two sites' addresses
-      # are set by hand in the dashboard after the first deploy. See deploy/README.md.
+      # Render picked the hostnames on the first deploy (groundwork.onrender.com belongs to someone else).
       - key: VITE_DEMO_URL # build arg: /welcome links to the demo site's interactive beacon
-        sync: false
+        value: https://groundwork-demo.onrender.com
 
   - type: web
     name: groundwork-demo
@@ -38,7 +37,7 @@ services:
       - key: VITE_TRY_DOCK
         value: "1"
       - key: VITE_LIVE_URL # /welcome links to the live app and shows whether it's awake
-        sync: false
+        value: https://groundwork-ifbr.onrender.com
     routes:
       - type: rewrite
         source: /*

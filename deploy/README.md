@@ -4,8 +4,8 @@ Two free services, defined in [`render.yaml`](../render.yaml):
 
 | Service | What it is | URL pattern |
 |---|---|---|
-| `groundwork` | The live app. One Docker container runs the FastAPI backend (unchanged) and serves the built frontend from the same origin. | `https://groundwork-XXXX.onrender.com` |
-| `groundwork-demo` | The always-up fallback. The frontend in mock mode, as a static site with no backend. A "Try it" button opens the rehearsal controls. | `https://groundwork-demo-XXXX.onrender.com` |
+| `groundwork` | The live app. One Docker container runs the FastAPI backend (unchanged) and serves the built frontend from the same origin. | https://groundwork-ifbr.onrender.com |
+| `groundwork-demo` | The always-up fallback. The frontend in mock mode, as a static site with no backend. A "Try it" button opens the rehearsal controls. | https://groundwork-demo.onrender.com |
 
 Nothing under `backend/` changes. [`deploy/asgi.py`](asgi.py) imports `backend.app.main:app` and adds the built frontend.
 
