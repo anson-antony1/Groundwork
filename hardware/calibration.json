@@ -2,15 +2,15 @@
   "name": "dry_wet_2point_v1",
   "adc_max": 1023,
   "moisture": {
-    "dry_raw": null,
-    "wet_raw": null,
-    "dry_measured_at": null,
-    "wet_measured_at": null
+    "dry_raw": 50.0,
+    "wet_raw": 614.0,
+    "dry_measured_at": "2026-10-17T18:37:24.137-04:00",
+    "wet_measured_at": "2026-10-17T18:38:05.076-04:00"
   },
   "light": {
-    "dark_raw": null,
-    "bright_raw": null,
-    "dark_measured_at": null,
-    "bright_measured_at": null
+    "dark_raw": 42.5,
+    "bright_raw": 744.0,
+    "dark_measured_at": "2026-10-17T15:44:47.998-04:00",
+    "bright_measured_at": "2026-10-17T15:45:12.309-04:00"
   }
 }
