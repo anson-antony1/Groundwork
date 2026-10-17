@@ -4,6 +4,7 @@
 import { FlaskConical, X } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { useEffect, useState, useSyncExternalStore } from 'react'
+import { TRY_DOCK } from '../api/config'
 import { useHotkeys } from '../hooks/useHotkeys'
 import { useNow } from '../hooks/useNow'
 import { MOCK_CONTROLS_EVENT } from '../state/mockEvents'
@@ -53,7 +54,20 @@ export default function MockControls() {
     return () => window.removeEventListener(MOCK_CONTROLS_EVENT, toggle)
   }, [])
 
-  if (!open) return null
+  // The public demo site has no Shift+M hint for remote judges, so it shows a launcher instead.
+  if (!open) {
+    if (!TRY_DOCK) return null
+    return (
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        className="fixed right-3 bottom-3 z-[2000] flex min-h-12 items-center gap-2 rounded-[4px] border-2 border-accent bg-panel px-4 text-[0.9rem] text-ink shadow-[0_12px_30px_rgb(0_0_0/0.55)] label-caps hover:bg-steel-hi"
+      >
+        <FlaskConical aria-hidden className="size-5 text-accent" />
+        Try it · pour water, start a storm
+      </button>
+    )
+  }
 
   const s = db.sensor
   const reading = latestReading()

@@ -1,6 +1,6 @@
 import { CloudLightning, CloudSun, History, Info, Loader2, OctagonX, Radio } from 'lucide-react'
 import { useState } from 'react'
-import { hasEndpoint } from '../../api/config'
+import { HOSTED, hasEndpoint } from '../../api/config'
 import { describeError } from '../../api/errors'
 import { PROPOSED_ENDPOINTS } from '../../api/proposed'
 import { useEvents, useReplayControl, useReplayScenarios, useSites } from '../../api/queries'
@@ -39,6 +39,13 @@ export function ReplayScreen() {
           current live or cached data.
         </p>
       </header>
+
+      {HOSTED && (
+        <p className="flex items-start gap-2 rounded-[3px] border border-line-hi px-4 py-2">
+          <Info aria-hidden className="mt-1 size-4 shrink-0 text-muted" />
+          Replay is shared: everyone viewing this server sees it until someone exits.
+        </p>
+      )}
 
       {(replayEnvelope?.errors ?? []).map((e) => (
         <p key={e} className="rounded-[3px] border border-caution/60 bg-caution/10 px-4 py-2 text-caution">
