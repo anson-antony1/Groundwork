@@ -16,7 +16,7 @@ function socialCard(publicUrl: string | undefined): Plugin {
     name: 'groundwork-social-card',
     transformIndexHtml(html) {
       const url = publicUrl?.trim().replace(/\/+$/, '')
-      if (!url) return html
+      if (!url || !/^https?:\/\/\S+$/.test(url)) return html
       const tags = [
         '<meta property="og:type" content="website" />',
         '<meta property="og:site_name" content="Groundwork" />',
