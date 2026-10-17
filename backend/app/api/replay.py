@@ -4,7 +4,7 @@ from fastapi import APIRouter
 from ..core.clock import now_utc
 from ..schemas.common import Envelope
 from ..schemas.requests import ReplayIn
-from ..schemas.responses import ReplayOut
+from ..schemas.responses import ReplayOut, ReplayScenarioOut
 from ..services import replay
 from . import mappers
 from .responses import ok
@@ -20,6 +20,12 @@ def _respond(state) -> dict:
 @router.get("", response_model=Envelope[ReplayOut], summary="Current replay state")
 def get_replay():
     return _respond(replay.get_replay())
+
+
+@router.get("/scenarios", response_model=Envelope[list[ReplayScenarioOut]],
+            summary="Replay scenarios available for the scenario picker")
+def list_scenarios():
+    return ok([ReplayScenarioOut(**vars(s)) for s in replay.list_scenarios()], "cached")
 
 
 @router.post("/start", response_model=Envelope[ReplayOut], summary="Switch to a historical storm scenario")

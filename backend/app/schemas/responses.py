@@ -175,6 +175,17 @@ class ReplayOut(BaseModel):
     started_at: datetime | None
 
 
+class ReplayScenarioOut(BaseModel):
+    id: str
+    title: str
+    event: str
+    source: str | None
+    reference_url: str | None
+    onset: datetime | None
+    expires: datetime | None
+    area: str | None
+
+
 class PrioritySiteOut(BaseModel):
     id: str
     name: str
