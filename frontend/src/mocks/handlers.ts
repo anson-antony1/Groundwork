@@ -259,6 +259,8 @@ const routes: [ApiRequest['method'], string, Handler][] = [
       status: 'ok',
       version: '0.2.0-mock',
       storage: 'in-browser mock (resets on reload)',
+      // Like the backend with GROUNDWORK_AUTH_ENABLED off: every caller is a demo user with both roles.
+      auth: 'disabled',
       sites_loaded: allSiteStatuses(Date.now()).length,
       replay_active: db.demo.replayActive,
       fixtures: { 'sites_50.json': true, 'weather_snapshot.json': true, 'storm_replay.json': false, 'sensor_replay.csv': false, 'display_states.json': false },
