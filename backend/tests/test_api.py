@@ -16,12 +16,22 @@ def test_health_envelope(client):
     assert body["data"]["status"] == "ok"
 
 
-def test_field_sites_are_unknown_not_safe(client):
+WEATHER_INPUTS = {"nws_alerts", "rain_forecast", "gust_forecast", "apparent_temp"}
+GROUND_INPUTS = {"rain_7d", "rain_forecast", "usda_soil"}
+
+
+def test_field_sites_are_never_safe_by_default(client):
+    """Missing data must read as UNKNOWN, never as safe (README P3). Rules are unit-tested in test_hazard.py."""
     sites = client.get("/api/v1/sites").json()["data"]
     assert any(s["id"] == "DEMO-TRAY" for s in sites)
     for s in sites:
-        if s["id"] != "DEMO-TRAY":
-            assert s["weather_state"] == "UNKNOWN" and s["hazard_score"] is None
+        if s["id"] == "DEMO-TRAY":
+            continue
+        missing = set(s["missing_fields"])
+        if missing & WEATHER_INPUTS:
+            assert s["weather_state"] == "UNKNOWN" and s["hazard_score"] is None, s["id"]
+        if missing & GROUND_INPUTS:
+            assert s["access_call"] == {"pickup": "UNKNOWN", "heavy_truck": "UNKNOWN"}, s["id"]
 
 
 def test_no_reading_means_unknown(display):

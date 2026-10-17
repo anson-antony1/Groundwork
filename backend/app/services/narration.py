@@ -21,7 +21,7 @@ except ImportError:
     pass
 
 TOP_N = 10
-TIMEOUT_MS = 15000
+TIMEOUT_MS = 45000
 NUM_RE = re.compile(r"\d+(?:\.\d+)?")
 GLUE_RE = re.compile(r"\b(for|and|to|at|of|in|by|on|with)(?=[A-Z][a-z])")  # fixes "forWindermere"
 LEAK_RE = re.compile(

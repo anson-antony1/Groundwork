@@ -6,8 +6,9 @@ from .. import repositories as repo
 from ..config import DEMO_DEVICE_ID, DEMO_SITE_ID
 from .access import demo_tray_access
 from .display import fresh_reading
+from .hazard import assess
 from .sites import WEATHER_FIELDS, Site, load_sites, require_site
-from .weather import load_snapshot, observations_for
+from .weather import details_for, load_snapshot, observations_for
 
 VEHICLES = ("pickup", "heavy_truck")
 
@@ -24,27 +25,39 @@ class SiteStatus:
     missing_fields: tuple[str, ...]
     mode: str
     evaluated_at: datetime
+    hazard_explanation: tuple[str, ...] = ()
+    alert_events: tuple[str, ...] = ()
 
 
 def evaluate_status(site: Site, now: datetime) -> SiteStatus:
     state = repo.demo_state.get()
     is_demo = site.id == DEMO_SITE_ID
 
+    observations, stale = ([], False) if is_demo else observations_for(site.id, now)
+    values = {o["variable"]: o["value"] for o in observations}
+    have = {k for k, v in values.items() if v is not None}
+
+    reading = fresh_reading(DEMO_DEVICE_ID, now) if is_demo else None
+    moisture = reading.moisture_index if reading else None
+
+    assessed = None
+    if is_demo:
+        access = {v: demo_tray_access(moisture, v) for v in VEHICLES}
+    else:
+        # events=None (no snapshot details, or the NWS call failed) means weather cannot be declared safe.
+        details = details_for(site.id)
+        assessed = assess(values, details["alerts"] if details else None)
+        access = dict(assessed.access_call)
+
+    hazard_score = None
     if state.replay_active:
         weather_state, mode = "STOP_WORK", "replay"
     elif is_demo:
         # The tray has no live weather feed; it runs a calm-weather demo scenario.
         weather_state, mode = "NORMAL", "sensor_demo"
     else:
-        # No NWS alerts connector yet, so weather can't be declared safe: UNKNOWN, never NORMAL.
-        weather_state, mode = "UNKNOWN", "cached" if load_snapshot() else "simulated"
-
-    observations, stale = ([], False) if is_demo else observations_for(site.id, now)
-    have = {o["variable"] for o in observations if o["value"] is not None}
-
-    reading = fresh_reading(DEMO_DEVICE_ID, now) if is_demo else None
-    moisture = reading.moisture_index if reading else None
-    access = {v: demo_tray_access(moisture, v) if is_demo else "UNKNOWN" for v in VEHICLES}
+        weather_state, hazard_score = assessed.weather_state, assessed.hazard_score
+        mode = "cached" if load_snapshot() else "simulated"
 
     effective = {}
     for v in VEHICLES:
@@ -52,6 +65,8 @@ def evaluate_status(site: Site, now: datetime) -> SiteStatus:
             effective[v] = weather_state
         elif is_demo and state.crew_flag_at is not None:
             effective[v] = "SUPERVISOR_REVIEW"
+        elif weather_state == "CAUTION" and access[v] == "GO_FOR_REVIEW":
+            effective[v] = "SUPERVISOR_REVIEW"  # caution weather never reads as a plain GO
         else:
             effective[v] = access[v]
 
@@ -68,7 +83,7 @@ def evaluate_status(site: Site, now: datetime) -> SiteStatus:
 
     return SiteStatus(
         site=site,
-        hazard_score=None,
+        hazard_score=hazard_score,
         weather_state=weather_state,
         access_call=access,
         effective_status=effective,
@@ -77,6 +92,8 @@ def evaluate_status(site: Site, now: datetime) -> SiteStatus:
         missing_fields=missing,
         mode=mode,
         evaluated_at=now,
+        hazard_explanation=assessed.explanation if assessed else (),
+        alert_events=assessed.alert_events if assessed else (),
     )
 
 
