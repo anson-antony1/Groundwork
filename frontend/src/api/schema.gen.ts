@@ -158,6 +158,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/forecast-model": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Model card: the learned STOP-WORK forecast, its training data and held-out evaluation */
+        get: operations["get_forecast_model_api_v1_forecast_model_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/health": {
         parameters: {
             query?: never;
@@ -825,6 +842,26 @@ export interface components {
             /** Sources */
             sources?: string[];
         };
+        /** Envelope[ForecastModelOut] */
+        Envelope_ForecastModelOut_: {
+            data: components["schemas"]["ForecastModelOut"];
+            /** Errors */
+            errors?: string[];
+            /**
+             * Generated At
+             * Format: date-time
+             */
+            generated_at: string;
+            /** Missing Fields */
+            missing_fields?: string[];
+            /**
+             * Mode
+             * @enum {string}
+             */
+            mode: "live" | "cached" | "replay" | "simulated" | "sensor_demo" | "sensor_replay";
+            /** Sources */
+            sources?: string[];
+        };
         /** Envelope[HealthOut] */
         Envelope_HealthOut_: {
             data: components["schemas"]["HealthOut"];
@@ -1086,6 +1123,24 @@ export interface components {
              * @enum {string}
              */
             weather_state: "NORMAL" | "CAUTION" | "STOP_WORK" | "UNKNOWN";
+        };
+        /**
+         * ForecastModelOut
+         * @description Model card for the learned STOP-WORK forecast: what it predicts, from what, and how well.
+         */
+        ForecastModelOut: {
+            /** Evaluation */
+            evaluation: {
+                [key: string]: unknown;
+            };
+            /** Features */
+            features: string[];
+            /** Label */
+            label: string;
+            /** Sources */
+            sources: string[];
+            /** Version */
+            version: string;
         };
         /**
          * HazardSubscoresOut
@@ -1699,6 +1754,8 @@ export interface components {
              * Format: date-time
              */
             evaluated_at: string;
+            /** @description Learned STOP-WORK probability; null for the demo tray, stale data or a missing input */
+            forecast_model?: components["schemas"]["StopWorkForecastOut"] | null;
             /** Hazard Explanation */
             hazard_explanation?: string[];
             /** Hazard Score */
@@ -1759,6 +1816,8 @@ export interface components {
              * Format: date-time
              */
             evaluated_at: string;
+            /** @description Learned STOP-WORK probability; null for the demo tray, stale data or a missing input */
+            forecast_model?: components["schemas"]["StopWorkForecastOut"] | null;
             /** Hazard Explanation */
             hazard_explanation?: string[];
             /** Hazard Score */
@@ -1808,6 +1867,36 @@ export interface components {
             source: string;
             /** Stale */
             stale: boolean;
+        };
+        /**
+         * StopWorkForecastOut
+         * @description Learned forecast beside the rule-based call (backend/ml). Advisory: it never changes a status.
+         */
+        StopWorkForecastOut: {
+            /**
+             * Base Rate
+             * @description Share of site-days with such an alert in the held-out test year
+             */
+            base_rate: number;
+            /**
+             * Drivers
+             * @description Factors that moved this site's probability most, in plain words
+             */
+            drivers: string[];
+            /** Model Version */
+            model_version: string;
+            /** Note */
+            note: string;
+            /**
+             * Probability
+             * @description Chance a STOP-WORK-class NWS alert covers the site during working hours
+             */
+            probability: number;
+            /**
+             * Test Roc Auc
+             * @description ROC AUC on the held-out year (see GET /forecast-model)
+             */
+            test_roc_auc: number;
         };
         /** TimelineEventOut */
         TimelineEventOut: {
@@ -2466,6 +2555,62 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["PageEnvelope_TimelineEventOut_"];
+                };
+            };
+            /** @description Validation failed */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Rate limit exceeded */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unexpected server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_forecast_model_api_v1_forecast_model_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_ForecastModelOut_"];
+                };
+            };
+            /** @description Resource not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
             /** @description Validation failed */

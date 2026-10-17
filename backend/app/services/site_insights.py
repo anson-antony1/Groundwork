@@ -3,6 +3,7 @@
 Derived only from inputs the hazard rules already use; nothing here changes a score or a status.
 """
 from .hazard import HAZARD_POLICY, hazard_parts
+from .units import rain_text, temp_text, wind_text
 
 FLOOD_TERMS = ("flood",)
 STORM_TERMS = ("thunderstorm", "tornado", "hurricane", "tropical storm", "lightning")
@@ -39,11 +40,11 @@ def weather_triggers(values: dict, events: list[str] | None) -> list[str]:
     parts = hazard_parts(values.get("rain_forecast"), values.get("gust_forecast"), values.get("apparent_temp"))
     if parts:
         if parts["rain"] > 0:
-            triggers.append(f"Forecast rain {values['rain_forecast']} mm")
+            triggers.append(f"Forecast rain {rain_text(values['rain_forecast'])}")
         if parts["wind"] > 0:
-            triggers.append(f"Forecast gusts {values['gust_forecast']} km/h "
-                            f"(points from {HAZARD_POLICY['gust_kmh_zero']:.0f} km/h)")
+            triggers.append(f"Forecast gusts {wind_text(values['gust_forecast'])} "
+                            f"(points from {wind_text(HAZARD_POLICY['gust_kmh_zero'])})")
         if parts["heat"] > 0:
-            triggers.append(f"Feels-like {values['apparent_temp']} °C "
-                            f"(points from {HAZARD_POLICY['heat_c_zero']:.0f} °C)")
+            triggers.append(f"Feels-like {temp_text(values['apparent_temp'])} "
+                            f"(points from {temp_text(HAZARD_POLICY['heat_c_zero'])})")
     return triggers

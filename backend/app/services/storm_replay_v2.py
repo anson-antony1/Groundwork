@@ -9,6 +9,7 @@ from functools import lru_cache
 
 from ..config import FIXTURES_DIR
 from .hazard import assess
+from .units import rain_text, wind_text
 
 SCENARIO_FILES = {"demo-storm": "storm_replay.json", "calm-day": "replay_calm.json"}
 DEFAULT_SCENARIO = "demo-storm"
@@ -46,15 +47,16 @@ def replay_inputs(site_id: str, scenario_id: str | None = None) -> dict | None:
     if not site:
         return None
     values = {k: site.get(k) for k in WEATHER_KEYS}
+    day = data.get("storm_day") or data.get("day")  # the forecast day the scenario replays
     archived = archived_alerts(scenario_id)
     if archived and site_id in archived["sites"]:
         details = [archived["events"][k] for k in archived["sites"][site_id]]
         alerts = [{"event": d["event"], "source": archived["source"]["name"], "onset": d.get("issued_at"),
                    "expires": d.get("expires_at"), "reference_url": d.get("source_url")} for d in details]
-        return {"values": values, "events": [a["event"] for a in alerts], "alerts": alerts}
+        return {"values": values, "events": [a["event"] for a in alerts], "alerts": alerts, "day": day}
     alert = data.get("simulated_alert")
     alerts = [{"event": alert, "source": "SIMULATED (replay fixture)"}] if alert else []
-    return {"values": values, "events": [alert] if alert else [], "alerts": alerts}
+    return {"values": values, "events": [alert] if alert else [], "alerts": alerts, "day": day}
 
 
 def replay_site_v2(site_id: str, scenario_id: str | None = None) -> dict | None:
@@ -67,7 +69,7 @@ def replay_site_v2(site_id: str, scenario_id: str | None = None) -> dict | None:
     rain, gust = site.get("rain_forecast"), site.get("gust_forecast")
     notes = [f"REPLAY {label}, day {day} (rain, wind and temperature are real archived data)"]
     if rain is not None and gust is not None:
-        notes.append(f"Forecast rain {rain} mm, gusts {gust} km/h")
+        notes.append(f"Forecast rain {rain_text(rain)}, gusts {wind_text(gust)}")
 
     archived = archived_alerts(scenario_id)
     if archived and site_id in archived["sites"]:

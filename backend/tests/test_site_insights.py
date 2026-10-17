@@ -73,3 +73,10 @@ def test_subscores_unit_rules():
 
 def test_triggers_flag_failed_alert_check():
     assert "NWS alert check unavailable" in weather_triggers({}, None)
+
+
+def test_triggers_read_in_us_units():
+    triggers = weather_triggers({"rain_forecast": 25.4, "gust_forecast": 80.0, "apparent_temp": 35.0}, [])
+    assert "Forecast rain 1.00 in" in triggers
+    assert "Forecast gusts 50 mph (points from 19 mph)" in triggers
+    assert "Feels-like 95 °F (points from 90 °F)" in triggers

@@ -171,9 +171,9 @@ Use this only as an **illustrative initial formula**, with scores calibrated by 
 | Lightning: strike within 10 mi → stop work, 30-minute all clear that restarts with each strike | A crew lightning report stops every site within 10 mi until 30 min after the newest strike; each new report restarts it. Shown as an alert whose `expires` is the all-clear time, and on the beacon as `STOP - CLR 29:59` (`ACKD - CLR …` after a touch). A new strike near the tray re-sounds the alarm. Not applied during storm replays | `services/field_hazards.py`, `services/display.py` |
 | Wildfire in the combined picture | NIFC active incidents; a fire within 10 mi raises NORMAL to CAUTION (demo policy) | `scripts/fetch_hazards_v1.py`, `fixtures/hazards_snapshot.json` |
 | Wildlife sightings | iNaturalist alligator sightings within 10 km in the last 30 days, as an observation and a "brief the crew" note | same |
-| Hazard index (0–10) from an ML model trained on historical data | A logistic regression on NOAA Storm Events + Open-Meteo history gives an advisory "ML forecast x/10" next to the rule-based score. It never sets STOP WORK | `scripts/train_hazard_model_v1.py`, `policies/ml_hazard_model_v1.json`, `services/ml_index.py` |
+| Hazard index (0–10) from an ML model trained on historical data | The site page's "Learned forecast" panel: chance of a STOP-WORK-class NWS alert tomorrow, with the factors behind it (held-out AUC 0.85 vs 0.78 for the rules; §8). The NOAA model below gives an "ML forecast x/10" line where that model has no prediction. Neither ever sets STOP WORK | `backend/ml/`, `services/forecast_model.py`; `scripts/train_hazard_model_v1.py`, `policies/ml_hazard_model_v1.json`, `services/ml_index.py` |
 
-**The ML forecast, honestly.** It predicts the chance of a located severe storm or flood event (thunderstorm wind, hail, lightning, tornado, flash flood, flood, heavy rain) within 25 km of a site that day, from that day's rain, gusts and apparent temperature plus the prior week's rain. It was trained on 60 sites for 2023–24 (43,860 site-days, 846 events) and tested on 2025, which it never saw (21,900 site-days, 437 events, 2% base rate). The 0–10 index is a percentile: 7.8 means riskier than 78% of past site-days.
+**The NOAA ML forecast, honestly** (the fallback model; the shown model and a head-to-head of the two are in §8 "Built: learned STOP-WORK forecast"). It predicts the chance of a located severe storm or flood event (thunderstorm wind, hail, lightning, tornado, flash flood, flood, heavy rain) within 25 km of a site that day, from that day's rain, gusts and apparent temperature plus the prior week's rain. It was trained on 60 sites for 2023–24 (43,860 site-days, 846 events) and tested on 2025, which it never saw (21,900 site-days, 437 events, 2% base rate). The 0–10 index is a percentile: 7.8 means riskier than 78% of past site-days.
 
 | 2025 test (AUC: 1.0 perfect, 0.5 coin flip) | ML forecast | Rule-based score |
 |---|---|---|
@@ -491,6 +491,41 @@ Use Pydantic/schema validation on the response, then verify numbers and site IDs
 - More aligned **future** model: learn from adequately labeled, representative crew outcomes (`access_success`, `stuck`, `mats_used`) once enough records exist.
 - Never claim the prototype predicts real soil bearing capacity or truck-stuck probability without ground truth.
 **Measured evaluation for photo tagging:** small held-out labeled examples; show per-class accuracy or confusion matrix if sample size supports it, otherwise clearly say qualitative demonstration.
+
+### Built: learned STOP-WORK forecast (`backend/ml/`)
+
+The research prototype above, built and evaluated. **Question:** at 6 PM, how likely is it that a real NWS alert of a STOP-WORK type covers this site during working hours tomorrow?
+
+- **Data:** 300 field sites × 3 years (328,800 site-days). Inputs are Open-Meteo's *archived forecasts* of the same four values the live app uses (forecast rain, max gust, max feels-like temperature, 7-day rain), plus location and time of year. Labels are real NWS alerts from the Iowa Environmental Mesonet archive, classified by the app's own rule (`hazard_alerts_v1`), so the model learns exactly what the app calls STOP WORK.
+- **Evaluation:** fit on Jul 2023 to Jun 2025, tested on Jul 2025 to Jun 2026 (a full year it never saw). Confidence intervals resample whole days, because nearby sites share storms.
+
+| On the held-out year | ROC AUC | PR AUC (base rate 4.6%) | STOP-WORK days in its riskiest 10% |
+|---|---|---|---|
+| Rule hazard score (current app) | 0.78 | 0.20 | 40% |
+| Climatology (site × month) | 0.76 | 0.15 | 32% |
+| **Logistic regression (shipped)** | **0.85** | **0.28** | **52%** |
+| Gradient boosting (not shipped) | 0.87 | 0.25 | 54% |
+
+The model's gain over the rule score is +0.06 to +0.09 AUC (95% interval). Flagging the same number of site-days as the rule's CAUTION call, it is right more often (precision 0.37 vs 0.30) and catches more STOP-WORK days (recall 0.27 vs 0.22). **Where it does not help:** in Florida it ties the rule (AUC 0.80 vs 0.81), because summer thunderstorms happen nearly every afternoon and four daily numbers cannot tell which one. Full report, calibration table and weights: [`backend/ml/EVALUATION.md`](backend/ml/EVALUATION.md).
+
+**Cross-check against a second, independent model.** Anson's NOAA model (`policies/ml_hazard_model_v1.json`, `backend/scripts/train_hazard_model_v1.py`) predicts a different target: a NOAA Storm Events storm or flood report within 25 km. Scored on the same 109,500 held-out site-days (Jul 2025 to Jun 2026, neither model trained on them):
+
+| ROC AUC (PR AUC) | This model | NOAA model | Rule score |
+|---|---|---|---|
+| NWS STOP-WORK alert label | **0.852** (0.278) | 0.824 (0.241) | 0.778 (0.197) |
+| NOAA storm/flood report label | **0.900** (0.175) | 0.886 (0.136) | 0.830 (0.104) |
+
+It leads on both targets, including the one it was not trained for (95% interval of the AUC gap, resampling days: +0.02 to +0.04 on the NWS label, +0.003 to +0.026 on NOAA). In Florida the two models tie and neither beats the rule score, which both evaluations found independently. The site page shows one ML number: this model's panel, or the NOAA model's line where this model has no prediction.
+
+**Design choices:** logistic regression ships rather than gradient boosting because each prediction splits into named factors (the app shows "forecast gusts raises the risk"), its probabilities are calibrated, and it runs in pure Python inside the API from a JSON file of weights, with no new runtime dependency. Gradient boosting adds little AUC and is worse calibrated. The feature code lives in one function (`backend/app/services/forecast_model.py`) used by both training and serving, so they cannot drift apart. **The model is advisory:** it appears beside the rule-based call on the site page and never changes a status.
+
+```bash
+pip install -r backend/ml/requirements.txt     # training only (scikit-learn); the API doesn't need it
+python -m backend.ml.build_dataset             # ~15 min first time; raw responses cached in backend/ml/cache/
+python -m backend.ml.train                     # ~15 s: writes stop_work_model_v1.json and EVALUATION.md
+```
+
+API: each site carries `forecast_model` (probability, base rate, top factors, held-out AUC; null for the demo tray, stale data or a missing input), and `GET /api/v1/forecast-model` returns the model card with the full evaluation. Limits: the label is "an alert was issued", not "work was unsafe"; archived forecasts are short-range, so live accuracy will be a little lower; the Milton replay day is inside the training years, so the replay shows an in-sample prediction.
  
 ---
  
@@ -674,6 +709,7 @@ Groundwork/
 │   ├── app/repositories/      # SQLite storage
 │   ├── app/schemas/           # request/response models (the API contract)
 │   ├── scripts/               # fetch_weather, build replay/alerts fixtures, export_openapi, refresh loop
+│   ├── ml/                    # learned STOP-WORK forecast: dataset builder, training, weights, EVALUATION.md
 │   ├── tests/                 # pytest suite
 │   └── openapi.json           # committed contract; tests fail if it drifts from the code
 ├── frontend/                  # React + TypeScript + Vite + Tailwind + Leaflet dashboard (see frontend/README.md)
@@ -915,7 +951,7 @@ The ticked items pass in `pytest backend/tests hardware/tests`; `backend/tests/t
 | Crew lightning report | `Crew report (unverified)` on the alert; not a strike-detection network |
 | Wildfire nearby | `NIFC WFIGS` with distance and fetch time |
 | Alligator sightings | `iNaturalist community observations (unverified)` |
-| ML forecast | `Advisory; the rules decide STOP WORK`, with its 2025 test AUC for that region |
+| Learned forecast | `Advisory`: probability, usual rate, top factors and held-out AUC; the rules decide STOP WORK |
 | LLM briefing | `Generated narrative from structured records` |
  
 ---
@@ -926,7 +962,7 @@ The ticked items pass in `pytest backend/tests hardware/tests`; `backend/tests/t
 No. It helps with advance planning using soil survey information, forecast conditions, and configurable vehicle rules. An engineer/supervisor still needs to assess ground support and site conditions.
  
 **Q: Isn't your "ML" just rules?**  
-The safety and access engine uses transparent rules on purpose. Next to it there is a real ML forecast: a logistic regression trained on NOAA Storm Events and Open-Meteo history for 2023–24 and tested on 2025, which it never saw. It ranks storm days better than our rules overall (AUC 0.88 vs 0.83) but worse on the Florida demo sites (0.87 vs 0.90), so it is advisory only and every site says which numbers apply to it.
+The safety and access engine uses transparent rules on purpose. Next to it there is a real ML forecast: a logistic regression trained on 3 years of archived forecasts and real NWS alerts at 300 sites, tested on a year it never saw. It ranks STOP-WORK days better than our rules (AUC 0.85 vs 0.78) and also beats a second model the team built on NOAA storm reports, even on that model's own target (0.90 vs 0.89). In Florida it only ties the rules, so it stays advisory and never sets a status.
  
 **Q: How do you know the data for 50 sites is real?**  
 We store real coordinates and show the exact provider, time, and missing-value status for soil/weather variables. We count how many sites have complete retrieved data; we do not call fabricated locations actual customer work orders.
@@ -1055,6 +1091,7 @@ flowchart LR
 ## Risk intelligence notes (hazard, replay, briefing)
 
 - **Hazard score (0-10)** = forecast rain (4) + gusts (3) + heat (3). Any NWS alert naming a thunderstorm, tornado, hurricane, tropical storm, flash flood or flood warning forces STOP_WORK. Other active alerts give at least CAUTION, except surf and rip-current advisories, which stay visible in `alert_events` but do not raise CAUTION. A failed alert check or missing forecast is UNKNOWN, never safe.
+- **Units:** the API, the policy thresholds and the scoring stay metric (mm, km/h, °C, Open-Meteo's native units), so a threshold never shifts by a rounding step. Everything a person reads is converted to US units: inches, mph and °F (`frontend/src/domain/format.ts` `toUsUnits`, `backend/app/services/units.py` for the "Why this call?" reasons and replay notes).
 - **All thresholds are demo policy** (`HAZARD_POLICY` in `backend/app/services/hazard.py`), not validated against field data. Vehicle access is a preliminary screening from ground-wetness indicators, not a measured soil bearing capacity.
 - **Weather snapshot:** `python -m backend.scripts.fetch_weather` (needs internet). The API reads only the snapshot, so the demo works offline. Stale values are still served and flagged.
 - **Storm replay (P13):** Hurricane Milton, forecast day 2024-10-09. Rain and gusts are real Open-Meteo archive data. The NWS alerts are **real too**: the warnings, watches and advisories active that day (US Eastern), from the Iowa Environmental Mesonet NWS archive, matched to each site by warning polygon or zone (`fixtures/storm_replay_alerts_v1.json`). Each site runs through the normal hazard rules with its own alerts: 59 Florida sites were under a Hurricane Warning, the Duval County (Jacksonville) site under a Tropical Storm Warning, and all 60 Florida sites reach STOP WORK. The replay covers all 300 field sites: the other 240 get their own archived weather and alerts for that day (231 NORMAL, 9 CAUTION), so a Florida storm never stops work in Oregon. A site the replay has no data for reads UNKNOWN, never a made-up STOP WORK. The calm-day comparison (2024-07-15) uses the same archive (`fixtures/replay_calm_alerts_v1.json`); nationally that was the Chicago-area derecho day, so some Midwest sites are under real severe-thunderstorm warnings. Rebuild weather with `python -m backend.scripts.build_storm_replay_v1` (and `build_replay_scenario_v1 --day 2024-07-15 --label "Ordinary summer day (comparison)"`), then alerts with `python -m backend.scripts.build_replay_alerts_v2 [--scenario calm-day]` (all need internet). Milton exceeds the scale maximum, so every site scores 7.0.
@@ -1082,7 +1119,7 @@ Off by default (`GROUNDWORK_AUTH_ENABLED=false`): every request runs as a labele
 | `POST /demo/reset` | a sensor credential or `supervisor` |
 | all `GET` routes | open |
 
-`GET /health` reports `"auth": "auth0" | "disabled"`. **The frontend has no login flow yet**, so keep auth off whenever the dashboard is in live mode; with it on, the supervisor buttons above return 401. Backend enforcement is tested in `backend/tests/test_auth.py`.
+`GET /health` reports `"auth": "auth0" | "disabled"`. **Frontend login:** set `VITE_AUTH0_DOMAIN` and `VITE_AUTH0_CLIENT_ID` (plus audience and roles claim, matching the backend) in `frontend/.env.local`; the dashboard then logs in through Auth0 Universal Login and sends the access token with every API call (`frontend/src/auth/`). Turn both sides on together: backend auth on with the frontend unconfigured makes the supervisor buttons return 401. Backend enforcement is tested in `backend/tests/test_auth.py`.
 
 ## Running everything (start order)
 
@@ -1104,11 +1141,15 @@ Team resume notes live in `docs/HANDOFF_v5.md`; a file-by-file walkthrough for j
 
 **Verified Oct 17 (live mode, frontend through the Vite proxy):** every endpoint the dashboard calls answers correctly: sites (301), site detail, evaluate, sensor post/latest/history, display, device events and crew-flag clear, reports with photo upload and review, replay start/stop, briefing generate, policies, coverage, demo reset. Backend + hardware: 204 tests pass. Frontend: typecheck, lint, 159 tests and build pass.
 
+**Learned forecast:** built and evaluated on a held-out year (ROC AUC 0.85 vs 0.78 for the rule score); see §8 "Built: learned STOP-WORK forecast". Shown on the site page as advisory.
+
+**Units:** everything a person reads is in inches, mph and °F; the API and thresholds stay metric.
+
 **Partial or not done**
 - **P10 (done, one limitation):** crew reports submit through the UI and show as unreviewed crew reports, not official alerts. AI image tagging is not implemented (`category_ai` stays `None`); the UI shows "AI suggestion unavailable".
 - **P12/P15:** the bridge, fake beacon and firmware are in the repo (`hardware/`, `firmware/`). DEMO-TRAY shows UNKNOWN ("NO SENSOR DATA") until the beacon, the fake beacon, or the replay script sends readings. Still needs a full run with the physical Uno.
 - **P14:** the timed wifi-off run (README 14.4) is not verified.
-- **Auth0:** enforced by the backend, but the frontend has no login yet (see Authentication above).
+- **Auth0:** backend enforcement and frontend login are both built; off by default for the demo (see Authentication above).
 - **Nationwide sites:** the offline basemap covers Florida only; other states need map tiles (internet). The mock backend (`npm run dev:mock`) still uses the 60 Florida sites.
 
 **Sensor replay fallback (dashboard only):** `python scripts/replay_sensor_v2.py --loop --interval 2 --token dev-sensor-token` posts `fixtures/sensor_replay.csv` as `tray-01` with `mode: "sensor_replay"` (shown as Recorded demo). The CSV is simulated, not recorded. It does not drive the LCD, LEDs or buzzer, and it must not run while the real beacon is plugged in. Readings older than 15 s are ignored, so keep `--loop` running. After testing, **Reset demo** removes these rows (`calibration: simulated_replay_v1`, also used by `hardware/serial_bridge.py` and `hardware/fake_beacon.py`); real beacon readings are kept.

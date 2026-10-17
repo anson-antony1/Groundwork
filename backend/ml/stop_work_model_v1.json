@@ -1,0 +1,190 @@
+{
+  "version": "stop_work_logreg_v1",
+  "label": "1 if an NWS alert the app's rule treats as STOP WORK (hazard_alerts_v1: thunderstorm, tornado, hurricane, tropical storm, flash flood, flood warning, lightning) covered the site during 06:00-20:00 local time",
+  "sources": [
+    "Open-Meteo Historical Forecast API (archived model forecasts)",
+    "Iowa Environmental Mesonet NWS VTEC archive (alerts by point)"
+  ],
+  "features": [
+    "log_rain_forecast",
+    "rain_x_gust",
+    "gust_forecast",
+    "apparent_temp",
+    "heat_above_30",
+    "log_rain_7d",
+    "latitude",
+    "longitude",
+    "season_sin",
+    "season_cos",
+    "lat_x_season",
+    "lon_x_season"
+  ],
+  "mean": [
+    0.420779,
+    0.361748,
+    35.79145,
+    20.38214,
+    1.685729,
+    1.836584,
+    37.517304,
+    -91.19831,
+    1.3e-05,
+    0.000684,
+    0.000172,
+    0.000173
+  ],
+  "scale": [
+    0.920582,
+    0.895682,
+    14.611601,
+    13.819008,
+    3.345604,
+    1.543677,
+    7.031016,
+    18.151808,
+    0.706865,
+    0.707348,
+    0.528252,
+    0.874549
+  ],
+  "coef": [
+    0.427704,
+    0.009494,
+    0.688856,
+    1.301927,
+    0.029926,
+    0.236735,
+    0.147803,
+    0.368834,
+    0.208756,
+    -0.036453,
+    -0.235441,
+    0.127749
+  ],
+  "intercept": -3.653378,
+  "evaluation": {
+    "train_period": "2023-07-01..2025-06-30",
+    "test_period": "2025-07-01..2026-06-30",
+    "train_rows": 219300,
+    "test_rows": 109500,
+    "sites": 300,
+    "train_base_rate": 0.0582,
+    "test_base_rate": 0.0457,
+    "chosen_C": 10.0,
+    "models": {
+      "rule_score": {
+        "roc_auc": 0.778,
+        "pr_auc": 0.197,
+        "top_decile_capture": 0.398
+      },
+      "climatology": {
+        "roc_auc": 0.764,
+        "pr_auc": 0.148,
+        "brier": 0.043,
+        "brier_skill_vs_climatology": 0.0,
+        "top_decile_capture": 0.323
+      },
+      "logistic_regression": {
+        "roc_auc": 0.852,
+        "pr_auc": 0.278,
+        "brier": 0.0377,
+        "brier_skill_vs_climatology": 0.123,
+        "top_decile_capture": 0.52
+      },
+      "gradient_boosting": {
+        "roc_auc": 0.865,
+        "pr_auc": 0.254,
+        "brier": 0.04,
+        "brier_skill_vs_climatology": 0.07,
+        "top_decile_capture": 0.539
+      }
+    },
+    "roc_auc_95ci_by_day": {
+      "rule_score": [
+        0.757,
+        0.798
+      ],
+      "logistic_regression": [
+        0.836,
+        0.866
+      ],
+      "gain_vs_rule": [
+        0.059,
+        0.088
+      ]
+    },
+    "rule_calls": {
+      "CAUTION or worse (score >= 3.5)": {
+        "flagged_share": 0.0333,
+        "precision": 0.304,
+        "recall": 0.222
+      },
+      "STOP WORK (score >= 6.5)": {
+        "flagged_share": 0.0034,
+        "precision": 0.493,
+        "recall": 0.036
+      },
+      "Model, same number of flags as rule CAUTION": {
+        "flagged_share": 0.0333,
+        "precision": 0.371,
+        "recall": 0.271
+      }
+    },
+    "by_region": {
+      "Florida (60 sites)": {
+        "rows": 21900,
+        "base_rate": 0.0579,
+        "rule_score_auc": 0.805,
+        "logistic_regression_auc": 0.796
+      },
+      "Other states (240 sites)": {
+        "rows": 87600,
+        "base_rate": 0.0427,
+        "rule_score_auc": 0.766,
+        "logistic_regression_auc": 0.866
+      }
+    },
+    "calibration_logistic_regression": [
+      {
+        "predicted": 0.002,
+        "observed": 0.003,
+        "rows": 13688
+      },
+      {
+        "predicted": 0.007,
+        "observed": 0.004,
+        "rows": 13687
+      },
+      {
+        "predicted": 0.014,
+        "observed": 0.008,
+        "rows": 13688
+      },
+      {
+        "predicted": 0.023,
+        "observed": 0.013,
+        "rows": 13687
+      },
+      {
+        "predicted": 0.035,
+        "observed": 0.02,
+        "rows": 13687
+      },
+      {
+        "predicted": 0.053,
+        "observed": 0.031,
+        "rows": 13688
+      },
+      {
+        "predicted": 0.083,
+        "observed": 0.074,
+        "rows": 13687
+      },
+      {
+        "predicted": 0.22,
+        "observed": 0.213,
+        "rows": 13688
+      }
+    ]
+  }
+}

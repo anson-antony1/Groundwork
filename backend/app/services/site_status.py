@@ -1,10 +1,10 @@
 """Per-site status: weather safety and per-vehicle ground access, kept as separate decisions."""
 from dataclasses import dataclass, replace
-from datetime import datetime
+from datetime import date, datetime
 
 from .. import repositories as repo
 from ..config import DEMO_DEVICE_ID, DEMO_SITE_ID
-from . import field_hazards, light, site_insights
+from . import field_hazards, forecast_model, light, site_insights
 from .access import demo_tray_access
 from .display import fresh_reading
 from .hazard import assess
@@ -34,6 +34,7 @@ class SiteStatus:
     advisories: tuple[str, ...] = ()  # informational notes (e.g. low light); never change a status
     reasons: dict | None = None
     priority_rank: int | None = None  # set by list_statuses / get_status across all sites
+    forecast_model: dict | None = None  # learned STOP-WORK probability; advisory, never changes a status
 
 
 from .storm_replay_v2 import replay_inputs, replay_site_v2
@@ -112,15 +113,20 @@ def evaluate_status(site: Site, now: datetime) -> SiteStatus:
         missing = ("demo_tray_moisture",)
 
     # Sub-scores, alert details and reasons come from the same inputs that decided weather_state.
-    sub, alerts, reasons = None, (), None
+    sub, alerts, reasons, model = None, (), None, None
     if not is_demo:
         if state.replay_active:
             inputs = replay_inputs(site.id, state.replay_scenario_id)
             used_values, events = (inputs["values"], inputs["events"]) if inputs else (None, None)
             alerts = tuple(inputs["alerts"]) if inputs else ()
+            forecast_day = inputs.get("day") if inputs else None
         else:
             used_values, events = values, (details["alerts"] if details else None)
             alerts = tuple(site_insights.live_alerts(events, site.latitude, site.longitude))
+            forecast_day = next((o["valid_at"] for o in observations if o["variable"] == "rain_forecast"), None)
+        if used_values is not None and forecast_day and (state.replay_active or not stale):
+            model = forecast_model.predict(used_values, site.latitude, site.longitude,
+                                           date.fromisoformat(str(forecast_day)[:10]))
         if used_values is not None:
             sub = site_insights.subscores(used_values, events)
             reasons = {"weather_triggers": site_insights.weather_triggers(used_values, events),
@@ -153,6 +159,7 @@ def evaluate_status(site: Site, now: datetime) -> SiteStatus:
         alerts=alerts,
         reasons=reasons,
         advisories=light.advisories(reading) if is_demo else (),
+        forecast_model=model,
     ), now)  # lightning, wildfire, wildlife (Sperry PlanIT brief)
 
 

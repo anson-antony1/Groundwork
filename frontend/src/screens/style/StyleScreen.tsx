@@ -72,7 +72,7 @@ export function StyleScreen() {
             <p className="text-sm text-muted label-caps">Heading · Barlow Condensed</p>
           </div>
           <div className="max-w-md">
-            <p>Body text in Barlow at an 18 px base, readable from a couple of steps back. 43.5 mm · 52.6 km/h · 27.3 °C</p>
+            <p>Body text in Barlow at an 18 px base, readable from a couple of steps back. 1.71 in · 33 mph · 81 °F</p>
             <p className="text-sm text-muted label-caps">Body · Barlow 400</p>
           </div>
           <div>
@@ -149,9 +149,9 @@ export function StyleScreen() {
             </div>
             <dl className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3 text-[0.95rem]">
               {[
-                [<Droplets key="i" className="size-4" />, '7-day rainfall', '43.5 mm'],
-                [<Wind key="i" className="size-4" />, 'Max gust', '52.6 km/h'],
-                [<Thermometer key="i" className="size-4" />, 'Apparent temp', '27.3 °C'],
+                [<Droplets key="i" className="size-4" />, '7-day rainfall', '1.71 in'],
+                [<Wind key="i" className="size-4" />, 'Max gust', '33 mph'],
+                [<Thermometer key="i" className="size-4" />, 'Apparent temp', '81 °F'],
                 [<Gauge key="i" className="size-4" />, 'NWS alerts', null],
               ].map(([icon, label, value]) => (
                 <div key={String(label)} className="flex items-center justify-between gap-3 border-b border-line/70 pb-2">

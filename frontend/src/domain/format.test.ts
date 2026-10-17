@@ -51,7 +51,9 @@ describe('fmtObservation', () => {
     expect(fmtObservation({ variable: 'nws_alerts', value: 2, unit: 'count' })).toBe('2 active')
     expect(fmtObservation({ variable: 'usda_soil', value: 3, unit: 'drainage wetness rank 0-4' })).toBe('3 of 4 (wetness rank)')
     expect(fmtObservation({ variable: 'usda_clay_pct', value: 1.5, unit: '%' })).toBe('1.5%')
-    expect(fmtObservation({ variable: 'rain_7d', value: 43.5, unit: 'mm' })).toBe('43.5 mm')
+    expect(fmtObservation({ variable: 'rain_7d', value: 43.5, unit: 'mm' })).toBe('1.71 in')
+    expect(fmtObservation({ variable: 'gust_forecast', value: 80, unit: 'km/h' })).toBe('50 mph')
+    expect(fmtObservation({ variable: 'apparent_temp', value: 32, unit: '°C' })).toBe('90 °F')
   })
 
   it('keeps missing observations missing', () => {

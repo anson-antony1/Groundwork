@@ -70,6 +70,16 @@ class CallReasonsOut(BaseModel):
     vehicle_class: str | None
 
 
+class StopWorkForecastOut(BaseModel):
+    """Learned forecast beside the rule-based call (backend/ml). Advisory: it never changes a status."""
+    probability: float = Field(ge=0, le=1, description="Chance a STOP-WORK-class NWS alert covers the site during working hours")
+    base_rate: float = Field(ge=0, le=1, description="Share of site-days with such an alert in the held-out test year")
+    drivers: list[str] = Field(description="Factors that moved this site's probability most, in plain words")
+    model_version: str
+    test_roc_auc: float = Field(description="ROC AUC on the held-out year (see GET /forecast-model)")
+    note: str
+
+
 class SiteOut(BaseModel):
     id: str
     name: str
@@ -95,6 +105,8 @@ class SiteOut(BaseModel):
     reasons: CallReasonsOut | None = None
     advisories: list[str] = Field(default_factory=list,
                                   description="Informational notes (e.g. low light at the demo site); never change a status")
+    forecast_model: StopWorkForecastOut | None = Field(
+        None, description="Learned STOP-WORK probability; null for the demo tray, stale data or a missing input")
 
 
 class ReportOut(BaseModel):
@@ -363,3 +375,12 @@ class PolicyOut(BaseModel):
     sensor_stale_seconds: int
     low_light_index_below: float = Field(description="Demo-site low-light advisory threshold (0-100 light index)")
     mat_defaults: MatDefaultsOut
+
+
+class ForecastModelOut(BaseModel):
+    """Model card for the learned STOP-WORK forecast: what it predicts, from what, and how well."""
+    version: str
+    label: str
+    sources: list[str]
+    features: list[str]
+    evaluation: dict[str, Any]

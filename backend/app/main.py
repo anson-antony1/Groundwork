@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-from .api import briefings, demo, devices, events, health, policies, replay, reports, sensors, sites
+from .api import briefings, demo, devices, events, forecast_model, health, policies, replay, reports, sensors, sites
 from . import config
 from .api.responses import error_responses
 from .config import API_PREFIX, API_VERSION, LOG_LEVEL, RATE_LIMIT_PER_MINUTE, UPLOADS_DIR
@@ -10,7 +10,7 @@ from .core.errors import register_exception_handlers
 from .core.logging import configure_logging
 from .core.middleware import RateLimitMiddleware, RequestContextMiddleware
 
-ROUTERS = (health, sites, sensors, devices, reports, replay, briefings, events, policies, demo)
+ROUTERS = (health, sites, sensors, devices, reports, replay, briefings, events, policies, demo, forecast_model)
 
 
 def create_app() -> FastAPI:
