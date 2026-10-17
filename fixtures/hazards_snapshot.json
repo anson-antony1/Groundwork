@@ -1,0 +1,3009 @@
+{
+  "source": "NIFC WFIGS current wildfire incidents + iNaturalist American alligator observations",
+  "fetched_at": "2026-10-17T21:32:53.820662+00:00",
+  "wildfire_reference": "https://data-nifc.opendata.arcgis.com/datasets/nifc::wfigs-current-incident-locations",
+  "wildlife_reference": "https://www.inaturalist.org/taxa/26039-Alligator-mississippiensis",
+  "active_fires_nationwide": 199,
+  "sites": {
+    "SITE-001": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 238.2,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 5
+      }
+    },
+    "SITE-002": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 239.1,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 5
+      }
+    },
+    "SITE-003": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 239.5,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 6
+      }
+    },
+    "SITE-004": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 239.0,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 4
+      }
+    },
+    "SITE-005": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 237.4,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 3
+      }
+    },
+    "SITE-006": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 238.6,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 3
+      }
+    },
+    "SITE-007": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 252.6,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 1
+      }
+    },
+    "SITE-008": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 252.6,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 1
+      }
+    },
+    "SITE-009": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 253.3,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "SITE-010": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 250.0,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 1
+      }
+    },
+    "SITE-011": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 247.8,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 1
+      }
+    },
+    "SITE-012": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 246.0,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 1
+      }
+    },
+    "SITE-013": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 245.3,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 1
+      }
+    },
+    "SITE-014": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 237.2,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 4
+      }
+    },
+    "SITE-015": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 221.5,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 4
+      }
+    },
+    "SITE-016": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 218.4,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 4
+      }
+    },
+    "SITE-017": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 200.1,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 6
+      }
+    },
+    "SITE-018": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 236.5,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 6
+      }
+    },
+    "SITE-019": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 227.7,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 5
+      }
+    },
+    "SITE-020": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 236.9,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 4
+      }
+    },
+    "SITE-021": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 183.4,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "SITE-022": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 237.4,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 6
+      }
+    },
+    "SITE-023": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 232.5,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 7
+      }
+    },
+    "SITE-024": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 232.2,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 7
+      }
+    },
+    "SITE-025": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 243.9,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 1
+      }
+    },
+    "SITE-026": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 239.5,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 1
+      }
+    },
+    "SITE-027": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 233.7,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 5
+      }
+    },
+    "SITE-028": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 236.0,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 6
+      }
+    },
+    "SITE-029": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 245.2,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 2
+      }
+    },
+    "SITE-030": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 249.0,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 2
+      }
+    },
+    "SITE-031": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 232.9,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 7
+      }
+    },
+    "SITE-032": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 245.2,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 2
+      }
+    },
+    "SITE-033": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 229.2,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 5
+      }
+    },
+    "SITE-034": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 232.0,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 5
+      }
+    },
+    "SITE-035": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 234.8,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 7
+      }
+    },
+    "SITE-036": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 239.5,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 6
+      }
+    },
+    "SITE-037": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 241.5,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 5
+      }
+    },
+    "SITE-038": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 240.3,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 3
+      }
+    },
+    "SITE-039": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 240.9,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 5
+      }
+    },
+    "SITE-040": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 242.8,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 5
+      }
+    },
+    "SITE-041": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 237.7,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 3
+      }
+    },
+    "SITE-042": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 237.2,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 3
+      }
+    },
+    "SITE-043": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 245.5,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 2
+      }
+    },
+    "SITE-044": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 246.5,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 2
+      }
+    },
+    "SITE-045": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 240.5,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 2
+      }
+    },
+    "SITE-046": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 239.8,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 2
+      }
+    },
+    "SITE-047": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 242.2,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 2
+      }
+    },
+    "SITE-048": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 243.8,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 1
+      }
+    },
+    "SITE-049": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 239.6,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 3
+      }
+    },
+    "SITE-050": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 242.7,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 3
+      }
+    },
+    "SITE-051": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 233.9,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 5
+      }
+    },
+    "SITE-052": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 234.5,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 5
+      }
+    },
+    "SITE-053": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 236.6,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 4
+      }
+    },
+    "SITE-054": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 242.5,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 2
+      }
+    },
+    "SITE-055": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 236.0,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 2
+      }
+    },
+    "SITE-056": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 248.3,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 3
+      }
+    },
+    "SITE-057": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 245.4,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 2
+      }
+    },
+    "SITE-058": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 194.8,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "SITE-059": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 242.8,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 2
+      }
+    },
+    "SITE-060": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 241.0,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 4
+      }
+    },
+    "US-001": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 185.9,
+        "nearest_name": "000456 Roadside"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-002": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 186.0,
+        "nearest_name": "000456 Roadside"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-003": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 123.2,
+        "nearest_name": "000457 Roadside"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-004": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 120.0,
+        "nearest_name": "000456 Roadside"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-005": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 140.8,
+        "nearest_name": "Otak"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-006": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 1400.4,
+        "nearest_name": "Border 2"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-007": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 1399.5,
+        "nearest_name": "Border 2"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-008": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 1399.1,
+        "nearest_name": "Border 2"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-009": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 1403.1,
+        "nearest_name": "Border 2"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-010": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 1403.7,
+        "nearest_name": "Border 2"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-011": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 31.7,
+        "nearest_name": "Horseshoe"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-012": {
+      "wildfire": {
+        "count": 1,
+        "nearest_mi": 21.9,
+        "nearest_name": "Horseshoe"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-013": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 78.4,
+        "nearest_name": "Aspen Acres"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-014": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 180.4,
+        "nearest_name": "Dolly"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-015": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 172.9,
+        "nearest_name": "Horseshoe"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-016": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 805.5,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-017": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 787.4,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-018": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 848.9,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-019": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 828.1,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-020": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 823.9,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-021": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 749.0,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-022": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 751.6,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-023": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 791.9,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-024": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 788.6,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-025": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 803.4,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-026": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 711.2,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 1
+      }
+    },
+    "US-027": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 710.4,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 1
+      }
+    },
+    "US-028": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 710.8,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 1
+      }
+    },
+    "US-029": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 709.2,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 1
+      }
+    },
+    "US-030": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 708.7,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 1
+      }
+    },
+    "US-036": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 2379.0,
+        "nearest_name": "Cooley"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-037": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 2371.0,
+        "nearest_name": "Cooley"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-038": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 2371.2,
+        "nearest_name": "Cooley"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-039": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 2442.0,
+        "nearest_name": "Cooley"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-040": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 2390.8,
+        "nearest_name": "Cooley"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-041": {
+      "wildfire": {
+        "count": 1,
+        "nearest_mi": 21.0,
+        "nearest_name": "Smore"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-042": {
+      "wildfire": {
+        "count": 1,
+        "nearest_mi": 13.9,
+        "nearest_name": "Smore"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-043": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 57.2,
+        "nearest_name": "Moose Mountain"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-044": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 25.3,
+        "nearest_name": "Columbia Center Mutual Aid"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-045": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 31.1,
+        "nearest_name": "Columbia Center Mutual Aid"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-046": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 218.7,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-047": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 238.8,
+        "nearest_name": "Cleburne 700202"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-048": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 157.4,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-049": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 186.7,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-050": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 143.5,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-051": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 191.7,
+        "nearest_name": "Bean"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-052": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 184.0,
+        "nearest_name": "Bean"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-053": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 223.2,
+        "nearest_name": "Dolly"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-054": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 223.3,
+        "nearest_name": "Dolly"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-055": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 225.6,
+        "nearest_name": "Dolly"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-056": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 232.6,
+        "nearest_name": "Stack"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-057": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 232.0,
+        "nearest_name": "Stack"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-058": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 238.9,
+        "nearest_name": "Stack"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-059": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 225.8,
+        "nearest_name": "Stack"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-060": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 204.3,
+        "nearest_name": "Perry 700203"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-061": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 411.4,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-062": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 398.7,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-063": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 401.9,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-064": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 402.0,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-065": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 397.1,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-066": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 133.0,
+        "nearest_name": "Otak"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-067": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 132.2,
+        "nearest_name": "Otak"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-068": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 132.3,
+        "nearest_name": "Otak"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-069": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 132.6,
+        "nearest_name": "Otak"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-070": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 134.8,
+        "nearest_name": "Otak"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-071": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 826.7,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-072": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 860.9,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-073": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 864.8,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-074": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 859.8,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-075": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 859.9,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-076": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 706.2,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-077": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 715.6,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-078": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 729.7,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-079": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 710.6,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-080": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 709.3,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-081": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 290.2,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-082": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 196.0,
+        "nearest_name": "Blackberry"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-083": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 305.0,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-084": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 301.3,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-085": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 303.8,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-086": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 74.2,
+        "nearest_name": "Monroe 296"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-087": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 123.2,
+        "nearest_name": "Otak"
+      },
+      "wildlife": {
+        "count": 1
+      }
+    },
+    "US-088": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 125.5,
+        "nearest_name": "Otak"
+      },
+      "wildlife": {
+        "count": 1
+      }
+    },
+    "US-089": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 123.3,
+        "nearest_name": "Otak"
+      },
+      "wildlife": {
+        "count": 1
+      }
+    },
+    "US-090": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 77.6,
+        "nearest_name": "000456 Roadside"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-091": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 216.9,
+        "nearest_name": "Cleburne 700202"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-092": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 223.5,
+        "nearest_name": "Cleburne 700202"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-093": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 168.5,
+        "nearest_name": "Cleburne 700202"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-094": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 291.6,
+        "nearest_name": "Cleburne 700202"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-095": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 252.5,
+        "nearest_name": "Cleburne 700202"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-096": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 31.2,
+        "nearest_name": "Crow Head"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-097": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 50.2,
+        "nearest_name": "Route 8"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-098": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 90.7,
+        "nearest_name": "Sinclair"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-099": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 111.7,
+        "nearest_name": "Doney Lane"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-100": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 47.4,
+        "nearest_name": "Doney Lane"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-101": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 149.7,
+        "nearest_name": "Dolly"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-102": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 149.9,
+        "nearest_name": "Dolly"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-103": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 101.8,
+        "nearest_name": "Dolly"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-104": {
+      "wildfire": {
+        "count": 1,
+        "nearest_mi": 24.8,
+        "nearest_name": "Dolly"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-105": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 211.2,
+        "nearest_name": "Dolly"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-106": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 149.5,
+        "nearest_name": "Mtz/Bdc/83A"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-107": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 150.1,
+        "nearest_name": "Mtz/Bdc/83A"
+      },
+      "wildlife": {
+        "count": 1
+      }
+    },
+    "US-108": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 152.3,
+        "nearest_name": "Mtz/Bdc/83A"
+      },
+      "wildlife": {
+        "count": 1
+      }
+    },
+    "US-109": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 153.8,
+        "nearest_name": "Mtz/Bdc/83A"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-110": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 155.4,
+        "nearest_name": "Mtz/Bdc/83A"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-111": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 849.3,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-112": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 837.6,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-113": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 836.8,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-114": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 836.7,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-115": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 836.6,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-116": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 297.2,
+        "nearest_name": "Frijoles"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-117": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 59.3,
+        "nearest_name": "Frijoles"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-118": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 63.5,
+        "nearest_name": "Frijoles"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-119": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 95.7,
+        "nearest_name": "Gold Mountain"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-120": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 95.9,
+        "nearest_name": "Gold Mountain"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-121": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 493.6,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 2
+      }
+    },
+    "US-122": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 545.8,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-123": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 546.4,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-124": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 544.6,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-125": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 535.5,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-126": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 33.7,
+        "nearest_name": "Bear"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-127": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 89.7,
+        "nearest_name": "Bear"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-128": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 117.5,
+        "nearest_name": "Bear"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-129": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 117.6,
+        "nearest_name": "Bear"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-130": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 117.6,
+        "nearest_name": "Bear"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-131": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 762.0,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-132": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 729.1,
+        "nearest_name": "Blackberry"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-133": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 736.3,
+        "nearest_name": "Blackberry"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-134": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 732.9,
+        "nearest_name": "Blackberry"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-135": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 654.0,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-136": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 866.8,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-137": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 855.6,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-138": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 865.6,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-139": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 847.8,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-140": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 855.2,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-141": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 188.0,
+        "nearest_name": "Bean"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-142": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 187.8,
+        "nearest_name": "Bean"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-143": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 187.7,
+        "nearest_name": "Bean"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-144": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 188.6,
+        "nearest_name": "Branch"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-145": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 188.6,
+        "nearest_name": "Branch"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-146": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 78.4,
+        "nearest_name": "Slough Canyon"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-147": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 77.6,
+        "nearest_name": "Slough Canyon"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-148": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 176.2,
+        "nearest_name": "Ia 1"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-149": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 165.2,
+        "nearest_name": "Slough Canyon"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-150": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 116.2,
+        "nearest_name": "Slough Canyon"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-151": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 716.8,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-152": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 744.7,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-153": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 752.5,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-154": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 785.6,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-155": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 744.6,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-156": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 489.6,
+        "nearest_name": "000456 Roadside"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-157": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 506.6,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-158": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 498.5,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-159": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 499.5,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-160": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 499.6,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-161": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 65.7,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-162": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 73.0,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-163": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 79.6,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-164": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 66.3,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-165": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 66.3,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-166": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 86.1,
+        "nearest_name": "Chalk Mountain"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-167": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 72.6,
+        "nearest_name": "Chalk Mountain"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-168": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 36.2,
+        "nearest_name": "Chalk Mountain"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-169": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 36.4,
+        "nearest_name": "Chalk Mountain"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-170": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 36.3,
+        "nearest_name": "Chalk Mountain"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-171": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 294.1,
+        "nearest_name": "Mutual Aid/Campbell"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-172": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 283.6,
+        "nearest_name": "Mutual Aid/Campbell"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-173": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 287.7,
+        "nearest_name": "Mutual Aid/Campbell"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-174": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 287.6,
+        "nearest_name": "Mutual Aid/Campbell"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-175": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 279.8,
+        "nearest_name": "Mutual Aid/Campbell"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-176": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 25.7,
+        "nearest_name": "Wilson"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-177": {
+      "wildfire": {
+        "count": 1,
+        "nearest_mi": 25.0,
+        "nearest_name": "Wilson"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-178": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 41.0,
+        "nearest_name": "Dome"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-179": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 52.2,
+        "nearest_name": "Foothill Blvd 5651"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-180": {
+      "wildfire": {
+        "count": 2,
+        "nearest_mi": 0.6,
+        "nearest_name": "Moore"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-181": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 158.3,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-182": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 147.5,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-183": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 166.2,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-184": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 176.7,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-185": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 149.7,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-186": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 837.3,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-187": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 867.5,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-188": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 863.2,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 1
+      }
+    },
+    "US-189": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 865.6,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 1
+      }
+    },
+    "US-190": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 865.4,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 1
+      }
+    },
+    "US-191": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 32.9,
+        "nearest_name": "Bean"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-192": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 61.2,
+        "nearest_name": "Bean"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-193": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 32.3,
+        "nearest_name": "Bean"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-194": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 139.2,
+        "nearest_name": "Bean"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-195": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 139.2,
+        "nearest_name": "Bean"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-196": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 781.8,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-197": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 806.1,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-198": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 785.9,
+        "nearest_name": "Blackberry"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-199": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 762.3,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-200": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 770.6,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-201": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 791.7,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-202": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 541.6,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-203": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 523.6,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-204": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 509.1,
+        "nearest_name": "Blackberry"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-205": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 721.5,
+        "nearest_name": "Ridge"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-206": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 369.3,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-207": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 390.2,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-208": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 470.6,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-209": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 428.9,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-210": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 412.7,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-211": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 160.2,
+        "nearest_name": "Stack"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-212": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 170.7,
+        "nearest_name": "Sevier 200161"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-213": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 163.0,
+        "nearest_name": "Sevier 200161"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-214": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 69.3,
+        "nearest_name": "Sevier 200161"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-215": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 154.3,
+        "nearest_name": "Stack"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-216": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 46.4,
+        "nearest_name": "The Narrows"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-217": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 45.1,
+        "nearest_name": "The Narrows"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-218": {
+      "wildfire": {
+        "count": 1,
+        "nearest_mi": 21.4,
+        "nearest_name": "Latigo Lane"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-219": {
+      "wildfire": {
+        "count": 1,
+        "nearest_mi": 21.9,
+        "nearest_name": "Latigo Lane"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-220": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 26.0,
+        "nearest_name": "Latigo Lane"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-221": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 384.5,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-222": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 419.6,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-223": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 352.0,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-224": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 350.1,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-225": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 351.8,
+        "nearest_name": "Iao"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-226": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 247.6,
+        "nearest_name": "000456 Roadside"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-227": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 84.8,
+        "nearest_name": "Monroe 296"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-228": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 229.6,
+        "nearest_name": "000456 Roadside"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-229": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 235.8,
+        "nearest_name": "000456 Roadside"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-230": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 251.3,
+        "nearest_name": "000456 Roadside"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-231": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 105.1,
+        "nearest_name": "Tp Oak"
+      },
+      "wildlife": {
+        "count": 7
+      }
+    },
+    "US-232": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 280.9,
+        "nearest_name": "Ozark"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-233": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 228.8,
+        "nearest_name": "Tp Oak"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-234": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 175.4,
+        "nearest_name": "Miller 400318"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-235": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 203.4,
+        "nearest_name": "Tp Oak"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-236": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 703.3,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-237": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 702.2,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-238": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 700.0,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-239": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 700.8,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-240": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 701.0,
+        "nearest_name": "Lotto"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-241": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 54.2,
+        "nearest_name": "Pigeon"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-242": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 45.3,
+        "nearest_name": "Three Queens"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-243": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 51.9,
+        "nearest_name": "Three Queens"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-244": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 51.3,
+        "nearest_name": "Pigeon"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    },
+    "US-245": {
+      "wildfire": {
+        "count": 0,
+        "nearest_mi": 58.1,
+        "nearest_name": "Pigeon"
+      },
+      "wildlife": {
+        "count": 0
+      }
+    }
+  }
+}

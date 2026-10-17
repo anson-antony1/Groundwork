@@ -46,6 +46,15 @@ def fresh_reading(device_id: str, now: datetime) -> ReadingRecord | None:
     return latest
 
 
+def tray_lightning(now: datetime):
+    """Lightning within 10 mi of the demo tray (field_hazards), or None. Never during a replay."""
+    from ..config import DEMO_SITE_ID
+    from . import field_hazards
+    from .sites import load_sites
+    tray = next((s for s in load_sites() if s.id == DEMO_SITE_ID), None)
+    return field_hazards.lightning_at(tray.latitude, tray.longitude, now) if tray else None
+
+
 def demo_status(device_id: str, now: datetime) -> tuple[str, str]:
     """Returns (effective_status, mode). Precedence: STOP_WORK > crew flag > ground access."""
     state = repo.demo_state.get()
@@ -53,6 +62,8 @@ def demo_status(device_id: str, now: datetime) -> tuple[str, str]:
         return "STOP_WORK", "replay"
     reading = fresh_reading(device_id, now)
     mode = reading.mode if reading else "sensor_demo"
+    if tray_lightning(now):
+        return "STOP_WORK", mode
     if state.crew_flag_at is not None:
         return "SUPERVISOR_REVIEW", mode
     if reading is None:
@@ -65,13 +76,17 @@ def build_display(device_id: str, site_id: str, now: datetime) -> Display:
     status, mode = demo_status(device_id, now)
     code, line2 = STATUS_DISPLAY[status]
     acked = status == "STOP_WORK" and state.acknowledged_at is not None
+    bolt = tray_lightning(now) if status == "STOP_WORK" and not state.replay_active else None
+    if bolt:  # 30-minute all clear that restarts with each strike, ticking on the LCD
+        from .field_hazards import countdown
+        line2 = f"{'ACKD' if acked else 'STOP'} - CLR {countdown(bolt, now)}"
     return Display(
         device_id=device_id,
         site_id=site_id,
         effective_status=status,
         code=code,
         lcd_line1=lcd_text(f"DEMO TRAY   {VEHICLE_TAG[state.demo_vehicle]}"),
-        lcd_line2=lcd_text("STOP WORK - ACKD" if acked else line2),
+        lcd_line2=lcd_text(line2 if bolt or not acked else "STOP WORK - ACKD"),
         alarm=status == "STOP_WORK" and not acked,
         acknowledged_at=state.acknowledged_at if acked else None,
         mode=mode,
