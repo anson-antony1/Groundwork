@@ -1,7 +1,12 @@
-# GroundWork - risk intelligence + 6 PM briefing
+# GroundWork prototype - risk intelligence + 6 PM briefing
+
+> **Historical.** This is the standalone first version of the briefing pipeline, written before the FastAPI
+> backend existed. The live app does not import anything from this folder: the backend's versions are
+> `backend/app/services/briefings.py`, `hazard.py`, `access.py` and `narration.py`. Kept for reference and
+> because its tests still document the original input contract.
 
 GroundWork is proactive: at 6 PM it tells a utility dispatcher which sites crews can safely reach tomorrow
-(Sperry challenge hackathon). This folder is Rithika's module: site data -> risk plan -> 6 PM briefing.
+(Sperry challenge hackathon). This folder was Rithika's first module: site data -> risk plan -> 6 PM briefing.
 
 ## Files
 - `get_sites.py` - makes `sites.csv` (real substations from OpenStreetMap; `--grid` = generic test points)
@@ -12,15 +17,16 @@ GroundWork is proactive: at 6 PM it tells a utility dispatcher which sites crews
 - `run_demo.py` - prints a briefing from a JSON file
 - `sample_sites.json` - 3 DEMO sites (used by tests), `sites_template.csv` - example CSV
 - `tests/` - `python -m unittest discover tests`
-- `HANDOFF_v4.md` - status, decisions, next steps (read this to resume work)
+- `../docs/HANDOFF_v5.md` - status, decisions, next steps (read this to resume work)
 
 ## Setup (Mac)
 ```
 cd ~/Desktop/Groundwork
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
-cp .env.example .env
+pip install -r prototype/requirements.txt
+cp .env.example .env   # at the repo root
+cd prototype
 ```
 Edit `.env`: `GEMINI_API_KEY=...` and `GEMINI_MODEL=gemini-3.8-flash`. Never commit `.env`.
 

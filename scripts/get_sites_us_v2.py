@@ -1,8 +1,8 @@
-"""get_sites_us_v1.py - nationwide substations from OpenStreetMap -> sites.csv-style rows + fixtures/sites_us.json
+"""get_sites_us_v2.py - nationwide substations from OpenStreetMap -> sites.csv-style rows + fixtures/sites_us.json
 
-  python get_sites_us_v1.py                 # ~5 per state, 50 states + DC (needs internet, ~5-10 min)
-  python get_sites_us_v1.py --per-state 3   # smaller
-  python get_sites_us_v1.py --states FL,TX  # subset
+  python scripts/get_sites_us_v2.py                 # ~5 per state, 50 states + DC (needs internet, ~5-10 min)
+  python scripts/get_sites_us_v2.py --per-state 3   # smaller
+  python scripts/get_sites_us_v2.py --states FL,TX  # subset
 
 Writes fixtures/sites_us.json in the same shape as fixtures/sites_50.json. To use it, back up
 sites_50.json and copy sites_us.json over it, then run: python -m backend.scripts.fetch_weather
@@ -20,7 +20,7 @@ except ImportError:
 ENDPOINTS = ["https://overpass-api.de/api/interpreter", "https://overpass.kumi.systems/api/interpreter",
              "https://overpass.private.coffee/api/interpreter"]
 HEADERS = {"User-Agent": "GroundWork-hackathon/0.1", "Accept": "application/json"}
-ORIGIN = "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site"
+ORIGIN = "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site"
 STATES = {"AL": "Alabama", "AK": "Alaska", "AZ": "Arizona", "AR": "Arkansas", "CA": "California", "CO": "Colorado",
           "CT": "Connecticut", "DE": "Delaware", "DC": "District of Columbia", "FL": "Florida", "GA": "Georgia",
           "HI": "Hawaii", "ID": "Idaho", "IL": "Illinois", "IN": "Indiana", "IA": "Iowa", "KS": "Kansas",
@@ -48,13 +48,35 @@ def query_state(name: str, limit: int):
     return None
 
 
+def install():
+    """Florida sites keep their SITE- ids (the storm replay data is keyed by them); other states are added after them."""
+    live, bak = Path("fixtures/sites_50.json"), Path("fixtures/sites_50.florida.bak")
+    if not bak.exists():
+        bak.write_text(live.read_text())
+    raw = json.loads(bak.read_text())
+    florida = raw["sites"] if isinstance(raw, dict) else raw
+    others = [x for x in json.loads(Path("fixtures/sites_us.json").read_text())["sites"] if x["region"] != "FL"]
+    live.write_text(json.dumps({"selection": ORIGIN, "sites": florida + others}, indent=2) + "\n", encoding="utf-8")
+    print(f"wrote {len(florida)} Florida + {len(others)} other-state sites to {live} (backup: {bak})")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--per-state", type=int, default=5)
     ap.add_argument("--states", default="")
+    ap.add_argument("--merge", action="store_true", help="keep sites already in fixtures/sites_us.json; only add new states")
+    ap.add_argument("--install", action="store_true", help="combine the Florida sites with sites_us.json into fixtures/sites_50.json")
     a = ap.parse_args()
+    if a.install:
+        install()
+        return
     codes = [c.strip().upper() for c in a.states.split(",") if c.strip()] or list(STATES)
     sites, failed = [], []
+    if a.merge and Path("fixtures/sites_us.json").exists():
+        sites = json.loads(Path("fixtures/sites_us.json").read_text())["sites"]
+        done = {x["region"] for x in sites}
+        codes = [c for c in codes if c not in done]
+        print("already have:", sorted(done), "| fetching:", codes)
     for code in codes:
         print(f"{code} ...")
         els = query_state(STATES[code], a.per_state * 4)

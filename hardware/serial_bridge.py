@@ -37,7 +37,7 @@ DEFAULT_CALIBRATION = HERE / "calibration.json"
 DEFAULT_RECORDINGS = HERE / "recordings"
 DISPLAY_STATES = ROOT / "fixtures" / "display_states.json"
 # Recordings use the API's field names: a superset of fixtures/sensor_replay.csv, so a good
-# run can replace the fallback for both this bridge and replay_sensor_v2.py.
+# run can replace the fallback for both this bridge and scripts/replay_sensor_v2.py.
 CSV_FIELDS = ["recorded_at", "seq", "uptime_ms", "raw_adc", "moisture_index", "light_raw", "light_index",
               "pressure_hpa", "temp_c", "calibration", "mode"]
 REPLAY_VALUES = ("raw_adc", "moisture_index", "light_raw", "light_index", "pressure_hpa", "temp_c")

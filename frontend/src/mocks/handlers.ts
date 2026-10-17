@@ -258,6 +258,7 @@ const routes: [ApiRequest['method'], string, Handler][] = [
       replay_active: db.demo.replayActive,
       fixtures: { 'sites_50.json': true, 'weather_snapshot.json': true, 'storm_replay.json': false, 'sensor_replay.csv': false, 'display_states.json': false },
       connectors: { open_meteo: 'ok', usda_nrcs: 'not_built', nws: 'not_built' },
+      auth: 'disabled',
     }
     return ok(data, db.demo.replayActive ? 'replay' : 'live')
   }],
