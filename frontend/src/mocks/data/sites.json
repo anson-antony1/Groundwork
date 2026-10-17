@@ -1,0 +1,4586 @@
+{
+ "generated_from": [
+  "fixtures/sites_50.json",
+  "fixtures/weather_snapshot.json"
+ ],
+ "snapshot_fetched_at": "2026-10-17T03:52:55.530884+00:00",
+ "sites": [
+  {
+   "id": "SITE-001",
+   "name": "Gainesville, FL area",
+   "latitude": 29.65163,
+   "longitude": -82.32483,
+   "region": "Alachua",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 43.5,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 52.6,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 27.3,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.2,
+    "hazard_subscores": {
+     "rain": 0.7,
+     "wind": 1.6,
+     "heat": 1.1,
+     "flood": 1.9,
+     "storm": 0.7
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Somewhat poorly drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-002",
+   "name": "Ocala, FL area",
+   "latitude": 29.1872,
+   "longitude": -82.14009,
+   "region": "Marion",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 11.6,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 40.7,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 28.6,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.2,
+    "hazard_subscores": {
+     "rain": 0.2,
+     "wind": 0.1,
+     "heat": 2.7,
+     "flood": 2.4,
+     "storm": 0.7
+    },
+    "access": {
+     "pickup": "NO_GO_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Poorly drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-003",
+   "name": "Jacksonville, FL area",
+   "latitude": 30.33218,
+   "longitude": -81.65565,
+   "region": "Duval",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 124.8,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 53.3,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 28.6,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "CAUTION",
+    "hazard_score": 6.1,
+    "hazard_subscores": {
+     "rain": 7.2,
+     "wind": 5.1,
+     "heat": 6.2,
+     "flood": 5.9,
+     "storm": 5.6
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [
+      "Heat index above caution policy (demo fixture)"
+     ],
+     "soil_drainage": "Well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-004",
+   "name": "Tallahassee, FL area",
+   "latitude": 30.43826,
+   "longitude": -84.28073,
+   "region": "Leon",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 49.1,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 54.4,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 26.7,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2,
+    "hazard_subscores": {
+     "rain": 3.5,
+     "wind": 2.3,
+     "heat": 3,
+     "flood": 0.3,
+     "storm": 0.5
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Moderately well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-005",
+   "name": "Pensacola, FL area",
+   "latitude": 30.42131,
+   "longitude": -87.21691,
+   "region": "Escambia",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 41.8,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 64.8,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 17.1,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "UNKNOWN",
+    "hazard_score": null,
+    "hazard_subscores": null,
+    "access": {
+     "pickup": "UNKNOWN",
+     "heavy_truck": "UNKNOWN"
+    },
+    "missing_fields": [
+     "nws_alerts",
+     "usda_soil"
+    ],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": null
+    }
+   }
+  },
+  {
+   "id": "SITE-006",
+   "name": "Panama City, FL area",
+   "latitude": 30.15946,
+   "longitude": -85.65983,
+   "region": "Bay County",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 43.8,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 59,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 24.6,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.1,
+    "hazard_subscores": {
+     "rain": 3.5,
+     "wind": 0.6,
+     "heat": 2.4,
+     "flood": 1.6,
+     "storm": 1.9
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Moderately well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-007",
+   "name": "Fort Walton Beach, FL area",
+   "latitude": 30.42059,
+   "longitude": -86.61707,
+   "region": "Okaloosa",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 170.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 61.9,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 15.6,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "STOP_WORK",
+    "hazard_score": 6.9,
+    "hazard_subscores": {
+     "rain": 6.5,
+     "wind": 6.7,
+     "heat": 3.9,
+     "flood": 7.6,
+     "storm": 10
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [
+     {
+      "event": "Severe Thunderstorm Warning",
+      "source": "Demo fixture (not a real NWS alert)",
+      "severity": "Severe",
+      "reference_url": null
+     }
+    ],
+    "reasons": {
+     "weather_triggers": [
+      "Severe Thunderstorm Warning (demo fixture)"
+     ],
+     "soil_drainage": "Well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-008",
+   "name": "Lake City, FL area",
+   "latitude": 30.18968,
+   "longitude": -82.63929,
+   "region": "Columbia",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 42.3,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 53.3,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25.9,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.4,
+    "hazard_subscores": {
+     "rain": 1.2,
+     "wind": 1.2,
+     "heat": 2.5,
+     "flood": 1.9,
+     "storm": 0.1
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Poorly drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-009",
+   "name": "Live Oak, FL area",
+   "latitude": 30.29495,
+   "longitude": -82.98402,
+   "region": "Suwannee County",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 15.7,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 50.4,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25.5,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.4,
+    "hazard_subscores": {
+     "rain": 3.7,
+     "wind": 0.5,
+     "heat": 5,
+     "flood": 1.8,
+     "storm": 0.2
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Poorly drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-010",
+   "name": "Palatka, FL area",
+   "latitude": 29.64858,
+   "longitude": -81.63758,
+   "region": "Putnam",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 1.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "stale",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "stale",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 51.5,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "stale",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 29.4,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "stale",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "UNKNOWN",
+    "hazard_score": null,
+    "hazard_subscores": null,
+    "access": {
+     "pickup": "UNKNOWN",
+     "heavy_truck": "UNKNOWN"
+    },
+    "missing_fields": [
+     "nws_alerts",
+     "usda_soil"
+    ],
+    "stale": true,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": null
+    }
+   }
+  },
+  {
+   "id": "SITE-011",
+   "name": "Saint Augustine, FL area",
+   "latitude": 29.89469,
+   "longitude": -81.31452,
+   "region": "Saint Johns",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 8.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 62.3,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 28,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.3,
+    "hazard_subscores": {
+     "rain": 3.2,
+     "wind": 3.7,
+     "heat": 3.2,
+     "flood": 1.2,
+     "storm": 0.4
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Moderately well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-012",
+   "name": "Daytona Beach, FL area",
+   "latitude": 29.21081,
+   "longitude": -81.02283,
+   "region": "Volusia",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 42.5,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 60.8,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 29.1,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "CAUTION",
+    "hazard_score": 4.8,
+    "hazard_subscores": {
+     "rain": 6.9,
+     "wind": 4.7,
+     "heat": 4.8,
+     "flood": 3.3,
+     "storm": 3.8
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [
+      "Gusts above caution policy (demo fixture)"
+     ],
+     "soil_drainage": "Moderately well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-013",
+   "name": "DeLand, FL area",
+   "latitude": 29.02832,
+   "longitude": -81.30312,
+   "region": "Volusia",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 52.5,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 1.5,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 45,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 30.4,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.8,
+    "hazard_subscores": {
+     "rain": 1.1,
+     "wind": 3.8,
+     "heat": 3.9,
+     "flood": 0.5,
+     "storm": 0.5
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-014",
+   "name": "Orlando, FL area",
+   "latitude": 28.53834,
+   "longitude": -81.37924,
+   "region": "Orange",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 40.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 2.6,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 52.6,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 29.8,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.9,
+    "hazard_subscores": {
+     "rain": 3.7,
+     "wind": 1,
+     "heat": 1.9,
+     "flood": 1.6,
+     "storm": 0.5
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Moderately well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-015",
+   "name": "Kissimmee, FL area",
+   "latitude": 28.30468,
+   "longitude": -81.41667,
+   "region": "Osceola",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 2.5,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 2.2,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 47.9,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 30.4,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "UNKNOWN",
+    "hazard_score": null,
+    "hazard_subscores": null,
+    "access": {
+     "pickup": "UNKNOWN",
+     "heavy_truck": "UNKNOWN"
+    },
+    "missing_fields": [
+     "nws_alerts",
+     "usda_soil"
+    ],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": null
+    }
+   }
+  },
+  {
+   "id": "SITE-016",
+   "name": "Sanford, FL area",
+   "latitude": 28.80055,
+   "longitude": -81.27312,
+   "region": "Seminole",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 64.9,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 5.8,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 46.8,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 29.7,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.8,
+    "hazard_subscores": {
+     "rain": 1.2,
+     "wind": 2.3,
+     "heat": 1.3,
+     "flood": 2.8,
+     "storm": 1.8
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-017",
+   "name": "Leesburg, FL area",
+   "latitude": 28.81082,
+   "longitude": -81.87786,
+   "region": "Lake",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 49.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 48.6,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 28.9,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.6,
+    "hazard_subscores": {
+     "rain": 0.1,
+     "wind": 2.8,
+     "heat": 3.9,
+     "flood": 0.2,
+     "storm": 1.6
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-018",
+   "name": "Lakeland, FL area",
+   "latitude": 28.03947,
+   "longitude": -81.9498,
+   "region": "Polk",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 49,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 4.7,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 47.5,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 29.8,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "CAUTION",
+    "hazard_score": 5.5,
+    "hazard_subscores": {
+     "rain": 7.1,
+     "wind": 7.1,
+     "heat": 6,
+     "flood": 3.2,
+     "storm": 4
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [
+      "Gusts above caution policy (demo fixture)"
+     ],
+     "soil_drainage": "Moderately well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-019",
+   "name": "Winter Haven, FL area",
+   "latitude": 28.02224,
+   "longitude": -81.73286,
+   "region": "Polk",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 4.3,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 2.2,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 46.8,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 29.9,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.1,
+    "hazard_subscores": {
+     "rain": 0.7,
+     "wind": 0.8,
+     "heat": 3.2,
+     "flood": 0.8,
+     "storm": 0.1
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-020",
+   "name": "Bartow, FL area",
+   "latitude": 27.89641,
+   "longitude": -81.84314,
+   "region": "Polk",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 2.9,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 4.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 51.8,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 30.4,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.9,
+    "hazard_subscores": {
+     "rain": 2.3,
+     "wind": 0.7,
+     "heat": 3,
+     "flood": 1.3,
+     "storm": 1.7
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-021",
+   "name": "Tampa, FL area",
+   "latitude": 27.94752,
+   "longitude": -82.45843,
+   "region": "Hillsborough County",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 6.8,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 10.1,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 57.6,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 31.4,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.2,
+    "hazard_subscores": {
+     "rain": 0.4,
+     "wind": 3.9,
+     "heat": 5,
+     "flood": 0.9,
+     "storm": 1.9
+    },
+    "access": {
+     "pickup": "NO_GO_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Poorly drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-022",
+   "name": "St. Petersburg, FL area",
+   "latitude": 27.77086,
+   "longitude": -82.67927,
+   "region": "Pinellas",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 14.8,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 19.1,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 59.8,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 29.9,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.9,
+    "hazard_subscores": {
+     "rain": 3.7,
+     "wind": 0.4,
+     "heat": 3.8,
+     "flood": 0,
+     "storm": 0.8
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-023",
+   "name": "Clearwater, FL area",
+   "latitude": 27.96585,
+   "longitude": -82.8001,
+   "region": "Pinellas",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 28.8,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 10.2,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 56.9,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 29.8,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "STOP_WORK",
+    "hazard_score": 6.8,
+    "hazard_subscores": {
+     "rain": 8.1,
+     "wind": 6.8,
+     "heat": 3.2,
+     "flood": 5.7,
+     "storm": 10
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [
+     {
+      "event": "Severe Thunderstorm Warning",
+      "source": "Demo fixture (not a real NWS alert)",
+      "severity": "Severe",
+      "reference_url": null
+     }
+    ],
+    "reasons": {
+     "weather_triggers": [
+      "Severe Thunderstorm Warning (demo fixture)"
+     ],
+     "soil_drainage": "Poorly drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-024",
+   "name": "Brooksville, FL area",
+   "latitude": 28.55554,
+   "longitude": -82.38991,
+   "region": "Hernando",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 31,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 3.9,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 39.6,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 30.3,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.8,
+    "hazard_subscores": {
+     "rain": 1,
+     "wind": 1.1,
+     "heat": 3.4,
+     "flood": 1.8,
+     "storm": 1.6
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Somewhat poorly drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-025",
+   "name": "Sebring, FL area",
+   "latitude": 27.49559,
+   "longitude": -81.44091,
+   "region": "Highlands",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 59.7,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 1.2,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 46.4,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 30.6,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.5,
+    "hazard_subscores": {
+     "rain": 0.4,
+     "wind": 2.2,
+     "heat": 3.2,
+     "flood": 2.1,
+     "storm": 0.2
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Somewhat poorly drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-026",
+   "name": "Lake Wales, FL area",
+   "latitude": 27.90141,
+   "longitude": -81.58591,
+   "region": "Polk",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 0,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 4.3,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 51.1,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 29.7,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.2,
+    "hazard_subscores": {
+     "rain": 3,
+     "wind": 1.5,
+     "heat": 4.4,
+     "flood": 1.7,
+     "storm": 0.1
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Poorly drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-027",
+   "name": "Melbourne, FL area",
+   "latitude": 28.08363,
+   "longitude": -80.60811,
+   "region": "Brevard",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 12.6,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 52.2,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 31,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "UNKNOWN",
+    "hazard_score": null,
+    "hazard_subscores": null,
+    "access": {
+     "pickup": "UNKNOWN",
+     "heavy_truck": "UNKNOWN"
+    },
+    "missing_fields": [
+     "nws_alerts",
+     "usda_soil"
+    ],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": null
+    }
+   }
+  },
+  {
+   "id": "SITE-028",
+   "name": "Palm Bay, FL area",
+   "latitude": 28.03446,
+   "longitude": -80.58866,
+   "region": "Brevard",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 8.7,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 1.5,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 52.6,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 31.1,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.3,
+    "hazard_subscores": {
+     "rain": 0.9,
+     "wind": 0.1,
+     "heat": 3.9,
+     "flood": 1.3,
+     "storm": 0.1
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-029",
+   "name": "Titusville, FL area",
+   "latitude": 28.61222,
+   "longitude": -80.80755,
+   "region": "Brevard",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 10.9,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 1.2,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 55.8,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 30,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.2,
+    "hazard_subscores": {
+     "rain": 0.9,
+     "wind": 1.2,
+     "heat": 1.1,
+     "flood": 1.5,
+     "storm": 1.5
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Somewhat poorly drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-030",
+   "name": "Vero Beach, FL area",
+   "latitude": 27.63864,
+   "longitude": -80.39727,
+   "region": "Indian River",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 8.6,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 1.9,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 50.4,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 31.6,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "CAUTION",
+    "hazard_score": 5.7,
+    "hazard_subscores": {
+     "rain": 5.8,
+     "wind": 7.3,
+     "heat": 5.6,
+     "flood": 5.1,
+     "storm": 5.3
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [
+      "Heat index above caution policy (demo fixture)"
+     ],
+     "soil_drainage": "Well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-031",
+   "name": "Ft. Pierce, FL area",
+   "latitude": 27.44671,
+   "longitude": -80.32561,
+   "region": "Saint Lucie",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 64.1,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 10.2,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 47.2,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 32,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.3,
+    "hazard_subscores": {
+     "rain": 3.4,
+     "wind": 0.8,
+     "heat": 2.8,
+     "flood": 2,
+     "storm": 1.9
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Somewhat poorly drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-032",
+   "name": "Port Saint Lucie, FL area",
+   "latitude": 27.29393,
+   "longitude": -80.35033,
+   "region": "Saint Lucie",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 42.2,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 12.6,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 47.2,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 32.2,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.4,
+    "hazard_subscores": {
+     "rain": 3.5,
+     "wind": 1.5,
+     "heat": 4.5,
+     "flood": 1.6,
+     "storm": 0.4
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Somewhat poorly drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-033",
+   "name": "Stuart, FL area",
+   "latitude": 27.19755,
+   "longitude": -80.25283,
+   "region": "Martin",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 49,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 5.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 52.2,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 32.3,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.6,
+    "hazard_subscores": {
+     "rain": 0.4,
+     "wind": 0.3,
+     "heat": 4.4,
+     "flood": 0.8,
+     "storm": 1.9
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Moderately well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-034",
+   "name": "Okeechobee, FL area",
+   "latitude": 27.24393,
+   "longitude": -80.82978,
+   "region": "Okeechobee County",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 6.2,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 39.9,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 47.2,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 30.9,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.8,
+    "hazard_subscores": {
+     "rain": 3.3,
+     "wind": 3.7,
+     "heat": 4,
+     "flood": 2.4,
+     "storm": 0.8
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Somewhat poorly drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-035",
+   "name": "West Palm Beach, FL area",
+   "latitude": 26.71534,
+   "longitude": -80.05337,
+   "region": "Palm Beach",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 12.2,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 46.8,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 32.9,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.7,
+    "hazard_subscores": {
+     "rain": 0.7,
+     "wind": 3.5,
+     "heat": 1.5,
+     "flood": 1.6,
+     "storm": 1.7
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-036",
+   "name": "Boca Raton, FL area",
+   "latitude": 26.35869,
+   "longitude": -80.0831,
+   "region": "Palm Beach",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 0.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 21.2,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 39.2,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 34,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "CAUTION",
+    "hazard_score": 5.3,
+    "hazard_subscores": {
+     "rain": 6.8,
+     "wind": 6.8,
+     "heat": 5.4,
+     "flood": 3.4,
+     "storm": 4.2
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [
+      "Heavy rain forecast (demo fixture)"
+     ],
+     "soil_drainage": "Somewhat poorly drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-037",
+   "name": "Fort Lauderdale, FL area",
+   "latitude": 26.12231,
+   "longitude": -80.14338,
+   "region": "Broward",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 0,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 185.1,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 29.5,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 34.3,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.6,
+    "hazard_subscores": {
+     "rain": 3.5,
+     "wind": 2.3,
+     "heat": 3.8,
+     "flood": 1.7,
+     "storm": 1.2
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Moderately well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-038",
+   "name": "Miami, FL area",
+   "latitude": 25.77427,
+   "longitude": -80.19366,
+   "region": "Miami-Dade County",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 0,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 195.6,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 40,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 34.7,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.3,
+    "hazard_subscores": {
+     "rain": 0.5,
+     "wind": 1.8,
+     "heat": 2.2,
+     "flood": 1.8,
+     "storm": 0.6
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-039",
+   "name": "Homestead, FL area",
+   "latitude": 25.46872,
+   "longitude": -80.47756,
+   "region": "Miami-Dade County",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 2.5,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 7.2,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 30.6,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 34.8,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "UNKNOWN",
+    "hazard_score": null,
+    "hazard_subscores": null,
+    "access": {
+     "pickup": "UNKNOWN",
+     "heavy_truck": "UNKNOWN"
+    },
+    "missing_fields": [
+     "nws_alerts",
+     "usda_soil"
+    ],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": null
+    }
+   }
+  },
+  {
+   "id": "SITE-040",
+   "name": "Key West, FL area",
+   "latitude": 24.55524,
+   "longitude": -81.78163,
+   "region": "Monroe",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 1.1,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 45.8,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 32,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 34.8,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.5,
+    "hazard_subscores": {
+     "rain": 1.8,
+     "wind": 1.4,
+     "heat": 3.5,
+     "flood": 0.4,
+     "storm": 0.5
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Moderately well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-041",
+   "name": "Naples, FL area",
+   "latitude": 26.14234,
+   "longitude": -81.79596,
+   "region": "Collier",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 2.9,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 4.1,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 42.5,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 32.8,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.2,
+    "hazard_subscores": {
+     "rain": 1.8,
+     "wind": 3.8,
+     "heat": 4.4,
+     "flood": 0,
+     "storm": 1.7
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Moderately well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-042",
+   "name": "Fort Myers, FL area",
+   "latitude": 26.62168,
+   "longitude": -81.84059,
+   "region": "Lee",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 3.6,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 27.8,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 51.5,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 30.8,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "STOP_WORK",
+    "hazard_score": 6.9,
+    "hazard_subscores": {
+     "rain": 8,
+     "wind": 8.7,
+     "heat": 2.4,
+     "flood": 5.4,
+     "storm": 10
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [
+     {
+      "event": "Severe Thunderstorm Warning",
+      "source": "Demo fixture (not a real NWS alert)",
+      "severity": "Severe",
+      "reference_url": null
+     }
+    ],
+    "reasons": {
+     "weather_triggers": [
+      "Severe Thunderstorm Warning (demo fixture)"
+     ],
+     "soil_drainage": "Somewhat poorly drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-043",
+   "name": "Cape Coral, FL area",
+   "latitude": 26.56285,
+   "longitude": -81.94953,
+   "region": "Lee",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 5.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 28.1,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 55.1,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 30.9,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.1,
+    "hazard_subscores": {
+     "rain": 3.2,
+     "wind": 0.7,
+     "heat": 2.8,
+     "flood": 3,
+     "storm": 0.2
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Somewhat poorly drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-044",
+   "name": "Punta Gorda, FL area",
+   "latitude": 26.92978,
+   "longitude": -82.04537,
+   "region": "Charlotte",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 34.9,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 2.2,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 49.7,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 30.4,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.2,
+    "hazard_subscores": {
+     "rain": 4,
+     "wind": 3.5,
+     "heat": 1.1,
+     "flood": 0.7,
+     "storm": 1.8
+    },
+    "access": {
+     "pickup": "NO_GO_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Somewhat poorly drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-045",
+   "name": "Sarasota, FL area",
+   "latitude": 27.33643,
+   "longitude": -82.53065,
+   "region": "Sarasota",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 1.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "stale",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 11.2,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "stale",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 57.6,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "stale",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 31,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "stale",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "UNKNOWN",
+    "hazard_score": null,
+    "hazard_subscores": null,
+    "access": {
+     "pickup": "UNKNOWN",
+     "heavy_truck": "UNKNOWN"
+    },
+    "missing_fields": [
+     "nws_alerts",
+     "usda_soil"
+    ],
+    "stale": true,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": null
+    }
+   }
+  },
+  {
+   "id": "SITE-046",
+   "name": "Bradenton, FL area",
+   "latitude": 27.49893,
+   "longitude": -82.57482,
+   "region": "Manatee",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 32.7,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 10.8,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 59.8,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 32.1,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2,
+    "hazard_subscores": {
+     "rain": 3.8,
+     "wind": 1,
+     "heat": 2,
+     "flood": 2.4,
+     "storm": 0.1
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Poorly drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-047",
+   "name": "Venice, FL area",
+   "latitude": 27.09978,
+   "longitude": -82.45426,
+   "region": "Sarasota",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 8,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 7.3,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 56.5,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 30.7,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.2,
+    "hazard_subscores": {
+     "rain": 0.2,
+     "wind": 3.1,
+     "heat": 4.1,
+     "flood": 2.4,
+     "storm": 1.8
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Somewhat poorly drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-048",
+   "name": "Arcadia, FL area",
+   "latitude": 27.21588,
+   "longitude": -81.85842,
+   "region": "DeSoto",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 0.7,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 2.5,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 45.4,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 31.2,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.9,
+    "hazard_subscores": {
+     "rain": 2.6,
+     "wind": 0.1,
+     "heat": 4.8,
+     "flood": 0.9,
+     "storm": 0.6
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-049",
+   "name": "Wauchula, FL area",
+   "latitude": 27.54726,
+   "longitude": -81.81147,
+   "region": "Hardee",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 83.5,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 21.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 47.5,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 30.1,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "CAUTION",
+    "hazard_score": 5.3,
+    "hazard_subscores": {
+     "rain": 7.4,
+     "wind": 4.3,
+     "heat": 4.6,
+     "flood": 3.9,
+     "storm": 5.4
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [
+      "Heavy rain forecast (demo fixture)"
+     ],
+     "soil_drainage": "Somewhat poorly drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-050",
+   "name": "Clewiston, FL area",
+   "latitude": 26.75423,
+   "longitude": -80.93368,
+   "region": "Hendry",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 7.9,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 10.5,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 45.7,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 31,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.7,
+    "hazard_subscores": {
+     "rain": 2.9,
+     "wind": 0.6,
+     "heat": 2.3,
+     "flood": 1.5,
+     "storm": 0.4
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Poorly drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-051",
+   "name": "Immokalee, FL area",
+   "latitude": 26.41869,
+   "longitude": -81.4173,
+   "region": "Collier",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 35.1,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 3.3,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 47.2,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 32.7,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.7,
+    "hazard_subscores": {
+     "rain": 1.3,
+     "wind": 1.5,
+     "heat": 4,
+     "flood": 0.6,
+     "storm": 0.9
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Moderately well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-052",
+   "name": "Crystal River, FL area",
+   "latitude": 28.90248,
+   "longitude": -82.5926,
+   "region": "Citrus",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 1.1,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 3,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 51.8,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 30,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2,
+    "hazard_subscores": {
+     "rain": 1.6,
+     "wind": 2.2,
+     "heat": 4.1,
+     "flood": 0.6,
+     "storm": 1.5
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-053",
+   "name": "Chiefland, FL area",
+   "latitude": 29.47496,
+   "longitude": -82.85984,
+   "region": "Levy",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 54.6,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 50.8,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 28.3,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "UNKNOWN",
+    "hazard_score": null,
+    "hazard_subscores": null,
+    "access": {
+     "pickup": "UNKNOWN",
+     "heavy_truck": "UNKNOWN"
+    },
+    "missing_fields": [
+     "nws_alerts",
+     "usda_soil"
+    ],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": null
+    }
+   }
+  },
+  {
+   "id": "SITE-054",
+   "name": "Perry, FL area",
+   "latitude": 30.11766,
+   "longitude": -83.58274,
+   "region": "Taylor",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 77.3,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 55.4,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 26.4,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.4,
+    "hazard_subscores": {
+     "rain": 1.8,
+     "wind": 0.7,
+     "heat": 3,
+     "flood": 0,
+     "storm": 1.1
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-055",
+   "name": "Marianna, FL area",
+   "latitude": 30.77436,
+   "longitude": -85.22687,
+   "region": "Jackson",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 81.5,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 55.4,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 21.7,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2,
+    "hazard_subscores": {
+     "rain": 1.8,
+     "wind": 3.3,
+     "heat": 4.1,
+     "flood": 0,
+     "storm": 1
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-056",
+   "name": "Crestview, FL area",
+   "latitude": 30.76213,
+   "longitude": -86.57051,
+   "region": "Okaloosa",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 54.5,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 58.3,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 16.3,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "CAUTION",
+    "hazard_score": 5.1,
+    "hazard_subscores": {
+     "rain": 5.8,
+     "wind": 4.3,
+     "heat": 4.5,
+     "flood": 4.4,
+     "storm": 5.9
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [
+      "Heavy rain forecast (demo fixture)"
+     ],
+     "soil_drainage": "Moderately well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-057",
+   "name": "Starke, FL area",
+   "latitude": 29.94413,
+   "longitude": -82.10983,
+   "region": "Bradford",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 31.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 52.2,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 26.5,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.6,
+    "hazard_subscores": {
+     "rain": 0.9,
+     "wind": 1.5,
+     "heat": 2.6,
+     "flood": 1.3,
+     "storm": 1.7
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Well drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-058",
+   "name": "Palm Coast, FL area",
+   "latitude": 29.58497,
+   "longitude": -81.20784,
+   "region": "Flagler",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 26.7,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 60.5,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 28.6,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 1.8,
+    "hazard_subscores": {
+     "rain": 0.8,
+     "wind": 3.3,
+     "heat": 3.3,
+     "flood": 2.1,
+     "storm": 0.3
+    },
+    "access": {
+     "pickup": "MATS_FOR_REVIEW",
+     "heavy_truck": "NO_GO_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Poorly drained (demo fixture)"
+    }
+   }
+  },
+  {
+   "id": "SITE-059",
+   "name": "Inverness, FL area",
+   "latitude": 28.83582,
+   "longitude": -82.33037,
+   "region": "Citrus",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 24.5,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 5.4,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 38.5,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 30.4,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "UNKNOWN",
+    "hazard_score": null,
+    "hazard_subscores": null,
+    "access": {
+     "pickup": "UNKNOWN",
+     "heavy_truck": "UNKNOWN"
+    },
+    "missing_fields": [
+     "nws_alerts",
+     "usda_soil"
+    ],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": null
+    }
+   }
+  },
+  {
+   "id": "SITE-060",
+   "name": "Madison, FL area",
+   "latitude": 30.46938,
+   "longitude": -83.41293,
+   "region": "Madison",
+   "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+   "observations": [
+    {
+     "variable": "rain_7d",
+     "value": 99.2,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "modeled",
+     "valid_at": "2026-10-15",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "rain_forecast",
+     "value": 0,
+     "unit": "mm",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "gust_forecast",
+     "value": 54.4,
+     "unit": "km/h",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    },
+    {
+     "variable": "apparent_temp",
+     "value": 25.8,
+     "unit": "°C",
+     "source": "Open-Meteo",
+     "kind": "forecast",
+     "valid_at": "2026-10-17",
+     "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+     "quality": "available",
+     "reference_url": "https://open-meteo.com/en/docs"
+    }
+   ],
+   "scenario": {
+    "weather_state": "NORMAL",
+    "hazard_score": 2.1,
+    "hazard_subscores": {
+     "rain": 2.6,
+     "wind": 1.6,
+     "heat": 3.4,
+     "flood": 0.9,
+     "storm": 1.6
+    },
+    "access": {
+     "pickup": "GO_FOR_REVIEW",
+     "heavy_truck": "MATS_FOR_REVIEW"
+    },
+    "missing_fields": [],
+    "stale": false,
+    "alerts": [],
+    "reasons": {
+     "weather_triggers": [],
+     "soil_drainage": "Moderately well drained (demo fixture)"
+    }
+   }
+  }
+ ]
+}
