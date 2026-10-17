@@ -64,6 +64,14 @@ const unsigned long DEBOUNCE_MS = 30;
 const unsigned long LONG_PRESS_MS = 2000;
 const unsigned long PAGE_TIMEOUT_MS = 10000;
 const uint8_t ANALOG_SAMPLES = 8;
+// Buzzer loudness as PWM duty on D6 (a PWM pin): 255 = full, lower = quieter. Each alarm beep lasts
+// BEEP_MS of every second; shorter also sounds softer. Original firmware: 255 and 300.
+#ifndef BUZZER_VOLUME
+#define BUZZER_VOLUME 4
+#endif
+#ifndef BEEP_MS
+#define BEEP_MS 100
+#endif
 
 enum Code : uint8_t { CODE_UNKNOWN, CODE_GO, CODE_MATS, CODE_REVIEW, CODE_NOGO, CODE_STOP };
 
@@ -358,7 +366,7 @@ void updateOutputs(unsigned long now) {
   }
   digitalWrite(PIN_RED, red ? HIGH : LOW);
   digitalWrite(PIN_GREEN, green ? HIGH : LOW);
-  digitalWrite(PIN_BUZZER, (alarmSounding(now) && now % 1000 < 300) ? HIGH : LOW);
+  analogWrite(PIN_BUZZER, (alarmSounding(now) && now % 1000 < BEEP_MS) ? BUZZER_VOLUME : 0);
 #if HAS_LCD
   updateLcd(now, shown, stale);
 #endif

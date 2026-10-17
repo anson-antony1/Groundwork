@@ -33,6 +33,8 @@ Arduino IDE → Library Manager: install **Grove - LCD RGB Backlight**. The kit'
    | `HAS_LCD` | 1 | set 0 if the LCD library is not installed yet |
    | `HAS_LIGHT` | 1 | set 0 if no light sensor on A2 |
    | `BARO_CHIP` | `BARO_SPL` | the kit's SPL07 (also DPS310/SPL06); `BARO_BMP280`, `BARO_BME280`, `BARO_BMP180`, or `BARO_NONE` |
+   | `BUZZER_VOLUME` | 4 | PWM duty on D6, 1–255; 255 is the original full volume (for a loud hall) |
+   | `BEEP_MS` | 100 | alarm beep length per second; the original was 300 |
 
    A module switched off is **omitted** from readings, never sent as 0.
    Every combination compiles for the Uno (32–51% flash, ≤42% RAM).
@@ -76,7 +78,8 @@ so teammates' replays use the same points). Direction does not matter: the resis
 probe reads higher when wet, capacitive probes lower. You get a warning if readings are
 noisy or the two points are within 10% of the range. Until moisture is calibrated the
 bridge sends `raw_adc` only, with `calibration: "uncalibrated"`, and no index.
-Recalibrate if you change soil, probe or port. Barometer: factory calibrated; just
+Recalibrate if you change soil, probe or port. Current points (Oct 17, demo tray soil):
+moisture dry 50, wet 614; light dark 42.5, bright 744. Barometer: factory calibrated; just
 check the values are plausible and steady. Touch/button: debounced 30 ms in firmware;
 long press is 2 s.
 
@@ -112,6 +115,23 @@ GO in 110–710 ms; replay STOP alarm → touch → `ACKD` in 15 ms with `acknow
 server; long press → `SUPV REVIEW`; bridge stopped → `NO LINK`, never green; USB pulled and
 replugged → `beacon reconnected` in 8 s with no restart. 154 readings, 0 rejected, 0 bad lines.
 
+Verified with soil against the live Render API (Oct 17, 18:38–19:04 EDT): dry spot index 2 → GO;
+damp patch index 47–49 (steady for 10+ min) → MATS; wet spot index 85–98 → NO GO; each change on
+the LCD 0.5 s after the reading (median 538 ms, max 987 ms). Storm replay → STOP with buzzer, touch →
+`STOP WORK - ACKD` in 171 ms, replay stop → MATS. Lightning report at DEMO-TRAY → `STOP - CLR 29:57`
+with buzzer; `check_countdown_v1.py` 94 polls, 0 problems; a second report restarts at 30:00 and
+re-arms the buzzer; touch → `ACKD - CLR mm:ss` (153 ms); rejecting the reports → back to MATS.
+Long press → `SUPV REVIEW`, cleared with `DELETE /devices/tray-01/crew-flag`. Short presses show
+the moisture/light and pressure/temperature pages. Bridge stopped → `NO LINK`, white; USB pulled
+for a few seconds and replugged → `beacon reconnected`, no restart. First run: 1,211 readings,
+0 rejected, 0 bad lines; the API accepted each in ~65 ms (median).
+
+**Pouring skips amber** if the water reaches the prongs directly: the resistive probe jumps from
+about 30 to 85 within a second once wet soil bridges the prongs. For the demo, mix one spoonful of
+water evenly into a dry corner beforehand (the damp patch, index ~45–55), then move the probe
+dry corner (GO) → damp patch (MATS) → pour on it (NO GO). Water poured 2 inches from the probe
+did not reach it within 2 minutes.
+
 **Cable pulled or board reset mid-demo:** the bridge logs `beacon disconnected`, keeps running
 (anything already queued still goes to the API) and retries the port every 2 s; plug it back into the same
 USB socket (or run with `--port auto`) and it logs `beacon reconnected` and resends the status.
@@ -140,14 +160,19 @@ With `--port`, the beacon keeps showing server status and touch still acknowledg
 board's own readings are ignored. (`scripts/replay_sensor_v2.py` does the dashboard-only version too, but
 must never run with the beacon plugged in.)
 
-Once the tray works, a real rehearsal recording can replace the fallback. Recordings use the
-API's field names (a superset of the fixture's columns), so both replayers read them:
+`fixtures/sensor_replay_tray_v1.csv` is the **recorded** fallback: 70 real readings from the
+Oct 17 tray run (`calibration: dry_wet_2point_v1`), in demo order: 20 s dry (index ~2), 30 s
+damp patch (~47), 20 s wet (~86). The three stretches were recorded in a different order
+(dry 18:44:00, wet 18:49:11, damp 18:51:37 EDT) and are joined here, paced one row a second.
+Played into a local API it shows GO → MATS → NO GO as `sensor_replay`. Say "recorded".
 
 ```bash
-cp hardware/recordings/tray-01-<best-run>.csv fixtures/sensor_replay.csv
+python hardware/serial_bridge.py --replay fixtures/sensor_replay_tray_v1.csv --loop
 ```
 
-Real rows then carry `calibration: dry_wet_2point_v1`; say "recorded" instead of "simulated".
+Recordings use the API's field names (a superset of the fixture's columns), so both
+replayers read them. Add a new rehearsal recording as a new versioned fixture file rather
+than overwriting the existing ones.
 
 ## 7. No Arduino at all (development)
 
@@ -166,10 +191,12 @@ LCD, LEDs and buzzer would do. Its lines are flagged, so the bridge posts them a
 - [ ] USB-B cable (and adapter), beacon in its box, wires labeled, LCD facing judges
 - [ ] Fresh `moisture-dry` / `moisture-wet` calibration with the stage soil
 - [ ] Bridge prints `ok` for readings; beacon shows green `GO` on the dry tray
-- [ ] Pour → amber within ~2 s; copy the bridge's `latency:` line at Ctrl+C (latency metric)
+- [ ] Damp patch mixed (one spoonful stirred into a dry corner) and reading MATS
+- [ ] Dry corner → damp patch → pour: GO → MATS → NO GO; copy the bridge's `latency:` line at Ctrl+C
 - [ ] Storm replay → red, buzzer; touch → silent, still STOP
+- [ ] Touch pad's Grove cable pushed into D2 (it came loose once)
 - [ ] Unplug USB → `NO LINK` within 6 s, never green; replug recovers
-- [ ] Real recording copied to `fixtures/sensor_replay.csv`; `--replay` tested with the Uno unplugged
+- [ ] `--replay fixtures/sensor_replay_tray_v1.csv --loop` tested with the Uno unplugged
 - [ ] Rinse and dry the probe between rehearsals (resistive probes corrode)
 
 ## Troubleshooting
@@ -184,6 +211,9 @@ LCD, LEDs and buzzer would do. Its lines are flagged, so the bridge posts them a
 | `HTTP 401` | `GROUNDWORK_SENSOR_TOKEN` differs between bridge and backend |
 | `HTTP 422` | payload rejected by the API contract; run `pytest hardware/tests` (contract test) |
 | Moisture never moves | wrong port (must be A0); `--monitor` while touching the prongs to water |
+| Pour goes straight from GO to NO GO | water reached the prongs; use the damp patch for MATS (section 5) |
+| Touch does nothing, buzzer keeps going | the touch module's Grove cable is out of D2; reseat it. Dry hands help too |
+| Buzzer too loud or too quiet | change `BUZZER_VOLUME` (and `BEEP_MS`) at the top of the sketch and re-upload |
 | Index jumpy | dry/wet span too small, probe moving, or loose Grove lead |
 | Upload fails `stk500 … protocol error`, or `multiple access on port` | another program holds the port (Serial Monitor, a bridge, or any app that auto-opens serial devices): `lsof /dev/cu.usbmodem*` shows who |
 | An LED stays dark in every state | swap in a spare LED (one of the kit's was dead); check its resistor's two legs share columns with the pin jumper and the LED's long leg; short leg in the strip by the **blue** line |
