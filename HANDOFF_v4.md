@@ -32,7 +32,7 @@ Each new Terminal: cd ~/Desktop/Groundwork && source .venv/bin/activate
 - Anson: push hardware/ (or say which branch), and send a real sensor_replay.csv if he has one.
 - Aashita: backend/app/api/health.py reports usda_nrcs and nws as "not_built" although both work.
 - Rishi: replayContext.test.tsx fails on main; "Recorded demo" label shows on simulated values; review the new P9 fields in the panel; "on the map" wording if no pin.
-- 6 TEST crew reports are still in the DB (4 old + 2 from P10 checks). Click Reset demo in the UI and confirm GET /api/v1/reports total is 0. The last check still showed 6 (unclear whether Reset was clicked before it).
+- Crew reports cleared on Oct 17 (POST /api/v1/demo/reset with the sensor token; reports total 0). Re-run it after any new test submissions: curl -s -X POST http://localhost:8000/api/v1/demo/reset -H "Authorization: Bearer dev-sensor-token".
 
 ## Running locally
 - Backend: uvicorn backend.app.main:app --reload --port 8000 (restart after changing .env or fixtures; port stuck: lsof -ti :8000 | xargs kill).
