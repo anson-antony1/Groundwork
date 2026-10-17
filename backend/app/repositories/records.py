@@ -78,6 +78,20 @@ class BriefingRecord:
     crew_report_followups: tuple[ReportRecord, ...]  # snapshot at generation time
     narrative_source: str
     deterministic_summary: str | None = None  # template text; None on briefs saved before this existed
+    mat_staging: tuple["MatStaging", ...] = ()
+    sources: tuple[str, ...] = ()
+
+
+@dataclass(frozen=True)
+class MatStaging:
+    """A site/vehicle whose access call is MATS_FOR_REVIEW, with the policy-default mat range per route_length."""
+    site_id: str
+    site_name: str
+    vehicle: str
+    min_estimate: int
+    max_estimate: int
+    route_length: float
+    unit: str
 
 
 @dataclass(frozen=True)

@@ -30,6 +30,7 @@ class Display:
     alarm: bool
     acknowledged_at: datetime | None
     mode: str
+    vehicle: str | None = None  # the vehicle the access call is for (also tagged PKP/HVY on lcd_line1)
 
 
 def lcd_text(text: str) -> str:
@@ -74,4 +75,5 @@ def build_display(device_id: str, site_id: str, now: datetime) -> Display:
         alarm=status == "STOP_WORK" and not acked,
         acknowledged_at=state.acknowledged_at if acked else None,
         mode=mode,
+        vehicle=state.demo_vehicle,
     )
