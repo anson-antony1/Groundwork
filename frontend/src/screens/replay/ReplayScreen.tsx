@@ -136,7 +136,7 @@ export function ReplayScreen() {
             )}
           </Card>
 
-          <Card title="How replay stays separate" icon={<Info aria-hidden className="size-4" />}>
+          <Card collapsedByDefault title="How replay stays separate" icon={<Info aria-hidden className="size-4" />}>
             <ul className="flex list-disc flex-col gap-2 pl-5 text-[0.95rem]">
               <li>Replay data and live data are cached separately; switching drops the old context's data.</li>
               <li>Any response from the other context is discarded, never shown.</li>
@@ -144,7 +144,7 @@ export function ReplayScreen() {
             </ul>
           </Card>
 
-          <Card title="Replay log" icon={<History aria-hidden className="size-4" />}>
+          <Card collapsedByDefault title="Replay log" icon={<History aria-hidden className="size-4" />}>
             {log.length === 0 ? (
               <EmptyBlock title="No replays yet" />
             ) : (
