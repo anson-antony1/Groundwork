@@ -78,6 +78,18 @@
             "title": "Crew Report Followups",
             "type": "array"
           },
+          "deterministic_summary": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The template summary built from the facts, kept even when `summary` is an LLM narrative",
+            "title": "Deterministic Summary"
+          },
           "generated_at": {
             "format": "date-time",
             "title": "Generated At",
@@ -2231,6 +2243,19 @@
           "demo_tray_access": {
             "$ref": "#/components/schemas/DemoTrayAccessOut"
           },
+          "hazard_policy": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The live hazard rules: points per factor, CAUTION/STOP_WORK thresholds, stop-work alert terms",
+            "title": "Hazard Policy"
+          },
           "hazard_weights": {
             "$ref": "#/components/schemas/HazardWeightsOut"
           },
@@ -2949,6 +2974,19 @@
             "title": "Observations",
             "type": "array"
           },
+          "priority_rank": {
+            "anyOf": [
+              {
+                "minimum": 1.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Position in the 6 PM briefing's ranking across all sites (1 = most urgent); list only",
+            "title": "Priority Rank"
+          },
           "region": {
             "anyOf": [
               {
@@ -3080,6 +3118,19 @@
             },
             "title": "Observations",
             "type": "array"
+          },
+          "priority_rank": {
+            "anyOf": [
+              {
+                "minimum": 1.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Position in the 6 PM briefing's ranking across all sites (1 = most urgent); list only",
+            "title": "Priority Rank"
           },
           "region": {
             "anyOf": [

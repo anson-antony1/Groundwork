@@ -91,9 +91,12 @@ def _call_gemini(facts: dict[str, Any]) -> str:
     from google import genai  # lazy: the backend still runs if the SDK isn't installed
     from google.genai import types
 
-    api_key = os.environ.get("GEMINI_API_KEY")
+    api_key = (os.environ.get("GEMINI_API_KEY") or "").strip()
     if not api_key:
         raise RuntimeError("GEMINI_API_KEY not set")
+    if any(ch.isspace() for ch in api_key):
+        # e.g. two .env lines pasted into one dashboard field; never echo the value
+        raise RuntimeError("GEMINI_API_KEY contains spaces or several lines; set it to the key alone")
     client = genai.Client(api_key=api_key, http_options=types.HttpOptions(timeout=TIMEOUT_MS))
     resp = client.models.generate_content(
         model=os.environ.get("GEMINI_MODEL", "gemini-3.8-flash"),
@@ -117,5 +120,14 @@ def narrate(facts: dict[str, Any]) -> str | None:
         text = DROPPED_SPACE_RE.sub(r"\1 \2", text)
         return GLUE_RE.sub(r"\1 ", text)
     except Exception as e:  # never break the briefing endpoint over narration
-        log.warning("narration skipped: %s", e)
+        log.warning("narration skipped: %s: %s", type(e).__name__, _redact(str(e)))
         return None
+
+
+def _redact(message: str) -> str:
+    """Errors from the HTTP layer can quote request headers, i.e. the API key; never log it."""
+    key = os.environ.get("GEMINI_API_KEY") or ""
+    for secret in sorted({key, key.strip(), *key.split()}, key=len, reverse=True):
+        if len(secret) >= 8:
+            message = message.replace(secret, "[REDACTED]")
+    return message

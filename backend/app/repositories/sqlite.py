@@ -213,6 +213,7 @@ class BriefingRepository(TableRepository[BriefingRecord]):
             "missing_data_notes": [[sid, list(f)] for sid, f in b.missing_data_notes],
             "crew_report_followups": [_report_to_json(r) for r in b.crew_report_followups],
             "narrative_source": b.narrative_source,
+            "deterministic_summary": b.deterministic_summary,
         }
         return {"id": b.id, "generated_at": _iso(b.generated_at), "snapshot_json": json.dumps(snapshot),
                 "narrative": b.summary, "mode": b.mode}
@@ -227,6 +228,7 @@ class BriefingRepository(TableRepository[BriefingRecord]):
             missing_data_notes=tuple((sid, tuple(f)) for sid, f in s["missing_data_notes"]),
             crew_report_followups=tuple(_report_from_json(r) for r in s["crew_report_followups"]),
             narrative_source=s["narrative_source"],
+            deterministic_summary=s.get("deterministic_summary"),  # absent on older saved briefs
         )
 
 
