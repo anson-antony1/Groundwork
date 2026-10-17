@@ -1,4 +1,7 @@
 """GET /replay/scenarios: the frontend's scenario picker."""
+import json
+
+from backend.app.config import FIXTURES_DIR
 
 
 def scenarios(client):
@@ -18,7 +21,8 @@ def test_storm_scenario_has_real_alert_details(client):
     assert "Warning" in storm["event"]  # warnings are listed first
     assert storm["reference_url"].startswith("https://mesonet.agron.iastate.edu")
     assert storm["onset"] < storm["expires"]
-    assert storm["area"] == "60 sites in FL"
+    sites = len(json.loads((FIXTURES_DIR / "storm_replay.json").read_text(encoding="utf-8"))["sites"])
+    assert storm["area"].startswith(f"{sites} sites")  # count follows the fixture (60 FL, later 300 nationwide)
 
 
 def test_calm_scenario_uses_fixture_label(client):
