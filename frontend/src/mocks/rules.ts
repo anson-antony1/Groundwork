@@ -246,6 +246,9 @@ const ZERO_COSTS: Required<CostInputs> = {
   idle_equipment: 0,
   rescheduling: 0,
   extra_contract_cost: 0,
+  idle_hours: 0,
+  labor_rate_per_hour: 0,
+  equipment_rate_per_hour: 0,
 }
 
 const FT_PER_M = 3.28084
@@ -317,7 +320,7 @@ export function evaluate(site: SiteView, input: ResolvedEvaluationInput): Evalua
   ]
   const c: Required<CostInputs> = { ...ZERO_COSTS, ...input.costs }
   const matsOption = c.mats_rental + c.delivery + c.installation + c.removal + c.delay_not_prevented
-  const postpone = c.paid_idle_labor + c.idle_equipment + c.rescheduling + c.extra_contract_cost
+  const postpone = c.paid_idle_labor + c.idle_equipment + c.rescheduling + c.extra_contract_cost + c.idle_hours * (c.labor_rate_per_hour + c.equipment_rate_per_hour)
   const stop = site.weather_state === 'STOP_WORK'
   return {
     site_id: site.id,

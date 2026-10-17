@@ -195,6 +195,12 @@
             "title": "Delivery",
             "type": "number"
           },
+          "equipment_rate_per_hour": {
+            "default": 0,
+            "minimum": 0.0,
+            "title": "Equipment Rate Per Hour",
+            "type": "number"
+          },
           "extra_contract_cost": {
             "default": 0,
             "minimum": 0.0,
@@ -207,10 +213,22 @@
             "title": "Idle Equipment",
             "type": "number"
           },
+          "idle_hours": {
+            "default": 0,
+            "minimum": 0.0,
+            "title": "Idle Hours",
+            "type": "number"
+          },
           "installation": {
             "default": 0,
             "minimum": 0.0,
             "title": "Installation",
+            "type": "number"
+          },
+          "labor_rate_per_hour": {
+            "default": 0,
+            "minimum": 0.0,
+            "title": "Labor Rate Per Hour",
             "type": "number"
           },
           "mats_rental": {

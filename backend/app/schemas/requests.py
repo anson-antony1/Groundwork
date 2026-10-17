@@ -40,6 +40,9 @@ class CostInputs(RequestModel):
     idle_equipment: float = Field(0, ge=0)
     rescheduling: float = Field(0, ge=0)
     extra_contract_cost: float = Field(0, ge=0)
+    idle_hours: float = Field(0, ge=0)
+    labor_rate_per_hour: float = Field(0, ge=0)
+    equipment_rate_per_hour: float = Field(0, ge=0)
 
 
 class EvaluationIn(RequestModel):

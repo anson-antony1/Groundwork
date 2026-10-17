@@ -29,6 +29,9 @@ const POSTPONE_COSTS: [CostField, string][] = [
   ['idle_equipment', 'Idle equipment'],
   ['rescheduling', 'Rescheduling'],
   ['extra_contract_cost', 'Extra contract cost'],
+  ['idle_hours', 'Idle hours (delay)'],
+  ['labor_rate_per_hour', 'Labor rate per hour'],
+  ['equipment_rate_per_hour', 'Equipment rate per hour'],
 ]
 
 function differenceSentence(diff: number): string {
@@ -167,8 +170,11 @@ export function MatsCostPanel({ site, vehicle }: { site: SiteDetailView; vehicle
                   <span className="label-caps">{title}</span>
                   <span className={cx('font-display text-3xl font-bold transition-opacity', recalculating && 'opacity-60')}>{total === undefined ? '—' : fmtMoney(total)}</span>
                 </p>
+                {title === 'Postpone the job' && (
+                  <p className="text-[0.8rem] text-muted">Idle hours × (labor + equipment rate) is added to the flat amounts.</p>
+                )}
                 {fields.map(([field, label]) => (
-                  <NumberField key={field} label={label} prefix="$" value={form.costs[field]} onChange={(t) => setCost(field, t)} error={errors[field]} step={50} />
+                  <NumberField key={field} label={label} prefix={field === 'idle_hours' ? undefined : '$'} unit={field === 'idle_hours' ? 'h' : undefined} value={form.costs[field]} onChange={(t) => setCost(field, t)} error={errors[field]} step={50} />
                 ))}
               </div>
             ))}

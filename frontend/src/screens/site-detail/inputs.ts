@@ -30,6 +30,9 @@ export const DEFAULT_FORM: PlanForm = {
     idle_equipment: '600',
     rescheduling: '400',
     extra_contract_cost: '0',
+    idle_hours: '0',
+    labor_rate_per_hour: '0',
+    equipment_rate_per_hour: '0',
   },
 }
 

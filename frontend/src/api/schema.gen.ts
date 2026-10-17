@@ -450,6 +450,11 @@ export interface components {
              */
             delivery: number;
             /**
+             * Equipment Rate Per Hour
+             * @default 0
+             */
+            equipment_rate_per_hour: number;
+            /**
              * Extra Contract Cost
              * @default 0
              */
@@ -460,10 +465,20 @@ export interface components {
              */
             idle_equipment: number;
             /**
+             * Idle Hours
+             * @default 0
+             */
+            idle_hours: number;
+            /**
              * Installation
              * @default 0
              */
             installation: number;
+            /**
+             * Labor Rate Per Hour
+             * @default 0
+             */
+            labor_rate_per_hour: number;
             /**
              * Mats Rental
              * @default 0
