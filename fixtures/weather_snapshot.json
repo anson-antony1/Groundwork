@@ -1,6 +1,6 @@
 {
   "source": "Open-Meteo Forecast API + NWS alerts + USDA NRCS Soil Data Access",
-  "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+  "fetched_at": "2026-10-17T15:35:57.360705+00:00",
   "sites": {
     "SITE-001": [
       {
@@ -10,40 +10,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 0.8,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 42.5,
+        "value": 49.0,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 26.2,
+        "value": 25.3,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -54,7 +54,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -65,7 +65,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -76,7 +76,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -89,40 +89,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 1.48,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 42.5,
+        "value": 48.6,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 26.5,
+        "value": 25.3,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -133,7 +133,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -144,7 +144,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -155,7 +155,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -168,40 +168,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 4.3,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 43.6,
+        "value": 46.4,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 25.5,
+        "value": 25.3,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -212,7 +212,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -223,7 +223,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -234,7 +234,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -247,40 +247,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 1.78,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 48.1,
+        "value": 46.8,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 25.4,
+        "value": 25.2,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -291,7 +291,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -302,7 +302,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -313,7 +313,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -326,40 +326,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 1.95,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 46.4,
+        "value": 46.1,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.8,
+        "value": 25.4,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -370,7 +370,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -381,7 +381,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "missing",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -392,7 +392,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "missing",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -405,40 +405,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 2.35,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 47.0,
+        "value": 46.1,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 25.1,
+        "value": 25.9,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -449,7 +449,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -460,7 +460,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -471,7 +471,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "missing",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -484,40 +484,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 0.83,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 43.9,
+        "value": 49.0,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 25.2,
+        "value": 25.8,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -528,7 +528,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -539,7 +539,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -550,7 +550,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -563,40 +563,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 0.83,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 43.9,
+        "value": 49.0,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 25.2,
+        "value": 25.8,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -607,7 +607,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -618,7 +618,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -629,7 +629,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -642,40 +642,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 0.8,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 45.0,
+        "value": 44.3,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.7,
+        "value": 25.5,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -686,7 +686,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -697,7 +697,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -708,7 +708,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -721,40 +721,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 15.13,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 49.7,
+        "value": 49.0,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.6,
+        "value": 26.3,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -765,7 +765,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -776,7 +776,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -787,7 +787,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -800,40 +800,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 1.2,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 50.8,
+        "value": 47.9,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 25.3,
+        "value": 25.7,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -844,7 +844,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -855,7 +855,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -866,7 +866,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -879,40 +879,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 1.13,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 50.0,
+        "value": 48.2,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 25.0,
+        "value": 25.8,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -923,7 +923,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -934,7 +934,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -945,7 +945,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -958,40 +958,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 1.13,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 50.0,
+        "value": 48.2,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 25.0,
+        "value": 25.8,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -1002,7 +1002,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -1013,7 +1013,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -1024,7 +1024,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -1037,40 +1037,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 6.03,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 45.4,
+        "value": 45.7,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 26.0,
+        "value": 25.1,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -1081,7 +1081,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -1092,7 +1092,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -1103,7 +1103,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -1116,40 +1116,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 2.55,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 47.5,
+        "value": 50.8,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 22.7,
+        "value": 23.4,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -1160,7 +1160,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -1171,7 +1171,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -1182,7 +1182,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -1195,40 +1195,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 12.05,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 47.2,
+        "value": 56.5,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 23.7,
+        "value": 23.9,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -1239,7 +1239,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -1250,7 +1250,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -1261,7 +1261,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -1274,7 +1274,7 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -1285,29 +1285,29 @@
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 55.1,
+        "value": 51.5,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 22.2,
+        "value": 23.4,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -1318,7 +1318,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -1329,7 +1329,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -1340,7 +1340,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -1353,40 +1353,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 1.95,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 46.4,
+        "value": 46.1,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.8,
+        "value": 25.4,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -1397,7 +1397,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -1408,7 +1408,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -1419,7 +1419,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -1432,40 +1432,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 2.85,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 46.8,
+        "value": 51.1,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 23.5,
+        "value": 23.7,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -1476,7 +1476,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -1487,7 +1487,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -1498,7 +1498,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -1511,40 +1511,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 0.4,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 43.9,
+        "value": 49.3,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 25.4,
+        "value": 25.3,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -1555,7 +1555,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -1566,7 +1566,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -1577,7 +1577,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -1590,7 +1590,7 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -1601,29 +1601,29 @@
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 56.9,
+        "value": 50.8,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 16.8,
+        "value": 17.2,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -1634,7 +1634,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -1645,7 +1645,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "missing",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -1656,7 +1656,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "missing",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -1669,40 +1669,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 3.13,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 42.1,
+        "value": 46.8,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 25.5,
+        "value": 25.3,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -1713,7 +1713,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -1724,7 +1724,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -1735,7 +1735,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -1748,40 +1748,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 0.63,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 47.2,
+        "value": 49.3,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 25.6,
+        "value": 25.2,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -1792,7 +1792,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -1803,7 +1803,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "missing",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -1814,7 +1814,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "missing",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -1827,40 +1827,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 0.63,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 47.2,
+        "value": 49.3,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 25.5,
+        "value": 25.2,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -1871,7 +1871,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -1882,7 +1882,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -1893,7 +1893,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -1901,45 +1901,45 @@
     "SITE-025": [
       {
         "variable": "rain_7d",
-        "value": 1.4,
+        "value": 1.8,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 0.73,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 48.9,
+        "value": 45.0,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.7,
+        "value": 25.7,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -1950,7 +1950,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -1961,7 +1961,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -1972,7 +1972,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -1985,40 +1985,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 4.73,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 49.0,
+        "value": 48.6,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.2,
+        "value": 24.9,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -2029,7 +2029,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -2040,7 +2040,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "missing",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -2051,7 +2051,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "missing",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -2064,40 +2064,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 0.63,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 45.0,
+        "value": 50.0,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 25.7,
+        "value": 25.1,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -2108,7 +2108,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -2119,7 +2119,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -2130,7 +2130,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -2143,40 +2143,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 4.53,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 43.9,
+        "value": 48.2,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 25.7,
+        "value": 25.4,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -2187,7 +2187,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -2198,7 +2198,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -2209,7 +2209,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -2222,40 +2222,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 7.33,
+        "value": 14.8,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 48.2,
+        "value": 46.4,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.9,
+        "value": 25.8,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -2266,7 +2266,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -2277,7 +2277,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -2288,7 +2288,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -2301,40 +2301,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 18.7,
+        "value": 0.4,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 50.0,
+        "value": 47.2,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.7,
+        "value": 26.1,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -2345,7 +2345,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -2356,7 +2356,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -2367,7 +2367,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -2380,40 +2380,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 0.63,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 48.6,
+        "value": 48.2,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.4,
+        "value": 25.0,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -2424,7 +2424,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -2435,7 +2435,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -2446,7 +2446,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -2459,40 +2459,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 7.33,
+        "value": 14.8,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 48.2,
+        "value": 46.4,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.9,
+        "value": 25.8,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -2503,7 +2503,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -2514,7 +2514,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -2525,7 +2525,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -2538,40 +2538,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 1.25,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 46.8,
+        "value": 49.7,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.1,
+        "value": 24.4,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -2582,7 +2582,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -2593,7 +2593,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -2604,7 +2604,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -2617,40 +2617,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 1.55,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 47.2,
+        "value": 50.8,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.0,
+        "value": 24.9,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -2661,7 +2661,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -2672,7 +2672,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -2683,7 +2683,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -2696,40 +2696,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 0.45,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 48.2,
+        "value": 47.9,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.7,
+        "value": 24.5,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -2740,7 +2740,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -2751,7 +2751,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -2762,7 +2762,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -2775,40 +2775,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 1.78,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 48.1,
+        "value": 46.8,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 25.4,
+        "value": 25.2,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -2819,7 +2819,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -2830,7 +2830,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -2841,7 +2841,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -2854,40 +2854,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 3.18,
+        "value": 1.8,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 49.0,
+        "value": 46.1,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.8,
+        "value": 25.9,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -2898,7 +2898,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -2909,7 +2909,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -2920,7 +2920,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -2933,40 +2933,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 1.78,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 49.1,
+        "value": 46.1,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 25.1,
+        "value": 25.2,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -2977,7 +2977,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -2988,7 +2988,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -2999,7 +2999,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -3012,40 +3012,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 8.38,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 49.4,
+        "value": 47.2,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.8,
+        "value": 25.5,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -3056,7 +3056,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -3067,7 +3067,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -3078,7 +3078,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -3091,40 +3091,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 3.18,
+        "value": 1.8,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 49.0,
+        "value": 46.1,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.8,
+        "value": 25.9,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -3135,7 +3135,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -3146,7 +3146,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -3157,7 +3157,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -3170,40 +3170,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 2.35,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 46.4,
+        "value": 44.6,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.7,
+        "value": 25.6,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -3214,7 +3214,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -3225,7 +3225,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -3236,7 +3236,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -3249,40 +3249,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 2.35,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 46.4,
+        "value": 44.6,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.7,
+        "value": 25.6,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -3293,7 +3293,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -3304,7 +3304,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -3315,7 +3315,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -3328,40 +3328,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 10.8,
+        "value": 0.7,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 46.1,
+        "value": 46.8,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.9,
+        "value": 26.0,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -3372,7 +3372,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -3383,7 +3383,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -3394,7 +3394,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -3407,40 +3407,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 24.5,
+        "value": 1.1,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 46.8,
+        "value": 46.1,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.5,
+        "value": 26.1,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -3451,7 +3451,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -3462,7 +3462,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -3473,7 +3473,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -3486,40 +3486,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 3.93,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 49.0,
+        "value": 45.7,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.3,
+        "value": 25.2,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -3530,7 +3530,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -3541,7 +3541,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -3552,7 +3552,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -3565,40 +3565,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 3.93,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 49.0,
+        "value": 45.7,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.3,
+        "value": 25.2,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -3609,7 +3609,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -3620,7 +3620,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "missing",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -3631,7 +3631,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "missing",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -3644,40 +3644,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 3.63,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 49.7,
+        "value": 46.4,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.9,
+        "value": 25.3,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -3688,7 +3688,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -3699,7 +3699,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -3710,7 +3710,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -3723,40 +3723,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 1.83,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 49.7,
+        "value": 47.2,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 25.1,
+        "value": 25.5,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -3767,7 +3767,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -3778,7 +3778,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -3789,7 +3789,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -3802,40 +3802,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 3.15,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 47.2,
+        "value": 45.0,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.9,
+        "value": 25.6,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -3846,7 +3846,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -3857,7 +3857,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -3868,7 +3868,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "missing",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -3881,40 +3881,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 14.43,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 50.8,
+        "value": 47.9,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.5,
+        "value": 25.5,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -3925,7 +3925,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -3936,7 +3936,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -3947,7 +3947,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -3960,40 +3960,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 2.43,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 44.6,
+        "value": 49.3,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 26.1,
+        "value": 25.5,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -4004,7 +4004,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -4015,7 +4015,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -4026,7 +4026,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -4039,40 +4039,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 0.4,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 45.0,
+        "value": 49.7,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 25.3,
+        "value": 24.6,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -4083,7 +4083,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -4094,7 +4094,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -4105,7 +4105,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -4118,29 +4118,29 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 0.4,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 43.9,
+        "value": 49.3,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -4151,7 +4151,7 @@
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -4162,7 +4162,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -4173,7 +4173,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -4184,7 +4184,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -4197,40 +4197,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 14.98,
+        "value": 1.4,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 48.6,
+        "value": 47.2,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 25.2,
+        "value": 26.0,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -4241,7 +4241,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -4252,7 +4252,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -4263,7 +4263,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -4276,40 +4276,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 4.55,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 46.8,
+        "value": 48.2,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.1,
+        "value": 25.4,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -4320,7 +4320,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -4331,7 +4331,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "missing",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -4342,7 +4342,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "missing",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -4355,40 +4355,40 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 22.33,
+        "value": 1.4,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 49.7,
+        "value": 48.2,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.6,
+        "value": 26.3,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -4399,7 +4399,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -4410,7 +4410,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -4421,7 +4421,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -4434,18 +4434,18 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 7.52,
+        "value": 6.8,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -4456,18 +4456,18 @@
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 25.0,
+        "value": 26.1,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -4478,7 +4478,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -4489,7 +4489,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -4500,7 +4500,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -4513,7 +4513,7 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -4524,29 +4524,29 @@
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 51.1,
+        "value": 53.3,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 18.4,
+        "value": 19.9,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -4557,7 +4557,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -4568,7 +4568,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -4579,7 +4579,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -4587,45 +4587,45 @@
     "SITE-059": [
       {
         "variable": "rain_7d",
-        "value": 8.3,
+        "value": 8.7,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 0.63,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "gust_forecast",
-        "value": 50.5,
+        "value": 47.2,
         "unit": "km/h",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 25.9,
+        "value": 25.1,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -4636,7 +4636,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -4647,7 +4647,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -4658,7 +4658,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
@@ -4671,18 +4671,18 @@
         "source": "Open-Meteo",
         "kind": "modeled",
         "valid_at": "2026-10-16",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "rain_forecast",
-        "value": 9.62,
+        "value": 0.0,
         "unit": "mm",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -4693,18 +4693,18 @@
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
       {
         "variable": "apparent_temp",
-        "value": 24.6,
+        "value": 26.2,
         "unit": "\u00b0C",
         "source": "Open-Meteo",
         "kind": "forecast",
         "valid_at": "2026-10-18",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://open-meteo.com/en/docs"
       },
@@ -4715,7 +4715,7 @@
         "source": "NWS",
         "kind": "observed",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://www.weather.gov/documentation/services-web-api"
       },
@@ -4726,7 +4726,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       },
@@ -4737,7 +4737,7 @@
         "source": "USDA NRCS Soil Data Access",
         "kind": "survey",
         "valid_at": "2026-10-17",
-        "fetched_at": "2026-10-17T04:33:09.242127+00:00",
+        "fetched_at": "2026-10-17T15:35:57.360705+00:00",
         "quality": "available",
         "reference_url": "https://sdmdataaccess.nrcs.usda.gov/"
       }
