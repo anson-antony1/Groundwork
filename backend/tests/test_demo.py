@@ -50,3 +50,16 @@ def test_demo_reset_clears_session_but_keeps_readings_and_briefings(client, post
     # Beacon is re-armed: the next STOP WORK sounds the alarm again.
     client.post("/api/v1/replay/start")
     assert display()["alarm"] is True
+
+
+def test_demo_reset_removes_simulated_readings_only(client, post_reading, display):
+    post_reading(50, calibration="dry_wet_2point_v1", recorded_at="2026-10-16T21:00:00-04:00")
+    post_reading(90, calibration="simulated_replay_v1", mode="sensor_replay", seq=2,
+                 recorded_at="2026-10-16T21:00:05-04:00")
+    assert display()["code"] == "NOGO"  # the newer simulated reading drives the beacon
+
+    client.post("/api/v1/demo/reset", headers=AUTH)
+
+    history = client.get("/api/v1/sensors/tray-01/history").json()["data"]
+    assert [r["calibration"] for r in history] == ["dry_wet_2point_v1"]
+    assert display()["code"] == "MATS"  # back to the real reading
