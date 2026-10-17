@@ -2,7 +2,7 @@ import { Loader2, Mail } from 'lucide-react'
 import { useState } from 'react'
 
 /** The n8n webhook that emails the newest saved briefing. Override with VITE_N8N_EMAIL_URL in frontend/.env.local. */
-const EMAIL_URL: string = import.meta.env.VITE_N8N_EMAIL_URL ?? 'http://localhost:5678/webhook/groundwork-email'
+const EMAIL_URL: string = import.meta.env.VITE_N8N_EMAIL_URL || 'http://localhost:5678/webhook/groundwork-email'
 
 type State = 'idle' | 'sending' | 'sent' | 'failed'
 

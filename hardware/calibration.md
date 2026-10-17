@@ -137,7 +137,7 @@ python hardware/serial_bridge.py --replay fixtures/sensor_replay.csv --loop --po
 Everything replays as `mode: sensor_replay` with the row's own calibration label, so simulated
 rows stay labeled simulated. Keep `--loop` on: the backend ignores readings older than 15 s.
 With `--port`, the beacon keeps showing server status and touch still acknowledges, while the
-board's own readings are ignored. (`replay_sensor_v2.py` does the dashboard-only version too, but
+board's own readings are ignored. (`scripts/replay_sensor_v2.py` does the dashboard-only version too, but
 must never run with the beacon plugged in.)
 
 Once the tray works, a real rehearsal recording can replace the fallback. Recordings use the
@@ -159,7 +159,7 @@ python hardware/serial_bridge.py --port /dev/ttys003 # the port it printed
 The fake beacon emulates the firmware on a pseudo-terminal (macOS/Linux) and prints what the
 LCD, LEDs and buzzer would do. Its lines are flagged, so the bridge posts them as
 `sensor_replay` with `calibration: simulated_replay_v1`, never as the live tray. It doesn't need
-`calibration.json`. Clean up afterwards like any simulated replay (see HANDOFF_v4).
+`calibration.json`. Clean up afterwards like any simulated replay (see docs/HANDOFF_v5.md).
 
 ## 8. Demo checklist
 

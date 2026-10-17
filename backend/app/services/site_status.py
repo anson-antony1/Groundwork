@@ -4,7 +4,7 @@ from datetime import datetime
 
 from .. import repositories as repo
 from ..config import DEMO_DEVICE_ID, DEMO_SITE_ID
-from . import light, site_insights
+from . import field_hazards, light, site_insights
 from .access import demo_tray_access
 from .display import fresh_reading
 from .hazard import assess
@@ -46,8 +46,10 @@ def priority_key(s: SiteStatus) -> tuple:
     then access restriction, then missing data."""
     return (
         s.weather_state != "STOP_WORK",
-        -(s.hazard_score or 0),
+        s.weather_state != "CAUTION",
+        -(s.hazard_score or 0) if s.weather_state == "CAUTION" else 0,
         min(ACCESS_RANK[a] for a in s.access_call.values()),
+        -(s.hazard_score if s.hazard_score is not None else 0),
         -len(s.missing_fields),
     )
 
@@ -132,7 +134,7 @@ def evaluate_status(site: Site, now: datetime) -> SiteStatus:
     else:
         data_status = "stale" if stale else "available"
 
-    return SiteStatus(
+    return field_hazards.apply(SiteStatus(
         site=site,
         hazard_score=hazard_score,
         weather_state=weather_state,
@@ -151,7 +153,7 @@ def evaluate_status(site: Site, now: datetime) -> SiteStatus:
         alerts=alerts,
         reasons=reasons,
         advisories=light.advisories(reading) if is_demo else (),
-    )
+    ), now)  # lightning, wildfire, wildlife (Sperry PlanIT brief)
 
 
 def list_statuses(now: datetime, weather_state: str | None = None) -> list[SiteStatus]:
