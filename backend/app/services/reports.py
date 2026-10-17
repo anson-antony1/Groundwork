@@ -25,7 +25,8 @@ def _image_ext(content: bytes) -> str:
     return ext
 
 
-def create_report(site_id: str, description: str, category: str, photo: bytes | None, now: datetime) -> ReportRecord:
+def create_report(site_id: str, description: str, category: str, photo: bytes | None, now: datetime,
+                  reported_by: str | None = None) -> ReportRecord:
     require_site(site_id)
     description = description.strip()
     if not description:
@@ -42,25 +43,27 @@ def create_report(site_id: str, description: str, category: str, photo: bytes | 
         id=report_id, site_id=site_id, description=description, category_user=category,
         # AI photo tagging was dropped from scope; these stay null so the report contract is unchanged.
         category_ai=None, ai_confidence=None,
-        image_filename=filename, reported_at=now, verification="unreviewed",
+        image_filename=filename, reported_at=now, verification="unreviewed", reported_by=reported_by,
     ))
     timeline.record("hazard_report", f"Crew report ({category}): {description[:80]}", now, site_id=site_id, ref_id=report_id)
     log.info("report created", extra={"report_id": report_id, "site_id": site_id, "has_photo": filename is not None})
     return rec
 
 
-def review_report(report_id: str, verification: str, category_user: str | None, now: datetime) -> ReportRecord:
+def review_report(report_id: str, verification: str, category_user: str | None, now: datetime,
+                  verified_by: str | None = None) -> ReportRecord:
     """Supervisor confirms or rejects a crew report, optionally correcting its category.
 
     Re-reviewing is allowed (a supervisor can correct a mistake); each review is logged on the timeline.
     """
     rec = get_report(report_id)
-    updated = replace(rec, verification=verification, category_user=category_user or rec.category_user)
+    updated = replace(rec, verification=verification, category_user=category_user or rec.category_user,
+                      verified_by=verified_by)
     repo.reports.save(updated)
     timeline.record("report_reviewed", f"Crew report {verification} ({updated.category_user})", now,
                     site_id=rec.site_id, ref_id=report_id)
     log.info("report reviewed", extra={"report_id": report_id, "verification": verification,
-                                       "category_user": updated.category_user})
+                                       "category_user": updated.category_user, "verified_by": verified_by})
     return updated
 
 

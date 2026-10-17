@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from .api import briefings, demo, devices, events, health, policies, replay, reports, sensors, sites
+from . import config
 from .api.responses import error_responses
 from .config import API_PREFIX, API_VERSION, LOG_LEVEL, RATE_LIMIT_PER_MINUTE, UPLOADS_DIR
 from .core.errors import register_exception_handlers
@@ -14,6 +15,8 @@ ROUTERS = (health, sites, sensors, devices, reports, replay, briefings, events, 
 
 def create_app() -> FastAPI:
     configure_logging(LOG_LEVEL)
+    if config.AUTH_ENABLED and not config.AUTH0_DOMAIN:
+        raise RuntimeError("GROUNDWORK_AUTH_ENABLED is on but AUTH0_DOMAIN is not set (see .env.example)")
     app = FastAPI(
         title="Groundwork API",
         version=API_VERSION,

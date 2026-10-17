@@ -8,14 +8,14 @@ from ..schemas.requests import SensorReadingIn
 from ..schemas.responses import PressureTendencyOut, ReadingOut
 from ..services import devices, pressure
 from . import mappers
-from .deps import PageParams, page_params, require_sensor_token
+from .deps import PageParams, page_params, require_sensor
 from .responses import error_responses, ok, paged
 
 router = APIRouter(prefix="/sensors", tags=["sensors"])
 
 
 @router.post("/readings", status_code=201, response_model=Envelope[ReadingOut],
-             dependencies=[Depends(require_sensor_token)], responses=error_responses(400, 401, 404),
+             dependencies=[Depends(require_sensor)], responses=error_responses(400, 401, 404),
              summary="Ingest one beacon reading")
 def create_reading(body: SensorReadingIn):
     sample = devices.SensorSample(**body.model_dump(exclude={"device_id", "site_id"}))

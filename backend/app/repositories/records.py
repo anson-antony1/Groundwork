@@ -45,6 +45,8 @@ class ReportRecord:
     image_filename: str | None  # storage-internal; exposed only as a URL
     reported_at: datetime
     verification: str
+    reported_by: str | None = None  # Auth0 subject of the submitter (audit trail)
+    verified_by: str | None = None  # Auth0 subject of the supervisor who last reviewed it
 
 
 @dataclass(frozen=True)

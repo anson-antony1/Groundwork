@@ -44,6 +44,7 @@ def report_out(r: ReportRecord) -> ReportOut:
         category_ai=r.category_ai, ai_confidence=r.ai_confidence,
         image_url=f"/uploads/{r.image_filename}" if r.image_filename else None,
         reported_at=r.reported_at, verification=r.verification,
+        reported_by=r.reported_by, verified_by=r.verified_by,
         # No AI tagger runs (README status: P10), so nothing is ever "pending".
         ai_status="done" if r.category_ai is not None else "unavailable",
     )

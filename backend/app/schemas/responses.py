@@ -16,6 +16,8 @@ class HealthOut(BaseModel):
     replay_active: bool
     fixtures: dict[str, bool]
     connectors: dict[str, Literal["not_built", "ok", "degraded"]]
+    auth: Literal["auth0", "disabled"] = Field(
+        "disabled", description="'disabled' = demo mode: every caller is a labeled demo user with both roles")
 
 
 class VehicleAccessOut(BaseModel):
@@ -105,6 +107,8 @@ class ReportOut(BaseModel):
     image_url: str | None
     reported_at: datetime
     verification: Literal["unreviewed", "confirmed", "rejected"]
+    reported_by: str | None = Field(None, description="Auth0 subject (opaque id) of the submitter")
+    verified_by: str | None = Field(None, description="Auth0 subject of the supervisor who last reviewed it")
     ai_status: Literal["pending", "done", "unavailable"] = Field(
         "unavailable", description="Photo tagger state; no tagger runs yet, so it is 'done' only if a tag exists")
 

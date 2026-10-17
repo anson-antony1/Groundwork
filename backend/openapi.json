@@ -1873,6 +1873,16 @@
       },
       "HealthOut": {
         "properties": {
+          "auth": {
+            "default": "disabled",
+            "description": "'disabled' = demo mode: every caller is a labeled demo user with both roles",
+            "enum": [
+              "auth0",
+              "disabled"
+            ],
+            "title": "Auth",
+            "type": "string"
+          },
           "connectors": {
             "additionalProperties": {
               "enum": [
@@ -3221,6 +3231,18 @@
             "title": "Reported At",
             "type": "string"
           },
+          "reported_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Auth0 subject (opaque id) of the submitter",
+            "title": "Reported By"
+          },
           "site_id": {
             "title": "Site Id",
             "type": "string"
@@ -3233,6 +3255,18 @@
             ],
             "title": "Verification",
             "type": "string"
+          },
+          "verified_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Auth0 subject of the supervisor who last reviewed it",
+            "title": "Verified By"
           }
         },
         "required": [
@@ -4180,6 +4214,26 @@
             },
             "description": "Successful Response"
           },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not logged in, or missing/invalid token"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Logged in but lacking the required role or permission"
+          },
           "422": {
             "content": {
               "application/json": {
@@ -4211,7 +4265,12 @@
             "description": "Unexpected server error"
           }
         },
-        "summary": "Generate a 6 PM briefing",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Generate a 6 PM briefing (supervisor)",
         "tags": [
           "briefings"
         ]
@@ -4362,7 +4421,17 @@
                 }
               }
             },
-            "description": "Missing or invalid sensor token"
+            "description": "Not logged in, or missing/invalid token"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Logged in but lacking the required role or permission"
           },
           "422": {
             "content": {
@@ -4431,6 +4500,26 @@
             },
             "description": "Successful Response"
           },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not logged in, or missing/invalid token"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Logged in but lacking the required role or permission"
+          },
           "404": {
             "content": {
               "application/json": {
@@ -4472,6 +4561,11 @@
             "description": "Unexpected server error"
           }
         },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
         "summary": "Clear a crew flag (supervisor); returns the updated beacon display",
         "tags": [
           "devices"
@@ -4700,7 +4794,7 @@
                 }
               }
             },
-            "description": "Missing or invalid sensor token"
+            "description": "Not logged in, or missing/invalid token"
           },
           "404": {
             "content": {
@@ -5291,6 +5385,26 @@
             },
             "description": "Successful Response"
           },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not logged in, or missing/invalid token"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Logged in but lacking the required role or permission"
+          },
           "404": {
             "content": {
               "application/json": {
@@ -5352,7 +5466,12 @@
             "description": "Unexpected server error"
           }
         },
-        "summary": "Submit a crew hazard report (multipart)",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Submit a crew hazard report (multipart); crew or supervisor",
         "tags": [
           "reports"
         ]
@@ -5465,6 +5584,26 @@
             },
             "description": "Successful Response"
           },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not logged in, or missing/invalid token"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Logged in but lacking the required role or permission"
+          },
           "404": {
             "content": {
               "application/json": {
@@ -5506,6 +5645,11 @@
             "description": "Unexpected server error"
           }
         },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
         "summary": "Supervisor confirms or rejects a crew report (optionally correcting its category)",
         "tags": [
           "reports"
@@ -5554,7 +5698,7 @@
                 }
               }
             },
-            "description": "Missing or invalid sensor token"
+            "description": "Not logged in, or missing/invalid token"
           },
           "404": {
             "content": {
@@ -6079,6 +6223,26 @@
             },
             "description": "Successful Response"
           },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not logged in, or missing/invalid token"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Logged in but lacking the required role or permission"
+          },
           "404": {
             "content": {
               "application/json": {
@@ -6120,7 +6284,12 @@
             "description": "Unexpected server error"
           }
         },
-        "summary": "Compute access, mat range and cost comparison (stateless)",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Compute access, mat range and cost comparison (stateless; supervisor)",
         "tags": [
           "sites"
         ]
