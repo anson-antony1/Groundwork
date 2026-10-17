@@ -431,6 +431,11 @@ export interface components {
             /** Crew Report Followups */
             crew_report_followups: components["schemas"]["ReportOut"][];
             /**
+             * Deterministic Summary
+             * @description The template summary built from the facts, kept even when `summary` is an LLM narrative
+             */
+            deterministic_summary?: string | null;
+            /**
              * Generated At
              * Format: date-time
              */
@@ -455,6 +460,18 @@ export interface components {
             summary: string;
             /** Top Priority Sites */
             top_priority_sites: components["schemas"]["PrioritySiteOut"][];
+        };
+        /**
+         * CallReasonsOut
+         * @description 'Why this call?' inputs (README section 8).
+         */
+        CallReasonsOut: {
+            /** Soil Drainage */
+            soil_drainage: string | null;
+            /** Vehicle Class */
+            vehicle_class: string | null;
+            /** Weather Triggers */
+            weather_triggers: string[];
         };
         /** CostComparisonOut */
         CostComparisonOut: {
@@ -984,6 +1001,24 @@ export interface components {
              */
             weather_state: "NORMAL" | "CAUTION" | "STOP_WORK" | "UNKNOWN";
         };
+        /**
+         * HazardSubscoresOut
+         * @description Parts behind hazard_score. rain + wind + heat are the points that sum to the score (max 4/3/3).
+         *     flood and storm are alert-driven: 10 if a matching NWS alert is active (it forces STOP WORK rather
+         *     than adding points), 0 if the alert check found none, null if the check failed.
+         */
+        HazardSubscoresOut: {
+            /** Flood */
+            flood: number | null;
+            /** Heat */
+            heat: number | null;
+            /** Rain */
+            rain: number | null;
+            /** Storm */
+            storm: number | null;
+            /** Wind */
+            wind: number | null;
+        };
         /** HazardWeightsOut */
         HazardWeightsOut: {
             /** Flood */
@@ -1283,6 +1318,13 @@ export interface components {
         /** PolicyOut */
         PolicyOut: {
             demo_tray_access: components["schemas"]["DemoTrayAccessOut"];
+            /**
+             * Hazard Policy
+             * @description The live hazard rules: points per factor, CAUTION/STOP_WORK thresholds, stop-work alert terms
+             */
+            hazard_policy?: {
+                [key: string]: unknown;
+            } | null;
             hazard_weights: components["schemas"]["HazardWeightsOut"];
             /** Label */
             label: string;
@@ -1462,6 +1504,8 @@ export interface components {
             access_call: components["schemas"]["VehicleAccessOut"];
             /** Alert Events */
             alert_events?: string[];
+            /** Alerts */
+            alerts?: components["schemas"]["WeatherAlertOut"][];
             /**
              * Data Status
              * @enum {string}
@@ -1477,6 +1521,7 @@ export interface components {
             hazard_explanation?: string[];
             /** Hazard Score */
             hazard_score?: number | null;
+            hazard_subscores?: components["schemas"]["HazardSubscoresOut"] | null;
             /** Id */
             id: string;
             /** Latitude */
@@ -1487,10 +1532,18 @@ export interface components {
             longitude: number;
             /** Missing Fields */
             missing_fields: string[];
+            /** Mode */
+            mode?: ("live" | "cached" | "replay" | "simulated" | "sensor_demo" | "sensor_replay") | null;
             /** Name */
             name: string;
             /** Observations */
             observations: components["schemas"]["ObservationOut"][];
+            /**
+             * Priority Rank
+             * @description Rank across all sites, 1 = most urgent; same order as the 6 PM briefing
+             */
+            priority_rank?: number | null;
+            reasons?: components["schemas"]["CallReasonsOut"] | null;
             /** Region */
             region: string | null;
             /** Reports */
@@ -1506,6 +1559,8 @@ export interface components {
             access_call: components["schemas"]["VehicleAccessOut"];
             /** Alert Events */
             alert_events?: string[];
+            /** Alerts */
+            alerts?: components["schemas"]["WeatherAlertOut"][];
             /**
              * Data Status
              * @enum {string}
@@ -1521,6 +1576,7 @@ export interface components {
             hazard_explanation?: string[];
             /** Hazard Score */
             hazard_score?: number | null;
+            hazard_subscores?: components["schemas"]["HazardSubscoresOut"] | null;
             /** Id */
             id: string;
             /** Latitude */
@@ -1531,10 +1587,18 @@ export interface components {
             longitude: number;
             /** Missing Fields */
             missing_fields: string[];
+            /** Mode */
+            mode?: ("live" | "cached" | "replay" | "simulated" | "sensor_demo" | "sensor_replay") | null;
             /** Name */
             name: string;
             /** Observations */
             observations: components["schemas"]["ObservationOut"][];
+            /**
+             * Priority Rank
+             * @description Rank across all sites, 1 = most urgent; same order as the 6 PM briefing
+             */
+            priority_rank?: number | null;
+            reasons?: components["schemas"]["CallReasonsOut"] | null;
             /** Region */
             region: string | null;
             /**
@@ -1589,6 +1653,21 @@ export interface components {
              * @enum {string}
              */
             pickup: "GO_FOR_REVIEW" | "MATS_FOR_REVIEW" | "NO_GO_FOR_REVIEW" | "SUPERVISOR_REVIEW" | "STOP_WORK" | "UNKNOWN";
+        };
+        /** WeatherAlertOut */
+        WeatherAlertOut: {
+            /** Event */
+            event: string;
+            /** Expires */
+            expires?: string | null;
+            /** Onset */
+            onset?: string | null;
+            /** Reference Url */
+            reference_url?: string | null;
+            /** Severity */
+            severity?: string | null;
+            /** Source */
+            source: string;
         };
     };
     responses: never;

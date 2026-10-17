@@ -16,7 +16,7 @@ router = APIRouter(prefix="/sites", tags=["sites"])
 
 @router.get("", response_model=PageEnvelope[SiteOut], summary="List sites with status")
 def list_sites(page: PageParams = Depends(page_params), weather_state: WeatherState | None = None):
-    statuses = site_status.list_statuses(now_utc(), weather_state)
+    statuses = site_status.list_statuses(now_utc(), weather_state)  # ranked across all sites before filtering
     missing = sorted({f for s in statuses for f in s.missing_fields})
     return paged(statuses, page, site_status.portfolio_mode(), mappers.site_out, missing_fields=missing)
 

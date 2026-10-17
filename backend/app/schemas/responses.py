@@ -1,6 +1,6 @@
 """Response DTOs. Internal records are mapped onto these in api/mappers.py; nothing else is serialized."""
 from datetime import datetime
-from typing import Literal
+from typing import Any, Literal
 
 from pydantic import BaseModel, Field
 
@@ -41,6 +41,33 @@ class ObservationOut(BaseModel):
     reference_url: str | None
 
 
+class HazardSubscoresOut(BaseModel):
+    """Parts behind hazard_score. rain + wind + heat are the points that sum to the score (max 4/3/3).
+    flood and storm are alert-driven: 10 if a matching NWS alert is active (it forces STOP WORK rather
+    than adding points), 0 if the alert check found none, null if the check failed."""
+    rain: float | None
+    wind: float | None
+    heat: float | None
+    flood: float | None
+    storm: float | None
+
+
+class WeatherAlertOut(BaseModel):
+    event: str
+    source: str
+    severity: str | None = None
+    onset: datetime | None = None
+    expires: datetime | None = None
+    reference_url: str | None = None
+
+
+class CallReasonsOut(BaseModel):
+    """'Why this call?' inputs (README section 8)."""
+    weather_triggers: list[str]
+    soil_drainage: str | None
+    vehicle_class: str | None
+
+
 class SiteOut(BaseModel):
     id: str
     name: str
@@ -58,6 +85,12 @@ class SiteOut(BaseModel):
     evaluated_at: datetime
     hazard_explanation: list[str] = Field(default_factory=list)
     alert_events: list[str] = Field(default_factory=list)
+    # Always sent; optional in the contract (as proposed.ts asks) so older fixtures/mocks stay valid.
+    mode: DataMode | None = None
+    priority_rank: int | None = Field(None, ge=1, description="Rank across all sites, 1 = most urgent; same order as the 6 PM briefing")
+    hazard_subscores: HazardSubscoresOut | None = None
+    alerts: list[WeatherAlertOut] = Field(default_factory=list)
+    reasons: CallReasonsOut | None = None
 
 
 class ReportOut(BaseModel):
@@ -209,6 +242,8 @@ class BriefingOut(BaseModel):
     missing_data_notes: list[MissingDataNoteOut]
     crew_report_followups: list[ReportOut]
     narrative_source: Literal["deterministic_template", "llm"]
+    deterministic_summary: str | None = Field(
+        None, description="The template summary built from the facts, kept even when `summary` is an LLM narrative")
 
 
 class TimelineEventOut(BaseModel):
@@ -263,5 +298,7 @@ class PolicyOut(BaseModel):
     label: str
     demo_tray_access: DemoTrayAccessOut
     hazard_weights: HazardWeightsOut
+    hazard_policy: dict[str, Any] | None = Field(
+        None, description="The live hazard rules: points per factor, CAUTION/STOP_WORK thresholds, stop-work alert terms")
     sensor_stale_seconds: int
     mat_defaults: MatDefaultsOut
