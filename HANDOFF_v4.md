@@ -46,3 +46,6 @@ Open: https://github.com/anson-antony1/Groundwork/pull/new/docs/status-marks . C
 
 ## Gotchas
 - Use new versioned file names for scripts, never overwrite. Paste commands only, not prompt lines. Do not paste placeholder paths.
+
+## Hardware repo gap (found at the end)
+hardware/ does not exist on main (ls hardware fails), so hardware/serial_bridge.py and the Arduino firmware are not in the repo. README 14 and the P12 fallback depend on serial_bridge.py --replay fixtures/sensor_replay.csv. Ask Anson to push them (or say which branch). Run: for b in $(git branch -r | grep -v HEAD); do git ls-tree -r --name-only $b | grep -qi "serial_bridge\|^hardware/" && echo $b; done
