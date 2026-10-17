@@ -41,6 +41,33 @@ class ObservationOut(BaseModel):
     reference_url: str | None
 
 
+class HazardSubscoresOut(BaseModel):
+    """Parts behind hazard_score. rain + wind + heat are the points that sum to the score (max 4/3/3).
+    flood and storm are alert-driven: 10 if a matching NWS alert is active (it forces STOP WORK rather
+    than adding points), 0 if the alert check found none, null if the check failed."""
+    rain: float | None
+    wind: float | None
+    heat: float | None
+    flood: float | None
+    storm: float | None
+
+
+class WeatherAlertOut(BaseModel):
+    event: str
+    source: str
+    severity: str | None = None
+    onset: datetime | None = None
+    expires: datetime | None = None
+    reference_url: str | None = None
+
+
+class CallReasonsOut(BaseModel):
+    """'Why this call?' inputs (README section 8)."""
+    weather_triggers: list[str]
+    soil_drainage: str | None
+    vehicle_class: str | None
+
+
 class SiteOut(BaseModel):
     id: str
     name: str
@@ -58,6 +85,11 @@ class SiteOut(BaseModel):
     evaluated_at: datetime
     hazard_explanation: list[str] = Field(default_factory=list)
     alert_events: list[str] = Field(default_factory=list)
+    mode: DataMode
+    priority_rank: int | None = Field(None, ge=1, description="Rank across all sites, 1 = most urgent; same order as the 6 PM briefing")
+    hazard_subscores: HazardSubscoresOut | None = None
+    alerts: list[WeatherAlertOut] = Field(default_factory=list)
+    reasons: CallReasonsOut | None = None
 
 
 class ReportOut(BaseModel):

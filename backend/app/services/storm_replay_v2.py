@@ -39,6 +39,24 @@ def scenario_source(scenario_id: str | None) -> str | None:
     return (archived or {}).get("scenario_source") or (data or {}).get("source")
 
 
+def replay_inputs(site_id: str, scenario_id: str | None = None) -> dict | None:
+    """Raw inputs behind a site's replay call: weather values, alert event names and alert details."""
+    data = _load(scenario_file(scenario_id))
+    site = data["sites"].get(site_id) if data else None
+    if not site:
+        return None
+    values = {k: site.get(k) for k in WEATHER_KEYS}
+    archived = archived_alerts(scenario_id)
+    if archived and site_id in archived["sites"]:
+        details = [archived["events"][k] for k in archived["sites"][site_id]]
+        alerts = [{"event": d["event"], "source": archived["source"]["name"], "onset": d.get("issued_at"),
+                   "expires": d.get("expires_at"), "reference_url": d.get("source_url")} for d in details]
+        return {"values": values, "events": [a["event"] for a in alerts], "alerts": alerts}
+    alert = data.get("simulated_alert")
+    alerts = [{"event": alert, "source": "SIMULATED (replay fixture)"}] if alert else []
+    return {"values": values, "events": [alert] if alert else [], "alerts": alerts}
+
+
 def replay_site_v2(site_id: str, scenario_id: str | None = None) -> dict | None:
     data = _load(scenario_file(scenario_id))
     site = data["sites"].get(site_id) if data else None
