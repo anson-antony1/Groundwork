@@ -35,7 +35,8 @@ export function EmptyBlock({ title, children, className }: { title: string; chil
   return (
     <div className={cx('flex flex-col items-start gap-1.5 rounded-[4px] border border-dashed border-line p-5 text-muted', className)}>
       <p className="font-semibold text-ink">{title}</p>
-      {children}
+      {/* One wrapper, so inline children (text with <strong> or a link) stay one flowing line, not flex items. */}
+      {children != null && <div>{children}</div>}
     </div>
   )
 }
