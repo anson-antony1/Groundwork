@@ -181,6 +181,10 @@ class ReadingRepository(TableRepository[ReadingRecord]):
     def list(self, device_id: str) -> list[ReadingRecord]:
         return super().list(limit=HISTORY_LIMIT, device_id=device_id)
 
+    def delete_by_calibration(self, calibration: str) -> int:
+        with self._engine.begin() as conn:
+            return conn.execute(delete(self._table).where(self._table.c.calibration == calibration)).rowcount
+
 
 def _report_to_json(r: ReportRecord) -> dict:
     return {**asdict(r), "reported_at": _iso(r.reported_at)}

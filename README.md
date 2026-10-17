@@ -1061,9 +1061,8 @@ Resume notes live in `HANDOFF_v4.md`.
 - **P12/P15:** DEMO-TRAY shows UNKNOWN ("NO SENSOR DATA") until the beacon, or the replay script, sends readings. `hardware/` (`serial_bridge.py`, firmware, calibration) is not in the repo yet, so the README 14 unplugged-beacon fallback through `serial_bridge.py` does not exist.
 - **P14:** the timed wifi-off run (README 14.4) is not verified.
 
-**Sensor replay fallback (dashboard only):** `python replay_sensor_v2.py --loop --interval 2 --token dev-sensor-token` posts `fixtures/sensor_replay.csv` as `tray-01` with `mode: "sensor_replay"` (shown as Recorded demo). The CSV is simulated, not recorded. It does not drive the LCD, LEDs or buzzer, and it must not run while the real beacon is plugged in. Readings older than 15 s are ignored, so keep `--loop` running. Clear leftover rows after testing: Reset demo keeps sensor readings by design (see `HANDOFF_v4.md`).
+**Sensor replay fallback (dashboard only):** `python replay_sensor_v2.py --loop --interval 2 --token dev-sensor-token` posts `fixtures/sensor_replay.csv` as `tray-01` with `mode: "sensor_replay"` (shown as Recorded demo). The CSV is simulated, not recorded. It does not drive the LCD, LEDs or buzzer, and it must not run while the real beacon is plugged in. Readings older than 15 s are ignored, so keep `--loop` running. After testing, **Reset demo** removes these rows (`calibration: simulated_replay_v1`, also used by `hardware/serial_bridge.py` and `hardware/fake_beacon.py`); real beacon readings are kept.
 
 **Known problems**
 - `backend/app/api/health.py` reports `usda_nrcs` and `nws` as `not_built` although both work.
-- Reset demo keeps sensor readings by design. Delete leftover replay rows after testing (see `HANDOFF_v4.md`).
 - Run the tests with the server stopped; `test_demo.py` failed once while uvicorn was running.
