@@ -50,7 +50,7 @@ The **Must** column is the team's launch contract. Demo mode is allowed, but **s
 | P5 | ✅ **Flooding** | NWS flood-related alerts + precipitation and optional water level/FEMA map context | Flood concern appears in score and safety state; FEMA flood zones are long-term susceptibility, not live flood detection |
 | P6 | ✅ **Heat** | Forecast apparent temperature and/or properly calculated heat index with configurable policy | Heat concern displayed and linked to a recommended supervisor review/action; threshold is labeled as demo policy |
 | P7 | ✅ **Vehicle-specific access** | Ground-wetness/soil indicators + pickup/heavy-truck sensitivity policy | Changing vehicle changes access call without changing meteorological hazard score |
-| P8 | **Mat staging range** | Editable mat dimensions, effective coverage, route dimensions, layer policy, availability | UI shows range + calculation + units + engineering caveat |
+| P8 | ✅ **Mat staging range** | Editable mat dimensions, effective coverage, route dimensions, layer policy, availability | UI shows range + calculation + units + engineering caveat |
 | P9 | **Mats vs postpone cost** | User inputs for rental, handling, labor, hours, equipment | Recalculates live; labels assumed values and does not call savings guaranteed |
 | P10 | **Crew hazard report** | Photo + text + GPS/site + timestamp; image tagging is advisory | Submitted report displays as map pin/feed item; report is distinguishable from verified official hazard alert |
 | P11 | ✅ **6 PM briefing** | Deterministic aggregation → optional LLM narration | A manual Generate 6 PM Plan button creates ranked priority list and mentions data gaps; automated scheduler only if time permits |
