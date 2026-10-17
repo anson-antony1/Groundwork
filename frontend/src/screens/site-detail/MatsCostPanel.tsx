@@ -67,7 +67,7 @@ export function MatsCostPanel({ site, vehicle }: { site: SiteDetailView; vehicle
       title="Mats and cost planning"
       icon={<Calculator aria-hidden className="size-4" />}
       right={<span className="rounded-[3px] border border-dashed border-line-hi px-2 py-1 text-[0.75rem] text-muted label-caps">{LABELS.scenarioAssumption}</span>}
-      footer={<ProvenanceLine>Assumptions are sent to POST /sites/{site.id}/evaluate; the backend computes every count and dollar figure shown. {LABELS.prototypePolicy}</ProvenanceLine>}
+      footer={<ProvenanceLine>The backend computes every count and dollar figure shown from the assumptions you enter.</ProvenanceLine>}
     >
       <div className="grid gap-8 xl:grid-cols-2">
         <section aria-label="Mat estimate" className="flex flex-col gap-4">

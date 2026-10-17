@@ -61,7 +61,7 @@ export function AccessCard({ site, vehicle, policy, reading, now, stale }: Acces
       title="Ground access · per vehicle"
       icon={<Layers aria-hidden className="size-4" />}
       tone={stale ? 'unknown' : v.tone}
-      footer={<ProvenanceLine>Planning recommendation, not a soil-load certification · {LABELS.prototypePolicy}</ProvenanceLine>}
+      footer={<ProvenanceLine>Planning recommendation, not a soil-load certification</ProvenanceLine>}
     >
       <div className="flex flex-col gap-5">
         <div className="flex flex-wrap items-center gap-3">
