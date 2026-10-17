@@ -1,0 +1,108 @@
+# Groundwork frontend
+
+React + TypeScript + Vite + Tailwind + React Leaflet dashboard for Groundwork (SwampHacks XII).
+It exists to make the §14 two-minute demo work; the root [README](../README.md) is the source of truth.
+
+## Quick start
+
+```bash
+cd frontend
+npm install
+cp .env.example .env.local     # optional: defaults to mock mode
+npm run dev                    # http://localhost:5173
+```
+
+No backend? It runs on the in-browser **mock** backend by default, and the banner says "Demo fixture — not live data".
+
+## Mock vs live: the one-line switch
+
+In `frontend/.env.local`:
+
+```bash
+VITE_API_MODE=live             # talk to the FastAPI backend (default: mock)
+```
+
+The dev server proxies `/api` and `/uploads` to `API_PROXY_TARGET` (default `http://localhost:8000`), so the
+browser calls the API on its own origin: no CORS setup, and phones on the LAN can reach the backend too.
+`VITE_API_BASE_URL` stays empty unless you deliberately skip the proxy. `VITE_*` values ship to the browser,
+so never put tokens or keys in them.
+
+If port 8000 is busy, run the backend elsewhere and point the proxy at it:
+
+```bash
+uvicorn backend.app.main:app --port 8010          # from the repo root
+API_PROXY_TARGET=http://localhost:8010            # in frontend/.env.local
+```
+
+`npm run dev:mock` starts a second, always-mock instance on :5174. Keep it open as the §14.7 fallback if the
+backend dies mid-demo; its banner makes clear it's a demo fixture.
+
+## Phone (crew hazard report)
+
+`npm run dev` listens on the LAN and prints a `Network:` URL. On the phone open
+`http://<laptop-ip>:5173/report/DEMO-TRAY`. Phone and laptop must share a network (use a phone hotspot if the
+venue Wi-Fi isolates devices).
+
+## Scripts
+
+| Script | What it does |
+|---|---|
+| `npm run dev` | Dev server on :5173 (LAN-visible, proxies the API) |
+| `npm run dev:mock` | Always-mock standby instance on :5174 |
+| `npm run check` | typecheck + lint + tests + production build (run before every commit) |
+| `npm test` | Vitest unit tests |
+| `npm run gen:api` | Regenerate `src/api/schema.gen.ts` and `endpoints.gen.ts` from `backend/openapi.json` |
+| `npm run gen:mocks` | Rebuild the mock site fixture from `fixtures/` (read-only) |
+| `npm run shot -- <url> <out.png> [--size WxH] [--scale N] [--mobile] [--full]` | Exact-viewport screenshot via headless Chrome |
+
+After Aashita changes the API, run `npm run gen:api`, fix any type errors, and commit the generated files.
+The types come straight from the backend's committed contract, so they can't silently drift.
+
+## Rules the UI follows
+
+- The UI never computes safety status, hazard scores, mat counts or costs. It sends inputs (e.g. `/evaluate`)
+  and renders what the backend returns. The mock backend's rule logic lives only in `src/mocks/`, which UI code
+  can't import (lint rule).
+- STOP WORK overrides everything visually. UNKNOWN or stale data never looks green: stale views turn gray
+  and say when they were last updated.
+- Weather hazard and per-vehicle access are separate cards; switching vehicles never changes the hazard score.
+- Missing values read "Missing", never 0. Every value shows its source, time and quality, using the exact
+  README §15 labels (`src/domain/provenance.ts`, covered by tests).
+- Status colors match the beacon (§5.6) and always come with an icon, a label and a marker shape.
+
+## Hotkeys
+
+`1` Map · `2` Demo tray · `3` Sensor lab · `4` Storm replay · `5` 6 PM brief · `V` toggle vehicle.
+Ignored while typing in a field.
+
+## Layout
+
+```
+src/api/        contract types (generated), client, query hooks, live/replay context
+src/domain/     status → label/icon/tone/shape, §15 labels, formatting (pure, unit-tested)
+src/mocks/      stateful in-browser stand-in for the backend (mock mode only)
+src/components/ shared UI: placards, cards, markers, beacon replica, shell
+src/screens/    one folder per screen; /style is the living style tile
+```
+
+## Open questions for Aashita (contract gaps)
+
+1. `POST /api/v1/demo/reset` isn't built. It needs the sensor token, which can't live in `VITE_*`; proposal: the
+   Reset dialog asks for it once and keeps it in sessionStorage. Confirm reset leaves `demo_vehicle = heavy_truck`.
+2. README §3 says unknown weather/access → `SUPERVISOR_REVIEW`; the backend returns `UNKNOWN`. The UI handles both.
+3. `observations[]` landed on `SiteOut` (thanks). Still missing for "Why this call?": `hazard_subscores`,
+   NWS `alerts[]`, and `reasons {weather_triggers, soil_drainage, vehicle_class}`.
+4. Per-site `mode` (LIVE / CACHED / REPLAY / SIMULATED / SENSOR DEMO markers) and a `priority_rank` shared with the
+   briefing. Until then the list order mirrors `briefings._priority_key`.
+5. No endpoint to confirm/correct an AI photo tag. Proposed `POST /api/v1/reports/{id}/review
+   {category_user?, verification}` (POST: CORS allows GET/POST only) and `ai_status: pending|done|unavailable`.
+   Is `severity` (README §7) in or out?
+6. Replay: on/off switch or timeline? Proposed `GET /api/v1/replay/scenarios` → `{id, title, event, source,
+   reference_url, onset, expires}`. No playback-speed control unless frames exist.
+7. Sensor history caps at 500 rows (~8 min at 1 Hz). Needs `?since=` or downsampling, plus a backend
+   `pressure_tendency` (UNKNOWN under 3 h).
+8. Briefing: when Gemini succeeds the deterministic text is lost. Always return `deterministic_summary` + optional
+   `narrative`; add `mat_staging[]` and `sources[]`.
+9. Expose mat/cost defaults via `/policies`; until then UI defaults are labeled "Scenario assumption • adjustable".
+10. OK to treat `backend/openapi.json` as the shared contract instead of `shared/contracts.ts`?
+11. Optional: add `vehicle` to `DisplayOut` so the mirror needn't parse "HVY" from the LCD text.
