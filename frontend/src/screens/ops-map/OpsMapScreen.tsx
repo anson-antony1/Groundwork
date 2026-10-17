@@ -86,7 +86,7 @@ export function OpsMapScreen() {
     <div className="flex h-full min-h-[44rem] flex-col gap-4">
       <StatsStrip sites={sites} vehicle={vehicle} stale={stale} />
       {stale && <StaleBanner updatedAt={sitesQuery.dataUpdatedAt} what="Site data" />}
-      <div className="grid min-h-0 flex-1 gap-4 lg:grid-cols-[minmax(27rem,37%)_1fr]">
+      <div className="grid gap-4 lg:min-h-0 lg:flex-1 lg:grid-cols-[minmax(27rem,37%)_1fr]">
         {!sitesQuery.data ? (
           <LoadingBlock label="Loading sites" className="rounded-[4px] border border-line bg-panel" />
         ) : sites.length === 0 ? (

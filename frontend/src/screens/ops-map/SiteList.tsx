@@ -148,7 +148,7 @@ function DemoTrayCallout({ site, props }: { site: SiteView; props: SiteListProps
 export function SiteList(props: SiteListProps) {
   const { rows, filter, counts } = props
   return (
-    <section aria-label="Ranked sites" className="flex min-h-0 flex-col overflow-hidden rounded-[4px] border border-line bg-panel">
+    <section aria-label="Ranked sites" className="flex h-[34rem] min-h-0 flex-col overflow-hidden rounded-[4px] border border-line bg-panel lg:h-auto">
       <header className="flex flex-col gap-3 border-b border-line bg-gradient-to-b from-steel-hi/50 to-transparent px-4 py-3">
         <div className="flex items-center justify-between gap-3">
           <h2 className="text-[0.95rem] label-caps">Ranked for tomorrow</h2>
