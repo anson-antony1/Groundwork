@@ -302,3 +302,31 @@ def test_link_survives_the_beacon_disappearing_and_reconnects():
     link.close()
     for fd in (slave, master2, slave2):
         os.close(fd)
+
+
+# --- lightning countdown checker (hardware/check_countdown_v1.py) -------------
+
+import check_countdown_v1 as cc
+
+
+def stop(line2, alarm):
+    return {"code": "STOP", "lcd_line2": line2, "alarm": alarm}
+
+
+def test_countdown_checker_passes_a_clean_countdown_with_ack_and_restart():
+    samples = [(0, stop("STOP - CLR 29:59", True)), (1, stop("STOP - CLR 29:58", True)),
+               (2, stop("ACKD - CLR 29:57", False)), (3, stop("STOP - CLR 30:00", True))]
+    problems, notes = cc.check(samples)
+    assert problems == []
+    assert any("acknowledged" in n for n in notes) and any("restart" in n and "re-armed" in n for n in notes)
+
+
+def test_countdown_checker_flags_bad_lines_codes_drift_and_silent_restarts():
+    problems, _ = cc.check([(0, stop("ALL CLEAR IN 29:59 MIN", True))])
+    assert any("doesn't fit" in p for p in problems)
+    problems, _ = cc.check([(0, {"code": "GO", "lcd_line2": "CLR 29:59", "alarm": False})])
+    assert any("must be STOP" in p for p in problems)
+    problems, _ = cc.check([(0, stop("CLR 29:59", True)), (1, stop("CLR 29:40", True))])
+    assert any("moved" in p for p in problems)
+    problems, _ = cc.check([(0, stop("CLR 10:00", False)), (1, stop("CLR 30:00", False))])
+    assert any("did not sound again" in p for p in problems)
