@@ -18,6 +18,7 @@ export function AckLog({ flagged }: { flagged: boolean }) {
   const rows = events.data?.data ?? []
   return (
     <Card
+      collapsedByDefault
       title="Acknowledgment and crew-flag log"
       icon={<ListChecks aria-hidden className="size-4" />}
       right={flagged ? <ClearCrewFlag /> : undefined}

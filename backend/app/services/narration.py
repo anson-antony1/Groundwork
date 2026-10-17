@@ -34,6 +34,7 @@ Use ONLY the facts in the JSON below. Do NOT invent sites, numbers, alerts, or s
 together or compute new ones. Keep every number exactly as given. Never mention JSON field names; use plain English.
 Rules:
 - A weather_state of STOP_WORK means work stops at that site. List those sites first.
+- If stop_work_count equals sites_evaluated, open with one plain sentence saying all of the sites are at stop work (use the sites_evaluated number) and why the data mode matters; do not list site names for that case.
 - Sites with UNKNOWN weather or missing data must NOT be described as safe.
 - The access calls are advisory ("for review"); do not turn them into orders and do not change any status.
 - If data_mode is not "live", say plainly what kind of data this is (for example simulated or sensor demo).

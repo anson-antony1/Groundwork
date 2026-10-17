@@ -54,7 +54,7 @@ export function MoistureChart({ readings, policy, now }: { readings: Reading[]; 
       title="Soil moisture index · last 5 minutes"
       icon={<Activity aria-hidden className="size-4" />}
       right={<span className="text-[0.78rem] text-muted">Bands: heavy-truck policy, which the beacon evaluates</span>}
-      footer={`${LABELS.demoSensor} · ${policy?.label ?? LABELS.prototypePolicy}`}
+      footer={`${LABELS.demoSensor} · ${policy?.label ?? 'Demo policy'}`}
     >
       {data.length < 2 ? (
         <EmptyBlock title="Waiting for readings">The trace starts once the beacon sends readings (about one per second).</EmptyBlock>

@@ -68,7 +68,7 @@ def main():
             if lat is None or lon is None:
                 continue
             name = (e.get("tags") or {}).get("name") or f"Substation {e['id']}"
-            sites.append({"id": f"SITE-{len(sites) + 1:03d}", "name": name, "latitude": round(lat, 5),
+            sites.append({"id": f"US-{len(sites) + 1:03d}", "name": name, "latitude": round(lat, 5),
                           "longitude": round(lon, 5), "region": code, "location_origin": ORIGIN,
                           "source_id": f"osm-{e['id']}"})
             n += 1

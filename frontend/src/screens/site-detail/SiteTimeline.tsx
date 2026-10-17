@@ -20,7 +20,7 @@ const KIND: Record<TimelineKind, { icon: LucideIcon; label: string }> = {
 export function SiteTimeline({ siteId }: { siteId: string }) {
   const events = useEvents(siteId)
   return (
-    <Card title="Event log" icon={<History aria-hidden className="size-4" />}>
+    <Card collapsedByDefault title="Event log" icon={<History aria-hidden className="size-4" />}>
       {events.isLoading && <LoadingBlock label="Loading events" />}
       {events.isError && !events.data && <ErrorBlock title="Event log unavailable" error={events.error} />}
       {events.data && events.data.data.length === 0 && <EmptyBlock title="Nothing logged yet">Acknowledgments, crew reports and replays appear here.</EmptyBlock>}

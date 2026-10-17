@@ -13,7 +13,6 @@ import { MissingValue } from '../../components/Provenance'
 import { StatusTag, WeatherTag } from '../../components/StatusTag'
 import { TONE_SOFT } from '../../components/tone'
 import { VEHICLE_LABEL, fieldLabel, fmtNum, fmtObservation } from '../../domain/format'
-import { LABELS } from '../../domain/provenance'
 import type { Tone } from '../../domain/status'
 
 function Input({ name, children }: { name: string; children: ReactNode }) {
@@ -90,7 +89,7 @@ export function WhyThisCall({ site, vehicle, policy, reading, readingFresh }: Wh
   const soil = observed.get('usda_soil')
 
   return (
-    <Card title="Why this call?" icon={<Lightbulb aria-hidden className="size-4" />} footer={`Decision rule (README §3): STOP WORK overrides everything; missing data is never safe; otherwise the vehicle's access call stands. ${LABELS.prototypePolicy}`}>
+    <Card title="Why this call?" icon={<Lightbulb aria-hidden className="size-4" />} footer={`Decision rule (README §3): STOP WORK overrides everything; missing data is never safe; otherwise the vehicle's access call stands.`}>
       <div className="grid gap-4 xl:grid-cols-[1fr_auto_1fr] xl:items-stretch">
         <Lane title="Weather safety · all vehicles" result={<WeatherTag state={site.weather_state} />}>
           {isDemo ? (
