@@ -848,32 +848,34 @@ Stay calm, say one honest sentence, switch to the fallback, and keep going.
  
 ### Automated tests (must run)
  
-- [ ] `STOP_WORK` overrides `MATS_FOR_REVIEW` for both vehicle types.
-- [ ] Hazard score stays in range 0–10; critical alerts cannot be averaged away.
-- [ ] Missing/stale values flag `UNKNOWN`/review, not low-risk GO.
-- [ ] Pickup vs heavy truck produces different access recommendation on at least one **labeled simulated scenario**.
-- [ ] Mat estimate respects units, `ceil`, margins, editable dimensions, and zero inventory.
-- [ ] Cost math recalculates and shows which inputs are assumptions.
-- [ ] Real soil/weather source values have source, fetch time, validity, and data quality.
-- [ ] 50+ unique coordinates; report count with complete source fields.
-- [ ] Sensor POST rejects invalid payload/token; dashboard sees the accepted reading.
-- [ ] Display endpoint maps each effective status to the code, text and alarm flag in §5.6.
-- [ ] `ack_touch` sets `acknowledged_at` and `alarm=false` but leaves `STOP_WORK` unchanged; a new STOP_WORK re-arms the alarm.
-- [ ] `crew_flag` produces `SUPERVISOR_REVIEW` for the demo site without changing `weather_state`.
-- [ ] Bridge rejects malformed serial lines and never posts zeros for disconnected modules.
-- [ ] Pressure tendency with under 3 hours of history returns `UNKNOWN`, not "steady".
-- [ ] Photo/text upload displays a report pin even if AI service fails.
-- [ ] Storm replay can enter/exit without contaminating live status.
-- [ ] Demo reset returns DEMO-TRAY and the beacon to a clean state (no replay, no demo reports, alarm re-armed).
-- [ ] 6 PM briefing mentions STOP WORK sites, mat needs, reports, and missing data, with no invented figures.
+- [x] `STOP_WORK` overrides `MATS_FOR_REVIEW` for both vehicle types.
+- [x] Hazard score stays in range 0–10; critical alerts cannot be averaged away.
+- [x] Missing/stale values flag `UNKNOWN`/review, not low-risk GO.
+- [x] Pickup vs heavy truck produces different access recommendation on at least one **labeled simulated scenario**.
+- [x] Mat estimate respects units, `ceil`, margins, editable dimensions, and zero inventory.
+- [x] Cost math recalculates and shows which inputs are assumptions.
+- [x] Real soil/weather source values have source, fetch time, validity, and data quality.
+- [x] 50+ unique coordinates; report count with complete source fields.
+- [x] Sensor POST rejects invalid payload/token; dashboard sees the accepted reading.
+- [x] Display endpoint maps each effective status to the code, text and alarm flag in §5.6.
+- [x] `ack_touch` sets `acknowledged_at` and `alarm=false` but leaves `STOP_WORK` unchanged; a new STOP_WORK re-arms the alarm.
+- [x] `crew_flag` produces `SUPERVISOR_REVIEW` for the demo site without changing `weather_state`.
+- [x] Bridge rejects malformed serial lines and never posts zeros for disconnected modules.
+- [x] Pressure tendency with under 3 hours of history returns `UNKNOWN`, not "steady".
+- [x] Photo/text upload displays a report pin even if AI service fails.
+- [x] Storm replay can enter/exit without contaminating live status.
+- [x] Demo reset returns DEMO-TRAY and the beacon to a clean state (no replay, no demo reports, alarm re-armed).
+- [x] 6 PM briefing mentions STOP WORK sites, mat needs, reports, and missing data, with no invented figures.
 - [ ] (Manual hardware test) Stop the bridge: within 6 seconds the beacon shows `NO LINK` and never shows green.
+
+The ticked items pass in `pytest backend/tests hardware/tests`; `backend/tests/test_readme_acceptance_v1.py` lists which test covers each one. The manual hardware test needs the Uno.
 ### Validation metrics to show judges
  
 - Geographic coverage: `total_sites`, `sites_with_USDA_soil`, `sites_with_weather`, `sites_with_both`, `sites_with_missing`.
 - Freshness distribution: median and oldest `fetched_at` by source.
 - Alert behavior: tested scenarios and override pass count.
 - Photo tagging: actual number labeled, accuracy if credible, examples of incorrect classifications.
-- End-to-end latency: water → accepted sensor reading → UI update → beacon LCD change, and status change → buzzer, measured during rehearsal.
+- End-to-end latency: water → accepted sensor reading → UI update → beacon LCD change, and status change → buzzer, measured during rehearsal (the bridge logs each beacon-caused LCD change and prints a `latency:` summary on exit; see `hardware/calibration.md` §5).
 - ML **only if built:** defined target, temporal train/test split, baseline score, model score; never show invented improvements.
 ### What is real versus simulated?
  
