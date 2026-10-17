@@ -37,6 +37,11 @@ class UnauthorizedError(AppError):
     code = "UNAUTHORIZED"
 
 
+class ForbiddenError(AppError):
+    status_code = 403
+    code = "FORBIDDEN"
+
+
 class NotFoundError(AppError):
     status_code = 404
     code = "NOT_FOUND"

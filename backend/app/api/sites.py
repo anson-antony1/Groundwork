@@ -8,7 +8,7 @@ from ..services import evaluation, reports, site_status
 from ..services.cost import CostAssumptions
 from ..services.mats import resolve_inputs
 from . import mappers
-from .deps import PageParams, page_params
+from .deps import PageParams, page_params, require_role
 from .responses import error_responses, ok, paged
 
 router = APIRouter(prefix="/sites", tags=["sites"])
@@ -29,8 +29,9 @@ def get_site(site_id: str):
     return ok(detail, status.mode, missing_fields=status.missing_fields)
 
 
-@router.post("/{site_id}/evaluate", response_model=Envelope[EvaluationOut], responses=error_responses(404),
-             summary="Compute access, mat range and cost comparison (stateless)")
+@router.post("/{site_id}/evaluate", response_model=Envelope[EvaluationOut],
+             dependencies=[Depends(require_role("supervisor"))], responses=error_responses(401, 403, 404),
+             summary="Compute access, mat range and cost comparison (stateless; supervisor)")
 def evaluate_site(site_id: str, body: EvaluationIn):
     mats, defaults_applied = resolve_inputs(body.vehicle, body.unit, body.model_dump(
         exclude={"vehicle", "unit", "costs"}))

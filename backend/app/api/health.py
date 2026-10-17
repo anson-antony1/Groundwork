@@ -2,6 +2,7 @@ from datetime import datetime
 
 from fastapi import APIRouter
 
+from .. import config
 from .. import repositories as repo
 from ..config import API_VERSION, DEMO_SITE_ID, FIXTURES_DIR
 from ..core.clock import now_utc
@@ -29,6 +30,7 @@ def get_health():
         status="ok",
         version=API_VERSION,
         storage="sqlite",
+        auth="auth0" if config.AUTH_ENABLED else "disabled",
         sites_loaded=len(load_sites()),
         replay_active=replay_active,
         fixtures={name: (FIXTURES_DIR / name).exists() for name in FIXTURES},

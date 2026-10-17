@@ -6,7 +6,7 @@ from ..schemas.requests import DeviceEventIn
 from ..schemas.responses import DeviceEventOut, DisplayOut
 from ..services import devices
 from . import mappers
-from .deps import PageParams, page_params, require_sensor_token
+from .deps import PageParams, page_params, require_role, require_sensor
 from .responses import error_responses, ok, paged
 
 router = APIRouter(prefix="/devices/{device_id}", tags=["devices"])
@@ -19,7 +19,8 @@ def get_display(device_id: str):
     return mappers.display_out(devices.get_display(device_id, now_utc()), now_utc())
 
 
-@router.delete("/crew-flag", response_model=Envelope[DisplayOut], responses=error_responses(404),
+@router.delete("/crew-flag", response_model=Envelope[DisplayOut],
+               dependencies=[Depends(require_role("supervisor"))], responses=error_responses(401, 403, 404),
                summary="Clear a crew flag (supervisor); returns the updated beacon display")
 def clear_crew_flag(device_id: str):
     d = devices.clear_crew_flag(device_id, now_utc())
@@ -27,7 +28,7 @@ def clear_crew_flag(device_id: str):
 
 
 @router.post("/events", status_code=201, response_model=Envelope[DeviceEventOut],
-             dependencies=[Depends(require_sensor_token)], responses=error_responses(400, 401, 404),
+             dependencies=[Depends(require_sensor)], responses=error_responses(400, 401, 404),
              summary="Record a beacon event (ack_touch, crew_flag)")
 def create_event(device_id: str, body: DeviceEventIn):
     rec = devices.record_event(device_id, body.event, body.seq, body.recorded_at, body.mode, now_utc())

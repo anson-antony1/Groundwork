@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Generic, TypeVar
 
 from sqlalchemy import (
-    Column, Engine, Float, Integer, MetaData, String, Table, Text, create_engine, delete, insert, literal_column, select, update,
+    Column, Engine, Float, Integer, MetaData, String, Table, Text, create_engine, delete, insert, inspect, literal_column, select, text, update,
 )
 
 from .records import BriefingRecord, DemoState, MatStaging, PrioritySite, ReadingRecord, ReportRecord
@@ -64,6 +64,8 @@ hazard_reports_table = Table(
     Column("image_path", String),  # filename inside UPLOADS_DIR
     Column("reported_at", String, nullable=False),
     Column("verification", String, nullable=False),
+    Column("reported_by", String),
+    Column("verified_by", String),
 )
 
 briefing_runs_table = Table(
@@ -98,7 +100,20 @@ def make_engine(path: Path) -> Engine:
     path.parent.mkdir(parents=True, exist_ok=True)
     engine = create_engine(f"sqlite:///{path}", connect_args={"check_same_thread": False})
     metadata.create_all(engine)
+    _add_missing_columns(engine)
     return engine
+
+
+def _add_missing_columns(engine: Engine) -> None:
+    """create_all never alters existing tables, so add new nullable columns to older groundwork.db files."""
+    inspector = inspect(engine)
+    with engine.begin() as conn:
+        for table in metadata.sorted_tables:
+            existing = {c["name"] for c in inspector.get_columns(table.name)}
+            for col in table.columns:
+                if col.name not in existing and col.nullable and not col.primary_key:
+                    conn.execute(text(
+                        f'ALTER TABLE "{table.name}" ADD COLUMN "{col.name}" {col.type.compile(engine.dialect)}'))
 
 
 def _iso(value: datetime | None) -> str | None:
