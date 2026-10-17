@@ -5,6 +5,7 @@ from fastapi import APIRouter, Depends, File, Form, UploadFile
 from ..config import MAX_PHOTO_BYTES
 from ..core.clock import now_utc
 from ..schemas.common import Envelope, PageEnvelope, ReportCategory
+from ..schemas.requests import ReportReviewIn
 from ..schemas.responses import ReportOut
 from ..services import reports
 from . import mappers
@@ -37,3 +38,10 @@ def list_reports(page: PageParams = Depends(page_params), site_id: str | None = 
             summary="One crew report")
 def get_report(report_id: str):
     return ok(mappers.report_out(reports.get_report(report_id)), "live")
+
+
+@router.post("/{report_id}/review", response_model=Envelope[ReportOut], responses=error_responses(404),
+             summary="Supervisor confirms or rejects a crew report (optionally correcting its category)")
+def review_report(report_id: str, body: ReportReviewIn):
+    rec = reports.review_report(report_id, body.verification, body.category_user, now_utc())
+    return ok(mappers.report_out(rec), "live")

@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Generic, TypeVar
 
 from sqlalchemy import (
-    Column, Engine, Float, Integer, MetaData, String, Table, Text, create_engine, delete, insert, literal_column, select,
+    Column, Engine, Float, Integer, MetaData, String, Table, Text, create_engine, delete, insert, literal_column, select, update,
 )
 
 from .records import BriefingRecord, DemoState, PrioritySite, ReadingRecord, ReportRecord
@@ -156,6 +156,12 @@ class TableRepository(Generic[R]):
             query = query.limit(limit)
         with self._engine.connect() as conn:
             return [self._to_record(r) for r in conn.execute(query)]
+
+    def save(self, rec: R) -> R:
+        """Overwrite an existing record (matched on id)."""
+        with self._engine.begin() as conn:
+            conn.execute(update(self._table).where(self._col("id") == rec.id).values(self._to_row(rec)))
+        return rec
 
     def clear(self) -> None:
         with self._engine.begin() as conn:

@@ -3,7 +3,7 @@ from typing import Literal
 
 from pydantic import Field, model_validator
 
-from .common import RequestModel, SensorMode, Vehicle
+from .common import ReportCategory, RequestModel, SensorMode, Vehicle
 
 
 class SensorReadingIn(RequestModel):
@@ -66,6 +66,11 @@ class EvaluationIn(RequestModel):
         if (self.override_quantity is None) != (self.override_reason is None):
             raise ValueError("override_quantity and override_reason must be given together")
         return self
+
+
+class ReportReviewIn(RequestModel):
+    verification: Literal["confirmed", "rejected"]
+    category_user: ReportCategory | None = None  # supervisor's corrected category, if any
 
 
 class ReplayIn(RequestModel):

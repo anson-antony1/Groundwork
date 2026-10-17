@@ -24,6 +24,7 @@ export const ENDPOINTS: readonly string[] = [
   "POST /api/v1/replay/start",
   "POST /api/v1/replay/stop",
   "POST /api/v1/reports",
+  "POST /api/v1/reports/{report_id}/review",
   "POST /api/v1/sensors/readings",
   "POST /api/v1/sites/{site_id}/evaluate"
 ]
