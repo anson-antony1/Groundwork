@@ -3,10 +3,11 @@
 
 # --- 1. Build the frontend in live mode -------------------------------------------------------
 FROM node:24-slim AS frontend
-# Render passes service env vars to the build as args. /welcome links to the demo site, and the social
-# card needs this site's own address (Render's RENDER_EXTERNAL_URL when it provides one).
-ARG VITE_DEMO_URL=https://groundwork-demo.onrender.com
-ARG VITE_PUBLIC_URL=https://groundwork.onrender.com
+# Render passes service env vars to the build as args. /welcome links to the demo site (VITE_DEMO_URL,
+# set in the dashboard), and the social card needs this site's own address (RENDER_EXTERNAL_URL).
+# Unset, the link stays on this site and the card tags are left out.
+ARG VITE_DEMO_URL=
+ARG VITE_PUBLIC_URL=
 ARG RENDER_EXTERNAL_URL
 WORKDIR /app/frontend
 COPY frontend/package.json frontend/package-lock.json ./
