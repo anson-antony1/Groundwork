@@ -33,6 +33,7 @@ export const POLICY: Policy = {
   },
   hazard_weights: { rain: 0.25, wind: 0.15, heat: 0.2, flood: 0.2, storm: 0.2 },
   sensor_stale_seconds: SENSOR_STALE_SECONDS,
+  low_light_index_below: 25, // backend/app/services/light.py LOW_LIGHT_BELOW
   // policies/mats_defaults.json (a contract test keeps this copy in step with the file).
   mat_defaults: {
     label: "DEMO DEFAULTS - editable starting values, not engineering ratings. Replace mat size with your vendor's effective coverage.",
@@ -236,19 +237,20 @@ const COST_LABEL = 'Illustrative estimate - edit assumptions. Not guaranteed sav
 const ceil6 = (x: number) => Math.ceil(Math.round(x * 1e6) / 1e6)
 const round2 = (x: number) => Math.round(x * 100) / 100
 
-const ZERO_COSTS: Required<CostInputs> = {
-  mats_rental: 0,
-  delivery: 0,
-  installation: 0,
-  removal: 0,
-  delay_not_prevented: 0,
-  paid_idle_labor: 0,
-  idle_equipment: 0,
-  rescheduling: 0,
-  extra_contract_cost: 0,
-  idle_hours: 0,
-  labor_rate_per_hour: 0,
-  equipment_rate_per_hour: 0,
+// Blank = not entered: reported as null, counted as $0 (backend services/cost.py).
+const BLANK_COSTS: Required<CostInputs> = {
+  mats_rental: null,
+  delivery: null,
+  installation: null,
+  removal: null,
+  delay_not_prevented: null,
+  paid_idle_labor: null,
+  idle_equipment: null,
+  rescheduling: null,
+  extra_contract_cost: null,
+  idle_hours: null,
+  labor_rate_per_hour: null,
+  equipment_rate_per_hour: null,
 }
 
 const FT_PER_M = 3.28084
@@ -318,10 +320,27 @@ export function evaluate(site: SiteView, input: ResolvedEvaluationInput): Evalua
     ...(input.override_quantity !== null ? [`Supervisor override: ${planned} mats (reason: ${input.override_reason})`] : []),
     `Shortfall: max(0, ${planned} planned - ${input.mats_in_inventory} in stock) = ${shortfall}`,
   ]
-  const c: Required<CostInputs> = { ...ZERO_COSTS, ...input.costs }
-  const matsOption = c.mats_rental + c.delivery + c.installation + c.removal + c.delay_not_prevented
-  const postpone = c.paid_idle_labor + c.idle_equipment + c.rescheduling + c.extra_contract_cost + c.idle_hours * (c.labor_rate_per_hour + c.equipment_rate_per_hour)
+  const c: Required<CostInputs> = { ...BLANK_COSTS, ...input.costs }
+  const n = (v: number | null) => v ?? 0
+  const matsOption = n(c.mats_rental) + n(c.delivery) + n(c.installation) + n(c.removal) + n(c.delay_not_prevented)
+  const postpone = n(c.paid_idle_labor) + n(c.idle_equipment) + n(c.rescheduling) + n(c.extra_contract_cost) + n(c.idle_hours) * (n(c.labor_rate_per_hour) + n(c.equipment_rate_per_hour))
   const stop = site.weather_state === 'STOP_WORK'
+  // As in backend/app/services/cost.py: blank items count as $0 and are listed, so the total can't
+  // quietly favor one option. Labor/equipment count as entered via a flat amount or hours x rate.
+  const entered = (key: keyof CostInputs) => input.costs[key] !== undefined && input.costs[key] !== null
+  const hours = entered('idle_hours')
+  const covered: Record<string, boolean> = {
+    mats_rental: entered('mats_rental'),
+    delivery: entered('delivery'),
+    installation: entered('installation'),
+    removal: entered('removal'),
+    delay_not_prevented: entered('delay_not_prevented'),
+    idle_labor: entered('paid_idle_labor') || (hours && entered('labor_rate_per_hour')),
+    idle_equipment: entered('idle_equipment') || (hours && entered('equipment_rate_per_hour')),
+    rescheduling: entered('rescheduling'),
+    extra_contract_cost: entered('extra_contract_cost'),
+  }
+  const notEntered = Object.keys(covered).filter((item) => !covered[item])
   return {
     site_id: site.id,
     vehicle: input.vehicle,
@@ -358,6 +377,8 @@ export function evaluate(site: SiteView, input: ResolvedEvaluationInput): Evalua
       postpone_option: round2(postpone),
       modeled_difference: round2(postpone - matsOption),
       assumptions: c,
+      not_entered: notEntered,
+      complete: notEntered.length === 0,
       label: COST_LABEL,
     },
     notes: stop ? ['STOP WORK active: cost comparison is a planning scenario only, not a recommendation.'] : [],
