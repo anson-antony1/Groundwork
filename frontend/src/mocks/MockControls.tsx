@@ -106,8 +106,9 @@ export default function MockControls() {
         </Btn>
       </Group>
       <Group title="Storm replay (Aashita)">
-        <Btn onClick={() => replay(true)} active={db.demo.replayActive && db.demo.replayScenarioId === 'demo-storm'}>Storm</Btn>
-        <Btn onClick={() => replay(true, 'calm-day')} active={db.demo.replayActive && db.demo.replayScenarioId === 'calm-day'}>Calm day</Btn>
+        {/* scripts/demo-run.js clicks the first button starting with "Start": keep the storm first. */}
+        <Btn onClick={() => replay(true)} active={db.demo.replayActive && db.demo.replayScenarioId === 'demo-storm'}>Start storm</Btn>
+        <Btn onClick={() => replay(true, 'calm-day')} active={db.demo.replayActive && db.demo.replayScenarioId === 'calm-day'}>Start calm day</Btn>
         <Btn onClick={() => replay(false)}>Stop</Btn>
       </Group>
       <Group title="Photo tagger (Rithika)">
