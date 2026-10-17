@@ -192,6 +192,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/replay/scenarios": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Replay scenarios available for the scenario picker */
+        get: operations["list_scenarios_api_v1_replay_scenarios_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/replay/start": {
         parameters: {
             query?: never;
@@ -845,6 +862,27 @@ export interface components {
             /** Sources */
             sources?: string[];
         };
+        /** Envelope[list[ReplayScenarioOut]] */
+        Envelope_list_ReplayScenarioOut__: {
+            /** Data */
+            data: components["schemas"]["ReplayScenarioOut"][];
+            /** Errors */
+            errors?: string[];
+            /**
+             * Generated At
+             * Format: date-time
+             */
+            generated_at: string;
+            /** Missing Fields */
+            missing_fields?: string[];
+            /**
+             * Mode
+             * @enum {string}
+             */
+            mode: "live" | "cached" | "replay" | "simulated" | "sensor_demo" | "sensor_replay";
+            /** Sources */
+            sources?: string[];
+        };
         /** ErrorBody */
         ErrorBody: {
             /** Code */
@@ -1323,6 +1361,25 @@ export interface components {
             source: string | null;
             /** Started At */
             started_at: string | null;
+        };
+        /** ReplayScenarioOut */
+        ReplayScenarioOut: {
+            /** Area */
+            area: string | null;
+            /** Event */
+            event: string;
+            /** Expires */
+            expires: string | null;
+            /** Id */
+            id: string;
+            /** Onset */
+            onset: string | null;
+            /** Reference Url */
+            reference_url: string | null;
+            /** Source */
+            source: string | null;
+            /** Title */
+            title: string;
         };
         /** ReportOut */
         ReportOut: {
@@ -2177,6 +2234,53 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Envelope_ReplayOut_"];
+                };
+            };
+            /** @description Validation failed */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Rate limit exceeded */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unexpected server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    list_scenarios_api_v1_replay_scenarios_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_list_ReplayScenarioOut__"];
                 };
             };
             /** @description Validation failed */

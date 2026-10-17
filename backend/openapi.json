@@ -1091,6 +1091,62 @@
         "title": "Envelope[SiteDetailOut]",
         "type": "object"
       },
+      "Envelope_list_ReplayScenarioOut__": {
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/ReplayScenarioOut"
+            },
+            "title": "Data",
+            "type": "array"
+          },
+          "errors": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Errors",
+            "type": "array"
+          },
+          "generated_at": {
+            "format": "date-time",
+            "title": "Generated At",
+            "type": "string"
+          },
+          "missing_fields": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Missing Fields",
+            "type": "array"
+          },
+          "mode": {
+            "enum": [
+              "live",
+              "cached",
+              "replay",
+              "simulated",
+              "sensor_demo",
+              "sensor_replay"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "sources": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Sources",
+            "type": "array"
+          }
+        },
+        "required": [
+          "mode",
+          "generated_at",
+          "data"
+        ],
+        "title": "Envelope[list[ReplayScenarioOut]]",
+        "type": "object"
+      },
       "ErrorBody": {
         "properties": {
           "code": {
@@ -2441,6 +2497,91 @@
           "started_at"
         ],
         "title": "ReplayOut",
+        "type": "object"
+      },
+      "ReplayScenarioOut": {
+        "properties": {
+          "area": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Area"
+          },
+          "event": {
+            "title": "Event",
+            "type": "string"
+          },
+          "expires": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expires"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "onset": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Onset"
+          },
+          "reference_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reference Url"
+          },
+          "source": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "event",
+          "source",
+          "reference_url",
+          "onset",
+          "expires",
+          "area"
+        ],
+        "title": "ReplayScenarioOut",
         "type": "object"
       },
       "ReportOut": {
@@ -3983,6 +4124,57 @@
           }
         },
         "summary": "Current replay state",
+        "tags": [
+          "replay"
+        ]
+      }
+    },
+    "/api/v1/replay/scenarios": {
+      "get": {
+        "operationId": "list_scenarios_api_v1_replay_scenarios_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_list_ReplayScenarioOut__"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Validation failed"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Rate limit exceeded"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unexpected server error"
+          }
+        },
+        "summary": "Replay scenarios available for the scenario picker",
         "tags": [
           "replay"
         ]

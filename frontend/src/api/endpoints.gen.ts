@@ -12,6 +12,7 @@ export const ENDPOINTS: readonly string[] = [
   "GET /api/v1/health",
   "GET /api/v1/policies",
   "GET /api/v1/replay",
+  "GET /api/v1/replay/scenarios",
   "GET /api/v1/reports",
   "GET /api/v1/reports/{report_id}",
   "GET /api/v1/sensors/{device_id}/history",
