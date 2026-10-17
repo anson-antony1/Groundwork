@@ -33,7 +33,7 @@ Arduino IDE → Library Manager: install **Grove - LCD RGB Backlight**. The kit'
    | `HAS_LCD` | 1 | set 0 if the LCD library is not installed yet |
    | `HAS_LIGHT` | 1 | set 0 if no light sensor on A2 |
    | `BARO_CHIP` | `BARO_SPL` | the kit's SPL07 (also DPS310/SPL06); `BARO_BMP280`, `BARO_BME280`, `BARO_BMP180`, or `BARO_NONE` |
-   | `BUZZER_VOLUME` | 4 | PWM duty on D6, 1–255; 255 is the original full volume (for a loud hall) |
+   | `BUZZER_VOLUME` | 10 | PWM duty on D6, 1–255; 255 is the original full volume (for a loud hall) |
    | `BEEP_MS` | 100 | alarm beep length per second; the original was 300 |
 
    A module switched off is **omitted** from readings, never sent as 0.

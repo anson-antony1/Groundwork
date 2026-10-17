@@ -480,6 +480,8 @@ Avoid `POST /replay/start`, `POST /briefings/generate`, or `/demo/reset` in casu
 - What the test suites really passed today (not just what a handoff memo says).
 
 ## 21. A reliable two-minute demo script
+> **Use README §14.4 on stage.** It is the team's current two-minute script, with who says what and the demo site; this older outline is kept for reference.
+
 **0–20 sec:** “Utilities must plan tomorrow's site access. Weather alone doesn't reveal wet-ground access problems for different vehicle types.”  
 **20–40 sec:** Open the map, click a site, explain sources and timestamps. “These are public demo locations, not a utility's private assignments.”  
 **40–65 sec:** Switch pickup vs heavy truck. Explain Decision A vs Decision B, UNKNOWN and mat calculation.  

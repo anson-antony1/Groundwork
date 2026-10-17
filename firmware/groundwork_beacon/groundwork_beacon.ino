@@ -67,7 +67,7 @@ const uint8_t ANALOG_SAMPLES = 8;
 // Buzzer loudness as PWM duty on D6 (a PWM pin): 255 = full, lower = quieter. Each alarm beep lasts
 // BEEP_MS of every second; shorter also sounds softer. Original firmware: 255 and 300.
 #ifndef BUZZER_VOLUME
-#define BUZZER_VOLUME 4
+#define BUZZER_VOLUME 10
 #endif
 #ifndef BEEP_MS
 #define BEEP_MS 100
