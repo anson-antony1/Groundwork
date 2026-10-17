@@ -15,22 +15,24 @@ pip install -r backend/requirements.txt          # includes pyserial + httpx for
 python hardware/serial_bridge.py --list-ports     # Uno shows as /dev/cu.usbmodem* (macOS)
 ```
 
-Arduino IDE → Library Manager: install **Grove - LCD RGB Backlight**, and for the
-barometer the library matching the chip printed on the board:
+Arduino IDE → Library Manager: install **Grove - LCD RGB Backlight**. The kit's barometer is an
+**SPL07-003** (DPS310 family, product id `0x11` at `0x77`); its driver is built in
+(`spl_baro.h`), so it needs no library. Only for a BMP280 / BME280 / BMP180 module install
 **Grove - Barometer Sensor BMP280**, **…BME280**, or **Grove Barometer Sensor** (BMP180).
 
 ## 2. Flash
 
 1. `firmware/i2c_scan/i2c_scan.ino` → Serial Monitor 115200. Expect `0x3E` (LCD text),
-   `0x62` or `0x30` (LCD backlight), `0x76`/`0x77` (barometer).
+   `0x62` or `0x30` (LCD backlight), `0x76`/`0x77` (barometer). `0x03` and `0x70` also show up
+   with the v4/v5 LCD: they are its backlight chip's reset and all-call addresses, harmless.
 2. `firmware/groundwork_beacon/groundwork_beacon.ino`. Set the switches at the top to what is wired:
 
    | Switch | Default | Set when |
    |---|---|---|
    | `HAS_MOISTURE` | 1 | Tier 1, always |
    | `HAS_LCD` | 1 | set 0 if the LCD library is not installed yet |
-   | `HAS_LIGHT` | 0 | Tier 3: light sensor on A2 |
-   | `BARO_CHIP` | `BARO_NONE` | Tier 3: `BARO_BMP280`, `BARO_BME280` or `BARO_BMP180` |
+   | `HAS_LIGHT` | 1 | set 0 if no light sensor on A2 |
+   | `BARO_CHIP` | `BARO_SPL` | the kit's SPL07 (also DPS310/SPL06); `BARO_BMP280`, `BARO_BME280`, `BARO_BMP180`, or `BARO_NONE` |
 
    A module switched off is **omitted** from readings, never sent as 0.
    Every combination compiles for the Uno (32–51% flash, ≤42% RAM).
@@ -103,6 +105,12 @@ whoever is at the tray before anyone starts one.
 
 Verified end to end against `main` with the fake beacon (below): GO → pour → MATS → NO GO →
 replay STOP (buzzer) → touch → `STOP WORK - ACKD`, still STOP → replay stop → NO GO.
+
+Verified on the real beacon (Oct 17): every module (LCD text and colors, both LEDs, buzzer, touch,
+button, moisture, light, SPL07 pressure 1010.6 hPa / 22.4 °C); probe out of / into water → GO / NO
+GO in 110–710 ms; replay STOP alarm → touch → `ACKD` in 15 ms with `acknowledged_at` on the
+server; long press → `SUPV REVIEW`; bridge stopped → `NO LINK`, never green; USB pulled and
+replugged → `beacon reconnected` in 8 s with no restart. 154 readings, 0 rejected, 0 bad lines.
 
 **Cable pulled or board reset mid-demo:** the bridge logs `beacon disconnected`, keeps running
 (anything already queued still goes to the API) and retries the port every 2 s; plug it back into the same
@@ -177,3 +185,6 @@ LCD, LEDs and buzzer would do. Its lines are flagged, so the bridge posts them a
 | `HTTP 422` | payload rejected by the API contract; run `pytest hardware/tests` (contract test) |
 | Moisture never moves | wrong port (must be A0); `--monitor` while touching the prongs to water |
 | Index jumpy | dry/wet span too small, probe moving, or loose Grove lead |
+| Upload fails `stk500 … protocol error`, or `multiple access on port` | another program holds the port (Serial Monitor, a bridge, or any app that auto-opens serial devices): `lsof /dev/cu.usbmodem*` shows who |
+| An LED stays dark in every state | swap in a spare LED (one of the kit's was dead); check its resistor's two legs share columns with the pin jumper and the LED's long leg; short leg in the strip by the **blue** line |
+| An LED or button stops after moving the cable | a jumper worked loose at the Uno header; push it back in and tape the header row and the USB cable down |
