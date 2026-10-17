@@ -87,6 +87,16 @@ def record_event(device_id: str, event: str, seq: int | None, recorded_at: datet
     return rec
 
 
+def clear_crew_flag(device_id: str, now: datetime) -> Display:
+    """Supervisor resolves a crew flag. Idempotent: clearing an unset flag is a no-op."""
+    site_id = require_device(device_id)
+    if repo.demo_state.get().crew_flag_at is not None:
+        repo.demo_state.update(crew_flag_at=None)
+        timeline.record("crew_flag_cleared", f"Crew flag on {device_id} cleared by supervisor", now, site_id=site_id)
+        log.info("crew flag cleared", extra={"device_id": device_id})
+    return build_display(device_id, site_id, now)
+
+
 def list_device_events(device_id: str) -> list[DeviceEventRecord]:
     require_device(device_id)
     return repo.device_events.list(device_id=device_id)

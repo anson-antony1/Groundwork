@@ -19,6 +19,13 @@ def get_display(device_id: str):
     return mappers.display_out(devices.get_display(device_id, now_utc()), now_utc())
 
 
+@router.delete("/crew-flag", response_model=Envelope[DisplayOut], responses=error_responses(404),
+               summary="Clear a crew flag (supervisor); returns the updated beacon display")
+def clear_crew_flag(device_id: str):
+    d = devices.clear_crew_flag(device_id, now_utc())
+    return ok(mappers.display_out(d, now_utc()), d.mode)
+
+
 @router.post("/events", status_code=201, response_model=Envelope[DeviceEventOut],
              dependencies=[Depends(require_sensor_token)], responses=error_responses(400, 401, 404),
              summary="Record a beacon event (ack_touch, crew_flag)")
