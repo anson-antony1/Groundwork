@@ -6,3 +6,9 @@ __pycache__/
 *.db
 backend/uploads/
 node_modules/
+
+.env
+.env.bak
+.DS_Store
+__pycache__/
+*.pyc
