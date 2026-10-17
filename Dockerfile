@@ -22,6 +22,7 @@ RUN VITE_API_MODE=live VITE_HOSTED=1 VITE_PUBLIC_URL="${RENDER_EXTERNAL_URL:-$VI
 
 # --- 2. Run the backend and serve the build ---------------------------------------------------
 FROM python:3.12-slim
+# GROUNDWORK_REFRESH_WEATHER=1: deploy/bootstrap.py refreshes the weather and hazard snapshots while awake.
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     GROUNDWORK_REFRESH_WEATHER=1
