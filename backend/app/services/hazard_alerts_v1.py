@@ -1,5 +1,5 @@
 """Alert classification v1: informational marine advisories stay visible but do not raise CAUTION."""
-INFORMATIONAL_TERMS = ("surf", "rip current", "beach hazards")
+INFORMATIONAL_TERMS = ("surf", "rip current", "beach hazards", "frost advisory", "freeze warning", "freeze watch")
 
 
 def classify_alerts_v1(events: list[str], policy: dict) -> tuple[str, list[str]]:
