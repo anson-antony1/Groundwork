@@ -12,7 +12,7 @@ Nothing under `backend/` changes. [`deploy/asgi.py`](asgi.py) imports `backend.a
 ## One-time setup
 
 1. **Repo access:** Anson (repo owner) installs the Render GitHub app on `anson-antony1/Groundwork`, or makes Rishi an admin.
-2. **Create the services:** In Render, choose **New → Blueprint** and pick the repo. Render reads `render.yaml` and creates both services on the `ui` branch.
+2. **Create the services:** In Render, choose **New → Blueprint**, then pick the repo and the `main` branch. Render reads `render.yaml` and creates both services, which deploy from `main`.
 3. **Gemini key:** When Render asks for `GEMINI_API_KEY`, paste a **new** key with a quota cap. The old keys were exposed (HANDOFF_v4). Without a key, briefings fall back to the template summary.
 4. **Sensor token:** Render generates `GROUNDWORK_SENSOR_TOKEN`. The **Reset demo** dialog asks for it, and you can copy it from the service's Environment tab. The code default (`dev-sensor-token`) is public, which is why it's replaced.
 5. **Link the two sites:** Render chooses the hostnames, and `groundwork.onrender.com` belongs to someone else. After the first deploy, copy each service's URL from its dashboard page, then set (Environment tab, no trailing slash):
@@ -20,7 +20,7 @@ Nothing under `backend/` changes. [`deploy/asgi.py`](asgi.py) imports `backend.a
    - on `groundwork-demo`: `VITE_LIVE_URL` = the live app's URL.
 
    Saving starts a new build. Until then, `/welcome` hides the live-system chip and its beacon link stays on the same site. The social card uses the site's own address, which Render provides as `RENDER_EXTERNAL_URL`; set `VITE_PUBLIC_URL` if the card is missing.
-6. **Switch branches after the merge:** Once the PR merges, change both services' branch to `main` in the dashboard, or edit `branch:` in `render.yaml`.
+6. **Deploys:** Both services rebuild on every push to `main`, including merged PRs. Each deploy restarts the live app and resets its data (see Resets below), so hold merges while judges are using it. The current Blueprint was created from `ui`, so Render reads `render.yaml` there; bring changes to that file into `ui` too.
 
 ## What to expect on the free plan
 
