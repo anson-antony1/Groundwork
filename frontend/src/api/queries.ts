@@ -66,8 +66,9 @@ export function useDisplay(deviceId = DEMO_DEVICE_ID, intervalMs = 1_000, enable
 }
 
 /** Latest beacon reading, or null when the device hasn't sent one yet (the API answers 404). */
-export function useLatestReading(deviceId = DEMO_DEVICE_ID) {
+export function useLatestReading(deviceId = DEMO_DEVICE_ID, enabled = true) {
   return useQuery({
+    enabled,
     queryKey: qk.latestReading(deviceId),
     queryFn: async ({ signal }) => {
       try {

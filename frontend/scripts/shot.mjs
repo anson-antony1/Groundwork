@@ -1,10 +1,11 @@
 // Screenshot a page at an exact viewport through Chrome's DevTools protocol.
 // Plain `chrome --headless --screenshot` can't go below 500 px wide or emulate browser zoom; this can.
 //
-//   node scripts/shot.mjs <url> <out.png> [--size 1920x1080] [--scale 1.25] [--mobile] [--full] [--wait 2500]
+//   node scripts/shot.mjs <url> <out.png> [--size 1920x1080] [--scale 1.25] [--mobile] [--full] [--wait 2500] [--eval 'js'] [--after 800]
 //
 // --scale emulates browser zoom (1440x900 at 125% zoom ≈ --size 1152x720 --scale 1.25).
 // --mobile emulates a touch phone. --full captures the whole page height.
+// --eval runs JS in the page after loading (scroll <main>, click a button), then waits --after ms.
 // Set CHROME=/path/to/chrome if Chrome isn't in the default macOS location.
 import { spawn } from 'node:child_process'
 import { mkdtempSync, rmSync, writeFileSync } from 'node:fs'
@@ -12,7 +13,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
 const args = process.argv.slice(2)
-const [url, out] = args.filter((a, i) => !a.startsWith('--') && !args[i - 1]?.match(/^--(size|scale|wait)$/))
+const [url, out] = args.filter((a, i) => !a.startsWith('--') && !args[i - 1]?.match(/^--(size|scale|wait|eval|after)$/))
 if (!url || !out) {
   console.error('usage: node scripts/shot.mjs <url> <out.png> [--size WxH] [--scale N] [--mobile] [--full] [--wait ms]')
   process.exit(2)
@@ -26,6 +27,8 @@ const scale = Number(opt('scale', '1'))
 const waitMs = Number(opt('wait', '2500'))
 const mobile = args.includes('--mobile')
 const full = args.includes('--full')
+const script = opt('eval', null)
+const afterMs = Number(opt('after', '800'))
 
 const CHROME = process.env.CHROME ?? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 const port = 9300 + Math.floor(Math.random() * 500)
@@ -85,6 +88,11 @@ try {
   await send('Page.navigate', { url })
   for (let i = 0; i < 100 && !events.includes('Page.loadEventFired'); i++) await sleep(100)
   await sleep(waitMs)
+  if (script) {
+    const result = await send('Runtime.evaluate', { expression: script, awaitPromise: true })
+    if (result.exceptionDetails) console.error('eval failed:', result.exceptionDetails.text)
+    await sleep(afterMs)
+  }
 
   let clip
   if (full) {

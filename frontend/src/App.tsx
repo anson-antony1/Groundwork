@@ -9,6 +9,7 @@ import { loadMockControls } from './api/transport'
 import { AppShell } from './components/AppShell'
 import { Card } from './components/Card'
 import { OpsMapScreen } from './screens/ops-map/OpsMapScreen'
+import { SiteDetailScreen } from './screens/site-detail/SiteDetailScreen'
 import { StyleScreen } from './screens/style/StyleScreen'
 import { DemoUiProvider } from './state/DemoUiProvider'
 
@@ -50,9 +51,7 @@ export function App() {
           <AppShell>
             <Switch>
               <Route path="/" component={OpsMapScreen} />
-              <Route path="/sites/:siteId">
-                <Pending title="Site detail" checkpoint={2} />
-              </Route>
+              <Route path="/sites/:siteId">{(params) => <SiteDetailScreen key={params.siteId} siteId={params.siteId} />}</Route>
               <Route path="/sensor-lab">
                 <Pending title="Sensor lab" checkpoint={4} />
               </Route>
