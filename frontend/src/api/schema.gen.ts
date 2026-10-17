@@ -431,6 +431,11 @@ export interface components {
             /** Crew Report Followups */
             crew_report_followups: components["schemas"]["ReportOut"][];
             /**
+             * Deterministic Summary
+             * @description The template summary built from the facts, kept even when `summary` is an LLM narrative
+             */
+            deterministic_summary?: string | null;
+            /**
              * Generated At
              * Format: date-time
              */
@@ -1283,6 +1288,13 @@ export interface components {
         /** PolicyOut */
         PolicyOut: {
             demo_tray_access: components["schemas"]["DemoTrayAccessOut"];
+            /**
+             * Hazard Policy
+             * @description The live hazard rules: points per factor, CAUTION/STOP_WORK thresholds, stop-work alert terms
+             */
+            hazard_policy?: {
+                [key: string]: unknown;
+            } | null;
             hazard_weights: components["schemas"]["HazardWeightsOut"];
             /** Label */
             label: string;
@@ -1491,6 +1503,11 @@ export interface components {
             name: string;
             /** Observations */
             observations: components["schemas"]["ObservationOut"][];
+            /**
+             * Priority Rank
+             * @description Position in the 6 PM briefing's ranking across all sites (1 = most urgent); list only
+             */
+            priority_rank?: number | null;
             /** Region */
             region: string | null;
             /** Reports */
@@ -1535,6 +1552,11 @@ export interface components {
             name: string;
             /** Observations */
             observations: components["schemas"]["ObservationOut"][];
+            /**
+             * Priority Rank
+             * @description Position in the 6 PM briefing's ranking across all sites (1 = most urgent); list only
+             */
+            priority_rank?: number | null;
             /** Region */
             region: string | null;
             /**
