@@ -1,0 +1,49 @@
+{
+  "is_demo": true,
+  "demo_notice": "DEMO DATA - not real sites or real weather. Replace with Rishi's backend output.",
+  "generated_at": "2026-10-16T18:00:00-04:00",
+  "target_date": "2026-10-17",
+  "sites": [
+    {
+      "id": "demo-001",
+      "name": "DEMO Substation Alpha",
+      "hazard_score": 8.2,
+      "verdict": "NO-GO",
+      "weather_alerts": ["Flood watch 2 AM - 10 AM"],
+      "contributing_factors": ["1.8 in rain forecast", "clay-heavy soil", "soil moisture 0.41 and rising"],
+      "mat_estimate": {"mats": 24, "vehicle": "tracked carrier"},
+      "data_quality_flags": [],
+      "scenarios": [
+        {"label": "low rain", "hazard_score": 6.9, "verdict": "CAUTION"},
+        {"label": "forecast", "hazard_score": 8.2, "verdict": "NO-GO"},
+        {"label": "high rain", "hazard_score": 9.1, "verdict": "NO-GO"}
+      ]
+    },
+    {
+      "id": "demo-002",
+      "name": "DEMO Pole Line Bravo",
+      "hazard_score": 4.6,
+      "verdict": "CAUTION",
+      "weather_alerts": [],
+      "contributing_factors": ["0.6 in rain forecast", "loamy soil"],
+      "mat_estimate": {"mats": 8, "vehicle": "4x4 bucket truck"},
+      "data_quality_flags": ["soil data from nearest county average"],
+      "scenarios": [
+        {"label": "low rain", "hazard_score": 3.1, "verdict": "GO"},
+        {"label": "forecast", "hazard_score": 4.6, "verdict": "CAUTION"},
+        {"label": "high rain", "hazard_score": 6.4, "verdict": "CAUTION"}
+      ]
+    },
+    {
+      "id": "demo-003",
+      "name": "DEMO Feeder Charlie",
+      "hazard_score": 1.4,
+      "verdict": "GO",
+      "weather_alerts": [],
+      "contributing_factors": ["dry forecast", "sandy soil"],
+      "mat_estimate": {"mats": 0, "vehicle": "standard bucket truck"},
+      "data_quality_flags": [],
+      "scenarios": []
+    }
+  ]
+}

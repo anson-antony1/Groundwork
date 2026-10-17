@@ -1,0 +1,4 @@
+id,name,lat,lon,soft_ground_length_ft
+demo-001,DEMO Site A (replace),30.1000,-81.8000,200
+demo-002,DEMO Site B (replace),29.6500,-82.3400,100
+demo-003,DEMO Site C (replace),28.5400,-81.3800,60
