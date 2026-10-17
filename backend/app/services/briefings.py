@@ -7,18 +7,13 @@ from .. import repositories as repo
 from ..core.errors import NotFoundError
 from ..repositories.records import BriefingRecord, PrioritySite
 from . import timeline
-from .site_status import SiteStatus, list_statuses, portfolio_mode, priority_key
+from .site_status import list_statuses, portfolio_mode
 
 from . import narration
 
 log = logging.getLogger("groundwork.briefings")
 
 TOP_N = 10
-
-
-def priority_ranks(statuses: list[SiteStatus]) -> dict[str, int]:
-    """1-based rank of every site in briefing order, so the map list and the 6 PM brief agree."""
-    return {s.site.id: i for i, s in enumerate(sorted(statuses, key=priority_key), start=1)}
 
 
 def generate_briefing(now: datetime) -> BriefingRecord:

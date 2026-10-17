@@ -3091,16 +3091,23 @@
             "type": "array"
           },
           "mode": {
-            "enum": [
-              "live",
-              "cached",
-              "replay",
-              "simulated",
-              "sensor_demo",
-              "sensor_replay"
+            "anyOf": [
+              {
+                "enum": [
+                  "live",
+                  "cached",
+                  "replay",
+                  "simulated",
+                  "sensor_demo",
+                  "sensor_replay"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
             ],
-            "title": "Mode",
-            "type": "string"
+            "title": "Mode"
           },
           "name": {
             "title": "Name",
@@ -3123,7 +3130,7 @@
                 "type": "null"
               }
             ],
-            "description": "Position in the 6 PM briefing's ranking across all sites (1 = most urgent); list only",
+            "description": "Rank across all sites, 1 = most urgent; same order as the 6 PM briefing",
             "title": "Priority Rank"
           },
           "reasons": {
@@ -3179,7 +3186,6 @@
           "observations",
           "missing_fields",
           "evaluated_at",
-          "mode",
           "reports"
         ],
         "title": "SiteDetailOut",
@@ -3276,16 +3282,23 @@
             "type": "array"
           },
           "mode": {
-            "enum": [
-              "live",
-              "cached",
-              "replay",
-              "simulated",
-              "sensor_demo",
-              "sensor_replay"
+            "anyOf": [
+              {
+                "enum": [
+                  "live",
+                  "cached",
+                  "replay",
+                  "simulated",
+                  "sensor_demo",
+                  "sensor_replay"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
             ],
-            "title": "Mode",
-            "type": "string"
+            "title": "Mode"
           },
           "name": {
             "title": "Name",
@@ -3308,7 +3321,7 @@
                 "type": "null"
               }
             ],
-            "description": "Position in the 6 PM briefing's ranking across all sites (1 = most urgent); list only",
+            "description": "Rank across all sites, 1 = most urgent; same order as the 6 PM briefing",
             "title": "Priority Rank"
           },
           "reasons": {
@@ -3356,8 +3369,7 @@
           "data_status",
           "observations",
           "missing_fields",
-          "evaluated_at",
-          "mode"
+          "evaluated_at"
         ],
         "title": "SiteOut",
         "type": "object"

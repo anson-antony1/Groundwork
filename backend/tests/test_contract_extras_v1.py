@@ -31,8 +31,9 @@ def test_filtered_list_keeps_global_ranks(client):
     assert max(s["priority_rank"] for s in stopped) == len(stopped)  # STOP WORK ranks first
 
 
-def test_site_detail_has_no_rank(client):
-    assert client.get("/api/v1/sites/SITE-001").json()["data"]["priority_rank"] is None
+def test_site_detail_rank_matches_the_list(client):
+    ranks = {s["id"]: s["priority_rank"] for s in all_sites(client)}
+    assert client.get("/api/v1/sites/SITE-001").json()["data"]["priority_rank"] == ranks["SITE-001"]
 
 
 def test_template_briefing_reports_itself(client, monkeypatch):

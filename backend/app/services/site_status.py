@@ -163,8 +163,8 @@ def list_statuses(now: datetime, weather_state: str | None = None) -> list[SiteS
 
 
 def get_status(site_id: str, now: datetime) -> SiteStatus:
-    # Detail carries no priority_rank (list only), so only this one site is evaluated.
-    return evaluate_status(require_site(site_id), now)
+    require_site(site_id)  # 404 before ranking every site
+    return next(s for s in list_statuses(now) if s.site.id == site_id)
 
 
 def portfolio_mode() -> str:
