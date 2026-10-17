@@ -2694,6 +2694,11 @@
             "title": "Label",
             "type": "string"
           },
+          "low_light_index_below": {
+            "description": "Demo-site low-light advisory threshold (0-100 light index)",
+            "title": "Low Light Index Below",
+            "type": "number"
+          },
           "mat_defaults": {
             "$ref": "#/components/schemas/MatDefaultsOut"
           },
@@ -2707,6 +2712,7 @@
           "demo_tray_access",
           "hazard_weights",
           "sensor_stale_seconds",
+          "low_light_index_below",
           "mat_defaults"
         ],
         "title": "PolicyOut",
@@ -3425,6 +3431,14 @@
           "access_call": {
             "$ref": "#/components/schemas/VehicleAccessOut"
           },
+          "advisories": {
+            "description": "Informational notes (e.g. low light at the demo site); never change a status",
+            "items": {
+              "type": "string"
+            },
+            "title": "Advisories",
+            "type": "array"
+          },
           "alert_events": {
             "items": {
               "type": "string"
@@ -3615,6 +3629,14 @@
         "properties": {
           "access_call": {
             "$ref": "#/components/schemas/VehicleAccessOut"
+          },
+          "advisories": {
+            "description": "Informational notes (e.g. low light at the demo site); never change a status",
+            "items": {
+              "type": "string"
+            },
+            "title": "Advisories",
+            "type": "array"
           },
           "alert_events": {
             "items": {

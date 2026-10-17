@@ -91,6 +91,8 @@ class SiteOut(BaseModel):
     hazard_subscores: HazardSubscoresOut | None = None
     alerts: list[WeatherAlertOut] = Field(default_factory=list)
     reasons: CallReasonsOut | None = None
+    advisories: list[str] = Field(default_factory=list,
+                                  description="Informational notes (e.g. low light at the demo site); never change a status")
 
 
 class ReportOut(BaseModel):
@@ -355,4 +357,5 @@ class PolicyOut(BaseModel):
     hazard_policy: dict[str, Any] | None = Field(
         None, description="The live hazard rules: points per factor, CAUTION/STOP_WORK thresholds, stop-work alert terms")
     sensor_stale_seconds: int
+    low_light_index_below: float = Field(description="Demo-site low-light advisory threshold (0-100 light index)")
     mat_defaults: MatDefaultsOut

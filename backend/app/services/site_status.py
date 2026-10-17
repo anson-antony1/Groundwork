@@ -4,7 +4,7 @@ from datetime import datetime
 
 from .. import repositories as repo
 from ..config import DEMO_DEVICE_ID, DEMO_SITE_ID
-from . import site_insights
+from . import light, site_insights
 from .access import demo_tray_access
 from .display import fresh_reading
 from .hazard import assess
@@ -31,6 +31,7 @@ class SiteStatus:
     alert_events: tuple[str, ...] = ()
     hazard_subscores: dict | None = None
     alerts: tuple[dict, ...] = ()
+    advisories: tuple[str, ...] = ()  # informational notes (e.g. low light); never change a status
     reasons: dict | None = None
     priority_rank: int | None = None  # set by list_statuses / get_status across all sites
 
@@ -149,6 +150,7 @@ def evaluate_status(site: Site, now: datetime) -> SiteStatus:
         hazard_subscores=sub,
         alerts=alerts,
         reasons=reasons,
+        advisories=light.advisories(reading) if is_demo else (),
     )
 
 
