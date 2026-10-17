@@ -189,20 +189,19 @@ Sperry's brief for this event ("PlanIT Control") asked for four things the first
 
 **Wildlife.** For each site we count American alligator sightings within 10 km in the last 30 days from iNaturalist, a community wildlife app. It's a "brief the crew" note only, labelled unverified, and never changes a status. At the Oct 17 fetch: 72 sites had sightings (81 near the UF venue itself).
 
-**Update (Oct 17, evening):** the site page now shows the *learned STOP-WORK forecast* (`backend/ml/`, README §8): trained on archived forecasts and real NWS alerts at all 300 sites, it scores AUC 0.85 vs 0.78 for the rules on a held-out year, and beats the NOAA model below on both models' targets. The NOAA model's line appears only where that model has no prediction. Its description below is still accurate.
+**ML forecast (brief item 6).** The site page's *Learned forecast* panel gives the chance that a real NWS alert of a STOP-WORK type (the same list our rules use) covers the site during working hours tomorrow, next to the usual rate for that site, with the factors that raised it (*"forecast gusts raises the risk"*). It is a logistic regression (`backend/ml/`, README §8) trained on Open-Meteo's archived forecasts and real NWS alerts at all 300 sites, Jul 2023 to Jun 2025, and tested on Jul 2025 to Jun 2026, a year it never saw:
 
-**ML forecast (brief item 6).** A small machine-learning model (logistic regression) learned from 2023–24 history: NOAA's Storm Events database says when a real storm or flood (thunderstorm wind, hail, lightning, tornado, flash flood, flood, heavy rain) happened within 25 km of a site, and Open-Meteo says what the weather was. Each site now gets a line like *"ML forecast: 7.8/10 (riskier than 78% of past site-days; 5% chance …)"* next to the rule-based score. It was tested on 2025, a year it never saw:
-
-| 2025 test (AUC: 1.0 = perfect ranking, 0.5 = coin flip) | ML forecast | Our rules |
+| Held-out year (AUC: 1.0 = perfect ranking, 0.5 = coin flip) | Learned forecast | Our rules |
 |---|---|---|
-| All test sites | **0.877** | 0.831 |
-| Nationwide sites | **0.902** | 0.827 |
-| Florida demo sites | 0.871 | **0.899** |
+| All 300 sites | **0.85** | 0.78 |
+| Other states (240 sites) | **0.87** | 0.77 |
+| Florida (60 sites) | 0.80 | 0.81 |
 
-- **It's more than "summer is stormy":** guessing from the month alone scores 0.745; within the same month the model still scores 0.835.
-- **Its flagged days are a weak but real signal:** of the 5% of days it rated riskiest, 13% had an actual event (6.5× the normal 2%), and those days caught a third of all events.
-- **Say this plainly to judges:** *"Nationwide it beats our rules; on our Florida sites the simple rules do better. That's why it's advisory and the rules decide STOP WORK."*
-- **Limits:** heat isn't in the labels (heat events have no coordinates); it learned from actual past weather but runs on forecasts, so live accuracy is lower; 60 of the 300 sites were used (free data-limit).
+- **Its warnings are more often right:** of the 10% of site-days it rates riskiest, those days hold 52% of all STOP-WORK days (our rules: 40%). Flagging as many days as our CAUTION call, it is right 37% of the time vs 30%.
+- **Say this plainly to judges:** *"Nationwide it beats our rules; on our Florida sites it only ties them, because summer storms come nearly every afternoon. That's why it's advisory and the rules decide STOP WORK."*
+- **Limits:** the label is "an alert was issued", not "work was unsafe"; archived forecasts are short-range, so live accuracy will be a little lower; the Hurricane Milton replay day is inside the training years, so the replay shows an in-sample prediction. Full report: `backend/ml/EVALUATION.md`.
+
+**A second model, as the fallback.** Anson's NOAA model (`policies/ml_hazard_model_v1.json`) predicts a different target: a NOAA Storm Events storm or flood report within 25 km. Scored on the same held-out year it reaches 0.82 on the STOP-WORK label (learned forecast 0.85) and 0.89 on its own target (learned forecast 0.90), so the learned forecast is the one shown. The NOAA model's one-line forecast appears only where the learned forecast has no prediction.
 
 ## 8. What are ground mats, and why show money?
 **Ground protection mats** are portable panels laid along a soft access path so vehicles can distribute load and protect the ground. Mats can be useful in some situations, but they **cannot make an unsafe storm safe**, and a mat recommendation is not an engineering load rating.
@@ -371,7 +370,7 @@ Ranked enhancements:
 | n8n email | button | latest briefing emailed | Fill | email timestamp |
 | MCP follow-up | Claude asks about site | correct API result | Fill | Claude result |
 | Lightning report | crew report at the venue | STOP_WORK + beacon counts down from 30:00; new report restarts it | verified on the live API Oct 17 | `hardware/check_countdown_v1.py` output |
-| ML forecast | 2025 holdout | AUC 0.877 overall, rules better on Florida sites | measured Oct 17 | `policies/ml_hazard_model_v1.json` metrics |
+| ML forecast (learned) | held-out year, Jul 2025 to Jun 2026 | AUC 0.85 vs 0.78 for the rules; ties them on Florida sites (0.80 vs 0.81) | measured Oct 17 | `backend/ml/EVALUATION.md` |
 
 ## 18. The actual repo status: what you can and cannot claim
 As of the reviewed `main` code:
