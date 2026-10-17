@@ -30,19 +30,22 @@ class DeviceEventIn(RequestModel):
 
 
 class CostInputs(RequestModel):
-    """Supervisor-entered assumptions. Nothing here is a real price."""
-    mats_rental: float = Field(0, ge=0)
-    delivery: float = Field(0, ge=0)
-    installation: float = Field(0, ge=0)
-    removal: float = Field(0, ge=0)
-    delay_not_prevented: float = Field(0, ge=0)
-    paid_idle_labor: float = Field(0, ge=0)
-    idle_equipment: float = Field(0, ge=0)
-    rescheduling: float = Field(0, ge=0)
-    extra_contract_cost: float = Field(0, ge=0)
-    idle_hours: float = Field(0, ge=0)
-    labor_rate_per_hour: float = Field(0, ge=0)
-    equipment_rate_per_hour: float = Field(0, ge=0)
+    """Supervisor-entered assumptions. Nothing here is a real price.
+
+    Leave a field out (or null) when it wasn't entered: it counts as $0 but is listed in
+    cost_comparison.not_entered. Send 0 only when the cost really is zero."""
+    mats_rental: float | None = Field(None, ge=0)
+    delivery: float | None = Field(None, ge=0)
+    installation: float | None = Field(None, ge=0)
+    removal: float | None = Field(None, ge=0)
+    delay_not_prevented: float | None = Field(None, ge=0)
+    paid_idle_labor: float | None = Field(None, ge=0)
+    idle_equipment: float | None = Field(None, ge=0)
+    rescheduling: float | None = Field(None, ge=0)
+    extra_contract_cost: float | None = Field(None, ge=0)
+    idle_hours: float | None = Field(None, ge=0)
+    labor_rate_per_hour: float | None = Field(None, ge=0)
+    equipment_rate_per_hour: float | None = Field(None, ge=0)
 
 
 class EvaluationIn(RequestModel):

@@ -147,6 +147,9 @@ class CostComparisonOut(BaseModel):
     postpone_option: float
     modeled_difference: float
     assumptions: CostInputs
+    not_entered: list[str] = Field(default_factory=list,
+                                   description="Cost items left blank and counted as $0 (labels assumed values, P9)")
+    complete: bool = Field(description="True when every cost item was entered")
     label: str
 
 
