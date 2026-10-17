@@ -1,0 +1,488 @@
+{
+  "scenario_id": "milton-2024",
+  "source": "Hurricane Milton, forecast day 2024-10-09 (landfall evening of Oct 9). Rain, gust and apparent-temperature values are real Open-Meteo archive data. The NWS hurricane warning is SIMULATED because historical alerts are not available from the live alerts API.",
+  "storm_day": "2024-10-09",
+  "simulated_alert": "Hurricane Warning (SIMULATED)",
+  "sites": {
+    "SITE-001": {
+      "rain_forecast": 70.0,
+      "gust_forecast": 96.8,
+      "apparent_temp": 27.6,
+      "rain_7d": 99.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-002": {
+      "rain_forecast": 70.0,
+      "gust_forecast": 96.8,
+      "apparent_temp": 27.6,
+      "rain_7d": 99.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-003": {
+      "rain_forecast": 70.0,
+      "gust_forecast": 96.8,
+      "apparent_temp": 27.6,
+      "rain_7d": 99.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-004": {
+      "rain_forecast": 78.2,
+      "gust_forecast": 92.5,
+      "apparent_temp": 27.9,
+      "rain_7d": 99.2,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-005": {
+      "rain_forecast": 79.2,
+      "gust_forecast": 96.5,
+      "apparent_temp": 27.6,
+      "rain_7d": 94.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-006": {
+      "rain_forecast": 78.2,
+      "gust_forecast": 92.5,
+      "apparent_temp": 27.9,
+      "rain_7d": 99.2,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-007": {
+      "rain_forecast": 80.8,
+      "gust_forecast": 88.2,
+      "apparent_temp": 28.1,
+      "rain_7d": 94.6,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-008": {
+      "rain_forecast": 80.8,
+      "gust_forecast": 88.2,
+      "apparent_temp": 28.1,
+      "rain_7d": 94.6,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-009": {
+      "rain_forecast": 82.5,
+      "gust_forecast": 87.5,
+      "apparent_temp": 28.1,
+      "rain_7d": 101.2,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-010": {
+      "rain_forecast": 73.6,
+      "gust_forecast": 94.3,
+      "apparent_temp": 28.3,
+      "rain_7d": 100.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-011": {
+      "rain_forecast": 85.2,
+      "gust_forecast": 88.9,
+      "apparent_temp": 28.1,
+      "rain_7d": 108.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-012": {
+      "rain_forecast": 85.2,
+      "gust_forecast": 88.9,
+      "apparent_temp": 28.1,
+      "rain_7d": 108.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-013": {
+      "rain_forecast": 85.2,
+      "gust_forecast": 88.9,
+      "apparent_temp": 28.1,
+      "rain_7d": 108.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-014": {
+      "rain_forecast": 74.4,
+      "gust_forecast": 96.5,
+      "apparent_temp": 27.7,
+      "rain_7d": 91.7,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-015": {
+      "rain_forecast": 106.2,
+      "gust_forecast": 107.6,
+      "apparent_temp": 27.5,
+      "rain_7d": 86.4,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-016": {
+      "rain_forecast": 106.2,
+      "gust_forecast": 107.6,
+      "apparent_temp": 27.5,
+      "rain_7d": 86.4,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-017": {
+      "rain_forecast": 115.6,
+      "gust_forecast": 136.8,
+      "apparent_temp": 26.8,
+      "rain_7d": 78.7,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-018": {
+      "rain_forecast": 79.2,
+      "gust_forecast": 96.5,
+      "apparent_temp": 27.6,
+      "rain_7d": 94.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-019": {
+      "rain_forecast": 86.4,
+      "gust_forecast": 105.1,
+      "apparent_temp": 27.5,
+      "rain_7d": 85.7,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-020": {
+      "rain_forecast": 67.5,
+      "gust_forecast": 96.5,
+      "apparent_temp": 27.5,
+      "rain_7d": 95.3,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-021": {
+      "rain_forecast": 44.0,
+      "gust_forecast": 56.5,
+      "apparent_temp": 26.0,
+      "rain_7d": 37.6,
+      "hazard_score": 5.1,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-022": {
+      "rain_forecast": 70.0,
+      "gust_forecast": 96.8,
+      "apparent_temp": 27.6,
+      "rain_7d": 99.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-023": {
+      "rain_forecast": 83.1,
+      "gust_forecast": 105.1,
+      "apparent_temp": 27.5,
+      "rain_7d": 85.1,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-024": {
+      "rain_forecast": 83.1,
+      "gust_forecast": 105.1,
+      "apparent_temp": 27.5,
+      "rain_7d": 85.1,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-025": {
+      "rain_forecast": 88.7,
+      "gust_forecast": 85.7,
+      "apparent_temp": 28.2,
+      "rain_7d": 102.0,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-026": {
+      "rain_forecast": 91.0,
+      "gust_forecast": 87.5,
+      "apparent_temp": 27.8,
+      "rain_7d": 111.0,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-027": {
+      "rain_forecast": 74.4,
+      "gust_forecast": 103.7,
+      "apparent_temp": 27.3,
+      "rain_7d": 88.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-028": {
+      "rain_forecast": 70.0,
+      "gust_forecast": 96.8,
+      "apparent_temp": 27.6,
+      "rain_7d": 99.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-029": {
+      "rain_forecast": 71.2,
+      "gust_forecast": 94.3,
+      "apparent_temp": 28.0,
+      "rain_7d": 101.7,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-030": {
+      "rain_forecast": 72.0,
+      "gust_forecast": 95.8,
+      "apparent_temp": 28.4,
+      "rain_7d": 92.1,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-031": {
+      "rain_forecast": 74.4,
+      "gust_forecast": 96.5,
+      "apparent_temp": 27.7,
+      "rain_7d": 91.7,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-032": {
+      "rain_forecast": 71.2,
+      "gust_forecast": 94.3,
+      "apparent_temp": 28.0,
+      "rain_7d": 101.7,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-033": {
+      "rain_forecast": 83.1,
+      "gust_forecast": 105.1,
+      "apparent_temp": 27.5,
+      "rain_7d": 85.1,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-034": {
+      "rain_forecast": 79.2,
+      "gust_forecast": 96.5,
+      "apparent_temp": 27.6,
+      "rain_7d": 94.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-035": {
+      "rain_forecast": 79.2,
+      "gust_forecast": 96.5,
+      "apparent_temp": 27.6,
+      "rain_7d": 94.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-036": {
+      "rain_forecast": 78.2,
+      "gust_forecast": 92.5,
+      "apparent_temp": 27.9,
+      "rain_7d": 99.2,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-037": {
+      "rain_forecast": 78.2,
+      "gust_forecast": 92.5,
+      "apparent_temp": 27.9,
+      "rain_7d": 99.2,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-038": {
+      "rain_forecast": 78.2,
+      "gust_forecast": 92.5,
+      "apparent_temp": 27.9,
+      "rain_7d": 99.2,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-039": {
+      "rain_forecast": 78.2,
+      "gust_forecast": 92.5,
+      "apparent_temp": 27.9,
+      "rain_7d": 99.2,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-040": {
+      "rain_forecast": 78.2,
+      "gust_forecast": 92.5,
+      "apparent_temp": 27.9,
+      "rain_7d": 99.2,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-041": {
+      "rain_forecast": 81.8,
+      "gust_forecast": 89.6,
+      "apparent_temp": 27.8,
+      "rain_7d": 106.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-042": {
+      "rain_forecast": 81.8,
+      "gust_forecast": 89.6,
+      "apparent_temp": 27.8,
+      "rain_7d": 106.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-043": {
+      "rain_forecast": 71.2,
+      "gust_forecast": 94.3,
+      "apparent_temp": 28.0,
+      "rain_7d": 101.7,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-044": {
+      "rain_forecast": 71.2,
+      "gust_forecast": 94.3,
+      "apparent_temp": 28.0,
+      "rain_7d": 101.7,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-045": {
+      "rain_forecast": 81.8,
+      "gust_forecast": 89.6,
+      "apparent_temp": 27.8,
+      "rain_7d": 106.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-046": {
+      "rain_forecast": 81.8,
+      "gust_forecast": 89.6,
+      "apparent_temp": 27.8,
+      "rain_7d": 106.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-047": {
+      "rain_forecast": 81.8,
+      "gust_forecast": 89.6,
+      "apparent_temp": 27.8,
+      "rain_7d": 106.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-048": {
+      "rain_forecast": 85.2,
+      "gust_forecast": 88.9,
+      "apparent_temp": 28.1,
+      "rain_7d": 108.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-049": {
+      "rain_forecast": 81.8,
+      "gust_forecast": 89.6,
+      "apparent_temp": 27.8,
+      "rain_7d": 106.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-050": {
+      "rain_forecast": 78.2,
+      "gust_forecast": 92.5,
+      "apparent_temp": 27.9,
+      "rain_7d": 99.2,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-051": {
+      "rain_forecast": 74.4,
+      "gust_forecast": 103.7,
+      "apparent_temp": 27.3,
+      "rain_7d": 88.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-052": {
+      "rain_forecast": 74.4,
+      "gust_forecast": 103.7,
+      "apparent_temp": 27.3,
+      "rain_7d": 88.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-053": {
+      "rain_forecast": 69.9,
+      "gust_forecast": 100.4,
+      "apparent_temp": 27.1,
+      "rain_7d": 89.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-054": {
+      "rain_forecast": 71.2,
+      "gust_forecast": 94.3,
+      "apparent_temp": 28.0,
+      "rain_7d": 101.7,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-055": {
+      "rain_forecast": 91.8,
+      "gust_forecast": 95.8,
+      "apparent_temp": 27.5,
+      "rain_7d": 108.4,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-056": {
+      "rain_forecast": 73.6,
+      "gust_forecast": 94.3,
+      "apparent_temp": 28.3,
+      "rain_7d": 100.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-057": {
+      "rain_forecast": 73.6,
+      "gust_forecast": 94.3,
+      "apparent_temp": 28.3,
+      "rain_7d": 100.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-058": {
+      "rain_forecast": 75.0,
+      "gust_forecast": 64.4,
+      "apparent_temp": 26.7,
+      "rain_7d": 33.1,
+      "hazard_score": 6.1,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-059": {
+      "rain_forecast": 89.0,
+      "gust_forecast": 87.5,
+      "apparent_temp": 28.3,
+      "rain_7d": 112.1,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    },
+    "SITE-060": {
+      "rain_forecast": 88.3,
+      "gust_forecast": 86.4,
+      "apparent_temp": 28.2,
+      "rain_7d": 90.9,
+      "hazard_score": 7.0,
+      "weather_state": "STOP_WORK"
+    }
+  }
+}
