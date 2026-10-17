@@ -55,7 +55,7 @@ The **Must** column is the team's launch contract. Demo mode is allowed, but **s
 | P10 | **Crew hazard report** | Photo + text + GPS/site + timestamp; image tagging is advisory | Submitted report displays as map pin/feed item; report is distinguishable from verified official hazard alert |
 | P11 | ✅ **6 PM briefing** | Deterministic aggregation → optional LLM narration | A manual Generate 6 PM Plan button creates ranked priority list and mentions data gaps; automated scheduler only if time permits |
 | P12 | **Physical demo (site beacon)** | Arduino Uno reads the Grove moisture sensor (plus light and barometer once Tiers 2–3 work) and drives the Grove LCD, red/green LEDs and buzzer; a laptop serial bridge relays readings to the API and status back to the beacon (see §5) | Pouring water changes the actual sensor reading, reaches the UI, can change the demo access recommendation, and the beacon's LEDs/LCD reflect the server's status within ~2 s; recorded replay works when unplugged |
-| P13 | ❌ **Incident replay** | Saved past-storm event data with source and timestamps | Replay triggers STOP WORK and restores original live/scenario state when exited |
+| P13 | ✅ **Incident replay** | Saved past-storm event data with source and timestamps | Replay triggers STOP WORK and restores original live/scenario state when exited |
 | P14 | **Reliable end-to-end demonstration** | Dedicated two-minute scripted path and local fallbacks | Full demo works without external API access after initial data snapshot |
 | P15 | **Crew acknowledgment** | Touch sensor on the beacon acknowledges a STOP WORK alarm; the event is logged with a timestamp | Buzzer stops and the dashboard shows "acknowledged at [time]" while status **stays** STOP_WORK |
  

@@ -10,6 +10,8 @@ All thresholds below are DEMO POLICY values, not validated against field data.
 """
 from dataclasses import dataclass
 
+from .hazard_alerts_v1 import classify_alerts_v1
+
 HAZARD_POLICY = {
     "label": "DEMO POLICY - preliminary screening thresholds, not validated against field data or engineering limits",
     "rain_forecast_mm_for_max": 50.0, "rain_forecast_max_pts": 4.0,
@@ -93,7 +95,7 @@ class Assessment:
 def assess(values: dict[str, float | None], events: list[str] | None, policy: dict = HAZARD_POLICY) -> Assessment:
     """values: {variable: number|None}. events: NWS event names, or None if the alert check failed/never ran."""
     notes: list[str] = []
-    level, matched = classify_alerts(events, policy) if events is not None else (None, [])
+    level, matched = classify_alerts_v1(events, policy) if events is not None else (None, [])
     if events is None:
         notes.append("NWS alert check unavailable: weather cannot be declared safe")
     elif matched:
