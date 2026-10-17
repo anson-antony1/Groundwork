@@ -1,0 +1,662 @@
+{
+  "scenario_id": "demo-storm",
+  "day": "2024-10-09",
+  "window_utc": [
+    "2024-10-09T04:00:00Z",
+    "2024-10-10T04:00:00Z"
+  ],
+  "scenario_source": "Hurricane Milton, 2024-10-09. Rain, gust and apparent-temperature values are real Open-Meteo archive data. NWS alerts are the real warnings, watches and advisories active that day (US Eastern), from the Iowa Environmental Mesonet NWS archive, matched to each site by warning polygon or alert zone.",
+  "source": {
+    "name": "Iowa Environmental Mesonet NWS VTEC archive",
+    "url": "https://mesonet.agron.iastate.edu/vtec/",
+    "fetched_at": "2026-10-17T16:48:05Z",
+    "state": "FL",
+    "alerts_active_in_state": 203
+  },
+  "events": {
+    "JAX-FA.A-0010": {
+      "event": "Flood Watch",
+      "wfo": "JAX",
+      "issued_at": "2024-10-07T14:36:00Z",
+      "expires_at": "2024-10-10T11:21:00Z",
+      "source_url": "https://mesonet.agron.iastate.edu/vtec/?year=2024&wfo=KJAX&phenomena=FA&significance=A&eventid=0010"
+    },
+    "JAX-HU.A-1014": {
+      "event": "Hurricane Watch",
+      "wfo": "JAX",
+      "issued_at": "2024-10-07T14:59:00Z",
+      "expires_at": "2024-10-09T21:03:00Z",
+      "source_url": "https://mesonet.agron.iastate.edu/vtec/?year=2024&wfo=KJAX&phenomena=HU&significance=A&eventid=1014"
+    },
+    "JAX-HU.W-1014": {
+      "event": "Hurricane Warning",
+      "wfo": "JAX",
+      "issued_at": "2024-10-07T21:09:00Z",
+      "expires_at": "2024-10-10T12:02:00Z",
+      "source_url": "https://mesonet.agron.iastate.edu/vtec/?year=2024&wfo=KJAX&phenomena=HU&significance=W&eventid=1014"
+    },
+    "JAX-TR.W-1014": {
+      "event": "Tropical Storm Warning",
+      "wfo": "JAX",
+      "issued_at": "2024-10-07T21:09:00Z",
+      "expires_at": "2024-10-10T20:42:00Z",
+      "source_url": "https://mesonet.agron.iastate.edu/vtec/?year=2024&wfo=KJAX&phenomena=TR&significance=W&eventid=1014"
+    },
+    "MLB-FA.A-0003": {
+      "event": "Flood Watch",
+      "wfo": "MLB",
+      "issued_at": "2024-10-06T15:00:00Z",
+      "expires_at": "2024-10-10T17:34:00Z",
+      "source_url": "https://mesonet.agron.iastate.edu/vtec/?year=2024&wfo=KMLB&phenomena=FA&significance=A&eventid=0003"
+    },
+    "MLB-FF.W-0003": {
+      "event": "Flash Flood Warning",
+      "wfo": "MLB",
+      "issued_at": "2024-10-09T19:57:00Z",
+      "expires_at": "2024-10-09T23:00:00Z",
+      "source_url": "https://mesonet.agron.iastate.edu/vtec/?year=2024&wfo=KMLB&phenomena=FF&significance=W&eventid=0003"
+    },
+    "MLB-FF.W-0005": {
+      "event": "Flash Flood Warning",
+      "wfo": "MLB",
+      "issued_at": "2024-10-09T22:43:00Z",
+      "expires_at": "2024-10-10T03:45:00Z",
+      "source_url": "https://mesonet.agron.iastate.edu/vtec/?year=2024&wfo=KMLB&phenomena=FF&significance=W&eventid=0005"
+    },
+    "MLB-FF.W-0006": {
+      "event": "Flash Flood Warning",
+      "wfo": "MLB",
+      "issued_at": "2024-10-10T03:01:00Z",
+      "expires_at": "2024-10-10T06:00:00Z",
+      "source_url": "https://mesonet.agron.iastate.edu/vtec/?year=2024&wfo=KMLB&phenomena=FF&significance=W&eventid=0006"
+    },
+    "MLB-FF.W-0007": {
+      "event": "Flash Flood Warning",
+      "wfo": "MLB",
+      "issued_at": "2024-10-10T03:41:00Z",
+      "expires_at": "2024-10-10T10:00:00Z",
+      "source_url": "https://mesonet.agron.iastate.edu/vtec/?year=2024&wfo=KMLB&phenomena=FF&significance=W&eventid=0007"
+    },
+    "MLB-HU.W-1014": {
+      "event": "Hurricane Warning",
+      "wfo": "MLB",
+      "issued_at": "2024-10-07T21:07:00Z",
+      "expires_at": "2024-10-10T14:50:00Z",
+      "source_url": "https://mesonet.agron.iastate.edu/vtec/?year=2024&wfo=KMLB&phenomena=HU&significance=W&eventid=1014"
+    },
+    "MLB-TO.A-0690": {
+      "event": "Tornado Watch",
+      "wfo": "MLB",
+      "issued_at": "2024-10-09T12:20:00Z",
+      "expires_at": "2024-10-10T01:00:00Z",
+      "source_url": "https://mesonet.agron.iastate.edu/vtec/?year=2024&wfo=KMLB&phenomena=TO&significance=A&eventid=0690"
+    },
+    "MLB-TO.W-0049": {
+      "event": "Tornado Warning",
+      "wfo": "MLB",
+      "issued_at": "2024-10-09T20:08:00Z",
+      "expires_at": "2024-10-09T20:45:00Z",
+      "source_url": "https://mesonet.agron.iastate.edu/vtec/?year=2024&wfo=KMLB&phenomena=TO&significance=W&eventid=0049"
+    },
+    "MLB-TO.W-0053": {
+      "event": "Tornado Warning",
+      "wfo": "MLB",
+      "issued_at": "2024-10-09T20:28:00Z",
+      "expires_at": "2024-10-09T21:04:00Z",
+      "source_url": "https://mesonet.agron.iastate.edu/vtec/?year=2024&wfo=KMLB&phenomena=TO&significance=W&eventid=0053"
+    },
+    "TBW-FA.A-0004": {
+      "event": "Flood Watch",
+      "wfo": "TBW",
+      "issued_at": "2024-10-06T15:00:00Z",
+      "expires_at": "2024-10-10T12:05:00Z",
+      "source_url": "https://mesonet.agron.iastate.edu/vtec/?year=2024&wfo=KTBW&phenomena=FA&significance=A&eventid=0004"
+    },
+    "TBW-FF.W-0018": {
+      "event": "Flash Flood Warning",
+      "wfo": "TBW",
+      "issued_at": "2024-10-09T23:43:00Z",
+      "expires_at": "2024-10-10T06:45:00Z",
+      "source_url": "https://mesonet.agron.iastate.edu/vtec/?year=2024&wfo=KTBW&phenomena=FF&significance=W&eventid=0018"
+    },
+    "TBW-HU.W-1014": {
+      "event": "Hurricane Warning",
+      "wfo": "TBW",
+      "issued_at": "2024-10-07T21:07:00Z",
+      "expires_at": "2024-10-10T12:02:00Z",
+      "source_url": "https://mesonet.agron.iastate.edu/vtec/?year=2024&wfo=KTBW&phenomena=HU&significance=W&eventid=1014"
+    },
+    "TBW-TO.A-0690": {
+      "event": "Tornado Watch",
+      "wfo": "TBW",
+      "issued_at": "2024-10-09T12:23:00Z",
+      "expires_at": "2024-10-10T01:00:00Z",
+      "source_url": "https://mesonet.agron.iastate.edu/vtec/?year=2024&wfo=KTBW&phenomena=TO&significance=A&eventid=0690"
+    }
+  },
+  "sites": {
+    "SITE-001": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-002": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-003": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-004": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-005": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-006": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-007": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690",
+      "MLB-TO.W-0049",
+      "MLB-TO.W-0053"
+    ],
+    "SITE-008": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690",
+      "MLB-TO.W-0049",
+      "MLB-TO.W-0053"
+    ],
+    "SITE-009": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690",
+      "MLB-TO.W-0049",
+      "MLB-TO.W-0053"
+    ],
+    "SITE-010": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690",
+      "MLB-TO.W-0053"
+    ],
+    "SITE-011": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690",
+      "MLB-TO.W-0049",
+      "MLB-TO.W-0053"
+    ],
+    "SITE-012": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690",
+      "MLB-TO.W-0049",
+      "MLB-TO.W-0053"
+    ],
+    "SITE-013": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690",
+      "MLB-TO.W-0049",
+      "MLB-TO.W-0053"
+    ],
+    "SITE-014": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-015": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-016": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-017": [
+      "TBW-FA.A-0004",
+      "TBW-FF.W-0018",
+      "TBW-HU.W-1014",
+      "TBW-TO.A-0690"
+    ],
+    "SITE-018": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-019": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-020": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-021": [
+      "JAX-FA.A-0010",
+      "JAX-HU.A-1014",
+      "JAX-TR.W-1014"
+    ],
+    "SITE-022": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-023": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-024": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-025": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690",
+      "MLB-TO.W-0053"
+    ],
+    "SITE-026": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-027": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-028": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-029": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-030": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-031": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-032": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-033": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-034": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-035": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-036": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-037": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-038": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-039": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-040": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-041": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-042": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-043": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-044": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-045": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690",
+      "MLB-TO.W-0053"
+    ],
+    "SITE-046": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-047": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690",
+      "MLB-TO.W-0053"
+    ],
+    "SITE-048": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690",
+      "MLB-TO.W-0053"
+    ],
+    "SITE-049": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690",
+      "MLB-TO.W-0053"
+    ],
+    "SITE-050": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690",
+      "MLB-TO.W-0053"
+    ],
+    "SITE-051": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-052": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-053": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-054": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-055": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-056": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-057": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-058": [
+      "JAX-FA.A-0010",
+      "JAX-HU.W-1014"
+    ],
+    "SITE-059": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ],
+    "SITE-060": [
+      "MLB-FA.A-0003",
+      "MLB-FF.W-0005",
+      "MLB-FF.W-0006",
+      "MLB-FF.W-0007",
+      "MLB-HU.W-1014",
+      "MLB-TO.A-0690"
+    ]
+  }
+}

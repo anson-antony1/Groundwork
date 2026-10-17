@@ -1,4 +1,3 @@
-import json
 import logging
 from datetime import datetime
 
@@ -6,7 +5,7 @@ from .. import repositories as repo
 from ..config import FIXTURES_DIR
 from ..repositories.records import DemoState
 from . import timeline
-from .storm_replay_v2 import scenario_file
+from .storm_replay_v2 import scenario_file, scenario_source
 
 log = logging.getLogger("groundwork.replay")
 
@@ -14,10 +13,9 @@ MISSING_SOURCE_WARNING = "fixtures/storm_replay.json not added yet; replay has n
 
 
 def _scenario_source(scenario_id: str = "demo-storm") -> str | None:
-    path = FIXTURES_DIR / scenario_file(scenario_id)
-    if not path.exists():
+    if not (FIXTURES_DIR / scenario_file(scenario_id)).exists():
         return None
-    return json.loads(path.read_text(encoding="utf-8")).get("source")
+    return scenario_source(scenario_id)
 
 
 def get_replay() -> DemoState:

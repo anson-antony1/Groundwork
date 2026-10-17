@@ -46,7 +46,7 @@ def latest_briefing() -> dict:
 
 @mcp.tool()
 def start_storm_replay() -> dict:
-    """Switch the whole system to the Hurricane Milton replay (rain/wind real, warning simulated). Call stop_storm_replay after."""
+    """Switch the whole system to the Hurricane Milton replay (archived real weather and real NWS alerts). Call stop_storm_replay after."""
     return _call("POST", "/replay/start")["data"]
 
 
