@@ -13,7 +13,7 @@ import type { StatusKey } from '../../domain/status'
 import { OfflineBasemap } from './OfflineBasemap'
 import type { ReportSummary } from './SiteList'
 
-const FLORIDA_CENTER: [number, number] = [28.2, -83.4]
+const DEFAULT_CENTER: [number, number] = [39.5, -98.35] // continental US; fitBounds moves to wherever the sites are
 const SIZE = 30
 const BEACON_SIZE = 42
 
@@ -97,7 +97,7 @@ export const SiteMap = memo(function SiteMap(props: SiteMapProps) {
   const tileErrors = useRef<number[]>([])
 
   return (
-    <MapContainer center={FLORIDA_CENTER} zoom={7} zoomControl={false} className="h-full w-full" aria-label="Map of sites">
+    <MapContainer center={DEFAULT_CENTER} zoom={4} zoomControl={false} className="h-full w-full" aria-label="Map of sites">
       {props.basemap === 'tiles' ? (
         <TileLayer
           url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -12,7 +12,7 @@ export function ProvenanceTable({ site }: { site: SiteDetailView }) {
   const observed = new Set(site.observations.map((o) => o.variable))
   const missingOnly = site.missing_fields.filter((f) => !observed.has(f))
   return (
-    <Card title="Data and sources" icon={<Table2 aria-hidden className="size-4" />} bodyClassName="p-0">
+    <Card collapsedByDefault title="Data and sources" icon={<Table2 aria-hidden className="size-4" />} bodyClassName="p-0">
       <div className="overflow-x-auto">
         <table className="w-full text-left text-[0.88rem]">
           <thead className="text-[0.72rem] text-muted label-caps">
