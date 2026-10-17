@@ -8,12 +8,15 @@ import { Card } from '../../components/Card'
 import { cx } from '../../components/cx'
 import { MissingValue } from '../../components/Provenance'
 import { ReportCard } from '../../components/ReportCard'
+import { FlapCount } from '../../components/SplitFlap'
 import { EmptyBlock, ErrorBlock, LoadingBlock } from '../../components/States'
 import { StatusTag, WeatherTag } from '../../components/StatusTag'
+import { TypeOut } from '../../components/TypeOut'
 import { useNow } from '../../hooks/useNow'
 import { fieldLabel, fmtAgo, fmtNum, fmtShortClock, fmtWhen } from '../../domain/format'
 import { sourceCoverage } from '../../domain/inputs'
 import { LABELS, MODE_LABEL } from '../../domain/provenance'
+import { BuildSequence } from './BuildSequence'
 
 /** The plan is for the day after it was generated. */
 function planDay(generatedAt: string): string {
@@ -22,7 +25,8 @@ function planDay(generatedAt: string): string {
   return d.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' })
 }
 
-function Narrative({ brief }: { brief: BriefingView }) {
+/** `typeOut`: this plan was generated just now, so its text types itself in once. */
+function Narrative({ brief, typeOut }: { brief: BriefingView; typeOut: boolean }) {
   const llm = brief.narrative_source === 'llm'
   const [showTemplate, setShowTemplate] = useState(false)
   const text = showTemplate && brief.deterministic_summary ? brief.deterministic_summary : brief.summary
@@ -42,7 +46,11 @@ function Narrative({ brief }: { brief: BriefingView }) {
           : 'Built in Python from the same structured records. This is also the automatic fallback when Gemini is slow or unavailable.'
       }
     >
-      <p className="max-w-5xl text-[1.35rem] leading-relaxed">{text}</p>
+      {typeOut && !showTemplate ? (
+        <TypeOut key={text} text={text} className="max-w-5xl text-[1.35rem] leading-relaxed" />
+      ) : (
+        <p className="max-w-5xl text-[1.35rem] leading-relaxed">{text}</p>
+      )}
       {llm && brief.deterministic_summary && (
         <button type="button" onClick={() => setShowTemplate(!showTemplate)} className="mt-4 text-[0.85rem] text-accent label-caps hover:underline">
           {showTemplate ? 'Show the Gemini narrative' : 'Show the deterministic version'}
@@ -56,7 +64,9 @@ function Stat({ label, value, tone }: { label: string; value: number; tone?: 'st
   return (
     <div className={cx('rounded-[4px] border px-4 py-3', tone === 'stop' && value > 0 ? 'border-stop bg-stop/15' : tone === 'caution' && value > 0 ? 'border-caution/70 bg-caution/10' : 'border-line bg-panel')}>
       <p className="text-[0.75rem] text-muted label-caps">{label}</p>
-      <p className="font-display text-[2.4rem] leading-none font-bold">{value}</p>
+      <p className="font-display text-[2.4rem] leading-none font-bold">
+        <FlapCount value={value} />
+      </p>
     </div>
   )
 }
@@ -110,11 +120,7 @@ export function BriefingScreen() {
         </div>
       </header>
 
-      {generate.isPending && (
-        <p role="status" className="text-muted">
-          Ranking every site and writing the summary. Gemini narration takes about 20 seconds; if it’s slow or fails, the deterministic version is used automatically. Tip: generate before the demo and show the saved plan.
-        </p>
-      )}
+      {generate.isPending && <BuildSequence />}
       {generate.isError && <ErrorBlock title="Couldn’t generate a new plan" error={generate.error} onRetry={() => generate.mutate()} />}
       {latest.isLoading && <LoadingBlock label="Loading the latest plan" />}
       {latest.isError && !envelope && <ErrorBlock title="Briefings unavailable" error={latest.error} onRetry={() => void latest.refetch()} />}
@@ -126,7 +132,7 @@ export function BriefingScreen() {
 
       {brief && (
         <>
-          <Narrative brief={brief} />
+          <Narrative brief={brief} typeOut={brief.id === generate.data?.data.id} />
 
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
             <Stat label="Top priority sites" value={brief.top_priority_sites.length} />
