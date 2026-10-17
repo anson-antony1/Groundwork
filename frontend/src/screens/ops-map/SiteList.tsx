@@ -8,7 +8,7 @@ import { MissingValue } from '../../components/Provenance'
 import { StatusMarker } from '../../components/StatusMarker'
 import { StatusTag, WeatherInline } from '../../components/StatusTag'
 import { siteTagTransition } from '../../components/viewTransitionNav'
-import { fmtAgo, fmtNum } from '../../domain/format'
+import { fmtAgo, fmtNum, fmtObservation } from '../../domain/format'
 import { inputsSummary } from '../../domain/inputs'
 import { LABELS } from '../../domain/provenance'
 import { STATUS_ORDER, statusVisual } from '../../domain/status'
@@ -74,7 +74,12 @@ function rowReason(site: SiteView, status: StatusKey): string | null {
     return triggers[0]?.replace(/ \(points from [^)]*\)$/, '') ?? null
   }
   if (status === 'MATS_FOR_REVIEW' || status === 'NO_GO_FOR_REVIEW') {
-    return reasons?.soil_drainage ? `Soft ground · ${reasons.soil_drainage} soil` : 'Soft ground'
+    // Name the week's rain, and the soil only when it drains poorly ("well drained" next to "soft" reads wrong).
+    const rain = site.observations.find((o) => o.variable === 'rain_7d')
+    const parts = ['Soft ground']
+    if (rain && rain.value !== null) parts.push(`${fmtObservation(rain)} of rain in 7 days`)
+    if (reasons?.soil_drainage?.includes('poorly')) parts.push(`${reasons.soil_drainage} soil`)
+    return parts.join(' · ')
   }
   return null
 }
