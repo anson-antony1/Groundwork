@@ -11,7 +11,7 @@ import { PROPOSED_ENDPOINTS } from './proposed'
 import type { ReportReviewInput } from './proposed'
 import { qk } from './queryKeys'
 import { useServerCtx } from './serverCtx'
-import type { DataMode, Envelope, EvaluationInput } from './types'
+import type { DataMode, Envelope, EvaluationInput, PageEnvelope, Reading } from './types'
 
 function guarded<T extends { mode: DataMode }>(value: T, ctx: ServerCtx | null): T {
   if (ctx) assertModeMatches(value.mode, ctx)
@@ -65,14 +65,31 @@ export function useDisplay(deviceId = DEMO_DEVICE_ID, intervalMs = 1_000, enable
   })
 }
 
-/** Latest beacon reading, or null when the device hasn't sent one yet (the API answers 404). */
+/** Readings kept for the live chart: about 10 minutes at 1 Hz. */
+const SERIES_LIMIT = 600
+
+/** Adds a reading to the cached history (newest first) unless it's already there. */
+function appendReading(history: PageEnvelope<Reading> | undefined, reading: Reading): PageEnvelope<Reading> | undefined {
+  if (!history) return history
+  const newest = history.data[0]
+  if (newest && newest.received_at === reading.received_at && newest.seq === reading.seq) return history
+  return { ...history, data: [reading, ...history.data].slice(0, SERIES_LIMIT) }
+}
+
+/**
+ * Latest beacon reading, or null when the device hasn't sent one yet (the API answers 404).
+ * Each new reading is also appended to the cached history, so the live chart grows without refetching it.
+ */
 export function useLatestReading(deviceId = DEMO_DEVICE_ID, enabled = true) {
+  const queryClient = useQueryClient()
   return useQuery({
     enabled,
     queryKey: qk.latestReading(deviceId),
     queryFn: async ({ signal }) => {
       try {
-        return await api.latestReading(deviceId, signal)
+        const env = await api.latestReading(deviceId, signal)
+        queryClient.setQueryData<PageEnvelope<Reading>>(qk.readingHistory(deviceId), (h) => appendReading(h, env.data))
+        return env
       } catch (error) {
         if (error instanceof ApiError && error.status === 404) return null
         throw error

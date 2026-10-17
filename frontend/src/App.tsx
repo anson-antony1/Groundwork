@@ -10,6 +10,7 @@ import { AppShell } from './components/AppShell'
 import { Card } from './components/Card'
 import { OpsMapScreen } from './screens/ops-map/OpsMapScreen'
 import { ReplayScreen } from './screens/replay/ReplayScreen'
+import { SensorLabScreen } from './screens/sensor-lab/SensorLabScreen'
 import { SiteDetailScreen } from './screens/site-detail/SiteDetailScreen'
 import { StyleScreen } from './screens/style/StyleScreen'
 import { DemoUiProvider } from './state/DemoUiProvider'
@@ -53,9 +54,7 @@ export function App() {
             <Switch>
               <Route path="/" component={OpsMapScreen} />
               <Route path="/sites/:siteId">{(params) => <SiteDetailScreen key={params.siteId} siteId={params.siteId} />}</Route>
-              <Route path="/sensor-lab">
-                <Pending title="Sensor lab" checkpoint={4} />
-              </Route>
+              <Route path="/sensor-lab" component={SensorLabScreen} />
               <Route path="/replay" component={ReplayScreen} />
               <Route path="/briefing">
                 <Pending title="6 PM briefing" checkpoint={7} />
