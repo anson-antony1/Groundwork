@@ -1,0 +1,2766 @@
+{
+  "source": "Open-Meteo Forecast API",
+  "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+  "sites": {
+    "SITE-001": [
+      {
+        "variable": "rain_7d",
+        "value": 43.5,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 0.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 52.6,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 27.3,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-002": [
+      {
+        "variable": "rain_7d",
+        "value": 11.6,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 0.4,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 40.7,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 28.6,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-003": [
+      {
+        "variable": "rain_7d",
+        "value": 124.8,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 0.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 53.3,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 28.6,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-004": [
+      {
+        "variable": "rain_7d",
+        "value": 49.1,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 0.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 54.4,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 26.7,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-005": [
+      {
+        "variable": "rain_7d",
+        "value": 41.8,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 0.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 64.8,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 17.1,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-006": [
+      {
+        "variable": "rain_7d",
+        "value": 43.8,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 0.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 59.0,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 24.6,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-007": [
+      {
+        "variable": "rain_7d",
+        "value": 170.4,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 0.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 61.9,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 15.6,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-008": [
+      {
+        "variable": "rain_7d",
+        "value": 42.3,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 0.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 53.3,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 25.9,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-009": [
+      {
+        "variable": "rain_7d",
+        "value": 15.7,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 0.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 50.4,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 25.5,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-010": [
+      {
+        "variable": "rain_7d",
+        "value": 1.4,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 0.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 51.5,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 29.4,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-011": [
+      {
+        "variable": "rain_7d",
+        "value": 8.4,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 0.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 62.3,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 28.0,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-012": [
+      {
+        "variable": "rain_7d",
+        "value": 42.5,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 0.4,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 60.8,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 29.1,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-013": [
+      {
+        "variable": "rain_7d",
+        "value": 52.5,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 1.5,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 45.0,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 30.4,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-014": [
+      {
+        "variable": "rain_7d",
+        "value": 40.4,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 2.6,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 52.6,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 29.8,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-015": [
+      {
+        "variable": "rain_7d",
+        "value": 2.5,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 2.2,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 47.9,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 30.4,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-016": [
+      {
+        "variable": "rain_7d",
+        "value": 64.9,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 5.8,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 46.8,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 29.7,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-017": [
+      {
+        "variable": "rain_7d",
+        "value": 49.4,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 4.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 48.6,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 28.9,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-018": [
+      {
+        "variable": "rain_7d",
+        "value": 49.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 4.7,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 47.5,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 29.8,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-019": [
+      {
+        "variable": "rain_7d",
+        "value": 4.3,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 2.2,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 46.8,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 29.9,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-020": [
+      {
+        "variable": "rain_7d",
+        "value": 2.9,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 4.4,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 51.8,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 30.4,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-021": [
+      {
+        "variable": "rain_7d",
+        "value": 6.8,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 10.1,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 57.6,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 31.4,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-022": [
+      {
+        "variable": "rain_7d",
+        "value": 14.8,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 19.1,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 59.8,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 29.9,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-023": [
+      {
+        "variable": "rain_7d",
+        "value": 28.8,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 10.2,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 56.9,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 29.8,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-024": [
+      {
+        "variable": "rain_7d",
+        "value": 31.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 3.9,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 39.6,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 30.3,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-025": [
+      {
+        "variable": "rain_7d",
+        "value": 59.7,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 1.2,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 46.4,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 30.6,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-026": [
+      {
+        "variable": "rain_7d",
+        "value": 0.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 4.3,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 51.1,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 29.7,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-027": [
+      {
+        "variable": "rain_7d",
+        "value": 12.6,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 0.4,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 52.2,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 31.0,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-028": [
+      {
+        "variable": "rain_7d",
+        "value": 8.7,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 1.5,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 52.6,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 31.1,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-029": [
+      {
+        "variable": "rain_7d",
+        "value": 10.9,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 1.2,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 55.8,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 30.0,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-030": [
+      {
+        "variable": "rain_7d",
+        "value": 8.6,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 1.9,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 50.4,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 31.6,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-031": [
+      {
+        "variable": "rain_7d",
+        "value": 64.1,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 10.2,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 47.2,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 32.0,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-032": [
+      {
+        "variable": "rain_7d",
+        "value": 42.2,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 12.6,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 47.2,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 32.2,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-033": [
+      {
+        "variable": "rain_7d",
+        "value": 49.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 5.4,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 52.2,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 32.3,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-034": [
+      {
+        "variable": "rain_7d",
+        "value": 6.2,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 39.9,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 47.2,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 30.9,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-035": [
+      {
+        "variable": "rain_7d",
+        "value": 12.2,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 0.4,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 46.8,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 32.9,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-036": [
+      {
+        "variable": "rain_7d",
+        "value": 0.4,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 21.2,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 39.2,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 34.0,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-037": [
+      {
+        "variable": "rain_7d",
+        "value": 0.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 185.1,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 29.5,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 34.3,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-038": [
+      {
+        "variable": "rain_7d",
+        "value": 0.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 195.6,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 40.0,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 34.7,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-039": [
+      {
+        "variable": "rain_7d",
+        "value": 2.5,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 7.2,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 30.6,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 34.8,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-040": [
+      {
+        "variable": "rain_7d",
+        "value": 1.1,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 45.8,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 32.0,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 34.8,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-041": [
+      {
+        "variable": "rain_7d",
+        "value": 2.9,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 4.1,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 42.5,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 32.8,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-042": [
+      {
+        "variable": "rain_7d",
+        "value": 3.6,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 27.8,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 51.5,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 30.8,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-043": [
+      {
+        "variable": "rain_7d",
+        "value": 5.4,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 28.1,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 55.1,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 30.9,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-044": [
+      {
+        "variable": "rain_7d",
+        "value": 34.9,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 2.2,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 49.7,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 30.4,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-045": [
+      {
+        "variable": "rain_7d",
+        "value": 1.4,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 11.2,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 57.6,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 31.0,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-046": [
+      {
+        "variable": "rain_7d",
+        "value": 32.7,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 10.8,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 59.8,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 32.1,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-047": [
+      {
+        "variable": "rain_7d",
+        "value": 8.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 7.3,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 56.5,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 30.7,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-048": [
+      {
+        "variable": "rain_7d",
+        "value": 0.7,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 2.5,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 45.4,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 31.2,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-049": [
+      {
+        "variable": "rain_7d",
+        "value": 83.5,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 21.4,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 47.5,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 30.1,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-050": [
+      {
+        "variable": "rain_7d",
+        "value": 7.9,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 10.5,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 45.7,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 31.0,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-051": [
+      {
+        "variable": "rain_7d",
+        "value": 35.1,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 3.3,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 47.2,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 32.7,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-052": [
+      {
+        "variable": "rain_7d",
+        "value": 1.1,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 3.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 51.8,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 30.0,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-053": [
+      {
+        "variable": "rain_7d",
+        "value": 54.6,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 0.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 50.8,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 28.3,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-054": [
+      {
+        "variable": "rain_7d",
+        "value": 77.3,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 0.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 55.4,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 26.4,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-055": [
+      {
+        "variable": "rain_7d",
+        "value": 81.5,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 0.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 55.4,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 21.7,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-056": [
+      {
+        "variable": "rain_7d",
+        "value": 54.5,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 0.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 58.3,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 16.3,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-057": [
+      {
+        "variable": "rain_7d",
+        "value": 31.4,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 0.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 52.2,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 26.5,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-058": [
+      {
+        "variable": "rain_7d",
+        "value": 26.7,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 0.4,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 60.5,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 28.6,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-059": [
+      {
+        "variable": "rain_7d",
+        "value": 24.5,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 5.4,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 38.5,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 30.4,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ],
+    "SITE-060": [
+      {
+        "variable": "rain_7d",
+        "value": 99.2,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "modeled",
+        "valid_at": "2026-10-15",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "rain_forecast",
+        "value": 0.0,
+        "unit": "mm",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "gust_forecast",
+        "value": 54.4,
+        "unit": "km/h",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      },
+      {
+        "variable": "apparent_temp",
+        "value": 25.8,
+        "unit": "\u00b0C",
+        "source": "Open-Meteo",
+        "kind": "forecast",
+        "valid_at": "2026-10-17",
+        "fetched_at": "2026-10-17T03:52:55.530884+00:00",
+        "quality": "available",
+        "reference_url": "https://open-meteo.com/en/docs"
+      }
+    ]
+  }
+}

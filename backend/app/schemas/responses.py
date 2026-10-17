@@ -28,6 +28,19 @@ class VehicleStatusOut(BaseModel):
     heavy_truck: EffectiveStatus
 
 
+class ObservationOut(BaseModel):
+    """One sourced value with provenance (README section 4). `value` is null when unavailable."""
+    variable: str
+    value: float | None
+    unit: str
+    source: str
+    kind: Literal["observed", "forecast", "modeled", "survey"]
+    valid_at: str
+    fetched_at: datetime
+    quality: Literal["available", "stale", "missing", "simulated", "sensor_demo", "sensor_replay"]
+    reference_url: str | None
+
+
 class SiteOut(BaseModel):
     id: str
     name: str
@@ -39,7 +52,8 @@ class SiteOut(BaseModel):
     weather_state: WeatherState
     access_call: VehicleAccessOut
     effective_status: VehicleStatusOut
-    data_status: Literal["sensor_demo", "not_fetched"]
+    data_status: Literal["sensor_demo", "not_fetched", "available", "stale"]
+    observations: list[ObservationOut]
     missing_fields: list[str]
     evaluated_at: datetime
 

@@ -7,7 +7,7 @@ from ..repositories.records import (
 from ..schemas.requests import CostInputs
 from ..schemas.responses import (
     BriefingOut, CostComparisonOut, DeviceEventOut, DisplayOut, EvaluationOut, MatsEstimateOut,
-    MissingDataNoteOut, PrioritySiteOut, ReadingOut, ReplayOut, ReportOut, SiteDetailOut, SiteOut,
+    MissingDataNoteOut, ObservationOut, PrioritySiteOut, ReadingOut, ReplayOut, ReportOut, SiteDetailOut, SiteOut,
     TimelineEventOut, VehicleAccessOut, VehicleStatusOut,
 )
 from ..services.display import Display
@@ -22,7 +22,8 @@ def site_out(s: SiteStatus) -> SiteOut:
         hazard_score=s.hazard_score, weather_state=s.weather_state,
         access_call=VehicleAccessOut(**s.access_call),
         effective_status=VehicleStatusOut(**s.effective_status),
-        data_status=s.data_status, missing_fields=list(s.missing_fields), evaluated_at=s.evaluated_at,
+        data_status=s.data_status, observations=[ObservationOut(**o) for o in s.observations],
+        missing_fields=list(s.missing_fields), evaluated_at=s.evaluated_at,
     )
 
 
