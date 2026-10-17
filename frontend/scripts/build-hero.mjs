@@ -10,7 +10,8 @@ import { fileURLToPath } from 'node:url'
 
 const read = (rel) => JSON.parse(readFileSync(fileURLToPath(new URL(rel, import.meta.url)), 'utf8'))
 const basemap = read('../src/assets/basemap/florida.json')
-const { sites } = read('../../fixtures/sites_50.json')
+// The hero is Florida: keep the 60 Florida substations (SITE-*), not the nationwide US-* sites.
+const sites = read('../../fixtures/sites_50.json').sites.filter((s) => s.id.startsWith('SITE-'))
 
 const K = 100 * Math.cos((29 * Math.PI) / 180)
 const proj = ([lon, lat]) => [(lon + 87.7) * K, (31.1 - lat) * 100]

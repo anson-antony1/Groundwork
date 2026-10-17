@@ -117,7 +117,7 @@ export function ReplayScreen() {
                 >
                   <span className="text-lg font-semibold">{s.title}</span>
                   <span>{s.event}</span>
-                  <span className="text-[0.85rem] text-muted">Source: {s.source}</span>
+                  {s.source && <span className="text-[0.85rem] text-muted">Source: {s.source}</span>}
                   {(s.onset || s.expires) && (
                     <span className="text-[0.85rem] text-muted">
                       {fmtWhen(s.onset)} → {fmtWhen(s.expires)}

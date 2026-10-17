@@ -31,7 +31,7 @@ const PILLARS: { icon: LucideIcon; title: string; scope: string; text: string }[
 
 const FLOW: { icon: LucideIcon; title: string; text: string }[] = [
   { icon: Radio, title: 'Site beacon', text: 'A soil-moisture tray at the venue reports every second and shows the server’s call on its LCD.' },
-  { icon: Server, title: 'Groundwork API', text: 'Scores weather and ground access for 60 real substations with prototype policy rules.' },
+  { icon: Server, title: 'Groundwork API', text: 'Scores weather and ground access for 300 real substations with prototype policy rules.' },
   { icon: MapIcon, title: 'Ops console', text: 'The ranked map, site detail, storm replay and the STOP WORK override.' },
   { icon: FileText, title: '6 PM brief', text: 'A plan for tomorrow, narrated by Gemini from the records, with a template fallback.' },
 ]
@@ -107,7 +107,8 @@ export function WelcomeScreen() {
           <figure className="flex flex-col gap-2">
             <StormHero className="aspect-[4/3] w-full rounded-[4px] border border-line sm:aspect-[330/226]" />
             <figcaption className="text-[0.82rem] text-muted">
-              Illustration: real substation locations, a simulated storm. The app itself only shows statuses the API returns.
+              Illustration: the real locations of the 60 Florida substations, with a simulated storm. The app itself only shows
+              statuses the API returns.
             </figcaption>
           </figure>
         </section>
@@ -147,15 +148,16 @@ export function WelcomeScreen() {
             <div className="rounded-[4px] border border-line bg-panel p-5">
               <p className="mb-2 font-semibold">Real</p>
               <p className="text-muted">
-                60 OpenStreetMap power substations from Orlando to Jacksonville, Open-Meteo weather, NWS alerts and USDA soil
-                drainage. Storm replays use archived Open-Meteo weather.
+                300 OpenStreetMap power substations: 60 from Orlando to Jacksonville and 240 across the US. Open-Meteo weather,
+                NWS alerts and USDA soil drainage. Storm replays use the archived weather and the NWS alerts that were in force
+                that day.
               </p>
             </div>
             <div className="rounded-[4px] border border-dashed border-line-hi p-5">
               <p className="mb-2 font-semibold">Simulated or assumed</p>
               <p className="text-muted">
-                Replay alerts, because historical NWS alerts aren’t available. Every status on the mock demo link. The tray
-                beacon, a demo sensor at the venue rather than an on-site measurement. {LABELS.prototypePolicy}.
+                Every status on the mock demo link. The tray beacon, a demo sensor at the venue rather than an on-site
+                measurement. The safety thresholds: {LABELS.prototypePolicy.toLowerCase()}.
               </p>
             </div>
           </div>
