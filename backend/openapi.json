@@ -221,6 +221,11 @@
           "assumptions": {
             "$ref": "#/components/schemas/CostInputs"
           },
+          "complete": {
+            "description": "True when every cost item was entered",
+            "title": "Complete",
+            "type": "boolean"
+          },
           "label": {
             "title": "Label",
             "type": "string"
@@ -233,6 +238,14 @@
             "title": "Modeled Difference",
             "type": "number"
           },
+          "not_entered": {
+            "description": "Cost items left blank and counted as $0 (labels assumed values, P9)",
+            "items": {
+              "type": "string"
+            },
+            "title": "Not Entered",
+            "type": "array"
+          },
           "postpone_option": {
             "title": "Postpone Option",
             "type": "number"
@@ -243,6 +256,7 @@
           "postpone_option",
           "modeled_difference",
           "assumptions",
+          "complete",
           "label"
         ],
         "title": "CostComparisonOut",
@@ -250,79 +264,151 @@
       },
       "CostInputs": {
         "additionalProperties": false,
-        "description": "Supervisor-entered assumptions. Nothing here is a real price.",
+        "description": "Supervisor-entered assumptions. Nothing here is a real price.\n\nLeave a field out (or null) when it wasn't entered: it counts as $0 but is listed in\ncost_comparison.not_entered. Send 0 only when the cost really is zero.",
         "properties": {
           "delay_not_prevented": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Delay Not Prevented",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Delay Not Prevented"
           },
           "delivery": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Delivery",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Delivery"
           },
           "equipment_rate_per_hour": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Equipment Rate Per Hour",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Equipment Rate Per Hour"
           },
           "extra_contract_cost": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Extra Contract Cost",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Extra Contract Cost"
           },
           "idle_equipment": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Idle Equipment",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idle Equipment"
           },
           "idle_hours": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Idle Hours",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idle Hours"
           },
           "installation": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Installation",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Installation"
           },
           "labor_rate_per_hour": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Labor Rate Per Hour",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Labor Rate Per Hour"
           },
           "mats_rental": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Mats Rental",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mats Rental"
           },
           "paid_idle_labor": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Paid Idle Labor",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Paid Idle Labor"
           },
           "removal": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Removal",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Removal"
           },
           "rescheduling": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Rescheduling",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rescheduling"
           }
         },
         "title": "CostInputs",

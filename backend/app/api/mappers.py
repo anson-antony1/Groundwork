@@ -70,7 +70,8 @@ def evaluation_out(e: Evaluation) -> EvaluationOut:
         mats_recommended=e.mats_recommended,
         cost_comparison=CostComparisonOut(
             mats_option=c.mats_option, postpone_option=c.postpone_option,
-            modeled_difference=c.modeled_difference, assumptions=CostInputs(**c.assumptions), label=c.label,
+            modeled_difference=c.modeled_difference, assumptions=CostInputs(**c.assumptions),
+            not_entered=list(c.not_entered), complete=c.complete, label=c.label,
         ),
         notes=list(e.notes),
     )
