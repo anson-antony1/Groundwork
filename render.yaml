@@ -1,12 +1,14 @@
 # Render Blueprint: two free services from this repo. Setup steps: deploy/README.md.
 #   groundwork       the live app: FastAPI backend + built frontend in one Docker web service
 #   groundwork-demo  the always-up demo: the frontend in mock mode, as a static site with no backend
+# Both deploy every push to main. The Blueprint was created from ui, so Render reads this file there:
+# bring changes to it into ui too.
 services:
   - type: web
     name: groundwork
     runtime: docker
     plan: free
-    branch: ui
+    branch: main
     dockerfilePath: ./Dockerfile
     dockerContext: .
     healthCheckPath: /api/v1/health
@@ -38,7 +40,7 @@ services:
   - type: web
     name: groundwork-demo
     runtime: static
-    branch: ui
+    branch: main
     buildCommand: cd frontend && npm ci --include=dev && npm run build
     staticPublishPath: ./frontend/dist
     autoDeploy: true
