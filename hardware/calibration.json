@@ -1,0 +1,16 @@
+{
+  "name": "dry_wet_2point_v1",
+  "adc_max": 1023,
+  "moisture": {
+    "dry_raw": null,
+    "wet_raw": null,
+    "dry_measured_at": null,
+    "wet_measured_at": null
+  },
+  "light": {
+    "dark_raw": null,
+    "bright_raw": null,
+    "dark_measured_at": null,
+    "bright_measured_at": null
+  }
+}
