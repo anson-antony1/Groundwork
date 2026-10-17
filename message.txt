@@ -1,0 +1,390 @@
+# Groundwork — Team Handoff & Pitch Pack
+
+**SwampHacks XII · Reitz Union, UF · Oct 16–18, 2026**
+**Team:** Anson Antony (hardware, repo owner) · Aashita Rai (backend/data) · Rishi (frontend, then backend) · Rithika Mathew (ML, briefing, risk intelligence)
+**Repo:** https://github.com/anson-antony1/Groundwork · **Demo site:** https://groundwork-30m3.onrender.com (API: `https://groundwork-api-hsiu.onrender.com`)
+**Compiled:** Sat Oct 17, evening. It pulls together everything from Anson's prep chat (research on the event, judges, past winners, competitors and ideas) and the current state of the repo. The repo README is the source of truth for code and the demo playbook (§14); this file is the "why", the pitch and the checklist.
+
+---
+
+## 0. TL;DR
+
+- **What we built:** Groundwork tells a utility supervisor at **6 PM** which sites crews can reach **tomorrow**, which vehicles need **ground mats** (and roughly how many), when weather means **STOP WORK**, and what mats vs. postponing would cost. It uses real, timestamped USDA soil, Open-Meteo weather and NWS alert data for **300 real sites**, plus a tabletop **Arduino site beacon** that senses soil and shows the server's call.
+- **Why it wins:** every other Sperry team will build the brief's checklist ("how dangerous is each site?"). We answer the question Sperry's actual business runs on: **"Can we get there tomorrow, with what, and when is it safe?"** Janet Sperry runs **Dakota Matting**, a temporary-access-road and ground-mat company. The mat decision is her world.
+- **Prizes we're going for:** Sperry Tech PlanIT Control (primary) → Best Overall → Hardware track → MLH Gemini (and Tiger Data only if integrated for real).
+- **The rule we never break:** weather STOP WORK always overrides access. Mats never make lightning or flooding safe. AI never sets a status.
+
+---
+
+## 1. The event
+
+### Timeline (from the hacker guide)
+
+| When | What |
+|---|---|
+| Fri Oct 16, 8:30 PM | Hacking began (Rion Ballroom) |
+| Sat Oct 17, 4:30 PM | Company workshop (if anyone talked to Sperry, fold what they said into §6 and §8) |
+| **Sun Oct 18, 8:00 AM** | **Submit on Devpost by 8:00 to be safe.** The schedule photo says hacking ends 8:30 and Devpost says 8:00. Needed: public repo, a demo video of 2 minutes or less, and AI-tool disclosure |
+| Sun 10:00 AM – 12:00 PM | **Expo judging, REI Grand Ballroom.** About **2–3 minutes per table**, at least 3 judges per team. Opting into more challenges brings more judges to the table |
+| Sun 2:00–3:00 PM | Closing + awards (CAR 100) |
+
+### Prizes (final hacker guide, Oct 16)
+
+| Prize | Award | What it rewards | Us? |
+|---|---|---|---|
+| **Sperry Tech: PlanIT Control** | 1st iPad Air 15″, 2nd AirPods, 3rd $100 cards; **all three placements get internship interviews** | Utility-crew hazard platform (brief below) | **Primary** |
+| Best Overall (Vobile) | $1,000 / $750 / $500 | Innovation, technical achievement, impact, execution | Yes |
+| Hardware & Physical Computing | Raspberry Pi 4 kit ×4 | Hardware, or software controlling physical devices | Yes (the beacon) |
+| AI track (UF Data Science & Informatics) | TBD | AI central; public repo + README; "depth over polish"; **they read the code** | Possible alternative to Hardware (one track only besides General) |
+| MLH | Swag/small prizes | Gemini, Tiger Data, Auth0, GoDaddy, Vultr, Solana, DEV | Gemini yes; Tiger Data/Auth0 only if genuinely integrated |
+| SwampHacks extras | Docking stations, 27″ monitors, Robux | **Least Vibe Coded**, **Easy On The Eyes** (best UX), Roblox | Least Vibe Coded is a real shot: hand-built rules, tests, validation |
+| Capital One Nessie, DeepSpace, Entertainment, First Timers | — | — | No |
+
+**The Health track was dropped** in the final guide, which is why we moved off the health ideas.
+
+**Judging criteria:** technical understanding, innovation, functionality, design and usability, purpose and audience, track relevance. Sponsor judges score their own challenges.
+
+**Track choice:** pick **one** track besides General. Hardware is the less crowded draw (hardware was 3 of last year's 20 winners); AI will be the most crowded since nearly every project uses AI. Choose by where we're strongest. Recommendation: **Hardware**, plus every challenge we honestly qualify for.
+
+### Sperry's brief, in short
+
+**Their scenario (use it when you open for Sperry):** "It is 6:45 AM, in August, at a remote construction site in the middle of the Everglades." A crew is building a temporary road for equipment supporting a new transmission line, and the heat index will pass 110°F by noon.
+
+They want a real-time platform for **at least 50 real sites** that combines weather, heat, lightning, flooding, wildfire, soil saturation and wildlife into one risk picture per site, plus:
+
+- a **lightning stop-work** alert for any strike within **10 miles**, with a **30-minute all-clear that resets on each new strike**
+- **flood warnings** for river sites after heavy rain
+- a **6 PM next-day briefing**
+- **crew photo hazard reports** pinned to a map
+- a supervisor **map ranked by risk**
+- an **ML hazard index (0–10)** trained on historical data
+
+Suggested data: EIA-860M plant list, NOAA Storm Events, Iowa Mesonet warnings, OSHA severe-injury reports, FEMA flood maps, NOAA tides.
+
+**The internship prize matters:** every Sperry placement (1st–3rd) comes with an interview, so a podium finish there is worth more than the hardware alone.
+
+---
+
+## 2. Who's judging and what they want (49 judges on Devpost)
+
+Mostly working engineers (data, cloud, DevOps, security), UF faculty, and four of Sperry Tech's five people. Expect: *how does the data flow, is the model validated, would this survive production?*
+
+| Group | Judges | What lands |
+|---|---|---|
+| **Sperry Tech** | **Janet Sperry**, Mateo Lauzardo, Humza Naeem (Devpost); **Eric Zhang** (also identified as a Sperry judge in our research) | Production-minded ML on messy field data. Sperry is a five-person AI/ML R&D firm for energy and construction ("R&D for energy and construction… and the site access they depend on"); motto "judge us on the work." |
+| Vobile (Overall sponsor) | Britt Woodall (Sr. Director, Special Project Leadership; UF grad, ~12 yrs in energy, finance, media; runs Vobile's Alachua office) | Real business value; AI that automates work on large data |
+| NextEra Energy (FPL's parent) | Kyle Price, Jason Price | Utility and field-safety use cases. Our exact customer. |
+| UF faculty, ML/signals | Catia Silva (ECE), Rong Zhang (CISE) | Correct models, explained |
+| UF AI track (DSI) | Pranav Bhargava, Lucas Romero, Jiexi Yang, Ashish Aggarwal | Non-trivial AI with evals; clean, documented GitHub |
+| Big-tech/enterprise engineers | Microsoft (RAG/LLM), Meta (infra), Goldman Sachs, SiriusXM, McKesson, Blackhawk (MLOps), o9, ADM, SLB (Gainesville), plus Apple, Oracle, Walmart, Labcorp, RouteSmart/FedEx | Architecture, real-time pipelines, scalability, code quality |
+| Security | Beau Houser (ex-Census/SBA CISO), Venkata Somasani (City of Dallas SCADA), Sydney Aurelius (Lockheed DevSecOps), Srinivasulu Rajala | Threat model, data handling, auth. **Mention Auth0 roles + token-protected sensor writes.** |
+| Founders | Arnav Jha (Loandock), Shiva Yarradla (Brevian AI) | A real customer and a path to scale |
+| Others | Roblox ML/SWE, Sriram Ramanathan (Vispero/JAWS, accessibility), Gabby Flynn (MLH) | Varies |
+
+**Three things to know about Sperry's judges:**
+
+1. **Janet Sperry founded and runs Dakota Matting & Environmental Solutions** (Coral Springs, FL; since 2018; 100,000+ mats, 16 states, ~200 employees). They build temporary access roads and ground protection from timber and composite mats for utilities and pipelines. The brief itself opens with a temporary road, mud and stuck vehicles. **Don't name-drop her company in the pitch.** Just solve her problem well, and she'll recognize it.
+2. **Eric Zhang (UF '27) built "Common Ground,"** which won **1st of 81 teams** in Sperry's ShellHacks challenge (Sept 2026). He'll compare every Sperry project to his. Our name echoes his. If it comes up: *"Common Ground answers which projects overlap years out; we answer whether a truck can reach a site tomorrow. We took your lesson: a source on every number."*
+3. **What Sperry already rewarded (ShellHacks "Gridlock," $5,000 across four winners):** Common Ground, UtiliTies and ContractMap were LLM-parsed public filings + map + timeline + AI briefs, **with a source or confidence label on every number**. **Mr.Gridy** stood out with a real storm model and a **measured result** (crew sharing in a Hurricane Matthew replay would have restored power ~50 hours sooner). Lesson: real data + honest labels are table stakes; **a quantified outcome from a real model separates.** Common Ground's live demo also **crashed in front of a judge**, so ours must not.
+
+**What this means for the pitch:** open with the person and the moment of harm, show it working live within 30 seconds, show one validation number, and be ready to explain the data pipeline and how you'd deploy and secure it.
+
+---
+
+## 3. How we got here (the decision story)
+
+### Ideas we considered, and why we dropped them
+
+| Idea | What it was | Verdict |
+|---|---|---|
+| **Groundwork** (first called AccessCall / AccessCall 2.0) | Utility access + hazard planning for Sperry | **Chosen** |
+| LapCoach | ~$200 laparoscopic skills trainer with CV + force sensing + AI coach | Health track gone; needed a box build |
+| Tripwire | Real-time scam interrupter for older adults | **Dropped: iPhones can't access call audio** |
+| SafeWalk | CV pedestrian safety | Recorded video only; Garmin Varia exists |
+| AnyInput / SipSafe | Adaptive game controller / swallow-safety necklace | Too close to Clench / accuracy risk in a noisy hall |
+| A Clench-style ALS project | Clench won Best Overall at ShellHacks 2 weeks earlier | Don't repeat a recent Florida winner; take its lessons (calibrate, guard false triggers, keep the safety path offline) |
+| **DelayProof** (Sperry + Capital One + DeepSpace) | Logs site conditions; builds a "claim-ready evidence report" when a site goes No-Go; Nessie prices each delay day. Its pitch: *"We don't just predict dangerous weather. We prove exactly how much a weather delay costs and generate the evidence to recover that money."* | Strongest alternative. Its money angle was **folded into Groundwork** as the mats-vs-postpone cost comparison ("what delays could cost"), not built as a separate product |
+| Hazard Time Machine | Task-specific risk scheduler with a replay mode | Absorbed: replay mode became the **storm replay** |
+| SafeSpeak | Turns texts and voice notes ("gator by the east culvert, about 8 feet") into map hazards | Absorbed: became **crew hazard reports** |
+| ScamGraph, CrowdPulse, a gaze/eye-tracking tutor (+ HeyClicky), AccessProof, Rainy Day Wallet, Storm Fund | Other ideas from teammates' AI | Weaker sponsor fit and no tie to a judge's real business |
+| Teammates' PDF ideas | SafeWalk, BeatsByEye, DormMarket, SeatSnatcher, FlashMob, LapoNav AI | Not pursued |
+
+**Why Groundwork won the vote:**
+- It's the only idea tied to a judge's real business: site access and mats.
+- Nothing on the market makes the mat call.
+- It fits what the team is good at: models, data pipelines and computer vision.
+- It reaches the most prizes: Sperry with interviews, Overall, Hardware, Gemini.
+- The demo is physical: wet soil flips the site to MATS.
+
+### The AI-bias problem, and how we beat it
+
+Every teammate's AI suggested the same Sperry project, and other teams use the same tools. **The AI-default Sperry project:** a map of power plants, a 0–10 score from a gradient-boosted model, a simulated lightning countdown, a Gemini-written briefing and Gemini photo tagging, named something like SiteWatch, CrewGuard or FieldShield. Build that and we're one of many.
+
+**Our guardrails:**
+- The story is about **access**, not a "safety dashboard."
+- The **LLM is not the core.** Rules and models decide; Gemini only writes the briefing.
+- Every number carries its **source and timestamp.**
+- A **physical** demo nobody else has: real soil, a beacon that alarms, a judge who taps to acknowledge.
+- A **real validation number** from a held-out year.
+
+### What wins at other hackathons (and how our demo uses it)
+
+| Where | Pattern |
+|---|---|
+| SwampHacks 2016–2026 | Physical builds punch above their numbers: 1st place in 2016, 2017, 2018 and 2025. Since 2025 nearly every winner uses an LLM. Local hooks land |
+| TreeHacks 2024–26 | Hardware took 2 of 3 grand prizes. The AI sits on top of a deterministic core |
+| Cal Hacks, PennApps, HackGT, HackMIT and others | 9 of 13 grand prizes involved hardware. Agents that act beat agents that chat. A measured number stands out. One winner cut its flaky feature and hardcoded a fallback |
+| Anson's own wins (HeatTwin, Relay, FluxCare) | One person and one moment of harm; something measured live; a real model at the core with the LLM for language only; say out loud what the system never does; offline fallbacks |
+
+**Three rules, all already in our script:**
+1. Something physical reacts within 10 seconds (the beacon).
+2. Script around what always works and keep a fallback (the replay, the recorded tray).
+3. Name the user and show one number (the supervisor at 6 PM; AUC 0.85 vs 0.78).
+
+---
+
+## 4. Market check: what exists, and our wedge
+
+**Verdict:** lightning and heat alerts already exist commercially; **the access-and-mats call does not.** Pitch the mat decision. Lightning and heat are inputs, not the invention.
+
+| Product | What it does | Overlap |
+|---|---|---|
+| **Perry Weather** (used by Turner, DPR, McCarthy, Gridworks) | On-site weather station: 10-mi lightning radius with resetting all-clear, WBGT heat alerts, multi-site | **Strongest.** Already does the lightning countdown, but needs its own hardware at fixed sites |
+| DTN WeatherSentry, Vaisala Xweather, Earth Networks | Enterprise lightning all-clear timers and sirens | Lightning |
+| Tomorrow.io | Weather rules for stop/resume, heat templates | Threshold alerts |
+| Kenzen, SlateSafety | Heat-stress wearables | Heat |
+| SafetyCulture, Opusense AI (YC P2025) | Photo/voice field reports | Hazard reports |
+| **meteoblue Soil Trafficability** | 7-day green/yellow/red ground forecast from rain + 4 generic soil types | **Closest to our ground model**, but no vehicle classes, no real soil maps, no mats |
+| Harvester Seasons (FMI), NATO NRMM | Forestry and military vehicle trafficability | Same idea, other industries |
+| UR Mat Tracker / YAK TRAK, SmartMat, DURA-BASE RFID | Mat delivery and tracking | Logistics **after** the order; no forecast |
+| United Rentals mat calculator | Length × width = mats | Ignores soil and weather |
+| Sitetracker, Locusview | Utility field-operations software | No ground or weather call |
+| Y Combinator | 44 construction companies | **None** do site access + soil + weather for crews |
+
+**If a judge says "Perry Weather already does lightning countdowns":**
+> "Agreed. In production we'd plug Perry or DTN into the same interface. Our contribution is the access call. meteoblue gives farms a traffic light, mat companies track mats after they're ordered, and nobody tells a utility tonight which vehicles can reach which sites tomorrow and how many mats to stage."
+
+---
+
+## 5. The product (what's actually built, Oct 17)
+
+### Two separate decisions, by design
+
+| Decision | Question | Output |
+|---|---|---|
+| **A. Weather safety** (all vehicles) | How hazardous will tomorrow be? | 0–10 hazard score + `NORMAL / CAUTION / STOP_WORK / UNKNOWN` |
+| **B. Ground access** (per vehicle) | Can a pickup vs. a heavy truck reach this site? | `GO / MATS / NO-GO` (all "for review") + mat count + cost comparison |
+
+**Effective status:** STOP WORK wins over everything; missing or stale data becomes **supervisor review**, never "safe."
+
+### Features vs. Sperry's brief
+
+| Brief asks for | Groundwork |
+|---|---|
+| 50+ real sites | **300 real sites** (60 Florida + 240 across other states; OpenStreetMap substations) + the demo tray |
+| Weather, heat, flooding | Open-Meteo forecast + recent rain, heat (apparent temperature), NWS flood and storm alerts |
+| Soil saturation | **USDA NRCS soil survey** (drainage, clay) + 7-day and next-day rain → per-vehicle access call |
+| Lightning: 10 mi, 30-min all-clear that resets | Crew lightning report stops every site within 10 mi; 30-min all-clear restarts on each new report; beacon shows `STOP - CLR 29:59`. **Labeled crew-reported, not a strike network** |
+| Wildfire | NIFC active incidents; a fire within 10 mi raises CAUTION |
+| Wildlife | iNaturalist alligator sightings within 10 km / 30 days → "brief the crew" note (labeled unverified) |
+| Crew photo reports on a map | Photo + text + site + time → map pin, marked **unreviewed** until a supervisor reviews it |
+| Ranked supervisor map | Operations map ranked by risk |
+| 6 PM briefing | Deterministic facts → **Gemini** narration with a number check and a template fallback; **n8n** can email it at 6 PM |
+| ML hazard index (0–10), historical training | **Learned STOP-WORK forecast** (advisory). Numbers below |
+| (Our extra) | **Mats estimate + mats-vs-postpone cost**, **Hurricane Milton storm replay**, **physical site beacon**, MCP server for Claude Desktop, optional Auth0 roles |
+
+### Numbers we can stand behind
+
+- **Learned forecast** (logistic regression; 300 sites × 3 years = 328,800 site-days; inputs are Open-Meteo *archived forecasts*; labels are real NWS alerts from the Iowa Environmental Mesonet). Tested on **Jul 2025–Jun 2026, a year it never saw**:
+  - **ROC AUC 0.85 vs 0.78** for our rule score (climatology 0.76). PR AUC 0.28 vs 0.20 at a 4.6% base rate.
+  - Its riskiest 10% of site-days contain **52%** of STOP-WORK days (rules: 40%).
+  - It also beats Anson's independent NOAA storm-report model on *that model's own target* (0.90 vs 0.89).
+  - **Honest limit:** in Florida it only **ties** the rules (0.80 vs 0.81), because summer storms happen almost every afternoon. That's why it stays **advisory** and never sets a status.
+- **Data coverage:** weather for 300/300 sites, NWS checked 300/300, USDA soil for 248/300 (the rest show UNKNOWN, by design).
+- **Hurricane Milton replay** (Oct 9, 2024): real archived weather and the warnings active that day; **all 60 Florida sites reach STOP WORK**, while Oregon doesn't, so a Florida storm never stops work out west.
+- **Mats example:** same damp ground, the pickup is GO while the heavy truck needs roughly **42–48 mats** (the number in the script). ⚠️ An earlier API check showed 13–14 mats with default route settings. **Read the real number off the demo site before judging** and say that one. Costs are editable planning assumptions (example: mats $900 vs postpone $2,800).
+- **Tests:** 204 backend + hardware tests pass; frontend typecheck, lint, 159 tests and build pass.
+- **Beacon safety:** unplug USB and within 6 s the beacon shows `NO LINK` and never shows green on stale data.
+
+### What AI does, and doesn't
+
+- **Does:** Gemini writes the 6 PM summary from structured facts (with a number check and a non-AI fallback); a small ML model gives an advisory forecast.
+- **Doesn't:** set STOP WORK, decide access, certify ground strength, or tag photos. **AI photo tagging is not implemented. Don't claim it.**
+
+### The site beacon (hardware)
+
+An Arduino Uno box beside a soil tray. It **senses** (Grove moisture, light, barometer/temp), **shows the server's decision** (Grove RGB LCD, red/green LEDs, buzzer) and **takes crew input** (touch = acknowledge alarm, long button press = flag a site). It talks to the laptop over USB serial (115200 baud) through `hardware/serial_bridge.py`. **The Arduino never computes safety status.**
+
+| Status | LCD | LEDs | Buzzer |
+|---|---|---|---|
+| GO | green | green | off |
+| MATS | amber | both | off |
+| NO-GO | red | red | off |
+| STOP | red | red blinking | pulses until touched (touch acknowledges; doesn't clear) |
+| UNKNOWN / stale (6 s) | white | alternating | off |
+
+---
+
+## 6. The pitch
+
+### One-liner
+> "By 6 PM, Groundwork tells utility crews which sites they can reach tomorrow, which vehicles need ground mats, when weather demands STOP WORK, and what delays would cost, using traceable weather and USDA soil data."
+
+### 20-second opener (for the Overall / general judges)
+> "Every evening, someone at a utility decides which trucks go where tomorrow, and how many truckloads of mats to send. Get it wrong one way and a heavy truck sinks to its axles at a remote site; the other way, you've paid to haul mats nobody needed. Weather apps do lightning. Mat companies track mats after they're ordered. Nobody makes that call. Groundwork does."
+
+### The two-minute script (full version with stage directions: README §14.4)
+
+| Time | Who | Beat |
+|---|---|---|
+| 0:00–0:10 | Rishi | "It's 6 PM. A supervisor has 300 job sites tomorrow, a week of rain behind them and storms in the forecast. Groundwork turns that into one plan." |
+| 0:10–0:30 | Anson | Probe moves dry corner → damp patch; beacon goes green → **amber**: "Real soil. The reading climbs, our server re-scores the site, mats for review." |
+| 0:30–0:55 | Rishi | **Judge switches Pickup → Heavy truck.** "Same ground, different vehicle: pickup fine, heavy truck needs ~42–48 mats. Mats vs postponing; every cost editable." |
+| 0:55–1:25 | Aashita + Anson | **Hurricane Milton replay.** Beacon red + buzzer. "Even with mats staged, every vehicle goes to STOP WORK. Safety overrides access; it can't be averaged away." **Judge taps the beacon:** "That records the crew saw it. It doesn't clear STOP WORK; only the weather logic can." |
+| 1:25–1:45 | Rithika → Anson | Phone submits **Lightning observed** at the venue → pin appears, beacon counts down `STOP - CLR 30:00`. "Within 10 miles: a 30-minute all-clear that restarts with every new strike, exactly as Sperry's brief asks. Crew-reported, not a strike network, and AI never sets a status." |
+| 1:45–2:00 | Rithika → Rishi | 6 PM brief over the 300-site map: "Every number traced to USDA, Open-Meteo or the Weather Service, with timestamps, and data gaps called out." → "That's Groundwork. Happy to go deeper." |
+
+**Delivery rules:** talk to the judges, not the screen. Let the judge touch two things (vehicle toggle, beacon). Say the honest label out loud ("planning assumptions," "replayed," "needs review"). Hand off by name. **Stop at 2:00.**
+
+**30-second version:** opener line → probe into the damp patch, beacon amber → storm replay, beacon alarms → "300 real sites, real weather and soil data, a plan every evening at 6. Want the full two minutes?"
+
+### Tailor by judge
+
+| Judge | Lead with | Make sure they see |
+|---|---|---|
+| **Sperry** | Their scenario: remote site, heat climbing, storms building, ground soaked after a week of rain | Every line of the brief; the access/mats call; the forecast's held-out scores (including where it only ties) |
+| **NextEra** | "Your crews, tomorrow morning" | Per-vehicle call, STOP WORK override, 6 PM email |
+| Hardware | The beacon | Sensor → server → beacon loop, touch ack, `NO LINK` behavior, calibration |
+| AI / Gemini | What AI does and doesn't do | Grounded briefing with validation + fallback; held-out evaluation; clean repo |
+| Security | Data handling | Auth0 roles (crew vs supervisor), token-protected sensor writes, no secrets in repo |
+| Founders / Overall | The supervisor's 6 PM problem and the market gap | Who pays (utilities, mat vendors), the wedge vs Perry/meteoblue |
+| Easy On The Eyes | Map + site detail | Status colors, provenance labels, beacon mirror |
+
+### Five-minute deep-dive menu (pick by judge)
+"Why this call?" panel on a real site · data coverage and freshness · STOP WORK and "missing ≠ safe" tests · Gemini prompt contract, number check, fallback · the ML evaluation and its Florida limit · a live CAUTION site with its real NWS alert · **the pour** (damp → NO GO in ~1 s) · unplug USB → `NO LINK` · the repo.
+
+---
+
+## 7. Honesty labels: say these, never overclaim
+
+| Element | Say |
+|---|---|
+| Sites | Real OpenStreetMap substations, **not** confirmed utility work orders or known muddy entrances; a utility would upload its own job sites and access routes |
+| Thresholds | **Demo policy**, configurable; a utility would tune them with field data |
+| Access call | A screening recommendation, **not** a soil bearing-capacity certification. The supervisor decides |
+| Tray sensor | Proves the pipeline end to end; it's **not** a measurement of a remote site |
+| Costs and mat sizes | Editable planning assumptions, not quotes |
+| Lightning | Crew-reported, not a licensed strike network; a utility plugs its feed (Perry, DTN, Vaisala, GOES GLM) into the same rule |
+| Wildlife | Community observations, unverified |
+| ML forecast | Advisory; held-out-year evaluated; ties the rules in Florida |
+| Gemini | Writes the summary only; never decides |
+| **Never claim** | AI photo tagging (not built), guaranteed savings, certified safety, live strike detection |
+
+> ⚠️ **Get everyone saying the same thing about the Milton replay:** the alerts are **real**. `fixtures/storm_replay_alerts_v1.json` holds the actual warnings active on Oct 9, 2024, from the Iowa Environmental Mesonet archive, and the weather is real Open-Meteo archive data. Two older notes still say "simulated": the README's "Running everything" paragraph and `docs/HANDOFF_v5.md`. Those are out of date. Fix that README line so a judge reading the repo doesn't see a contradiction.
+
+---
+
+## 8. Judge Q&A crib (short answers)
+
+- **"Does it guarantee trucks won't get stuck?"** No. It's advance planning from soil surveys, forecasts and configurable vehicle rules; a supervisor still assesses the site.
+- **"Isn't your ML just rules?"** The safety engine is transparent rules on purpose. Next to it is a real model trained on 3 years at 300 sites and tested on a year it never saw: AUC 0.85 vs 0.78. In Florida it only ties, so it stays advisory.
+- **"Can mats override lightning?"** Never.
+- **"Does touching the beacon clear STOP WORK?"** No. It logs the acknowledgment; only the weather logic or the all-clear timer clears it.
+- **"Why Arduino, not a Pi?"** The Uno has analog inputs for moisture and light (a Pi doesn't), and USB keeps the demo independent of venue Wi-Fi.
+- **"What if the beacon disconnects?"** `NO LINK` within 6 s; it never shows green on stale data.
+- **"Perry Weather already does this."** It does lightning and heat at fixed sites with its own hardware. We'd integrate it. Our contribution is the per-vehicle access and mats call for tomorrow.
+- **"How is this different from Common Ground?"** Different question and timescale: overlapping projects years ahead vs. tonight's access call for tomorrow. Same discipline: a source on every number.
+- **"Who pays?"** Utilities' operations teams (fewer stuck trucks, fewer wasted mat hauls and idle crews) and mat vendors (demand forecast for overnight staging).
+- **"How would you deploy and secure it?"** FastAPI + SQLite today (Tiger Data/Postgres for telemetry), Auth0 roles with backend token checks, token-protected sensor writes, secrets out of the repo, offline snapshot so the plan still works when an API is down.
+- **"The brief says power plants. Why substations?"** Substations are where utility crews actually go day to day, and OpenStreetMap gives real coordinates for 300 of them nationwide. The site list is just a file: EIA-860M plants, or a utility's own job sites, drop in the same way. *(Even better, if someone has 30 minutes: add a batch of EIA-860M Florida plants so we meet the brief word for word.)*
+- **"Why not real satellite lightning?"** NOAA's GOES lightning data is free and would plug into the same 10-mile / 30-minute rule. We chose crew reports for the demo so the rule fires on cue and is honestly labeled.
+- **"How do you know the data is real?"** Every site shows provider, fetch time and missing fields; we count coverage (USDA 248/300) instead of hiding gaps.
+
+Full crib: README §16.
+
+---
+
+## 9. Devpost submission draft (edit and paste)
+
+**Name:** Groundwork
+**Tagline:** Tonight's plan for tomorrow's crews: who can reach which site, which trucks need mats, and when it's not safe to work.
+
+**Inspiration:** The night before a job, a utility supervisor juggles weather apps, soil maps, spreadsheets and texts from crews to answer a simple question: can our trucks get in tomorrow, and is it safe to work? Getting it wrong means a heavy truck stuck at a remote site, or mats and crews paid for nothing. Sperry Tech's PlanIT Control challenge asked for a hazard platform; we focused on the access decision underneath it.
+
+**What it does:** Groundwork ranks 300 real sites every evening. For each one it scores tomorrow's weather hazard (rain, gusts, heat, NWS alerts; lightning, flood and storm warnings force STOP WORK), makes a per-vehicle access call from USDA soil data and recent rain (GO / MATS / NO-GO), estimates mats and compares mats vs. postponing, takes crew photo and lightning reports (a 30-minute all-clear that resets with every strike), and writes a 6 PM briefing. A learned forecast, tested on a held-out year, gives an advisory chance of a STOP-WORK day. A tabletop Arduino beacon reads real soil and shows the server's decision with an LCD, lights and an alarm a crew member must acknowledge.
+
+**How we built it:** FastAPI + SQLite backend with deterministic hazard and access rules; React/TypeScript/Vite frontend with Leaflet maps; Open-Meteo, USDA NRCS, NWS, NIFC, iNaturalist and Iowa Environmental Mesonet data with timestamps on everything; a logistic-regression forecast trained on 328,800 site-days of archived forecasts and real NWS alerts; Gemini for the briefing narrative with a number check and a template fallback; n8n for the 6 PM email; an Arduino Uno with Grove sensors and a Python serial bridge; Auth0 roles; an MCP server so Claude Desktop can query the API.
+
+**Challenges:** keeping safety and access as two separate decisions that can't be averaged together; making missing data read as "review," never "safe"; getting a cheap soil probe to land reliably in the MATS band; wiring Grove modules to an Uno without a base shield; keeping the demo alive offline.
+
+**Accomplishments:** 300 real sites with provenance; a forecast that beats our own rules on a year it never saw (AUC 0.85 vs 0.78) and an honest note where it doesn't; a physical loop from soil to server to alarm in about 2 seconds; 360+ automated tests.
+
+**What we learned:** honest labels are a feature; the hardest part of safety software is what it refuses to say.
+
+**What's next:** real job sites and access routes uploaded by a utility, mat counts along the actual route (OpenStreetMap path split by soil unit), ground-pressure classes per vehicle, licensed lightning feeds, and crews' "got stuck / mats were fine" logs tuning the thresholds.
+
+**Built with:** python, fastapi, sqlite, react, typescript, vite, leaflet, scikit-learn, gemini, n8n, auth0, arduino, grove, open-meteo, usda-nrcs, nws, mcp
+
+**Video (≤2 min) shot list:** the problem in one sentence → probe into damp soil with dashboard + beacon reacting → storm replay STOP WORK + touch acknowledgment → crew report → 6 PM brief over the map → system diagram → team names and roles. Record the best rehearsal run; it doubles as the backup video.
+
+**Remember:** disclose AI-tool use; the repo must be public.
+
+---
+
+## 10. Hardware cheat sheet (Anson)
+
+- **Pin map:** moisture **A0** · light **A2** · touch **D2** · button **D4** · buzzer **D6** · red LED **D8** · green LED **D9** · LCD on **A4/A5** · barometer on **SDA/SCL** (top-left; same bus as A4/A5) · 5V/GND to the breadboard strips.
+- **Grove cables have a white plug on both ends.** Either use a Grove Base Shield (check the kit box or the MLH desk), or push male-to-male jumpers into the free plug's yellow/red/black holes (plus white for the LCD and barometer). 29 jumpers total.
+- **LED resistors:** use the 5-band **red-red-black-black-brown (220 Ω)** and **red-red-black-black-red (220 Ω)**. Skip the tan ~7.5 kΩ one.
+- **Demo tray:** dry corner (GO), **damp patch reading 40–60** (MATS; the beacon always shows the heavy truck), wet spot (NO-GO). Pouring straight on the probe skips MATS, so MATS comes from the damp patch.
+- **Fallback:** if USB fails, run the bridge in `--replay` mode with the recorded tray CSV (labeled "Recorded demo").
+- **Visual wiring guide:** the "Groundwork Beacon Wiring" page (10 illustrated steps).
+
+---
+
+## 11. Team, status and what's left
+
+| Person | Owns | Before judging |
+|---|---|---|
+| **Anson** | Beacon, firmware, bridge, calibration, repo | Full run with the physical Uno (P12/P15); push `hardware/` if any branch is missing; label every wire; raise buzzer volume if the hall is loud |
+| **Aashita** | FastAPI backend, mats/cost, SQLite, demo reset | Health endpoint green on the demo site; Tiger Data only if the time-series is real |
+| **Rishi** | Frontend; backend after | "Demo mode" banner visible; map + site detail polish (Easy On The Eyes) |
+| **Rithika** | Briefing (Gemini), connectors, risk logic, ML | Generate the saved briefing **last** (online, with `narrative_source: llm`); stop calling the Milton warnings "simulated" (§7) |
+
+**Our credibility in one breath:**
+- **Anson:** 1st at DTE Designathon 2026 (HeatTwin); 1st for Best Use of Render at BayHacks 2026 (Relay); 2nd at DTE 2025 (FluxCare).
+- **Rithika:** **FPL + InETech Lab intern since 2024**, on PowerGPT, wind-power forecasting and fault prediction, with a patent filing. Say this to the NextEra and Sperry judges. Also 2nd at DTE (BreakPoint) and 2nd at the FAU Agentic AI Hackathon.
+- **Aashita:** UF Honors CS + BME; backend intern; 1st at NASA GeoEmerge.
+- **Rishi:** frontend and product.
+
+**Pick one spelling:** the repo uses both "Groundwork" and "GroundWork". Use **Groundwork** everywhere: Devpost, slides, UI.
+
+**Done:** P1–P11, P13 (sites, data, score, lightning, flood, heat, vehicle access, mats, cost, reports, briefing, replay).
+**Still open:**
+- P12/P15: end-to-end with the real beacon.
+- P14: a **timed Wi-Fi-off run** of the two-minute script.
+- No AI photo tagging (keep it out of the pitch).
+- The offline basemap is Florida-only.
+- One outdated README line calls the Milton alerts simulated (§7).
+
+**Rehearsal plan:** at least 5 timed runs (one Wi-Fi off, one with the Arduino unplugged, one in front of another team, one 30-second, one deep dive). Lock the script by hour 32. Code freeze 60 min before judging. 15 min before: reset demo, Do Not Disturb on, damp patch reads 40–60, beacon green on the dry corner.
+
+**At the table:** beacon + spare USB-B, soil tray (3 spots), spoon/water/dry soil, tub and towels, tape, spare jumpers; dashboard laptop facing judges (external monitor if possible); a second laptop on the health check; a phone with the report form and a standing-water photo ready; power strip and a hotspot.
+
+---
+
+## 12. After the hackathon
+
+Delete the Gemini keys in AI Studio, revoke the Gmail app password, clean up `.bak` files and merged branches. For Sperry follow-up: whoever places, send the repo + a 1-page summary to the Sperry judges and ask for the interview slot.
+
+---
+
+## Sources
+
+- SwampHacks XII Devpost (prizes, rules, judges): https://swamphacks-xii.devpost.com/ · rules: https://swamphacks-xii.devpost.com/rules
+- Past SwampHacks galleries: XI https://swamphacks-xi.devpost.com/ · X https://swamphacksx.devpost.com/
+- Sperry's ShellHacks winners: Common Ground https://devpost.com/software/common-ground-a6rfoc · Mr.Gridy https://devpost.com/software/mr-gridy · UtiliTies https://devpost.com/software/utilities-utility-coordination · ContractMap https://devpost.com/software/contractmap
+- Clench (ShellHacks 2026 Best Overall): https://devpost.com/software/clench-ifdrmc
+- Dakota Matting: https://dakotamats.com/
+- Perry Weather: https://perryweather.com/use-cases/construction · Tomorrow.io: https://www.tomorrow.io/solutions/construction-lp · meteoblue Soil Trafficability: https://www.meteoblue.com/ro/blog/article/show/34885_Soil+Trafficability++
+- Repo docs: `README.md` (§2 requirements, §8 ML, §14 demo playbook, §16 Q&A), `docs/JUDGES_EXPLAINER.md`, `docs/HANDOFF_v5.md`, `backend/ml/EVALUATION.md`
