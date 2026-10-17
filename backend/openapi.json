@@ -99,6 +99,14 @@
             "title": "Id",
             "type": "string"
           },
+          "mat_staging": {
+            "description": "Sites/vehicles at MATS_FOR_REVIEW (never STOP WORK sites), per route_length",
+            "items": {
+              "$ref": "#/components/schemas/MatStagingOut"
+            },
+            "title": "Mat Staging",
+            "type": "array"
+          },
           "missing_data_notes": {
             "items": {
               "$ref": "#/components/schemas/MissingDataNoteOut"
@@ -125,6 +133,14 @@
             ],
             "title": "Narrative Source",
             "type": "string"
+          },
+          "sources": {
+            "description": "Where the brief's facts came from",
+            "items": {
+              "type": "string"
+            },
+            "title": "Sources",
+            "type": "array"
           },
           "stop_work_site_ids": {
             "items": {
@@ -205,6 +221,11 @@
           "assumptions": {
             "$ref": "#/components/schemas/CostInputs"
           },
+          "complete": {
+            "description": "True when every cost item was entered",
+            "title": "Complete",
+            "type": "boolean"
+          },
           "label": {
             "title": "Label",
             "type": "string"
@@ -217,6 +238,14 @@
             "title": "Modeled Difference",
             "type": "number"
           },
+          "not_entered": {
+            "description": "Cost items left blank and counted as $0 (labels assumed values, P9)",
+            "items": {
+              "type": "string"
+            },
+            "title": "Not Entered",
+            "type": "array"
+          },
           "postpone_option": {
             "title": "Postpone Option",
             "type": "number"
@@ -227,6 +256,7 @@
           "postpone_option",
           "modeled_difference",
           "assumptions",
+          "complete",
           "label"
         ],
         "title": "CostComparisonOut",
@@ -234,82 +264,201 @@
       },
       "CostInputs": {
         "additionalProperties": false,
-        "description": "Supervisor-entered assumptions. Nothing here is a real price.",
+        "description": "Supervisor-entered assumptions. Nothing here is a real price.\n\nLeave a field out (or null) when it wasn't entered: it counts as $0 but is listed in\ncost_comparison.not_entered. Send 0 only when the cost really is zero.",
         "properties": {
           "delay_not_prevented": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Delay Not Prevented",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Delay Not Prevented"
           },
           "delivery": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Delivery",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Delivery"
           },
           "equipment_rate_per_hour": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Equipment Rate Per Hour",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Equipment Rate Per Hour"
           },
           "extra_contract_cost": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Extra Contract Cost",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Extra Contract Cost"
           },
           "idle_equipment": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Idle Equipment",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idle Equipment"
           },
           "idle_hours": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Idle Hours",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idle Hours"
           },
           "installation": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Installation",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Installation"
           },
           "labor_rate_per_hour": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Labor Rate Per Hour",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Labor Rate Per Hour"
           },
           "mats_rental": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Mats Rental",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mats Rental"
           },
           "paid_idle_labor": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Paid Idle Labor",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Paid Idle Labor"
           },
           "removal": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Removal",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Removal"
           },
           "rescheduling": {
-            "default": 0,
-            "minimum": 0.0,
-            "title": "Rescheduling",
-            "type": "number"
+            "anyOf": [
+              {
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rescheduling"
           }
         },
         "title": "CostInputs",
+        "type": "object"
+      },
+      "CoverageOut": {
+        "description": "README section 15 'validation metrics to show judges': real coverage, not just map pins.",
+        "properties": {
+          "freshness": {
+            "items": {
+              "$ref": "#/components/schemas/SourceFreshnessOut"
+            },
+            "title": "Freshness",
+            "type": "array"
+          },
+          "sites_with_both": {
+            "title": "Sites With Both",
+            "type": "integer"
+          },
+          "sites_with_missing": {
+            "title": "Sites With Missing",
+            "type": "integer"
+          },
+          "sites_with_usda_soil": {
+            "title": "Sites With Usda Soil",
+            "type": "integer"
+          },
+          "sites_with_weather": {
+            "title": "Sites With Weather",
+            "type": "integer"
+          },
+          "stale_after_hours": {
+            "title": "Stale After Hours",
+            "type": "number"
+          },
+          "total_sites": {
+            "title": "Total Sites",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "total_sites",
+          "sites_with_usda_soil",
+          "sites_with_weather",
+          "sites_with_both",
+          "sites_with_missing",
+          "stale_after_hours",
+          "freshness"
+        ],
+        "title": "CoverageOut",
         "type": "object"
       },
       "DemoResetOut": {
@@ -555,6 +704,22 @@
           "site_id": {
             "title": "Site Id",
             "type": "string"
+          },
+          "vehicle": {
+            "anyOf": [
+              {
+                "enum": [
+                  "pickup",
+                  "heavy_truck"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Vehicle the beacon's access call is for",
+            "title": "Vehicle"
           }
         },
         "required": [
@@ -622,6 +787,58 @@
           "data"
         ],
         "title": "Envelope[BriefingOut]",
+        "type": "object"
+      },
+      "Envelope_CoverageOut_": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CoverageOut"
+          },
+          "errors": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Errors",
+            "type": "array"
+          },
+          "generated_at": {
+            "format": "date-time",
+            "title": "Generated At",
+            "type": "string"
+          },
+          "missing_fields": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Missing Fields",
+            "type": "array"
+          },
+          "mode": {
+            "enum": [
+              "live",
+              "cached",
+              "replay",
+              "simulated",
+              "sensor_demo",
+              "sensor_replay"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "sources": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Sources",
+            "type": "array"
+          }
+        },
+        "required": [
+          "mode",
+          "generated_at",
+          "data"
+        ],
+        "title": "Envelope[CoverageOut]",
         "type": "object"
       },
       "Envelope_DemoResetOut_": {
@@ -934,6 +1151,58 @@
           "data"
         ],
         "title": "Envelope[PolicyOut]",
+        "type": "object"
+      },
+      "Envelope_PressureTendencyOut_": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/PressureTendencyOut"
+          },
+          "errors": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Errors",
+            "type": "array"
+          },
+          "generated_at": {
+            "format": "date-time",
+            "title": "Generated At",
+            "type": "string"
+          },
+          "missing_fields": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Missing Fields",
+            "type": "array"
+          },
+          "mode": {
+            "enum": [
+              "live",
+              "cached",
+              "replay",
+              "simulated",
+              "sensor_demo",
+              "sensor_replay"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "sources": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Sources",
+            "type": "array"
+          }
+        },
+        "required": [
+          "mode",
+          "generated_at",
+          "data"
+        ],
+        "title": "Envelope[PressureTendencyOut]",
         "type": "object"
       },
       "Envelope_ReadingOut_": {
@@ -1604,6 +1873,16 @@
       },
       "HealthOut": {
         "properties": {
+          "auth": {
+            "default": "disabled",
+            "description": "'disabled' = demo mode: every caller is a labeled demo user with both roles",
+            "enum": [
+              "auth0",
+              "disabled"
+            ],
+            "title": "Auth",
+            "type": "string"
+          },
           "connectors": {
             "additionalProperties": {
               "enum": [
@@ -1771,6 +2050,58 @@
           "reason"
         ],
         "title": "MatOverrideOut",
+        "type": "object"
+      },
+      "MatStagingOut": {
+        "properties": {
+          "max_estimate": {
+            "title": "Max Estimate",
+            "type": "integer"
+          },
+          "min_estimate": {
+            "title": "Min Estimate",
+            "type": "integer"
+          },
+          "route_length": {
+            "description": "Basis of the estimate; the real route length is a site input",
+            "title": "Route Length",
+            "type": "number"
+          },
+          "site_id": {
+            "title": "Site Id",
+            "type": "string"
+          },
+          "site_name": {
+            "title": "Site Name",
+            "type": "string"
+          },
+          "unit": {
+            "enum": [
+              "ft",
+              "m"
+            ],
+            "title": "Unit",
+            "type": "string"
+          },
+          "vehicle": {
+            "enum": [
+              "pickup",
+              "heavy_truck"
+            ],
+            "title": "Vehicle",
+            "type": "string"
+          }
+        },
+        "required": [
+          "site_id",
+          "site_name",
+          "vehicle",
+          "min_estimate",
+          "max_estimate",
+          "route_length",
+          "unit"
+        ],
+        "title": "MatStagingOut",
         "type": "object"
       },
       "MatsEstimateOut": {
@@ -2373,6 +2704,11 @@
             "title": "Label",
             "type": "string"
           },
+          "low_light_index_below": {
+            "description": "Demo-site low-light advisory threshold (0-100 light index)",
+            "title": "Low Light Index Below",
+            "type": "number"
+          },
           "mat_defaults": {
             "$ref": "#/components/schemas/MatDefaultsOut"
           },
@@ -2386,9 +2722,98 @@
           "demo_tray_access",
           "hazard_weights",
           "sensor_stale_seconds",
+          "low_light_index_below",
           "mat_defaults"
         ],
         "title": "PolicyOut",
+        "type": "object"
+      },
+      "PressureTendencyOut": {
+        "properties": {
+          "advisory": {
+            "title": "Advisory",
+            "type": "string"
+          },
+          "change_hpa": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "End minus start, 10-minute averages, over 3 hours",
+            "title": "Change Hpa"
+          },
+          "device_id": {
+            "title": "Device Id",
+            "type": "string"
+          },
+          "end_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "End At"
+          },
+          "reason": {
+            "title": "Reason",
+            "type": "string"
+          },
+          "samples": {
+            "title": "Samples",
+            "type": "integer"
+          },
+          "start_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start At"
+          },
+          "tendency": {
+            "enum": [
+              "UNKNOWN",
+              "STEADY",
+              "RISING_SLOWLY",
+              "RISING",
+              "RISING_QUICKLY",
+              "RISING_VERY_RAPIDLY",
+              "FALLING_SLOWLY",
+              "FALLING",
+              "FALLING_QUICKLY",
+              "FALLING_VERY_RAPIDLY"
+            ],
+            "title": "Tendency",
+            "type": "string"
+          },
+          "window_hours": {
+            "default": 3.0,
+            "title": "Window Hours",
+            "type": "number"
+          }
+        },
+        "required": [
+          "device_id",
+          "tendency",
+          "start_at",
+          "end_at",
+          "samples",
+          "reason",
+          "advisory"
+        ],
+        "title": "PressureTendencyOut",
         "type": "object"
       },
       "PrioritySiteOut": {
@@ -2732,7 +3157,19 @@
                 "type": "null"
               }
             ],
+            "description": "Always null: AI photo tagging is out of scope",
             "title": "Ai Confidence"
+          },
+          "ai_status": {
+            "default": "unavailable",
+            "description": "Photo tagger state; no tagger runs yet, so it is 'done' only if a tag exists",
+            "enum": [
+              "pending",
+              "done",
+              "unavailable"
+            ],
+            "title": "Ai Status",
+            "type": "string"
           },
           "category_ai": {
             "anyOf": [
@@ -2753,6 +3190,7 @@
                 "type": "null"
               }
             ],
+            "description": "Always null: AI photo tagging is out of scope",
             "title": "Category Ai"
           },
           "category_user": {
@@ -2793,6 +3231,18 @@
             "title": "Reported At",
             "type": "string"
           },
+          "reported_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Auth0 subject (opaque id) of the submitter",
+            "title": "Reported By"
+          },
           "site_id": {
             "title": "Site Id",
             "type": "string"
@@ -2805,6 +3255,18 @@
             ],
             "title": "Verification",
             "type": "string"
+          },
+          "verified_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Auth0 subject of the supervisor who last reviewed it",
+            "title": "Verified By"
           }
         },
         "required": [
@@ -3005,6 +3467,14 @@
           "access_call": {
             "$ref": "#/components/schemas/VehicleAccessOut"
           },
+          "advisories": {
+            "description": "Informational notes (e.g. low light at the demo site); never change a status",
+            "items": {
+              "type": "string"
+            },
+            "title": "Advisories",
+            "type": "array"
+          },
           "alert_events": {
             "items": {
               "type": "string"
@@ -3196,6 +3666,14 @@
           "access_call": {
             "$ref": "#/components/schemas/VehicleAccessOut"
           },
+          "advisories": {
+            "description": "Informational notes (e.g. low light at the demo site); never change a status",
+            "items": {
+              "type": "string"
+            },
+            "title": "Advisories",
+            "type": "array"
+          },
           "alert_events": {
             "items": {
               "type": "string"
@@ -3372,6 +3850,68 @@
           "evaluated_at"
         ],
         "title": "SiteOut",
+        "type": "object"
+      },
+      "SourceFreshnessOut": {
+        "properties": {
+          "median_fetched_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Median Fetched At"
+          },
+          "newest_fetched_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Newest Fetched At"
+          },
+          "observations": {
+            "title": "Observations",
+            "type": "integer"
+          },
+          "oldest_fetched_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Oldest Fetched At"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          },
+          "stale": {
+            "title": "Stale",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "source",
+          "observations",
+          "oldest_fetched_at",
+          "median_fetched_at",
+          "newest_fetched_at",
+          "stale"
+        ],
+        "title": "SourceFreshnessOut",
         "type": "object"
       },
       "TimelineEventOut": {
@@ -3674,6 +4214,26 @@
             },
             "description": "Successful Response"
           },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not logged in, or missing/invalid token"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Logged in but lacking the required role or permission"
+          },
           "422": {
             "content": {
               "application/json": {
@@ -3705,7 +4265,12 @@
             "description": "Unexpected server error"
           }
         },
-        "summary": "Generate a 6 PM briefing",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Generate a 6 PM briefing (supervisor)",
         "tags": [
           "briefings"
         ]
@@ -3783,6 +4348,57 @@
         ]
       }
     },
+    "/api/v1/coverage": {
+      "get": {
+        "operationId": "get_coverage_api_v1_coverage_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_CoverageOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Validation failed"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Rate limit exceeded"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unexpected server error"
+          }
+        },
+        "summary": "Data coverage and freshness for the field sites (README section 15 validation metrics)",
+        "tags": [
+          "health"
+        ]
+      }
+    },
     "/api/v1/demo/reset": {
       "post": {
         "operationId": "reset_demo_api_v1_demo_reset_post",
@@ -3805,7 +4421,17 @@
                 }
               }
             },
-            "description": "Missing or invalid sensor token"
+            "description": "Not logged in, or missing/invalid token"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Logged in but lacking the required role or permission"
           },
           "422": {
             "content": {
@@ -3874,6 +4500,26 @@
             },
             "description": "Successful Response"
           },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not logged in, or missing/invalid token"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Logged in but lacking the required role or permission"
+          },
           "404": {
             "content": {
               "application/json": {
@@ -3915,6 +4561,11 @@
             "description": "Unexpected server error"
           }
         },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
         "summary": "Clear a crew flag (supervisor); returns the updated beacon display",
         "tags": [
           "devices"
@@ -4143,7 +4794,7 @@
                 }
               }
             },
-            "description": "Missing or invalid sensor token"
+            "description": "Not logged in, or missing/invalid token"
           },
           "404": {
             "content": {
@@ -4734,6 +5385,26 @@
             },
             "description": "Successful Response"
           },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not logged in, or missing/invalid token"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Logged in but lacking the required role or permission"
+          },
           "404": {
             "content": {
               "application/json": {
@@ -4795,7 +5466,12 @@
             "description": "Unexpected server error"
           }
         },
-        "summary": "Submit a crew hazard report (multipart)",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Submit a crew hazard report (multipart); crew or supervisor",
         "tags": [
           "reports"
         ]
@@ -4908,6 +5584,26 @@
             },
             "description": "Successful Response"
           },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not logged in, or missing/invalid token"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Logged in but lacking the required role or permission"
+          },
           "404": {
             "content": {
               "application/json": {
@@ -4949,6 +5645,11 @@
             "description": "Unexpected server error"
           }
         },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
         "summary": "Supervisor confirms or rejects a crew report (optionally correcting its category)",
         "tags": [
           "reports"
@@ -4997,7 +5698,7 @@
                 }
               }
             },
-            "description": "Missing or invalid sensor token"
+            "description": "Not logged in, or missing/invalid token"
           },
           "404": {
             "content": {
@@ -5062,6 +5763,25 @@
             "schema": {
               "title": "Device Id",
               "type": "string"
+            }
+          },
+          {
+            "description": "Only readings recorded at or after this time (ISO 8601; no offset = UTC)",
+            "in": "query",
+            "name": "since",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Only readings recorded at or after this time (ISO 8601; no offset = UTC)",
+              "title": "Since"
             }
           },
           {
@@ -5217,6 +5937,78 @@
           }
         },
         "summary": "Most recent reading",
+        "tags": [
+          "sensors"
+        ]
+      }
+    },
+    "/api/v1/sensors/{device_id}/pressure-tendency": {
+      "get": {
+        "operationId": "get_pressure_tendency_api_v1_sensors__device_id__pressure_tendency_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "device_id",
+            "required": true,
+            "schema": {
+              "title": "Device Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_PressureTendencyOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Resource not found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Validation failed"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Rate limit exceeded"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unexpected server error"
+          }
+        },
+        "summary": "3-hour station pressure tendency (advisory only)",
         "tags": [
           "sensors"
         ]
@@ -5431,6 +6223,26 @@
             },
             "description": "Successful Response"
           },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not logged in, or missing/invalid token"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Logged in but lacking the required role or permission"
+          },
           "404": {
             "content": {
               "application/json": {
@@ -5472,7 +6284,12 @@
             "description": "Unexpected server error"
           }
         },
-        "summary": "Compute access, mat range and cost comparison (stateless)",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Compute access, mat range and cost comparison (stateless; supervisor)",
         "tags": [
           "sites"
         ]

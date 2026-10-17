@@ -7,7 +7,8 @@ from .deps import PageParams
 
 _ERROR_DESCRIPTIONS = {
     400: "Malformed request",
-    401: "Missing or invalid sensor token",
+    401: "Not logged in, or missing/invalid token",
+    403: "Logged in but lacking the required role or permission",
     404: "Resource not found",
     413: "Upload too large",
     415: "Unsupported upload type",

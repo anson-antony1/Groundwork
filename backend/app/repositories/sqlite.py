@@ -9,10 +9,10 @@ from pathlib import Path
 from typing import Generic, TypeVar
 
 from sqlalchemy import (
-    Column, Engine, Float, Integer, MetaData, String, Table, Text, create_engine, delete, insert, literal_column, select, update,
+    Column, Engine, Float, Integer, MetaData, String, Table, Text, create_engine, delete, insert, inspect, literal_column, select, text, update,
 )
 
-from .records import BriefingRecord, DemoState, PrioritySite, ReadingRecord, ReportRecord
+from .records import BriefingRecord, DemoState, MatStaging, PrioritySite, ReadingRecord, ReportRecord
 
 R = TypeVar("R")
 
@@ -64,6 +64,8 @@ hazard_reports_table = Table(
     Column("image_path", String),  # filename inside UPLOADS_DIR
     Column("reported_at", String, nullable=False),
     Column("verification", String, nullable=False),
+    Column("reported_by", String),
+    Column("verified_by", String),
 )
 
 briefing_runs_table = Table(
@@ -98,7 +100,20 @@ def make_engine(path: Path) -> Engine:
     path.parent.mkdir(parents=True, exist_ok=True)
     engine = create_engine(f"sqlite:///{path}", connect_args={"check_same_thread": False})
     metadata.create_all(engine)
+    _add_missing_columns(engine)
     return engine
+
+
+def _add_missing_columns(engine: Engine) -> None:
+    """create_all never alters existing tables, so add new nullable columns to older groundwork.db files."""
+    inspector = inspect(engine)
+    with engine.begin() as conn:
+        for table in metadata.sorted_tables:
+            existing = {c["name"] for c in inspector.get_columns(table.name)}
+            for col in table.columns:
+                if col.name not in existing and col.nullable and not col.primary_key:
+                    conn.execute(text(
+                        f'ALTER TABLE "{table.name}" ADD COLUMN "{col.name}" {col.type.compile(engine.dialect)}'))
 
 
 def _iso(value: datetime | None) -> str | None:
@@ -187,6 +202,17 @@ class ReadingRepository(TableRepository[ReadingRecord]):
     def list(self, device_id: str) -> list[ReadingRecord]:
         return super().list(limit=HISTORY_LIMIT, device_id=device_id)
 
+    def live_pressure_since(self, device_id: str, received_after: datetime) -> "list[ReadingRecord]":  # quoted: `list` is a method here
+        """Live beacon readings that carry pressure, received at/after a UTC time, oldest first.
+        Filters on received_at (always server UTC), not recorded_at (keeps the bridge's offset)."""
+        t = self._table
+        query = (select(t)
+                 .where(t.c.device_id == device_id, t.c.mode == "sensor_demo", t.c.pressure_hpa.is_not(None),
+                        t.c.received_at >= _iso(received_after))
+                 .order_by(t.c.id))
+        with self._engine.connect() as conn:
+            return [self._to_record(r) for r in conn.execute(query)]
+
     def delete_by_calibration(self, calibration: str) -> int:
         with self._engine.begin() as conn:
             return conn.execute(delete(self._table).where(self._table.c.calibration == calibration)).rowcount
@@ -214,6 +240,8 @@ class BriefingRepository(TableRepository[BriefingRecord]):
             "crew_report_followups": [_report_to_json(r) for r in b.crew_report_followups],
             "narrative_source": b.narrative_source,
             "deterministic_summary": b.deterministic_summary,
+            "mat_staging": [asdict(m) for m in b.mat_staging],
+            "sources": list(b.sources),
         }
         return {"id": b.id, "generated_at": _iso(b.generated_at), "snapshot_json": json.dumps(snapshot),
                 "narrative": b.summary, "mode": b.mode}
@@ -229,6 +257,8 @@ class BriefingRepository(TableRepository[BriefingRecord]):
             crew_report_followups=tuple(_report_from_json(r) for r in s["crew_report_followups"]),
             narrative_source=s["narrative_source"],
             deterministic_summary=s.get("deterministic_summary"),  # absent on older saved briefs
+            mat_staging=tuple(MatStaging(**m) for m in s.get("mat_staging", [])),
+            sources=tuple(s.get("sources", [])),
         )
 
 

@@ -55,6 +55,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/coverage": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Data coverage and freshness for the field sites (README section 15 validation metrics) */
+        get: operations["get_coverage_api_v1_coverage_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/demo/reset": {
         parameters: {
             query?: never;
@@ -346,6 +363,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/sensors/{device_id}/pressure-tendency": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** 3-hour station pressure tendency (advisory only) */
+        get: operations["get_pressure_tendency_api_v1_sensors__device_id__pressure_tendency_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/sites": {
         parameters: {
             query?: never;
@@ -442,6 +476,11 @@ export interface components {
             generated_at: string;
             /** Id */
             id: string;
+            /**
+             * Mat Staging
+             * @description Sites/vehicles at MATS_FOR_REVIEW (never STOP WORK sites), per route_length
+             */
+            mat_staging?: components["schemas"]["MatStagingOut"][];
             /** Missing Data Notes */
             missing_data_notes: components["schemas"]["MissingDataNoteOut"][];
             /**
@@ -454,6 +493,11 @@ export interface components {
              * @enum {string}
              */
             narrative_source: "deterministic_template" | "llm";
+            /**
+             * Sources
+             * @description Where the brief's facts came from
+             */
+            sources?: string[];
             /** Stop Work Site Ids */
             stop_work_site_ids: string[];
             /** Summary */
@@ -476,80 +520,77 @@ export interface components {
         /** CostComparisonOut */
         CostComparisonOut: {
             assumptions: components["schemas"]["CostInputs"];
+            /**
+             * Complete
+             * @description True when every cost item was entered
+             */
+            complete: boolean;
             /** Label */
             label: string;
             /** Mats Option */
             mats_option: number;
             /** Modeled Difference */
             modeled_difference: number;
+            /**
+             * Not Entered
+             * @description Cost items left blank and counted as $0 (labels assumed values, P9)
+             */
+            not_entered?: string[];
             /** Postpone Option */
             postpone_option: number;
         };
         /**
          * CostInputs
          * @description Supervisor-entered assumptions. Nothing here is a real price.
+         *
+         *     Leave a field out (or null) when it wasn't entered: it counts as $0 but is listed in
+         *     cost_comparison.not_entered. Send 0 only when the cost really is zero.
          */
         CostInputs: {
-            /**
-             * Delay Not Prevented
-             * @default 0
-             */
-            delay_not_prevented: number;
-            /**
-             * Delivery
-             * @default 0
-             */
-            delivery: number;
-            /**
-             * Equipment Rate Per Hour
-             * @default 0
-             */
-            equipment_rate_per_hour: number;
-            /**
-             * Extra Contract Cost
-             * @default 0
-             */
-            extra_contract_cost: number;
-            /**
-             * Idle Equipment
-             * @default 0
-             */
-            idle_equipment: number;
-            /**
-             * Idle Hours
-             * @default 0
-             */
-            idle_hours: number;
-            /**
-             * Installation
-             * @default 0
-             */
-            installation: number;
-            /**
-             * Labor Rate Per Hour
-             * @default 0
-             */
-            labor_rate_per_hour: number;
-            /**
-             * Mats Rental
-             * @default 0
-             */
-            mats_rental: number;
-            /**
-             * Paid Idle Labor
-             * @default 0
-             */
-            paid_idle_labor: number;
-            /**
-             * Removal
-             * @default 0
-             */
-            removal: number;
-            /**
-             * Rescheduling
-             * @default 0
-             */
-            rescheduling: number;
+            /** Delay Not Prevented */
+            delay_not_prevented?: number | null;
+            /** Delivery */
+            delivery?: number | null;
+            /** Equipment Rate Per Hour */
+            equipment_rate_per_hour?: number | null;
+            /** Extra Contract Cost */
+            extra_contract_cost?: number | null;
+            /** Idle Equipment */
+            idle_equipment?: number | null;
+            /** Idle Hours */
+            idle_hours?: number | null;
+            /** Installation */
+            installation?: number | null;
+            /** Labor Rate Per Hour */
+            labor_rate_per_hour?: number | null;
+            /** Mats Rental */
+            mats_rental?: number | null;
+            /** Paid Idle Labor */
+            paid_idle_labor?: number | null;
+            /** Removal */
+            removal?: number | null;
+            /** Rescheduling */
+            rescheduling?: number | null;
+        };
+        /**
+         * CoverageOut
+         * @description README section 15 'validation metrics to show judges': real coverage, not just map pins.
+         */
+        CoverageOut: {
+            /** Freshness */
+            freshness: components["schemas"]["SourceFreshnessOut"][];
+            /** Sites With Both */
+            sites_with_both: number;
+            /** Sites With Missing */
+            sites_with_missing: number;
+            /** Sites With Usda Soil */
+            sites_with_usda_soil: number;
+            /** Sites With Weather */
+            sites_with_weather: number;
+            /** Stale After Hours */
+            stale_after_hours: number;
+            /** Total Sites */
+            total_sites: number;
         };
         /** DemoResetOut */
         DemoResetOut: {
@@ -658,10 +699,35 @@ export interface components {
             mode: "live" | "cached" | "replay" | "simulated" | "sensor_demo" | "sensor_replay";
             /** Site Id */
             site_id: string;
+            /**
+             * Vehicle
+             * @description Vehicle the beacon's access call is for
+             */
+            vehicle?: ("pickup" | "heavy_truck") | null;
         };
         /** Envelope[BriefingOut] */
         Envelope_BriefingOut_: {
             data: components["schemas"]["BriefingOut"];
+            /** Errors */
+            errors?: string[];
+            /**
+             * Generated At
+             * Format: date-time
+             */
+            generated_at: string;
+            /** Missing Fields */
+            missing_fields?: string[];
+            /**
+             * Mode
+             * @enum {string}
+             */
+            mode: "live" | "cached" | "replay" | "simulated" | "sensor_demo" | "sensor_replay";
+            /** Sources */
+            sources?: string[];
+        };
+        /** Envelope[CoverageOut] */
+        Envelope_CoverageOut_: {
+            data: components["schemas"]["CoverageOut"];
             /** Errors */
             errors?: string[];
             /**
@@ -782,6 +848,26 @@ export interface components {
         /** Envelope[PolicyOut] */
         Envelope_PolicyOut_: {
             data: components["schemas"]["PolicyOut"];
+            /** Errors */
+            errors?: string[];
+            /**
+             * Generated At
+             * Format: date-time
+             */
+            generated_at: string;
+            /** Missing Fields */
+            missing_fields?: string[];
+            /**
+             * Mode
+             * @enum {string}
+             */
+            mode: "live" | "cached" | "replay" | "simulated" | "sensor_demo" | "sensor_replay";
+            /** Sources */
+            sources?: string[];
+        };
+        /** Envelope[PressureTendencyOut] */
+        Envelope_PressureTendencyOut_: {
+            data: components["schemas"]["PressureTendencyOut"];
             /** Errors */
             errors?: string[];
             /**
@@ -1104,6 +1190,32 @@ export interface components {
             /** Reason */
             reason: string;
         };
+        /** MatStagingOut */
+        MatStagingOut: {
+            /** Max Estimate */
+            max_estimate: number;
+            /** Min Estimate */
+            min_estimate: number;
+            /**
+             * Route Length
+             * @description Basis of the estimate; the real route length is a site input
+             */
+            route_length: number;
+            /** Site Id */
+            site_id: string;
+            /** Site Name */
+            site_name: string;
+            /**
+             * Unit
+             * @enum {string}
+             */
+            unit: "ft" | "m";
+            /**
+             * Vehicle
+             * @enum {string}
+             */
+            vehicle: "pickup" | "heavy_truck";
+        };
         /** MatsEstimateOut */
         MatsEstimateOut: {
             /** Base Mats */
@@ -1328,9 +1440,44 @@ export interface components {
             hazard_weights: components["schemas"]["HazardWeightsOut"];
             /** Label */
             label: string;
+            /**
+             * Low Light Index Below
+             * @description Demo-site low-light advisory threshold (0-100 light index)
+             */
+            low_light_index_below: number;
             mat_defaults: components["schemas"]["MatDefaultsOut"];
             /** Sensor Stale Seconds */
             sensor_stale_seconds: number;
+        };
+        /** PressureTendencyOut */
+        PressureTendencyOut: {
+            /** Advisory */
+            advisory: string;
+            /**
+             * Change Hpa
+             * @description End minus start, 10-minute averages, over 3 hours
+             */
+            change_hpa?: number | null;
+            /** Device Id */
+            device_id: string;
+            /** End At */
+            end_at: string | null;
+            /** Reason */
+            reason: string;
+            /** Samples */
+            samples: number;
+            /** Start At */
+            start_at: string | null;
+            /**
+             * Tendency
+             * @enum {string}
+             */
+            tendency: "UNKNOWN" | "STEADY" | "RISING_SLOWLY" | "RISING" | "RISING_QUICKLY" | "RISING_VERY_RAPIDLY" | "FALLING_SLOWLY" | "FALLING" | "FALLING_QUICKLY" | "FALLING_VERY_RAPIDLY";
+            /**
+             * Window Hours
+             * @default 3
+             */
+            window_hours: number;
         };
         /** PrioritySiteOut */
         PrioritySiteOut: {
@@ -1427,6 +1574,13 @@ export interface components {
         ReportOut: {
             /** Ai Confidence */
             ai_confidence?: number | null;
+            /**
+             * Ai Status
+             * @description Photo tagger state; no tagger runs yet, so it is 'done' only if a tag exists
+             * @default unavailable
+             * @enum {string}
+             */
+            ai_status: "pending" | "done" | "unavailable";
             /** Category Ai */
             category_ai: ("mud" | "standing_water" | "flooded_road" | "fallen_tree" | "overhead_hazard" | "lightning_observed" | "heat" | "other") | null;
             /**
@@ -1502,6 +1656,11 @@ export interface components {
         /** SiteDetailOut */
         SiteDetailOut: {
             access_call: components["schemas"]["VehicleAccessOut"];
+            /**
+             * Advisories
+             * @description Informational notes (e.g. low light at the demo site); never change a status
+             */
+            advisories?: string[];
             /** Alert Events */
             alert_events?: string[];
             /** Alerts */
@@ -1557,6 +1716,11 @@ export interface components {
         /** SiteOut */
         SiteOut: {
             access_call: components["schemas"]["VehicleAccessOut"];
+            /**
+             * Advisories
+             * @description Informational notes (e.g. low light at the demo site); never change a status
+             */
+            advisories?: string[];
             /** Alert Events */
             alert_events?: string[];
             /** Alerts */
@@ -1606,6 +1770,21 @@ export interface components {
              * @enum {string}
              */
             weather_state: "NORMAL" | "CAUTION" | "STOP_WORK" | "UNKNOWN";
+        };
+        /** SourceFreshnessOut */
+        SourceFreshnessOut: {
+            /** Median Fetched At */
+            median_fetched_at: string | null;
+            /** Newest Fetched At */
+            newest_fetched_at: string | null;
+            /** Observations */
+            observations: number;
+            /** Oldest Fetched At */
+            oldest_fetched_at: string | null;
+            /** Source */
+            source: string;
+            /** Stale */
+            stale: boolean;
         };
         /** TimelineEventOut */
         TimelineEventOut: {
@@ -1804,6 +1983,53 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation failed */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Rate limit exceeded */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unexpected server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_coverage_api_v1_coverage_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_CoverageOut_"];
                 };
             };
             /** @description Validation failed */
@@ -2821,6 +3047,8 @@ export interface operations {
     get_reading_history_api_v1_sensors__device_id__history_get: {
         parameters: {
             query?: {
+                /** @description Only readings recorded at or after this time (ISO 8601; no offset = UTC) */
+                since?: string | null;
                 /** @description Page size */
                 limit?: number;
                 /** @description Items to skip */
@@ -2899,6 +3127,64 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Envelope_ReadingOut_"];
+                };
+            };
+            /** @description Resource not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation failed */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Rate limit exceeded */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unexpected server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    get_pressure_tendency_api_v1_sensors__device_id__pressure_tendency_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                device_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_PressureTendencyOut_"];
                 };
             };
             /** @description Resource not found */

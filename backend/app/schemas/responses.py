@@ -16,6 +16,8 @@ class HealthOut(BaseModel):
     replay_active: bool
     fixtures: dict[str, bool]
     connectors: dict[str, Literal["not_built", "ok", "degraded"]]
+    auth: Literal["auth0", "disabled"] = Field(
+        "disabled", description="'disabled' = demo mode: every caller is a labeled demo user with both roles")
 
 
 class VehicleAccessOut(BaseModel):
@@ -91,6 +93,8 @@ class SiteOut(BaseModel):
     hazard_subscores: HazardSubscoresOut | None = None
     alerts: list[WeatherAlertOut] = Field(default_factory=list)
     reasons: CallReasonsOut | None = None
+    advisories: list[str] = Field(default_factory=list,
+                                  description="Informational notes (e.g. low light at the demo site); never change a status")
 
 
 class ReportOut(BaseModel):
@@ -98,11 +102,15 @@ class ReportOut(BaseModel):
     site_id: str
     description: str
     category_user: ReportCategory
-    category_ai: ReportCategory | None
-    ai_confidence: float | None = Field(None, ge=0, le=1)
+    category_ai: ReportCategory | None = Field(description="Always null: AI photo tagging is out of scope")
+    ai_confidence: float | None = Field(None, ge=0, le=1, description="Always null: AI photo tagging is out of scope")
     image_url: str | None
     reported_at: datetime
     verification: Literal["unreviewed", "confirmed", "rejected"]
+    reported_by: str | None = Field(None, description="Auth0 subject (opaque id) of the submitter")
+    verified_by: str | None = Field(None, description="Auth0 subject of the supervisor who last reviewed it")
+    ai_status: Literal["pending", "done", "unavailable"] = Field(
+        "unavailable", description="Photo tagger state; no tagger runs yet, so it is 'done' only if a tag exists")
 
 
 class SiteDetailOut(SiteOut):
@@ -145,6 +153,9 @@ class CostComparisonOut(BaseModel):
     postpone_option: float
     modeled_difference: float
     assumptions: CostInputs
+    not_entered: list[str] = Field(default_factory=list,
+                                   description="Cost items left blank and counted as $0 (labels assumed values, P9)")
+    complete: bool = Field(description="True when every cost item was entered")
     label: str
 
 
@@ -176,6 +187,41 @@ class ReadingOut(BaseModel):
     mode: SensorMode
 
 
+class SourceFreshnessOut(BaseModel):
+    source: str
+    observations: int
+    oldest_fetched_at: datetime | None
+    median_fetched_at: datetime | None
+    newest_fetched_at: datetime | None
+    stale: bool
+
+
+class CoverageOut(BaseModel):
+    """README section 15 'validation metrics to show judges': real coverage, not just map pins."""
+    total_sites: int
+    sites_with_usda_soil: int
+    sites_with_weather: int
+    sites_with_both: int
+    sites_with_missing: int
+    stale_after_hours: float
+    freshness: list[SourceFreshnessOut]
+
+
+class PressureTendencyOut(BaseModel):
+    device_id: str
+    tendency: Literal[
+        "UNKNOWN", "STEADY", "RISING_SLOWLY", "RISING", "RISING_QUICKLY", "RISING_VERY_RAPIDLY",
+        "FALLING_SLOWLY", "FALLING", "FALLING_QUICKLY", "FALLING_VERY_RAPIDLY",
+    ]
+    change_hpa: float | None = Field(None, description="End minus start, 10-minute averages, over 3 hours")
+    window_hours: float = 3.0
+    start_at: datetime | None
+    end_at: datetime | None
+    samples: int
+    reason: str
+    advisory: str
+
+
 class DisplayOut(BaseModel):
     device_id: str
     site_id: str
@@ -187,6 +233,7 @@ class DisplayOut(BaseModel):
     acknowledged_at: datetime | None
     mode: DataMode
     generated_at: datetime
+    vehicle: Vehicle | None = Field(None, description="Vehicle the beacon's access call is for")
 
 
 class DeviceEventOut(BaseModel):
@@ -232,6 +279,16 @@ class MissingDataNoteOut(BaseModel):
     missing_fields: list[str]
 
 
+class MatStagingOut(BaseModel):
+    site_id: str
+    site_name: str
+    vehicle: Vehicle
+    min_estimate: int
+    max_estimate: int
+    route_length: float = Field(description="Basis of the estimate; the real route length is a site input")
+    unit: Literal["ft", "m"]
+
+
 class BriefingOut(BaseModel):
     id: str
     generated_at: datetime
@@ -244,6 +301,9 @@ class BriefingOut(BaseModel):
     narrative_source: Literal["deterministic_template", "llm"]
     deterministic_summary: str | None = Field(
         None, description="The template summary built from the facts, kept even when `summary` is an LLM narrative")
+    mat_staging: list[MatStagingOut] = Field(
+        default_factory=list, description="Sites/vehicles at MATS_FOR_REVIEW (never STOP WORK sites), per route_length")
+    sources: list[str] = Field(default_factory=list, description="Where the brief's facts came from")
 
 
 class TimelineEventOut(BaseModel):
@@ -301,4 +361,5 @@ class PolicyOut(BaseModel):
     hazard_policy: dict[str, Any] | None = Field(
         None, description="The live hazard rules: points per factor, CAUTION/STOP_WORK thresholds, stop-work alert terms")
     sensor_stale_seconds: int
+    low_light_index_below: float = Field(description="Demo-site low-light advisory threshold (0-100 light index)")
     mat_defaults: MatDefaultsOut

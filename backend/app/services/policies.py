@@ -3,6 +3,7 @@ import json
 
 from ..config import REPO_ROOT, SENSOR_STALE_SECONDS
 from .hazard import HAZARD_POLICY
+from .light import LOW_LIGHT_BELOW
 
 # Editable mat staging defaults (README file layout: policies/mats_defaults.json).
 MAT_DEFAULTS = json.loads((REPO_ROOT / "policies" / "mats_defaults.json").read_text(encoding="utf-8"))
@@ -26,5 +27,6 @@ DEMO_POLICY = {
     },
     "hazard_policy": {k: v for k, v in HAZARD_POLICY.items() if k != "ground"},
     "sensor_stale_seconds": SENSOR_STALE_SECONDS,
+    "low_light_index_below": LOW_LIGHT_BELOW,
     "mat_defaults": MAT_DEFAULTS,
 }

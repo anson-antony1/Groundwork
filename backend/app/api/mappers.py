@@ -1,4 +1,5 @@
 """Internal records -> response DTOs. The only place storage shapes meet the public contract."""
+from dataclasses import asdict
 from datetime import datetime
 
 from ..repositories.records import (
@@ -7,7 +8,7 @@ from ..repositories.records import (
 from ..schemas.requests import CostInputs
 from ..schemas.responses import (
     BriefingOut, CallReasonsOut, CostComparisonOut, HazardSubscoresOut, WeatherAlertOut, MatInputsOut, MatOverrideOut, DeviceEventOut, DisplayOut, EvaluationOut, MatsEstimateOut,
-    MissingDataNoteOut, ObservationOut, PrioritySiteOut, ReadingOut, ReplayOut, ReportOut, SiteDetailOut, SiteOut,
+    MatStagingOut, MissingDataNoteOut, ObservationOut, PrioritySiteOut, ReadingOut, ReplayOut, ReportOut, SiteDetailOut, SiteOut,
     TimelineEventOut, VehicleAccessOut, VehicleStatusOut,
 )
 from ..services.display import Display
@@ -29,6 +30,7 @@ def site_out(s: SiteStatus) -> SiteOut:
         hazard_subscores=HazardSubscoresOut(**s.hazard_subscores) if s.hazard_subscores else None,
         alerts=[WeatherAlertOut(**a) for a in s.alerts],
         reasons=CallReasonsOut(**s.reasons) if s.reasons else None,
+        advisories=list(s.advisories),
     )
 
 
@@ -42,6 +44,9 @@ def report_out(r: ReportRecord) -> ReportOut:
         category_ai=r.category_ai, ai_confidence=r.ai_confidence,
         image_url=f"/uploads/{r.image_filename}" if r.image_filename else None,
         reported_at=r.reported_at, verification=r.verification,
+        reported_by=r.reported_by, verified_by=r.verified_by,
+        # No AI tagger runs (README status: P10), so nothing is ever "pending".
+        ai_status="done" if r.category_ai is not None else "unavailable",
     )
 
 
@@ -67,7 +72,8 @@ def evaluation_out(e: Evaluation) -> EvaluationOut:
         mats_recommended=e.mats_recommended,
         cost_comparison=CostComparisonOut(
             mats_option=c.mats_option, postpone_option=c.postpone_option,
-            modeled_difference=c.modeled_difference, assumptions=CostInputs(**c.assumptions), label=c.label,
+            modeled_difference=c.modeled_difference, assumptions=CostInputs(**c.assumptions),
+            not_entered=list(c.not_entered), complete=c.complete, label=c.label,
         ),
         notes=list(e.notes),
     )
@@ -86,7 +92,7 @@ def display_out(d: Display, generated_at: datetime) -> DisplayOut:
     return DisplayOut(
         device_id=d.device_id, site_id=d.site_id, effective_status=d.effective_status, code=d.code,
         lcd_line1=d.lcd_line1, lcd_line2=d.lcd_line2, alarm=d.alarm, acknowledged_at=d.acknowledged_at,
-        mode=d.mode, generated_at=generated_at,
+        mode=d.mode, generated_at=generated_at, vehicle=d.vehicle,
     )
 
 
@@ -117,6 +123,8 @@ def briefing_out(b: BriefingRecord) -> BriefingOut:
         crew_report_followups=[report_out(r) for r in b.crew_report_followups],
         narrative_source=b.narrative_source,
         deterministic_summary=b.deterministic_summary,
+        mat_staging=[MatStagingOut(**asdict(m)) for m in b.mat_staging],
+        sources=list(b.sources),
     )
 
 

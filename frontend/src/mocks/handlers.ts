@@ -23,6 +23,7 @@ import {
 } from './rules'
 import type { ResolvedEvaluationInput } from './rules'
 import { recordDeviceEvent } from './sensorSim'
+import { coverage, pressureTendency } from './metrics'
 
 interface Detail {
   field: string | null
@@ -313,6 +314,8 @@ const routes: [ApiRequest['method'], string, Handler][] = [
     return page(rows, query, rows[0]?.mode ?? 'sensor_demo')
   }],
 
+  ['GET', '/api/v1/sensors/:device/pressure-tendency', ({ params, now }) => requireDevice(params.device) ?? ok(pressureTendency(params.device, now), 'sensor_demo')],
+
   ['GET', '/api/v1/devices/:device/display', ({ params, now }) => requireDevice(params.device) ?? respond(200, buildDisplay(now))],
 
   ['GET', '/api/v1/devices/:device/events', ({ params, query }) => requireDevice(params.device) ?? page(newestFirst(db.deviceEvents), query, 'sensor_demo')],
@@ -415,6 +418,8 @@ const routes: [ApiRequest['method'], string, Handler][] = [
   }],
 
   ['GET', '/api/v1/policies', () => ok(POLICY, 'simulated')],
+
+  ['GET', '/api/v1/coverage', ({ now }) => ok(coverage(now), 'simulated')],
 
   // Between judge groups (README §14.3). Needs the sensor token, like the backend's.
   ['POST', '/api/v1/demo/reset', ({ req, now }) => {
