@@ -25,6 +25,8 @@ export default defineConfig(({ mode }) => {
       environment: 'jsdom',
       setupFiles: ['./src/test/setup.ts'],
       include: ['src/**/*.test.{ts,tsx}'],
+      // Tests drive the mock backend. Pin it, so a live-mode frontend/.env.local can't fail them.
+      env: { VITE_API_MODE: 'mock' },
     },
   }
 })
