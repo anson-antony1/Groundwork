@@ -4,7 +4,7 @@ from datetime import datetime
 
 from .. import repositories as repo
 from ..config import DEMO_DEVICE_ID, DEMO_SITE_ID
-from . import light, site_insights
+from . import field_hazards, light, site_insights
 from .access import demo_tray_access
 from .display import fresh_reading
 from .hazard import assess
@@ -134,7 +134,7 @@ def evaluate_status(site: Site, now: datetime) -> SiteStatus:
     else:
         data_status = "stale" if stale else "available"
 
-    return SiteStatus(
+    return field_hazards.apply(SiteStatus(
         site=site,
         hazard_score=hazard_score,
         weather_state=weather_state,
@@ -153,7 +153,7 @@ def evaluate_status(site: Site, now: datetime) -> SiteStatus:
         alerts=alerts,
         reasons=reasons,
         advisories=light.advisories(reading) if is_demo else (),
-    )
+    ), now)  # lightning, wildfire, wildlife (Sperry PlanIT brief)
 
 
 def list_statuses(now: datetime, weather_state: str | None = None) -> list[SiteStatus]:

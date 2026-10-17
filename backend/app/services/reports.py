@@ -7,7 +7,7 @@ from .. import repositories as repo
 from ..config import MAX_PHOTO_BYTES, UPLOADS_DIR
 from ..core.errors import NotFoundError, PayloadTooLargeError, UnsupportedMediaTypeError, ValidationFailedError
 from ..repositories.records import ReportRecord
-from . import timeline
+from . import field_hazards, timeline
 from .sites import require_site
 
 log = logging.getLogger("groundwork.reports")
@@ -46,6 +46,7 @@ def create_report(site_id: str, description: str, category: str, photo: bytes | 
         image_filename=filename, reported_at=now, verification="unreviewed", reported_by=reported_by,
     ))
     timeline.record("hazard_report", f"Crew report ({category}): {description[:80]}", now, site_id=site_id, ref_id=report_id)
+    field_hazards.rearm_if_tray_affected(site_id, category)
     log.info("report created", extra={"report_id": report_id, "site_id": site_id, "has_photo": filename is not None})
     return rec
 
