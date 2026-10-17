@@ -1,62 +1,42 @@
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, Depends
 
-from ..envelope import envelope, now_utc
-from ..schemas import CostInputs, EvaluateRequest
-from ..services.cost import compare_costs
-from ..services.mats import estimate_mats
-from ..services.sites import get_site, load_sites
-from ..services.snapshot import site_snapshot
-from ..state import store
+from ..core.clock import now_utc
+from ..schemas.common import Envelope, PageEnvelope, WeatherState
+from ..schemas.requests import EvaluationIn
+from ..schemas.responses import EvaluationOut, SiteDetailOut, SiteOut
+from ..services import evaluation, reports, site_status
+from ..services.cost import CostAssumptions
+from ..services.mats import MatInputs
+from . import mappers
+from .deps import PageParams, page_params
+from .responses import error_responses, ok, paged
 
 router = APIRouter(prefix="/sites", tags=["sites"])
 
 
-def _require_site(site_id: str) -> dict:
-    site = get_site(site_id)
-    if site is None:
-        raise HTTPException(404, f"Unknown site_id {site_id!r}")
-    return site
+@router.get("", response_model=PageEnvelope[SiteOut], summary="List sites with status")
+def list_sites(page: PageParams = Depends(page_params), weather_state: WeatherState | None = None):
+    statuses = site_status.list_statuses(now_utc(), weather_state)
+    missing = sorted({f for s in statuses for f in s.missing_fields})
+    return paged(statuses, page, site_status.portfolio_mode(), mappers.site_out, missing_fields=missing)
 
 
-@router.get("")
-def list_sites(weather_state: str | None = Query(None, description="Filter, e.g. STOP_WORK")):
-    now = now_utc()
-    snaps = [site_snapshot(s, store, now) for s in load_sites()]
-    if weather_state:
-        snaps = [s for s in snaps if s["weather_state"] == weather_state]
-    mode = "replay" if store.replay_active else "simulated"
-    missing = sorted({f for s in snaps for f in s["missing_fields"]})
-    return envelope(snaps, mode, missing_fields=missing)
+@router.get("/{site_id}", response_model=Envelope[SiteDetailOut], responses=error_responses(404),
+            summary="Site detail with provenance and crew reports")
+def get_site(site_id: str):
+    status = site_status.get_status(site_id, now_utc())
+    detail = mappers.site_detail_out(status, reports.list_reports(site_id))
+    return ok(detail, status.mode, missing_fields=status.missing_fields)
 
 
-@router.get("/{site_id}")
-def site_detail(site_id: str):
-    snap = site_snapshot(_require_site(site_id), store, now_utc())
-    reports = [r for r in store.reports if r["site_id"] == site_id]
-    return envelope({**snap, "reports": reports}, snap["mode"], missing_fields=snap["missing_fields"])
-
-
-@router.post("/{site_id}/evaluate")
-def evaluate_site(site_id: str, req: EvaluateRequest):
-    snap = site_snapshot(_require_site(site_id), store, now_utc())
-    mats = estimate_mats(
-        req.route_length, req.route_width, req.mat_length, req.mat_width,
-        req.layers, req.margin_min, req.margin_max, req.mats_in_inventory, req.unit,
+@router.post("/{site_id}/evaluate", response_model=Envelope[EvaluationOut], responses=error_responses(404),
+             summary="Compute access, mat range and cost comparison (stateless)")
+def evaluate_site(site_id: str, body: EvaluationIn):
+    mats = MatInputs(
+        route_length=body.route_length, route_width=body.route_width,
+        mat_length=body.mat_length, mat_width=body.mat_width, layers=body.layers,
+        margin_min=body.margin_min, margin_max=body.margin_max,
+        mats_in_inventory=body.mats_in_inventory, unit=body.unit,
     )
-    stop_work = snap["weather_state"] == "STOP_WORK"
-    data = {
-        "site_id": site_id,
-        "vehicle": req.vehicle,
-        "weather_state": snap["weather_state"],
-        "access_call": snap["access_call"][req.vehicle],
-        "effective_status": snap["effective_status"][req.vehicle],
-        "mats_estimate": mats,
-        # Mats never make lightning/flood/severe weather safe (README section 6).
-        "mats_recommended": (not stop_work) and snap["access_call"][req.vehicle] == "MATS_FOR_REVIEW",
-        "cost_comparison": compare_costs(req.costs or CostInputs()),
-        "notes": (
-            ["STOP WORK active: cost comparison is a planning scenario only, not a recommendation."]
-            if stop_work else []
-        ),
-    }
-    return envelope(data, snap["mode"], missing_fields=snap["missing_fields"])
+    result = evaluation.evaluate_site(site_id, body.vehicle, mats, CostAssumptions(**body.costs.model_dump()), now_utc())
+    return ok(mappers.evaluation_out(result), result.status.mode, missing_fields=result.status.missing_fields)

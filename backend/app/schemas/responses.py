@@ -1,0 +1,199 @@
+"""Response DTOs. Internal records are mapped onto these in api/mappers.py; nothing else is serialized."""
+from datetime import datetime
+from typing import Literal
+
+from pydantic import BaseModel, Field
+
+from .common import AccessCall, DataMode, EffectiveStatus, ReportCategory, SensorMode, Vehicle, WeatherState
+from .requests import CostInputs
+
+
+class HealthOut(BaseModel):
+    status: Literal["ok"]
+    version: str
+    storage: str
+    sites_loaded: int
+    replay_active: bool
+    fixtures: dict[str, bool]
+    connectors: dict[str, Literal["not_built", "ok", "degraded"]]
+
+
+class VehicleAccessOut(BaseModel):
+    pickup: AccessCall
+    heavy_truck: AccessCall
+
+
+class VehicleStatusOut(BaseModel):
+    pickup: EffectiveStatus
+    heavy_truck: EffectiveStatus
+
+
+class SiteOut(BaseModel):
+    id: str
+    name: str
+    latitude: float
+    longitude: float
+    region: str | None
+    location_origin: str
+    hazard_score: float | None = Field(None, ge=0, le=10)
+    weather_state: WeatherState
+    access_call: VehicleAccessOut
+    effective_status: VehicleStatusOut
+    data_status: Literal["sensor_demo", "not_fetched"]
+    missing_fields: list[str]
+    evaluated_at: datetime
+
+
+class ReportOut(BaseModel):
+    id: str
+    site_id: str
+    description: str
+    category_user: ReportCategory
+    category_ai: ReportCategory | None
+    ai_confidence: float | None = Field(None, ge=0, le=1)
+    image_url: str | None
+    reported_at: datetime
+    verification: Literal["unreviewed", "confirmed", "rejected"]
+
+
+class SiteDetailOut(SiteOut):
+    reports: list[ReportOut]
+
+
+class MatsEstimateOut(BaseModel):
+    base_mats: int
+    min_estimate: int
+    max_estimate: int
+    mats_in_inventory: int
+    shortfall: int
+    unit: Literal["ft", "m"]
+    method: str
+    caveat: str
+
+
+class CostComparisonOut(BaseModel):
+    mats_option: float
+    postpone_option: float
+    modeled_difference: float
+    assumptions: CostInputs
+    label: str
+
+
+class EvaluationOut(BaseModel):
+    site_id: str
+    vehicle: Vehicle
+    weather_state: WeatherState
+    access_call: AccessCall
+    effective_status: EffectiveStatus
+    mats_estimate: MatsEstimateOut
+    mats_recommended: bool
+    cost_comparison: CostComparisonOut
+    notes: list[str]
+
+
+class ReadingOut(BaseModel):
+    device_id: str
+    site_id: str
+    seq: int | None
+    raw_adc: float | None
+    moisture_index: float | None
+    light_raw: float | None
+    light_index: float | None
+    pressure_hpa: float | None
+    temp_c: float | None
+    calibration: str | None
+    recorded_at: datetime
+    received_at: datetime
+    mode: SensorMode
+
+
+class DisplayOut(BaseModel):
+    device_id: str
+    site_id: str
+    effective_status: EffectiveStatus
+    code: Literal["GO", "MATS", "REVIEW", "NOGO", "STOP", "UNKNOWN"]
+    lcd_line1: str = Field(max_length=16)
+    lcd_line2: str = Field(max_length=16)
+    alarm: bool
+    acknowledged_at: datetime | None
+    mode: DataMode
+    generated_at: datetime
+
+
+class DeviceEventOut(BaseModel):
+    id: str
+    device_id: str
+    site_id: str
+    event: Literal["ack_touch", "crew_flag"]
+    seq: int | None
+    status_at_event: EffectiveStatus
+    recorded_at: datetime
+    received_at: datetime
+    mode: SensorMode
+
+
+class ReplayOut(BaseModel):
+    active: bool
+    scenario_id: str | None
+    source: str | None
+    started_at: datetime | None
+
+
+class PrioritySiteOut(BaseModel):
+    id: str
+    name: str
+    weather_state: WeatherState
+    hazard_score: float | None
+    effective_status: VehicleStatusOut
+
+
+class MissingDataNoteOut(BaseModel):
+    site_id: str
+    missing_fields: list[str]
+
+
+class BriefingOut(BaseModel):
+    id: str
+    generated_at: datetime
+    mode: DataMode
+    summary: str
+    top_priority_sites: list[PrioritySiteOut]
+    stop_work_site_ids: list[str]
+    missing_data_notes: list[MissingDataNoteOut]
+    crew_report_followups: list[ReportOut]
+    narrative_source: Literal["deterministic_template", "llm"]
+
+
+class TimelineEventOut(BaseModel):
+    id: str
+    kind: Literal["ack_touch", "crew_flag", "hazard_report", "replay_started", "replay_stopped", "briefing_generated"]
+    site_id: str | None
+    summary: str
+    ref_id: str | None
+    at: datetime
+
+
+class AccessThresholdsOut(BaseModel):
+    go_below: float
+    mats_below: float
+
+
+class DemoTrayAccessOut(BaseModel):
+    basis: str
+    pickup: AccessThresholdsOut
+    heavy_truck: AccessThresholdsOut
+
+
+class HazardWeightsOut(BaseModel):
+    rain: float
+    wind: float
+    heat: float
+    flood: float
+    storm: float
+
+
+class PolicyOut(BaseModel):
+    label: str
+    demo_tray_access: DemoTrayAccessOut
+    hazard_weights: HazardWeightsOut
+    sensor_stale_seconds: int

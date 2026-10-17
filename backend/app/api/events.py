@@ -1,13 +1,17 @@
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Depends
 
-from ..envelope import envelope
-from ..state import store
+from .. import repositories as repo
+from ..schemas.common import PageEnvelope
+from ..schemas.responses import TimelineEventOut
+from ..services import timeline
+from . import mappers
+from .deps import PageParams, page_params
+from .responses import paged
 
-router = APIRouter(tags=["events"])
+router = APIRouter(prefix="/events", tags=["events"])
 
 
-@router.get("/events")
-def list_events(site_id: str | None = Query(None), limit: int = Query(200, ge=1, le=2000)):
-    # Site-less events (replay start/stop) apply to every site, so they're always included.
-    rows = [e for e in store.timeline if site_id is None or e["site_id"] in (site_id, None)]
-    return envelope(rows[-limit:], "replay" if store.replay_active else "live")
+@router.get("", response_model=PageEnvelope[TimelineEventOut], summary="Timeline of alerts, reports and acks")
+def list_events(page: PageParams = Depends(page_params), site_id: str | None = None):
+    mode = "replay" if repo.demo_state.get().replay_active else "live"
+    return paged(timeline.list_events(site_id), page, mode, mappers.timeline_out)
