@@ -49,3 +49,6 @@ Open: https://github.com/anson-antony1/Groundwork/pull/new/docs/status-marks . C
 
 ## Hardware repo gap (found at the end)
 hardware/ does not exist on main (ls hardware fails), so hardware/serial_bridge.py and the Arduino firmware are not in the repo. README 14 and the P12 fallback depend on serial_bridge.py --replay fixtures/sensor_replay.csv. Ask Anson to push them (or say which branch). Run: for b in $(git branch -r | grep -v HEAD); do git ls-tree -r --name-only $b | grep -qi "serial_bridge\|^hardware/" && echo $b; done
+
+## Sensor replay cleanup
+replay_sensor_v2.py (feature/sensor-fallback) leaves rows in sensor_readings; Reset demo keeps readings by design. Before the demo, with the server stopped: cp backend/groundwork.db backend/groundwork.db.bak, then sqlite3 backend/groundwork.db "DELETE FROM sensor_readings WHERE mode = 'sensor_replay' AND calibration = 'simulated_replay_v1';". Expect GET /api/v1/sensors/tray-01/history total 0 and display code UNKNOWN until a beacon or replay posts.
