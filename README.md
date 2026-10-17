@@ -685,14 +685,14 @@ uvicorn backend.app.main:app --reload --port 8000
  
 # frontend (separate terminal)
 cd frontend
-npm install
+npm ci
 npm run dev
  
 # beacon bridge (separate terminal, after flashing firmware/groundwork_beacon)
 python hardware/serial_bridge.py --port /dev/cu.usbmodem1101 --api http://localhost:8000 --device tray-01
  
-# no hardware? stream the recording instead
-python hardware/serial_bridge.py --replay fixtures/sensor_replay.csv --api http://localhost:8000 --device tray-01
+# no hardware? post the simulated recording (dashboard only, beacon unplugged)
+python replay_sensor_v2.py --loop --interval 2 --token dev-sensor-token
 ```
  
 Use `VITE_API_BASE_URL=http://localhost:8000` locally; configure FastAPI CORS for the actual frontend origin. The beacon talks to the laptop over USB, so it does not depend on venue Wi-Fi. If a Raspberry Pi runs the bridge instead, point it at the laptop's LAN IP address, **not** `localhost`.
@@ -817,7 +817,7 @@ Stay calm, say one honest sentence, switch to the fallback, and keep going.
  
 | Failure | Fallback | Say |
 |---|---|---|
-| Arduino or USB link fails | Aashita restarts the bridge with `--replay fixtures/sensor_replay.csv`; the screen shows `Recorded demo`, and the dashboard's beacon mirror still shows status | "Our USB link just dropped, so here's the same sequence we recorded earlier. It's labeled Recorded up top." |
+| Arduino or USB link fails | Aashita runs `python replay_sensor_v2.py --loop --interval 2 --token dev-sensor-token` (dashboard only; needs the beacon unplugged; `hardware/serial_bridge.py` is not in the repo yet); the screen shows `Recorded demo`, and the dashboard's beacon mirror still shows status | "Our USB link just dropped, so here's the same sequence we recorded earlier. It's labeled Recorded up top." |
 | Moisture doesn't cross the threshold | Pour a little more; if it's still stuck, move the probe to the wet tray | "Real soil takes a moment to soak through." |
 | LCD or barometer fails (I2C) | Unplug it; LEDs, buzzer and touch still carry the demo | "The screen's taking a break; the lights and alarm show the same status." |
 | Loose Grove lead | Pre-labeled spare leads + tape; re-seat and rerun the I2C scanner | (Keep talking through the software part while Anson fixes it.) |
@@ -1048,3 +1048,22 @@ From the repo root with the venv active: `cd ~/Desktop/Groundwork && source .ven
 5. **Tests:** `python -m pytest backend/tests -q`, with the backend stopped.
 
 **Replays:** `POST /api/v1/replay/start` with no body runs Hurricane Milton. A `calm-day` scenario (2024-07-15, a mix of NORMAL and CAUTION) starts with body `{"scenario_id": "calm-day"}`. In both, weather is real archived data and alerts are simulated or assumed. End with `POST /api/v1/replay/stop`.
+
+## Current status and known gaps (Oct 17, 2026)
+
+Resume notes live in `HANDOFF_v4.md`.
+
+**Done:** P1-P8, P11, P13 (P8 verified through the API: 13-14 mats, steps, ft units, engineering caveat, editable layers 1-3).
+
+**Partial or not done**
+- **P9:** cost inputs move the comparison and the label says "Not guaranteed savings", but there is no hours input (nine dollar fields only).
+- **P10:** the backend saves crew reports (site, text, timestamp, verification "unreviewed"). The UI path is not checked end to end. AI image tagging is not implemented (`category_ai` stays `None`).
+- **P12/P15:** DEMO-TRAY shows UNKNOWN ("NO SENSOR DATA") until the beacon, or the replay script, sends readings. `hardware/` (`serial_bridge.py`, firmware, calibration) is not in the repo yet, so the README 14 unplugged-beacon fallback through `serial_bridge.py` does not exist.
+- **P14:** the timed wifi-off run (README 14.4) is not verified.
+
+**Sensor replay fallback (dashboard only):** `python replay_sensor_v2.py --loop --interval 2 --token dev-sensor-token` posts `fixtures/sensor_replay.csv` as `tray-01` with `mode: "sensor_replay"` (shown as Recorded demo). The CSV is simulated, not recorded. It does not drive the LCD, LEDs or buzzer, and it must not run while the real beacon is plugged in. Readings older than 15 s are ignored, so keep `--loop` running. Added in branch `feature/sensor-fallback`.
+
+**Known problems**
+- `backend/app/api/health.py` reports `usda_nrcs` and `nws` as `not_built` although both work.
+- Whether Reset demo clears stored sensor readings is unconfirmed. After a reset, `GET /api/v1/sensors/tray-01/history` should show `total` 0.
+- Run the tests with the server stopped; `test_demo.py` failed once while uvicorn was running.

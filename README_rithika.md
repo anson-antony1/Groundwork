@@ -12,7 +12,7 @@ GroundWork is proactive: at 6 PM it tells a utility dispatcher which sites crews
 - `run_demo.py` - prints a briefing from a JSON file
 - `sample_sites.json` - 3 DEMO sites (used by tests), `sites_template.csv` - example CSV
 - `tests/` - `python -m unittest discover tests`
-- `HANDOFF.md` - status, decisions, next steps (read this to resume work)
+- `HANDOFF_v4.md` - status, decisions, next steps (read this to resume work)
 
 ## Setup (Mac)
 ```
