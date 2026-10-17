@@ -1,6 +1,3 @@
-
-
-Readme · MD
 # Groundwork — Utility Crew Ground-Access and Hazard Planning
 
 <img width="1122" height="1402" alt="GroundWork System Architecture Flowchart" src="https://github.com/user-attachments/assets/f2bdd7cd-a2d6-449d-bf6f-bdb9405b19e0" />
@@ -10,7 +7,7 @@ Readme · MD
 > **Pitch:** "By 6 PM, Groundwork tells utility crews which sites to prioritize tomorrow, which vehicles may need ground protection, when dangerous weather demands STOP WORK, and what delays could cost—using traceable weather and USDA soil data plus real crew reports."
  
 **Document status:** Hackathon implementation plan, not certified safety guidance.  
-**Last updated:** Oct 16, 2026 — project renamed **Groundwork** (formerly AccessCall 2.0). Rishi now owns the frontend and Aashita Rai the backend; Rishi joins backend work once the frontend is stable. Hardware plan revised to the team's confirmed kit: an **Arduino Uno "site beacon"** (Grove moisture, light, barometer, touch and button inputs; Grove LCD, red/green LEDs and buzzer outputs) connected to the laptop over USB. See §5. The demo playbook (kit, script, fallbacks, rehearsal) is in §14.  
+**Last updated:** Oct 17, 2026 — 301 sites nationwide (60 Florida + 240 other states + the demo tray), hardware beacon code in `hardware/` and `firmware/`, optional Auth0 roles on the backend, n8n email button on the 6 PM Brief, repo reorganized (see §12). **Oct 16:** project renamed **Groundwork** (formerly AccessCall 2.0). Rishi now owns the frontend and Aashita Rai the backend; Rishi joins backend work once the frontend is stable. Hardware plan revised to the team's confirmed kit: an **Arduino Uno "site beacon"** (Grove moisture, light, barometer, touch and button inputs; Grove LCD, red/green LEDs and buzzer outputs) connected to the laptop over USB. See §5. The demo playbook (kit, script, fallbacks, rehearsal) is in §14.  
 **Team:** Anson (hardware), Rishi (frontend/product; joins backend work once the frontend is stable), Aashita Rai (backend/data), Rithika (ML/computer vision/briefing).  
 **Repo:** https://github.com/anson-antony1/Groundwork  
 **Source of sponsor requirements:** Team-provided Sperry Tech challenge description. Confirm exact language, submission requirements, and credits with the official challenge page/organizers.  
@@ -636,70 +633,64 @@ CREATE TABLE briefing_runs (
 - `fixtures/display_states.json` with one display payload per status, so firmware can be tested before the backend exists.
 ---
  
-## 12. Suggested repo layout
- 
+## 12. Repo layout and setup
+
 ```text
-groundwork/
-├── README.md
-├── .env.example
-├── docker-compose.yml                 # optional
-├── backend/
-│   ├── requirements.txt
-│   ├── app/main.py
-│   ├── app/api/{sites,sensors,devices,reports,replay,briefing}.py
-│   ├── app/services/{weather,usda,nws,scoring,access,mats,cost,display}.py
-│   ├── app/db/{models,seed}.py
-│   ├── app/ai/{photo_tagger,briefing}.py
-│   └── tests/{test_scoring,test_overrides,test_costs,test_display,test_api}.py
-├── frontend/
-│   ├── package.json
-│   └── src/{App.tsx,components,pages,api,types}/
-├── firmware/
-│   ├── groundwork_beacon/groundwork_beacon.ino
-│   └── i2c_scan/i2c_scan.ino
-├── hardware/
-│   ├── serial_bridge.py
-│   ├── calibration.json
-│   ├── calibration.md
-│   └── wiring.md                      # pin map + photos of the build
-├── fixtures/
-│   ├── sites_50.json
-│   ├── site_detail.json
-│   ├── storm_replay.json
-│   ├── sensor_replay.csv
-│   └── display_states.json
-├── policies/
-│   ├── demo_thresholds.json
-│   └── mats_defaults.json
-└── docs/
-    ├── demo_script.md
-    ├── source_provenance.md
-    └── real_vs_simulated.md
+Groundwork/
+├── README.md                  # this file: plan, requirements, demo playbook, status
+├── .env.example               # backend secrets template (Gemini, sensor token, Auth0) -> copy to .env
+├── backend/                   # FastAPI API (Python 3.13, SQLite)
+│   ├── app/main.py            # app factory, middleware, routers
+│   ├── app/api/               # routes: sites, sensors, devices, reports, replay, briefings, policies, demo, health
+│   ├── app/services/          # hazard, access, mats, cost, weather, display, narration (Gemini), replay, briefings
+│   ├── app/core/              # auth (Auth0 / demo), errors, logging, clock, middleware
+│   ├── app/repositories/      # SQLite storage
+│   ├── app/schemas/           # request/response models (the API contract)
+│   ├── scripts/               # fetch_weather, build replay/alerts fixtures, export_openapi, refresh loop
+│   ├── tests/                 # pytest suite
+│   └── openapi.json           # committed contract; tests fail if it drifts from the code
+├── frontend/                  # React + TypeScript + Vite + Tailwind + Leaflet dashboard (see frontend/README.md)
+│   └── src/{api,screens,components,domain,mocks,state}/
+├── firmware/                  # Arduino Uno sketches: groundwork_beacon, i2c_scan
+├── hardware/                  # serial_bridge.py (USB -> API), fake_beacon.py, calibration, wiring
+├── agent/                     # optional: MCP server, Claude Desktop installer, n8n 6 PM workflow
+├── fixtures/                  # sites, weather snapshot, storm/calm replays, sensor replay CSV, display states
+├── policies/                  # mats_defaults.json (placeholder mat sizes)
+├── scripts/                   # repo-root utilities: replay_sensor_v2.py, get_sites_us_v2.py
+├── prototype/                 # historical first version of the briefing pipeline (not used by the app)
+└── docs/                      # JUDGES_EXPLAINER.md (code walkthrough), HANDOFF_v5.md (team resume notes)
 ```
- 
-### Minimal developer setup (after files exist)
- 
+
+### Developer setup
+
+Run everything from the repo root.
+
 ```bash
 # backend
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -r backend/requirements.txt
+cp .env.example .env                       # add GEMINI_API_KEY; leave GROUNDWORK_AUTH_ENABLED=false for the demo
 uvicorn backend.app.main:app --reload --port 8000
- 
+
 # frontend (separate terminal)
 cd frontend
 npm ci
-npm run dev
- 
+echo "VITE_API_MODE=live" > .env.local     # without this the UI runs on its in-browser mock backend
+npm run dev                                # http://localhost:5173
+
 # beacon bridge (separate terminal, after flashing firmware/groundwork_beacon)
 python hardware/serial_bridge.py --port /dev/cu.usbmodem1101 --api http://localhost:8000 --device tray-01
- 
-# no hardware? post the simulated recording (dashboard only, beacon unplugged)
-python replay_sensor_v2.py --loop --interval 2 --token dev-sensor-token
+
+# no Arduino? emulate one end to end (bridge + LCD logic), clearly labeled simulated
+python hardware/fake_beacon.py             # prints a port; pass it to serial_bridge.py --port
+
+# or post the simulated recording straight to the API (dashboard only, beacon unplugged)
+python scripts/replay_sensor_v2.py --loop --interval 2 --token dev-sensor-token
 ```
- 
-Use `VITE_API_BASE_URL=http://localhost:8000` locally; configure FastAPI CORS for the actual frontend origin. The beacon talks to the laptop over USB, so it does not depend on venue Wi-Fi. If a Raspberry Pi runs the bridge instead, point it at the laptop's LAN IP address, **not** `localhost`.
- 
+
+The Vite dev server proxies `/api` and `/uploads` to the backend, so the browser calls the API on its own origin: no CORS setup, and a phone on the LAN can use the dashboard too. Leave `VITE_API_BASE_URL` empty unless you skip the proxy. The beacon talks to the laptop over USB, so it does not depend on venue Wi-Fi. If a Raspberry Pi runs the bridge instead, point it at the laptop's LAN IP address, **not** `localhost`.
+
 ---
  
 ## 13. Build schedule: 36 hours, in parallel
@@ -820,7 +811,7 @@ Stay calm, say one honest sentence, switch to the fallback, and keep going.
  
 | Failure | Fallback | Say |
 |---|---|---|
-| Arduino or USB link fails | Aashita runs `python replay_sensor_v2.py --loop --interval 2 --token dev-sensor-token` (dashboard only; needs the beacon unplugged; `hardware/serial_bridge.py` is not in the repo yet); the screen shows `Recorded demo`, and the dashboard's beacon mirror still shows status | "Our USB link just dropped, so this is a simulated sequence standing in for the beacon. The UI labels it Recorded demo, but these values are simulated, not recorded." |
+| Arduino or USB link fails | Aashita runs `python scripts/replay_sensor_v2.py --loop --interval 2 --token dev-sensor-token` (dashboard only; needs the beacon unplugged); the screen shows `Recorded demo`, and the dashboard's beacon mirror still shows status | "Our USB link just dropped, so this is a simulated sequence standing in for the beacon. The UI labels it Recorded demo, but these values are simulated, not recorded." |
 | Moisture doesn't cross the threshold | Pour a little more; if it's still stuck, move the probe to the wet tray | "Real soil takes a moment to soak through." |
 | LCD or barometer fails (I2C) | Unplug it; LEDs, buzzer and touch still carry the demo | "The screen's taking a break; the lights and alarm show the same status." |
 | Loose Grove lead | Pre-labeled spare leads + tape; re-seat and rerun the I2C scanner | (Keep talking through the software part while Anson fixes it.) |
@@ -891,7 +882,7 @@ The ticked items pass in `pytest backend/tests hardware/tests`; `backend/tests/t
 | Beacon light / pressure / temperature | `Demo beacon • venue observation • advisory only` |
 | Beacon LCD, LEDs and buzzer | `Displays server status • not an independent safety device` |
 | Recorded beacon stream | `Recorded demo` |
-| Simulated sensor replay (`replay_sensor_v2.py`) | UI shows `Recorded demo`; values are simulated, not recorded |
+| Simulated sensor replay (`scripts/replay_sensor_v2.py`) | UI shows `Recorded demo`; values are simulated, not recorded |
 | Vehicles/weights/rental costs for demonstration | `Scenario assumption • adjustable` |
 | Rules/thresholds and mat layers | `Prototype policy • supervisor review required` |
 | AI photo tag | `AI suggested • unverified` |
@@ -1040,8 +1031,22 @@ Nothing in `backend/` depends on this. It lives in `agent/` and talks to the run
 - **MCP server** (`agent/groundwork_mcp_v1.py`): lets an AI agent query GroundWork in plain English. Tools: `list_sites`, `get_site`, `latest_briefing` (read-only, never generates a briefing), `start_storm_replay`, `stop_storm_replay`. Install with `pip install "mcp[cli]<2" httpx` (the code uses the 1.x API; mcp 2.x renamed `FastMCP`). Test with `npx @modelcontextprotocol/inspector python agent/groundwork_mcp_v1.py`, flip the toggle on the server card, open Tools and run `list_sites`.
 - **Claude Desktop:** `python agent/install_claude_desktop_v1.py` adds the server to Claude Desktop's config (macOS, backs up the old config first). Fully quit and reopen Claude Desktop, with the backend running. Claude picks a tool by reading each tool's description, then answers from real API data. It only works on the machine running the backend.
 - **Gemini vs Claude:** the 6 PM briefing text is still written by Gemini inside the backend. Claude Desktop is a separate chat layer for follow-up questions and does not replace it. STOP_WORK decisions come from the deterministic hazard rules, never from an LLM.
-- **n8n 6 PM scheduler** (`agent/n8n_briefing_v2.json`): run `npx n8n`, open http://localhost:5678, Import from file, then run the Manual test node. It uses 127.0.0.1 because n8n can resolve localhost to IPv6 and get refused (v1 has that problem). It ships inactive. Each run saves a new briefing at the top of the list, so keep it off around a demo.
+- **n8n 6 PM scheduler and email** (`agent/n8n_briefing_v3.json`): run `npx n8n`, open http://localhost:5678, Import from file, set the Gmail SMTP credential (an app password, never committed), then run the Manual test node. Two paths: the **6 PM daily** trigger generates a new briefing and emails it; the **Email button** webhook (`GET /webhook/groundwork-email`) emails the newest *saved* briefing without generating one, and backs the "Email this plan" button on the 6 PM Brief tab (override the URL with `VITE_N8N_EMAIL_URL`). The backend itself never sends email. It uses 127.0.0.1 because n8n can resolve localhost to IPv6 and get refused. It ships inactive; the webhook and schedule only work once the workflow is switched Active. Each scheduled run saves a new briefing at the top of the list, so keep it off around a demo.
 - **Replays and the sensor:** only the DEMO-TRAY site uses sensor data. The other substations use forecast-based screening. Any replay forces the tray to STOP_WORK and re-arms the physical beacon alarm, so stop it afterwards and warn the hardware owner first.
+
+## Authentication (optional, Auth0)
+
+Off by default (`GROUNDWORK_AUTH_ENABLED=false`): every request runs as a labeled demo user holding both roles, and sensor writes need only the static token (`GROUNDWORK_SENSOR_TOKEN`, default `dev-sensor-token`). With it on, the backend verifies Auth0 RS256 access tokens and enforces roles from the `AUTH0_ROLES_CLAIM` claim:
+
+| Endpoint | Needs |
+|---|---|
+| `POST /reports` | `crew` or `supervisor` |
+| `POST /reports/{id}/review`, `POST /briefings/generate`, `POST /sites/{id}/evaluate`, `DELETE /devices/{id}/crew-flag` | `supervisor` |
+| `POST /sensors/readings`, `POST /devices/{id}/events` | Auth0 machine-to-machine token (or the static token while `GROUNDWORK_ALLOW_STATIC_SENSOR_TOKEN=true`) |
+| `POST /demo/reset` | a sensor credential or `supervisor` |
+| all `GET` routes | open |
+
+`GET /health` reports `"auth": "auth0" | "disabled"`. **The frontend has no login flow yet**, so keep auth off whenever the dashboard is in live mode; with it on, the supervisor buttons above return 401. Backend enforcement is tested in `backend/tests/test_auth.py`.
 
 ## Running everything (start order)
 
@@ -1051,23 +1056,26 @@ From the repo root with the venv active: `cd ~/Desktop/Groundwork && source .ven
 2. **Gemini key:** in `.env` (gitignored; keep a private backup). Without it, or offline, the briefing falls back to a short template summary. Check that a generate returns `narrative_source: llm` before a demo.
 3. **Frontend:** see `frontend/README.md`.
 4. **n8n and Claude Desktop (optional):** see the agent layer section above.
-5. **Tests:** `python -m pytest backend/tests -q`, with the backend stopped.
+5. **Tests** (backend stopped): `python -m pytest backend/tests hardware/tests -q` and `cd frontend && npm run check` (typecheck, lint, tests, build).
 
 **Replays:** `POST /api/v1/replay/start` with no body runs Hurricane Milton. A `calm-day` scenario (2024-07-15, a mix of NORMAL and CAUTION) starts with body `{"scenario_id": "calm-day"}`. In both, weather is real archived data and alerts are simulated or assumed. End with `POST /api/v1/replay/stop`.
 
 ## Current status and known gaps (Oct 17, 2026)
 
-Resume notes live in `HANDOFF_v4.md`.
+Team resume notes live in `docs/HANDOFF_v5.md`; a file-by-file walkthrough for judges is in `docs/JUDGES_EXPLAINER.md`.
 
-**Done:** P1-P11, P13 (P8 verified through the API: 13-14 mats, steps, ft units, engineering caveat, editable layers 1-3).
+**Done:** P1-P11, P13 (P8 verified through the API: 13-14 mats, steps, ft units, engineering caveat, editable layers 1-3; P9 verified in the UI).
+
+**Verified Oct 17 (live mode, frontend through the Vite proxy):** every endpoint the dashboard calls answers correctly: sites (301), site detail, evaluate, sensor post/latest/history, display, device events and crew-flag clear, reports with photo upload and review, replay start/stop, briefing generate, policies, coverage, demo reset. Backend + hardware: 204 tests pass. Frontend: typecheck, lint, 159 tests and build pass.
 
 **Partial or not done**
 - **P10 (done, one limitation):** crew reports submit through the UI and show as unreviewed crew reports, not official alerts. AI image tagging is not implemented (`category_ai` stays `None`); the UI shows "AI suggestion unavailable".
-- **P12/P15:** DEMO-TRAY shows UNKNOWN ("NO SENSOR DATA") until the beacon, or the replay script, sends readings. `hardware/` (`serial_bridge.py`, firmware, calibration) is not in the repo yet, so the README 14 unplugged-beacon fallback through `serial_bridge.py` does not exist.
+- **P12/P15:** the bridge, fake beacon and firmware are in the repo (`hardware/`, `firmware/`). DEMO-TRAY shows UNKNOWN ("NO SENSOR DATA") until the beacon, the fake beacon, or the replay script sends readings. Still needs a full run with the physical Uno.
 - **P14:** the timed wifi-off run (README 14.4) is not verified.
+- **Auth0:** enforced by the backend, but the frontend has no login yet (see Authentication above).
+- **Nationwide sites:** the offline basemap covers Florida only; other states need map tiles (internet). The mock backend (`npm run dev:mock`) still uses the 60 Florida sites.
 
-**Sensor replay fallback (dashboard only):** `python replay_sensor_v2.py --loop --interval 2 --token dev-sensor-token` posts `fixtures/sensor_replay.csv` as `tray-01` with `mode: "sensor_replay"` (shown as Recorded demo). The CSV is simulated, not recorded. It does not drive the LCD, LEDs or buzzer, and it must not run while the real beacon is plugged in. Readings older than 15 s are ignored, so keep `--loop` running. After testing, **Reset demo** removes these rows (`calibration: simulated_replay_v1`, also used by `hardware/serial_bridge.py` and `hardware/fake_beacon.py`); real beacon readings are kept.
+**Sensor replay fallback (dashboard only):** `python scripts/replay_sensor_v2.py --loop --interval 2 --token dev-sensor-token` posts `fixtures/sensor_replay.csv` as `tray-01` with `mode: "sensor_replay"` (shown as Recorded demo). The CSV is simulated, not recorded. It does not drive the LCD, LEDs or buzzer, and it must not run while the real beacon is plugged in. Readings older than 15 s are ignored, so keep `--loop` running. After testing, **Reset demo** removes these rows (`calibration: simulated_replay_v1`, also used by `hardware/serial_bridge.py` and `hardware/fake_beacon.py`); real beacon readings are kept.
 
 **Known problems**
-- `backend/app/api/health.py` reports `usda_nrcs` and `nws` as `not_built` although both work.
 - Run the tests with the server stopped; `test_demo.py` failed once while uvicorn was running.

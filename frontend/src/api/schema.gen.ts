@@ -30,7 +30,7 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        /** Generate a 6 PM briefing */
+        /** Generate a 6 PM briefing (supervisor) */
         post: operations["create_briefing_api_v1_briefings_generate_post"];
         delete?: never;
         options?: never;
@@ -270,7 +270,7 @@ export interface paths {
         /** List crew reports, newest first */
         get: operations["list_reports_api_v1_reports_get"];
         put?: never;
-        /** Submit a crew hazard report (multipart) */
+        /** Submit a crew hazard report (multipart); crew or supervisor */
         post: operations["create_report_api_v1_reports_post"];
         delete?: never;
         options?: never;
@@ -423,7 +423,7 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        /** Compute access, mat range and cost comparison (stateless) */
+        /** Compute access, mat range and cost comparison (stateless; supervisor) */
         post: operations["evaluate_site_api_v1_sites__site_id__evaluate_post"];
         delete?: never;
         options?: never;
@@ -1120,6 +1120,13 @@ export interface components {
         };
         /** HealthOut */
         HealthOut: {
+            /**
+             * Auth
+             * @description 'disabled' = demo mode: every caller is a labeled demo user with both roles
+             * @default disabled
+             * @enum {string}
+             */
+            auth: "auth0" | "disabled";
             /** Connectors */
             connectors: {
                 [key: string]: "not_built" | "ok" | "degraded";
@@ -1572,7 +1579,10 @@ export interface components {
         };
         /** ReportOut */
         ReportOut: {
-            /** Ai Confidence */
+            /**
+             * Ai Confidence
+             * @description Always null: AI photo tagging is out of scope
+             */
             ai_confidence?: number | null;
             /**
              * Ai Status
@@ -1581,7 +1591,10 @@ export interface components {
              * @enum {string}
              */
             ai_status: "pending" | "done" | "unavailable";
-            /** Category Ai */
+            /**
+             * Category Ai
+             * @description Always null: AI photo tagging is out of scope
+             */
             category_ai: ("mud" | "standing_water" | "flooded_road" | "fallen_tree" | "overhead_hazard" | "lightning_observed" | "heat" | "other") | null;
             /**
              * Category User
@@ -1599,6 +1612,11 @@ export interface components {
              * Format: date-time
              */
             reported_at: string;
+            /**
+             * Reported By
+             * @description Auth0 subject (opaque id) of the submitter
+             */
+            reported_by?: string | null;
             /** Site Id */
             site_id: string;
             /**
@@ -1606,6 +1624,11 @@ export interface components {
              * @enum {string}
              */
             verification: "unreviewed" | "confirmed" | "rejected";
+            /**
+             * Verified By
+             * @description Auth0 subject of the supervisor who last reviewed it
+             */
+            verified_by?: string | null;
         };
         /** ReportReviewIn */
         ReportReviewIn: {
@@ -1927,6 +1950,24 @@ export interface operations {
                     "application/json": components["schemas"]["Envelope_BriefingOut_"];
                 };
             };
+            /** @description Not logged in, or missing/invalid token */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Logged in but lacking the required role or permission */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
             /** @description Validation failed */
             422: {
                 headers: {
@@ -2079,8 +2120,17 @@ export interface operations {
                     "application/json": components["schemas"]["Envelope_DemoResetOut_"];
                 };
             };
-            /** @description Missing or invalid sensor token */
+            /** @description Not logged in, or missing/invalid token */
             401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Logged in but lacking the required role or permission */
+            403: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -2135,6 +2185,24 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Envelope_DisplayOut_"];
+                };
+            };
+            /** @description Not logged in, or missing/invalid token */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Logged in but lacking the required role or permission */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
             /** @description Resource not found */
@@ -2329,7 +2397,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Missing or invalid sensor token */
+            /** @description Not logged in, or missing/invalid token */
             401: {
                 headers: {
                     [name: string]: unknown;
@@ -2790,6 +2858,24 @@ export interface operations {
                     "application/json": components["schemas"]["Envelope_ReportOut_"];
                 };
             };
+            /** @description Not logged in, or missing/invalid token */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Logged in but lacking the required role or permission */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
             /** @description Resource not found */
             404: {
                 headers: {
@@ -2928,6 +3014,24 @@ export interface operations {
                     "application/json": components["schemas"]["Envelope_ReportOut_"];
                 };
             };
+            /** @description Not logged in, or missing/invalid token */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Logged in but lacking the required role or permission */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
             /** @description Resource not found */
             404: {
                 headers: {
@@ -2997,7 +3101,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Missing or invalid sensor token */
+            /** @description Not logged in, or missing/invalid token */
             401: {
                 headers: {
                     [name: string]: unknown;
@@ -3358,6 +3462,24 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Envelope_EvaluationOut_"];
+                };
+            };
+            /** @description Not logged in, or missing/invalid token */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Logged in but lacking the required role or permission */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
             /** @description Resource not found */

@@ -7,7 +7,7 @@ from ..config import UPLOADS_DIR
 
 log = logging.getLogger("groundwork.demo")
 
-# Team label for simulated sensor data (replay_sensor_v2.py, hardware/serial_bridge.py, hardware/fake_beacon.py).
+# Team label for simulated sensor data (scripts/replay_sensor_v2.py, hardware/serial_bridge.py, hardware/fake_beacon.py).
 SIMULATED_CALIBRATION = "simulated_replay_v1"
 
 

@@ -18,7 +18,7 @@ Each new Terminal: cd ~/Desktop/Groundwork && source .venv/bin/activate (ALWAYS 
   - plain wording: "Beacon not connected" instead of serial_bridge.py text
   - map starts on the continental US (still zooms to the loaded sites)
   - briefing prompt: if every site is at stop work, say so in one sentence
-  - n8n workflow: new "Email dispatcher" step (agent/n8n_briefing_v2.json)
+  - n8n workflow: new "Email dispatcher" step (agent/n8n_briefing_v3.json)
   Open: https://github.com/anson-antony1/Groundwork/pull/new/fix/ui-print-email
 - feature/us-sites (local only, branched from fix/ui-print-email, UNCOMMITTED changes): fixtures/sites_50.json now holds 60 Florida (SITE-xxx) + 240 other-state (US-xxx) sites = 300 field sites (301 with the demo tray); fixtures/weather_snapshot.json refreshed for all 300. Untracked: fixtures/sites_us.json, get_sites_us_v2.py, fixtures/sites_50.florida.bak (local rollback copy), health_connectors_fix.patch (junk, do not commit). Arkansas and Indiana have no sites (Overpass failed); fine to skip.
 
@@ -53,7 +53,7 @@ Each new Terminal: cd ~/Desktop/Groundwork && source .venv/bin/activate (ALWAYS 
 - Simulated: Milton replay warning, sensor replay values, demo tray moisture, cost figures.
 
 ## Sensor replay fallback (dashboard only)
-- python replay_sensor_v2.py --loop --interval 2 --token dev-sensor-token. Posts simulated values as tray-01 ("Recorded demo" label, say "simulated" out loud). Does not drive the LCD, LEDs or buzzer. Never run with the real beacon plugged in. Keep --loop running (readings older than 15 s are ignored).
+- python scripts/replay_sensor_v2.py --loop --interval 2 --token dev-sensor-token. Posts simulated values as tray-01 ("Recorded demo" label, say "simulated" out loud). Does not drive the LCD, LEDs or buzzer. Never run with the real beacon plugged in. Keep --loop running (readings older than 15 s are ignored).
 - Cleanup after any replay test, server stopped: cp backend/groundwork.db backend/groundwork.db.bak, then sqlite3 backend/groundwork.db "DELETE FROM sensor_readings WHERE mode = 'sensor_replay' AND calibration = 'simulated_replay_v1';". Expect history total 0, display code UNKNOWN. Never delete groundwork.db itself (saved briefings are the Gemini fallback). Delete groundwork.db.bak after the demo.
 
 ## Known problems to tell the team

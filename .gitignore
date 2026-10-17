@@ -1,15 +1,23 @@
+# Python
 .venv/
 __pycache__/
 *.pyc
 .pytest_cache/
-.env
-*.db
-backend/uploads/
-node_modules/
 
+# Secrets (copy .env.example to .env)
 .env
 .env.bak
-.DS_Store
-__pycache__/
-*.pyc
+
+# Local data: the SQLite database, its backups and uploaded report photos
+*.db
+*.db.bak
 backend/*.bak
+backend/uploads/
+fixtures/*.bak
+
+# Node / build output
+node_modules/
+frontend/dist/
+
+# OS
+.DS_Store

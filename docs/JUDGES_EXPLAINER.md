@@ -398,7 +398,7 @@ git branch -a
 
 **Location input and OSM:**
 ```bash
-grep -RInE 'power.*substation|BBOX|geocod|search|needle|load_sites' get_sites.py get_sites_us_v*.py backend/app/services/sites.py frontend/src/screens/ops-map/OpsMapScreen.tsx 2>/dev/null | head -80
+grep -RInE 'power.*substation|BBOX|geocod|search|needle|load_sites' prototype/get_sites.py scripts/get_sites_us_v*.py backend/app/services/sites.py frontend/src/screens/ops-map/OpsMapScreen.tsx 2>/dev/null | head -80
 ```
 
 **Hazard formula and missing-data behavior:**
