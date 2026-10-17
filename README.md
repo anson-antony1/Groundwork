@@ -7,7 +7,7 @@ Readme · MD
 > **Pitch:** "By 6 PM, Groundwork tells utility crews which sites to prioritize tomorrow, which vehicles may need ground protection, when dangerous weather demands STOP WORK, and what delays could cost—using traceable weather and USDA soil data plus real crew reports."
  
 **Document status:** Hackathon implementation plan, not certified safety guidance.  
-**Last updated:** Oct 16, 2026 — project renamed **Groundwork** (formerly AccessCall 2.0). Rishi now owns the frontend and Aashita Rai the backend; Rishi joins backend work once the frontend is stable. Hardware plan revised to the team's confirmed kit: an **Arduino Uno "site beacon"** (Grove moisture, light, barometer, touch and button inputs; Grove LCD, red/green LEDs and buzzer outputs) connected to the laptop over USB. See §5.  
+**Last updated:** Oct 16, 2026 — project renamed **Groundwork** (formerly AccessCall 2.0). Rishi now owns the frontend and Aashita Rai the backend; Rishi joins backend work once the frontend is stable. Hardware plan revised to the team's confirmed kit: an **Arduino Uno "site beacon"** (Grove moisture, light, barometer, touch and button inputs; Grove LCD, red/green LEDs and buzzer outputs) connected to the laptop over USB. See §5. The demo playbook (kit, script, fallbacks, rehearsal) is in §14.  
 **Team:** Anson (hardware), Rishi (frontend/product; joins backend work once the frontend is stable), Aashita Rai (backend/data), Rithika (ML/computer vision/briefing).  
 **Repo:** https://github.com/anson-antony1/Groundwork  
 **Source of sponsor requirements:** Team-provided Sperry Tech challenge description. Confirm exact language, submission requirements, and credits with the official challenge page/organizers.  
@@ -547,6 +547,7 @@ Use Pydantic/schema validation on the response, then verify numbers and site IDs
 | POST | `/api/v1/replay/stop` | Restore current scenario |
 | POST | `/api/v1/briefings/generate` | Deterministic brief + optional AI narration |
 | GET | `/api/v1/policies` | Read labeled demo thresholds and model assumptions |
+| POST | `/api/v1/demo/reset` | Demo only: end any replay, clear demo-session reports and beacon acknowledgments, re-arm the beacon; requires sensor token |
  
 **Integration shape:** all endpoints return `{data, mode, generated_at, sources, missing_fields, errors}` as relevant. Define shared types in `shared/contracts.ts` or `openapi.json`; front and backend should test against one common fixture.
  
@@ -621,7 +622,7 @@ CREATE TABLE briefing_runs (
 - Rishi owns **client-side photo upload**, Rithika owns **advisory image tagging**, Aashita owns file storage route.
 - Rithika owns **briefing text**, Aashita owns **briefing inputs and ranking data**.
 - **Rishi joins the backend once the frontend is stable** (target: hour 24). Aashita assigns the tasks—integration tests, endpoint wiring, the frozen data snapshot—and remains owner of safety logic and shared contracts; Rishi's backend changes go through her review.
-- **Integration captain:** Aashita maintains shared JSON contracts and green health endpoint; **demo captain:** Rishi handles the click path, Anson handles the physical tray and beacon, Rithika narrates the AI/briefing and fallbacks. Agree on speaking order before rehearsal.
+- **Integration captain:** Aashita maintains shared JSON contracts and green health endpoint; **demo captain:** Rishi handles the click path, Anson handles the physical tray and beacon, Rithika narrates the AI/briefing and fallbacks. Speaking order, lines and the reset routine are in §14.
 ### Shared handoff fixtures (implement in first 2 hours)
  
 - `fixtures/sites_50.json` with known locations, explicitly marked `data_status` until fetched.
@@ -715,33 +716,131 @@ Use `VITE_API_BASE_URL=http://localhost:8000` locally; configure FastAPI CORS fo
  
 ---
  
-## 14. Exact two-minute live demonstration
+## 14. Demo playbook: what we need, what we say, how we run it
  
-> **Demo mode must be clearly displayed at the top.** One person drives UI, one pours, one handles narration, one troubleshoots. Keep network recordings and a preloaded offline snapshot.
+> **Demo mode must be clearly displayed at the top of the dashboard.** Everything here assumes a judge walks up to our table with no context. Answers to likely questions are in §16.
  
-| Clock | On-stage action | What judges learn |
+### 14.1 What we need at the table
+ 
+**Hardware**
+ 
+- Arduino beacon, assembled in its box, every wire labeled, LCD facing the judges.
+- USB-B cable plus a spare, and any laptop adapter.
+- Two trays of soil: a **dry tray** (the starting point) and a **wet tray** (where the probe goes after each demo). Moving the probe between them resets the demo in seconds.
+- A small cup with a **pre-measured amount of water** that reliably flips the reading to MATS in rehearsal. Mark the fill line on the cup.
+- A plastic tub under the trays, paper towels, a towel, tape, two spare Grove leads, spare jumpers.
+**Screens and devices**
+ 
+- Rishi's laptop running the dashboard, mirrored to an **external monitor facing the judges** if we can get one.
+- Aashita's laptop with backend logs and `/api/v1/health` open, turned away from the judges.
+- One phone with the crew report form open and a **standing-water photo already in the camera roll**.
+- Power strip, all chargers, and a phone hotspot in case venue Wi-Fi fails.
+**Software state (check before every demo)**
+ 
+- Backend running locally with the frozen data snapshot (50+ sites) and the storm replay loaded.
+- Serial bridge running; the beacon shows green `GO` on the dry tray.
+- Browser tabs open in order: Operations map → DEMO-TRAY site detail → Sensor Lab → 6 PM briefing. Zoom set so someone standing two steps back can read it.
+- A 6 PM briefing already generated once, so the cached deterministic version is ready if Gemini is slow.
+- Do Not Disturb on, screen sleep off, other apps closed.
+**Backups**
+ 
+- Recorded demo video on the laptop desktop and on a phone.
+- `fixtures/sensor_replay.csv` ready for `serial_bridge.py --replay`.
+- A QR code card linking to the GitHub repo and the Devpost page.
+- Optional printout: the system diagram (§20) and the real-vs-simulated table (§15).
+### 14.2 Table layout and roles
+ 
+| Person | Stands | Job during the demo |
 |---|---|---|
-| **0:00–0:20** | **Anson pours water** into the tray; dashboard moisture rises, demo site changes to `MATS_FOR_REVIEW`, and the beacon's LCD turns amber with both LEDs on | Tangible sensor-to-software-to-hardware loop |
-| **0:20–0:50** | **Rishi invites judge** to toggle Pickup ↔ Heavy Truck; mat range and adjustable mats-versus-delay example appear | Vehicle-aware, financially relevant planning |
-| **0:50–1:20** | Activate **documented storm replay**; status becomes `STOP_WORK` despite mats. The beacon turns red, the red LED blinks and the buzzer sounds. **A judge touches the sensor** to acknowledge: the buzzer stops, the dashboard logs the time, and STOP WORK stays active | Clear safety precedence and crew acknowledgment |
-| **1:20–1:45** | Send a sample **photo + note** hazard report; map pin and human-review tag appear | Live crew feedback + CV assistance |
-| **1:45–2:00** | Zoom out to **50+ sites**, show provenance/data coverage and **6 PM plan** | Real-data scale and useful output |
+| **Rishi** | Behind the main laptop | Demo captain: opens, drives every click, hands off, closes |
+| **Anson** | Beside the tray and beacon | Pours the water, guides the judge's tap on the beacon, fixes hardware |
+| **Aashita** | At the backend laptop | Explains the safety override, watches logs, switches to fallbacks if anything stalls |
+| **Rithika** | Front of the table, holding the phone | Sends the crew photo report, explains the AI tag and the 6 PM briefing |
  
-**Example demo line:** "These cost inputs are editable planning assumptions, not vendor quotes. The tray is a sensor proof-of-concept, not a ground-safety certification, and the beacon only displays what the server decided. Our remote site weather and soil records show where they came from, when they were fetched and what is missing."
+Put the tray and beacon closest to the judges so they can touch them. Keep the electronics raised and away from the water.
  
-### Failure fallbacks
+### 14.3 Reset between judge groups (about 60 seconds)
  
-| Failure | Fallback |
-|---|---|
-| Arduino/USB serial link fails | Run the bridge with `--replay fixtures/sensor_replay.csv`, labeled `Recorded demo`; the dashboard's beacon mirror still shows status |
-| LCD or barometer fails (I2C) | Unplug it; LEDs, buzzer and touch still demonstrate status and acknowledgment |
-| Loose Grove lead | Pre-labeled spare leads + tape; re-seat and rerun the I2C scanner |
-| Weather/USDA API rate limit or outage | Use locally saved real provider response with original fetched timestamp |
-| NWS has no active nearby thunderstorm | Switch to sourced historical storm replay, clearly labeled |
-| Gemini unavailable | Render Python-built 6 PM text from structured facts |
-| Photo classifier fails | Keep upload, map pin, user-selected category; label AI suggestion unavailable |
-| Map tiles fail | Cached site list + simple local/static map fallback |
-| Backend fails | Local JSON demo fallback **explicitly identified as a demo fixture** |
+1. **Rishi** clicks **Reset demo**, a hidden button that calls `POST /api/v1/demo/reset` (ends any replay, clears demo-session reports and acknowledgments) and sets the vehicle back to Pickup.
+2. **Anson** moves the probe back into the dry tray, wipes the prongs, and refills the cup to the line.
+3. Confirm the beacon shows green `GO` and DEMO-TRAY shows `GO_FOR_REVIEW` on the dashboard.
+4. **Rishi** returns to the Operations map tab; **Rithika** opens a fresh report form on the phone.
+5. **Aashita** confirms the health endpoint is green and the bridge shows no errors.
+### 14.4 The two-minute script
+ 
+Lines in quotes are what to say. Adapt the wording naturally, but keep the order and the timing. Replace bracketed values with real ones once they exist.
+ 
+| Time | Who | Do | Say |
+|---|---|---|---|
+| **0:00–0:10** | Rishi | Operations map on screen | "It's 6 PM. A utility supervisor has [N] job sites tomorrow, a week of rain behind them and storms in the forecast. Groundwork turns all of that into one plan for tomorrow." |
+| **0:10–0:30** | Anson | Pours the measured cup into the dry tray, then points at the beacon | "This is our site beacon. Watch the soil sensor as I water the tray. The reading climbs, our server re-scores the site, and the beacon turns amber: mats for review." |
+| **0:30–0:55** | Rishi | Hands the judge the mouse to switch Pickup → Heavy truck, then scrolls to the cost cards | "Go ahead and switch it to a heavy truck. Same ground, different vehicle: the pickup is fine, but the heavy truck needs roughly [X–Y] mats. Here's mats versus postponing the job. Every cost is editable, because these are planning assumptions, not quotes." |
+| **0:55–1:25** | Aashita (Anson guides the tap) | Starts the storm replay; the beacon turns red and the buzzer sounds; Anson invites the judge to tap the beacon | "Now a real storm: this is the National Weather Service warning from [date] near [place], replayed. Even with mats staged, every vehicle goes to STOP WORK. Safety always overrides access, and it can't be averaged away. Go ahead and tap the beacon. That records that the crew saw the alarm, but it doesn't clear STOP WORK. Only the weather logic can." |
+| **1:25–1:45** | Rithika | Submits the standing-water report from the phone; the pin appears on screen | "A crew member reports standing water at the gate, and it lands on the map instantly. Gemini suggests a tag, but it's marked as needing human review. AI never sets a site's status." |
+| **1:45–2:00** | Rithika, then Rishi | Opens the 6 PM briefing, then zooms out to all sites | **Rithika:** "At 6 PM, here's tomorrow's plan: [N] real sites ranked, every number traced to USDA, Open-Meteo or the Weather Service with a timestamp, and the data gaps called out." **Rishi:** "That's Groundwork. Happy to go deeper on anything." |
+ 
+**Delivery rules**
+ 
+- Talk to the judges, not the screen. Point at physical things.
+- Let the judge touch something twice: the vehicle toggle and the beacon. People remember what they did themselves.
+- Say the honest label as you go ("planning assumptions," "replayed," "needs review"). It builds trust and heads off the hardest questions.
+- Hand off by name ("Aashita, show them a storm") so transitions feel planned.
+- Stop at 2:00 and invite questions. Don't fill silence with extra features.
+### 14.5 Shorter and longer versions
+ 
+**30-second version** (busy judge or a passer-by): Rishi's opening line → Anson pours and the beacon turns amber → Aashita triggers STOP WORK and the beacon alarms → Rishi: "Fifty real sites, real weather and soil data, and a plan every evening at 6. Want the full two minutes?"
+ 
+**Five-minute deep dive** (Sperry, AI-track and hardware judges often have time and want depth). After the two-minute script, pick what fits the judge:
+ 
+- **"Why this call?" panel:** open a real site and walk through the trigger, soil drainage rating, vehicle class and missing fields.
+- **Data coverage:** how many sites have USDA data, weather, both, or gaps, and how fresh each source is.
+- **Safety tests:** show the passing tests for the STOP WORK override and "missing data never means safe."
+- **AI grounding:** the Gemini prompt contract, schema validation, the number check against backend data, and the deterministic fallback working with Gemini switched off.
+- **Photo-tag evaluation:** the labeled sample results, including the ones it got wrong.
+- **Hardware integrity:** unplug the USB cable live. Within 6 seconds the beacon shows `NO LINK` and never shows green; plug it back in and it recovers.
+- **Time series:** the beacon's pressure and temperature log over the whole event (from Tiger Data, if integrated).
+- **Code:** the GitHub README and repo structure, if the judge asks.
+### 14.6 Tailoring by judge
+ 
+| Judge | Lead with | Make sure they see |
+|---|---|---|
+| **Sperry Tech** | Their own scenario: a remote site, heat climbing, storms building, ground soaked after a week of rain | Every line of their brief: site locations, continuously pulled conditions, crew alerts the moment conditions turn dangerous, and the hazard scoring/forecast (plus the ML backtest, if built) |
+| **Hardware track** | The beacon | The sensor → server → beacon loop, touch acknowledgment, stale-link `NO LINK` behavior, calibration |
+| **AI track / Gemini** | What AI does and doesn't do | Grounded briefing with validation and fallback, photo tags with human review, evaluation numbers, a clean repo |
+| **Tiger Data** | The sensor and pressure history | A real time-series query and chart from stored rows |
+| **Easy On The Eyes** | The map and site detail | Clear status colors, labeled data provenance, the beacon mirror |
+| **General / Overall** | The supervisor's 6 PM problem | The full two-minute script with minimal jargon |
+ 
+### 14.7 When something breaks
+ 
+Stay calm, say one honest sentence, switch to the fallback, and keep going.
+ 
+| Failure | Fallback | Say |
+|---|---|---|
+| Arduino or USB link fails | Aashita restarts the bridge with `--replay fixtures/sensor_replay.csv`; the screen shows `Recorded demo`, and the dashboard's beacon mirror still shows status | "Our USB link just dropped, so here's the same sequence we recorded earlier. It's labeled Recorded up top." |
+| Moisture doesn't cross the threshold | Pour a little more; if it's still stuck, move the probe to the wet tray | "Real soil takes a moment to soak through." |
+| LCD or barometer fails (I2C) | Unplug it; LEDs, buzzer and touch still carry the demo | "The screen's taking a break; the lights and alarm show the same status." |
+| Loose Grove lead | Pre-labeled spare leads + tape; re-seat and rerun the I2C scanner | (Keep talking through the software part while Anson fixes it.) |
+| Weather/USDA API rate limit or outage | Use the locally saved real provider response with its original fetched timestamp | "This is real data we fetched at [time]; the timestamp is right there." |
+| NWS has no active nearby thunderstorm | Use the sourced historical storm replay, clearly labeled | (This is already the scripted path.) |
+| Gemini unavailable | Show the Python-built 6 PM text from the same structured facts | "This is our non-AI fallback, built from the same data. The AI version only makes it easier to read." |
+| Photo classifier fails | Keep the upload, map pin and user-selected category; label the AI suggestion unavailable | "The crew's own label is what counts; the AI suggestion is optional." |
+| Map tiles fail | Cached site list + simple local/static map fallback | "Same sites, simpler map." |
+| Backend fails | Play the recorded demo video while Aashita restarts; then the local JSON fallback, **explicitly labeled as a demo fixture** | "Let me show you the recording while we restart the server." |
+ 
+### 14.8 Rehearsal and timeline
+ 
+- **Hours 28–30:** first full run-through with all four people. It will run long; cut words, not steps.
+- **Hours 30–34:** at least five timed runs with a stopwatch, including:
+  - one with Wi-Fi off (offline snapshot only),
+  - one with the Arduino unplugged (fallback drill),
+  - one in front of a mentor or another team, for feedback,
+  - one 30-second version and one deep dive.
+- **Record the best run** with a phone plus screen capture. It becomes both the backup video and the Devpost video.
+- **Hour 32:** lock the script. Everyone knows their lines and handoffs.
+- **60 minutes before judging:** code frozen, data snapshot confirmed, everything charging, one full run.
+- **15 minutes before judging:** do the §14.3 reset, turn on Do Not Disturb, fill the water cup, confirm the beacon is green.
+**Devpost video shot list** (about 2 minutes, if required; confirm the length limit): the supervisor's problem in one sentence → close-up of the water pour with the dashboard and beacon reacting → storm replay STOP WORK and the touch acknowledgment → crew photo report → 6 PM briefing over the 50-site map → system diagram → team names and roles.
  
 ---
  
@@ -765,6 +864,7 @@ Use `VITE_API_BASE_URL=http://localhost:8000` locally; configure FastAPI CORS fo
 - [ ] Pressure tendency with under 3 hours of history returns `UNKNOWN`, not "steady".
 - [ ] Photo/text upload displays a report pin even if AI service fails.
 - [ ] Storm replay can enter/exit without contaminating live status.
+- [ ] Demo reset returns DEMO-TRAY and the beacon to a clean state (no replay, no demo reports, alarm re-armed).
 - [ ] 6 PM briefing mentions STOP WORK sites, mat needs, reports, and missing data, with no invented figures.
 - [ ] (Manual hardware test) Stop the bridge: within 6 seconds the beacon shows `NO LINK` and never shows green.
 ### Validation metrics to show judges
@@ -918,4 +1018,3 @@ flowchart LR
 ```
  
 **Live demo:** pour water → sensor reading, dashboard and beacon change → switch vehicles and compare costs → replay storm STOP WORK (beacon alarm, touch to acknowledge) → submit photo report → show 50+ sites and briefing. Sensor tray data is *not* evidence about a remote site.
-
