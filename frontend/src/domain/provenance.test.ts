@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { DATA_MODES, OBSERVATION_QUALITIES } from '../api/types'
-import { LABELS, MODE_LABEL, QUALITY_LABEL, forecastLabel, observationLabel, replayLabel, shortReplaySource, surveyLabel } from './provenance'
+import { LABELS, MODE_LABEL, QUALITY_LABEL, forecastLabel, observationLabel, replayLabel, sensorReplayLabel, shortReplaySource, surveyLabel } from './provenance'
 
 describe('README §15 labels are verbatim', () => {
   it('keeps the fixed strings exactly', () => {
@@ -46,5 +46,11 @@ describe('README §15 labels are verbatim', () => {
     for (const q of OBSERVATION_QUALITIES) expect(QUALITY_LABEL[q]).toBeTruthy()
     expect(MODE_LABEL.sensor_replay).toBe('Recorded demo')
     expect(MODE_LABEL.replay).toBe('Historical replay')
+  })
+
+  it('never calls a simulated sensor replay recorded', () => {
+    expect(sensorReplayLabel('simulated_replay_v1')).toBe('Simulated sensor replay')
+    expect(sensorReplayLabel('dry_wet_2point_v1')).toBe('Recorded demo')
+    expect(sensorReplayLabel(null)).toBe('Recorded demo')
   })
 })

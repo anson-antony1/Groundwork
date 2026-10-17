@@ -1,3 +1,4 @@
+import { accessToken } from '../auth/token'
 import { API_BASE } from './config'
 import { ApiError } from './errors'
 import type { Transport } from './transport'
@@ -17,6 +18,13 @@ export const httpTransport: Transport = async (req) => {
   }
 
   const headers: Record<string, string> = { Accept: 'application/json', 'X-Request-ID': requestId(), ...req.headers }
+  // Writes carry the logged-in user's Auth0 token (the backend guards writes by role). Reads never wait
+  // on Auth0, so the dashboard keeps working if the venue network can't reach it. A caller's own
+  // Authorization header (the sensor token in the reset dialog) wins.
+  if (req.method !== 'GET' && !headers.Authorization) {
+    const token = await accessToken()
+    if (token) headers.Authorization = `Bearer ${token}`
+  }
   let body: BodyInit | undefined
   if (req.form) {
     body = req.form // the browser sets the multipart boundary
@@ -25,7 +33,8 @@ export const httpTransport: Transport = async (req) => {
     headers['Content-Type'] = 'application/json'
   }
 
-  const timeout = AbortSignal.timeout(TIMEOUT_MS)
+  const timeoutMs = req.timeoutMs ?? TIMEOUT_MS
+  const timeout = AbortSignal.timeout(timeoutMs)
   const signal = req.signal ? AbortSignal.any([req.signal, timeout]) : timeout
 
   let res: Response
@@ -37,7 +46,7 @@ export const httpTransport: Transport = async (req) => {
     throw new ApiError({
       status: 0,
       code: timedOut ? 'TIMEOUT' : 'NETWORK',
-      message: timedOut ? `No response within ${TIMEOUT_MS / 1000} s` : 'Network error: the API is unreachable',
+      message: timedOut ? `No response within ${timeoutMs / 1000} s` : 'Network error: the API is unreachable',
     })
   }
 

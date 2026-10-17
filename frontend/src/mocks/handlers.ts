@@ -10,6 +10,7 @@ import {
   DEMO_DEVICE_ID,
   DEMO_SITE_ID,
   POLICY,
+  REPLAYS,
   SENSOR_TOKEN,
   allSiteStatuses,
   buildDisplay,
@@ -235,18 +236,22 @@ async function createReport({ req, now }: Ctx): Promise<ApiResponse> {
 
 // --- Routes -------------------------------------------------------------------
 
-const SCENARIOS: ReplayScenario[] = [
-  {
-    id: 'demo-storm',
-    title: 'Demo storm (mock)',
-    event: 'Severe Thunderstorm Warning',
-    source: 'Mock scenario — not a real NWS event. The live API replays fixtures/storm_replay.json.',
-    reference_url: null,
-    onset: null,
-    expires: null,
-    area: 'All demo sites',
-  },
-]
+const SCENARIO_TITLES: Record<string, string> = {
+  'demo-storm': 'Hurricane Milton · Oct 9 2024',
+  'calm-day': 'Calm summer day · Jul 15 2024',
+}
+
+/** The backend's replay fixtures, copied by scripts/build-mock-replays.mjs. */
+const SCENARIOS: ReplayScenario[] = Object.entries(REPLAYS).map(([id, r]) => ({
+  id,
+  title: SCENARIO_TITLES[id] ?? r.label,
+  event: r.alert ?? 'No alert assumed',
+  source: r.source,
+  reference_url: null,
+  onset: null,
+  expires: null,
+  area: 'All field sites',
+}))
 
 const routes: [ApiRequest['method'], string, Handler][] = [
   ['GET', '/api/v1/health', () => {
@@ -254,11 +259,12 @@ const routes: [ApiRequest['method'], string, Handler][] = [
       status: 'ok',
       version: '0.2.0-mock',
       storage: 'in-browser mock (resets on reload)',
+      // Like the backend with GROUNDWORK_AUTH_ENABLED off: every caller is a demo user with both roles.
+      auth: 'disabled',
       sites_loaded: allSiteStatuses(Date.now()).length,
       replay_active: db.demo.replayActive,
       fixtures: { 'sites_50.json': true, 'weather_snapshot.json': true, 'storm_replay.json': false, 'sensor_replay.csv': false, 'display_states.json': false },
       connectors: { open_meteo: 'ok', usda_nrcs: 'not_built', nws: 'not_built' },
-      auth: 'disabled',
     }
     return ok(data, db.demo.replayActive ? 'replay' : 'live')
   }],

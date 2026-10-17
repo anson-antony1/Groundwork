@@ -3,11 +3,13 @@ import { hasEndpoint } from '../api/config'
 import { describeError } from '../api/errors'
 import { PROPOSED_ENDPOINTS } from '../api/proposed'
 import { useClearCrewFlag } from '../api/queries'
+import { useCan } from '../auth/session'
 
 /** Supervisor clears a crew flag raised with the beacon's long button press (weather is never touched). */
 export function ClearCrewFlag() {
   const clear = useClearCrewFlag()
-  if (!hasEndpoint(PROPOSED_ENDPOINTS.clearCrewFlag)) return null
+  const { can } = useCan()
+  if (!hasEndpoint(PROPOSED_ENDPOINTS.clearCrewFlag) || !can('clearCrewFlag')) return null
   return (
     <span className="flex flex-col items-start gap-1">
       <button

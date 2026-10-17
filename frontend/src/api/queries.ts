@@ -1,6 +1,7 @@
 // Query hooks: one per screen need, with the polling interval from the plan's budget table.
 // Only mounted screens poll, and TanStack Query pauses polling in hidden tabs.
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useEffect } from 'react'
 import { api } from './client'
 import type { NewReport } from './client'
 import { DEMO_DEVICE_ID, hasEndpoint } from './config'
@@ -36,6 +37,20 @@ export function useSite(siteId: string) {
     enabled: ctx !== null && siteId !== '',
     refetchInterval: 2_000,
   })
+}
+
+/** Warms a site's detail query (from the map preview), so opening it renders at once and the status tag can morph. */
+export function usePrefetchSite(siteId: string | null) {
+  const { ctx } = useServerCtx()
+  const client = useQueryClient()
+  useEffect(() => {
+    if (!siteId || ctx === null) return
+    void client.prefetchQuery({
+      queryKey: qk.site(siteId, ctx),
+      queryFn: async ({ signal }) => guarded(await api.site(siteId, signal), ctx),
+      staleTime: 2_000,
+    })
+  }, [client, siteId, ctx])
 }
 
 /**
@@ -214,7 +229,7 @@ export function useClearCrewFlag(deviceId = DEMO_DEVICE_ID) {
 export function useResetDemo() {
   const queryClient = useQueryClient()
   return useMutation({
-    mutationFn: (token: string) => api.resetDemo(token),
+    mutationFn: (token: string | null) => api.resetDemo(token),
     // Everything may have changed (replay ended, reports cleared): refetch from scratch.
     onSuccess: () => queryClient.resetQueries(),
   })

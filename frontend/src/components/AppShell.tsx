@@ -9,6 +9,8 @@ import { LABELS, MODE_LABEL, replayLabel, shortReplaySource } from '../domain/pr
 import { isTypingTarget, useHotkeys } from '../hooks/useHotkeys'
 import { useLongPress } from '../hooks/useLongPress'
 import { useNow } from '../hooks/useNow'
+import { AccountButton } from '../auth/AccountButton'
+import { setAmbient, useAmbient } from '../state/ambient'
 import { useDemoUi } from '../state/demoUiContext'
 import { MOCK_CONTROLS_EVENT } from '../state/mockEvents'
 import { ContextTransition } from './ContextTransition'
@@ -58,6 +60,9 @@ function TopBar({ compact, onReset }: { compact: boolean; onReset: () => void })
   const hold = useLongPress(onReset, 2000)
   return (
     <header className="relative z-[1100] shrink-0 print:hidden border-b-2 border-line bg-gradient-to-b from-[#20262d] to-[#171b20] shadow-[0_6px_18px_rgb(0_0_0/0.45)]">
+      <span aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+        <span className="gw-scanline" />
+      </span>
       <div className="flex h-[4.25rem] items-stretch gap-3 px-3 sm:px-5 xl:gap-4">
         <Link href="/" className="flex min-w-0 items-center pr-1" aria-label="Groundwork home" {...hold}>
           <Wordmark />
@@ -92,6 +97,7 @@ function TopBar({ compact, onReset }: { compact: boolean; onReset: () => void })
               <VehicleSwitch />
             </div>
           )}
+          <AccountButton />
           <ApiBadge />
           <Clock />
         </div>
@@ -154,12 +160,24 @@ export function AppShell({ children }: { children: ReactNode }) {
   const phone = location.startsWith('/report')
   const [resetOpen, setResetOpen] = useState(false)
   const [helpOpen, setHelpOpen] = useState(false)
+  const ambient = useAmbient()
+  const [ambientNote, setAmbientNote] = useState<string | null>(null)
 
   useHotkeys({
     ...Object.fromEntries(NAV.map((n) => [n.key, () => navigate(n.to)])),
     v: () => setVehicle(vehicle === 'pickup' ? 'heavy_truck' : 'pickup'),
+    a: () => {
+      setAmbient(!ambient)
+      setAmbientNote(ambient ? 'Ambient motion off' : 'Ambient motion on')
+    },
     '?': () => setHelpOpen((o) => !o),
   })
+
+  useEffect(() => {
+    if (!ambientNote) return
+    const timer = window.setTimeout(() => setAmbientNote(null), 1600)
+    return () => window.clearTimeout(timer)
+  }, [ambientNote])
 
   // Hidden reset: Shift+Alt+R. Matched on e.code because Alt changes e.key on macOS.
   useEffect(() => {
@@ -183,6 +201,11 @@ export function AppShell({ children }: { children: ReactNode }) {
       <main className="min-h-0 flex-1 overflow-y-auto print:overflow-visible">
         <div className={cx('h-full', phone ? 'mx-auto w-full max-w-xl px-4 py-5' : 'px-6 py-5')}>{children}</div>
       </main>
+      {ambientNote && (
+        <p role="status" className="fixed bottom-4 left-1/2 z-[1700] -translate-x-1/2 rounded-[3px] border border-line-hi bg-steel-hi px-4 py-2.5 text-[0.85rem] label-caps">
+          {ambientNote} · press A to switch
+        </p>
+      )}
       <ResetDialog open={resetOpen} onClose={() => setResetOpen(false)} />
       <HotkeyHelp open={helpOpen} onClose={() => setHelpOpen(false)} />
     </div>

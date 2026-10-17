@@ -4,8 +4,9 @@ import type { ReactNode } from 'react'
 import type { Reading } from '../../api/types'
 import { cx } from '../../components/cx'
 import { QualityChip } from '../../components/Provenance'
+import { SplitFlap } from '../../components/SplitFlap'
 import { fmtAgo } from '../../domain/format'
-import { LABELS } from '../../domain/provenance'
+import { LABELS, sensorReplayLabel } from '../../domain/provenance'
 
 /** A module that isn't plugged in sends nothing (README §5.7). Shown as such, never as zero. */
 function NoValue({ text }: { text: string }) {
@@ -40,7 +41,12 @@ function Tile({ label, icon: Icon, value, digits, unit, provenance, hero, stale,
       </p>
       {present ? (
         <p className="flex items-baseline gap-1.5">
-          <span className={cx('font-display leading-none font-bold num', hero ? 'text-[5rem]' : 'text-[2.6rem]')}>{value.toFixed(digits)}</span>
+          {hero ? (
+            // The hero reading flips like a departures board; padded so 99.9 to 100.0 adds no card.
+            <SplitFlap text={value.toFixed(digits).padStart(digits ? digits + 4 : 3, ' ')} className="font-display text-[5rem] leading-none font-bold" />
+          ) : (
+            <span className="font-display text-[2.6rem] leading-none font-bold num">{value.toFixed(digits)}</span>
+          )}
           <span className="text-lg text-muted">{unit}</span>
         </p>
       ) : stale && typeof value === 'number' ? (
@@ -55,7 +61,13 @@ function Tile({ label, icon: Icon, value, digits, unit, provenance, hero, stale,
 
 export function ReadingTiles({ reading, now, stale }: { reading: Reading | null; now: number; stale: boolean }) {
   const when = reading ? `recorded ${fmtAgo(reading.recorded_at, now)}` : 'no reading yet'
-  const quality = reading ? <QualityChip quality={reading.mode} className="ml-1" /> : null
+  const quality = reading ? (
+    <QualityChip
+      quality={reading.mode}
+      label={reading.mode === 'sensor_replay' ? sensorReplayLabel(reading.calibration) : undefined}
+      className="ml-1"
+    />
+  ) : null
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 2xl:grid-cols-3">
       <Tile

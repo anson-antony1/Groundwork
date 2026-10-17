@@ -5,6 +5,22 @@ export type ApiMode = 'mock' | 'live'
 /** The one-line switch: VITE_API_MODE=live in frontend/.env.local talks to the real backend. */
 export const API_MODE: ApiMode = import.meta.env.VITE_API_MODE === 'live' ? 'live' : 'mock'
 
+/** The public Render build of the live app, where one backend is shared by every visitor. */
+export const HOSTED = import.meta.env.VITE_HOSTED === '1'
+
+/** The public mock-mode demo site: the rehearsal controls get a visible launcher for remote judges. */
+export const TRY_DOCK = import.meta.env.VITE_TRY_DOCK === '1'
+
+/** A full http(s) address without trailing slashes; anything else (blank, a "-" placeholder) counts as unset. */
+const siteUrl = (url: string | undefined) => {
+  const trimmed = (url ?? '').trim().replace(/\/+$/, '')
+  return /^https?:\/\/\S+$/.test(trimmed) ? trimmed : ''
+}
+
+/** The two public deployments link to each other from /welcome. Empty when not set (local dev). */
+export const LIVE_URL = siteUrl(import.meta.env.VITE_LIVE_URL)
+export const DEMO_URL = siteUrl(import.meta.env.VITE_DEMO_URL)
+
 /** Empty means same origin; the Vite dev server proxies /api and /uploads to the backend. */
 export const API_BASE = (import.meta.env.VITE_API_BASE_URL ?? '').replace(/\/+$/, '')
 

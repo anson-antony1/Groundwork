@@ -1,6 +1,6 @@
 import { QueryClientProvider } from '@tanstack/react-query'
 import { Suspense, lazy, useEffect } from 'react'
-import { Link, Route, Switch } from 'wouter'
+import { Link, Route, Router, Switch } from 'wouter'
 import { API_MODE } from './api/config'
 import { queryClient } from './api/queryClient'
 import { ServerCtxProvider } from './api/ServerCtxProvider'
@@ -8,6 +8,8 @@ import { loadMockControls } from './api/transport'
 import { AppShell } from './components/AppShell'
 import { Card } from './components/Card'
 import { LoadingBlock } from './components/States'
+import { viewTransitionNav } from './components/viewTransitionNav'
+import { AuthProvider } from './auth/AuthProvider'
 import { OpsMapScreen } from './screens/ops-map/OpsMapScreen'
 import { SiteDetailScreen } from './screens/site-detail/SiteDetailScreen'
 import { DemoUiProvider } from './state/DemoUiProvider'
@@ -23,6 +25,7 @@ const ReplayScreen = lazy(() => loadReplay().then((m) => ({ default: m.ReplayScr
 const BriefingScreen = lazy(() => loadBriefing().then((m) => ({ default: m.BriefingScreen })))
 const ReportScreen = lazy(() => loadReport().then((m) => ({ default: m.ReportScreen })))
 const StyleScreen = lazy(() => import('./screens/style/StyleScreen').then((m) => ({ default: m.StyleScreen })))
+const WelcomeScreen = lazy(() => import('./screens/welcome/WelcomeScreen').then((m) => ({ default: m.WelcomeScreen })))
 
 function usePrefetchScreens() {
   useEffect(() => {
@@ -48,10 +51,9 @@ function NotFound() {
   )
 }
 
-export function App() {
-  usePrefetchScreens()
+/** The operations console: everything behind the top bar, polling the server's live/replay context. */
+function OpsApp() {
   return (
-    <QueryClientProvider client={queryClient}>
       <ServerCtxProvider>
         <DemoUiProvider>
           <AppShell>
@@ -77,6 +79,28 @@ export function App() {
           )}
         </DemoUiProvider>
       </ServerCtxProvider>
+  )
+}
+
+export function App() {
+  usePrefetchScreens()
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Router aroundNav={viewTransitionNav}>
+      <AuthProvider>
+      <Switch>
+        {/* The public front door renders without the ops shell: no STOP bar, polling or hotkeys. */}
+        <Route path="/welcome">
+          <Suspense fallback={<LoadingBlock label="Loading" />}>
+            <WelcomeScreen />
+          </Suspense>
+        </Route>
+        <Route>
+          <OpsApp />
+        </Route>
+      </Switch>
+      </AuthProvider>
+      </Router>
     </QueryClientProvider>
   )
 }

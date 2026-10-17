@@ -5,6 +5,7 @@ import { DEMO_SITE_ID } from '../../api/config'
 import type { SiteView } from '../../api/proposed'
 import type { Vehicle } from '../../api/types'
 import { cx } from '../../components/cx'
+import { FlapCount } from '../../components/SplitFlap'
 import { VEHICLE_LABEL, fmtWhen } from '../../domain/format'
 import { inputsSummary, sourceCoverage } from '../../domain/inputs'
 
@@ -33,7 +34,7 @@ function Tile({ label, value, sub, icon: Icon, alert, children }: TileProps) {
       />
       <div className="min-w-0">
         <p className="text-[0.78rem] text-muted label-caps">{label}</p>
-        <p className="font-display text-[2.6rem] leading-none font-bold">{value ?? '—'}</p>
+        <p className="font-display text-[2.6rem] leading-none font-bold">{value === null ? '—' : <FlapCount value={value} />}</p>
         <p className="mt-1 text-[0.82rem] leading-snug text-muted">{sub}</p>
         {children}
       </div>

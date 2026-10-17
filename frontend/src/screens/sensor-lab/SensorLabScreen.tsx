@@ -8,11 +8,12 @@ import { cx } from '../../components/cx'
 import { StatusTag } from '../../components/StatusTag'
 import { useNow } from '../../hooks/useNow'
 import { VEHICLE_LABEL, ageSeconds, fmtAgo } from '../../domain/format'
-import { LABELS } from '../../domain/provenance'
+import { LABELS, sensorReplayLabel } from '../../domain/provenance'
 import { STALE_BUDGET_MS, isStale } from '../../domain/staleness'
 import { AckLog } from './AckLog'
 import { MoistureChart, PressurePanel } from './charts'
 import { ReadingTiles } from './ReadingTiles'
+import { TrayCrossSection } from './TrayCrossSection'
 
 /** The beacon goes NO LINK after 6 s without a status line; readings stop on the same USB link. */
 const LINK_SECONDS = 6
@@ -57,7 +58,9 @@ export function SensorLabScreen() {
         </div>
         <div className="flex flex-wrap items-center gap-3">
           {recorded && (
-            <span className="rounded-[3px] border-2 border-accent bg-accent/15 px-3 py-1.5 text-lg text-accent label-caps">Recorded demo · not live hardware</span>
+            <span className="rounded-[3px] border-2 border-accent bg-accent/15 px-3 py-1.5 text-lg text-accent label-caps">
+              {sensorReplayLabel(reading?.calibration)} · not live hardware
+            </span>
           )}
           <span
             role="status"
@@ -70,7 +73,10 @@ export function SensorLabScreen() {
       </header>
 
       <div className="grid items-start gap-5 xl:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
-        <BeaconReplica display={display.data ?? null} linked={link.ok} deviceId={DEMO_DEVICE_ID} />
+        <div className="flex flex-col gap-5">
+          <BeaconReplica display={display.data ?? null} linked={link.ok} deviceId={DEMO_DEVICE_ID} />
+          <TrayCrossSection moisture={link.ok ? (reading?.moisture_index ?? null) : null} heavy={policy?.demo_tray_access.heavy_truck} />
+        </div>
         <div className="flex flex-col gap-5">
           <ReadingTiles reading={reading} now={now} stale={!link.ok} />
           <Card title="What the dashboard calls the tray" icon={<Radio aria-hidden className="size-4" />}>

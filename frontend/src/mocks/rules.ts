@@ -16,6 +16,7 @@ import type {
   WeatherState,
 } from '../api/types'
 import { rankSites } from '../domain/ranking'
+import replays from './data/replays.json'
 import fixture from './data/sites.json'
 import { db, iso, newId } from './db'
 
@@ -113,13 +114,36 @@ function effective(weather: WeatherState, access: Record<Vehicle, AccessCall>, c
   return out
 }
 
-/** Like the backend's Milton replay: a simulated warning, and every field site at the scale maximum. */
-const REPLAY_ALERT = 'Hurricane Warning (SIMULATED, mock replay)'
-const REPLAY_SCORE = 7
+interface ReplayFixture {
+  label: string
+  day: string
+  alert: string | null
+  source: string
+  /** site id -> [hazard score, weather state], copied from the backend's replay fixture. */
+  sites: Record<string, [number | null, WeatherState]>
+}
+
+/** Per-scenario values from fixtures/ (scripts/build-mock-replays.mjs), like backend storm_replay_v2.py. */
+export const REPLAYS = replays.scenarios as unknown as Record<string, ReplayFixture>
+
+/** The active replay. Unknown ids fall back to the storm, as in the backend. */
+export function activeReplay(): ReplayFixture | null {
+  if (!db.demo.replayActive) return null
+  return REPLAYS[db.demo.replayScenarioId ?? 'demo-storm'] ?? REPLAYS['demo-storm']
+}
+
+function replayExplanation(rp: ReplayFixture, score: number | null): string[] {
+  return [
+    `Historical replay: ${rp.label}, day ${rp.day} (rain, wind and temperature are real archived data); hazard ${score ?? 'missing'}`,
+    rp.alert ? `Active alert: ${rp.alert} forces STOP WORK` : 'No alert assumed: historical NWS alerts are unavailable (SIMULATED assumption)',
+  ]
+}
 
 function fieldSiteStatus(site: MockSite, now: number): SiteView {
-  const replay = db.demo.replayActive
-  const weather_state: WeatherState = replay ? 'STOP_WORK' : site.scenario.weather_state
+  const rp = activeReplay()
+  const replay = rp !== null
+  const [replayScore, replayState] = rp?.sites[site.id] ?? [null, 'UNKNOWN']
+  const weather_state: WeatherState = replay ? replayState : site.scenario.weather_state
   const missing = [...site.scenario.missing_fields, ...site.observations.filter((o) => o.value === null).map((o) => o.variable)]
   return {
     id: site.id,
@@ -128,7 +152,7 @@ function fieldSiteStatus(site: MockSite, now: number): SiteView {
     longitude: site.longitude,
     region: site.region,
     location_origin: site.location_origin,
-    hazard_score: replay ? REPLAY_SCORE : site.scenario.hazard_score,
+    hazard_score: replay ? replayScore : site.scenario.hazard_score,
     weather_state,
     access_call: site.scenario.access,
     effective_status: effective(weather_state, site.scenario.access, false),
@@ -138,16 +162,16 @@ function fieldSiteStatus(site: MockSite, now: number): SiteView {
     evaluated_at: iso(now),
     mode: replay ? 'replay' : 'cached',
     hazard_subscores: site.scenario.hazard_subscores ?? undefined,
-    alert_events: replay ? [REPLAY_ALERT] : site.scenario.alert_events,
-    hazard_explanation: replay
-      ? [`Historical storm replay: hazard ${REPLAY_SCORE}.0 (scale maximum)`, `Active alert: ${REPLAY_ALERT} forces STOP WORK`]
-      : site.scenario.hazard_explanation,
+    alert_events: rp ? (rp.alert ? [rp.alert] : []) : site.scenario.alert_events,
+    hazard_explanation: rp ? replayExplanation(rp, replayScore) : site.scenario.hazard_explanation,
   }
 }
 
 function demoSiteStatus(now: number): SiteView {
-  const replay = db.demo.replayActive
-  // The tray has no live weather feed; it runs a calm-weather demo scenario.
+  const rp = activeReplay()
+  const replay = rp !== null
+  // The tray has no live weather feed; it runs a calm-weather demo scenario. Any replay stops it,
+  // as in the backend, so the beacon alarm re-arms.
   const weather_state: WeatherState = replay ? 'STOP_WORK' : 'NORMAL'
   const reading = freshReading(now)
   const moisture = reading?.moisture_index ?? null
@@ -163,7 +187,7 @@ function demoSiteStatus(now: number): SiteView {
     missing_fields: reading ? [] : ['demo_tray_moisture'],
     evaluated_at: iso(now),
     mode: replay ? 'replay' : 'sensor_demo',
-    alert_events: replay ? [REPLAY_ALERT] : [],
+    alert_events: rp?.alert ? [rp.alert] : [],
     hazard_explanation: [],
   }
 }

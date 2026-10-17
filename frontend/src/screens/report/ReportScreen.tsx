@@ -7,6 +7,8 @@ import { DEMO_SITE_ID } from '../../api/config'
 import { ApiError, describeError } from '../../api/errors'
 import type { ReportView } from '../../api/proposed'
 import { useCreateReport, useSites } from '../../api/queries'
+import { SupervisorOnly } from '../../auth/AccountButton'
+import { useCan } from '../../auth/session'
 import { REPORT_CATEGORIES } from '../../api/types'
 import type { ReportCategory } from '../../api/types'
 import { cx } from '../../components/cx'
@@ -57,6 +59,8 @@ function uploadError(error: unknown): string {
 export function ReportScreen({ siteId }: { siteId?: string }) {
   const sites = useSites().data?.data ?? []
   const create = useCreateReport()
+  const { can } = useCan()
+  const mayReport = can('sendReport')
   const now = useNow(1000)
   const [site, setSite] = useState(siteId ?? DEMO_SITE_ID)
   const [category, setCategory] = useState<ReportCategory | null>(null)
@@ -239,12 +243,18 @@ export function ReportScreen({ siteId }: { siteId?: string }) {
       {/* Sticky send bar: reachable with a thumb at the bottom of a phone screen. */}
       <div className="fixed inset-x-0 bottom-0 z-[1200] border-t-2 border-line bg-panel px-4 py-3">
         <div className="mx-auto flex max-w-xl items-center gap-3">
-          <p className="min-w-0 flex-1 truncate text-[0.85rem] text-muted">
-            {ready ? `To ${siteName}` : category === null ? 'Pick what you saw' : 'Add a short description'}
-          </p>
+          {mayReport ? (
+            <p className="min-w-0 flex-1 truncate text-[0.85rem] text-muted">
+              {ready ? `To ${siteName}` : category === null ? 'Pick what you saw' : 'Add a short description'}
+            </p>
+          ) : (
+            <span className="min-w-0 flex-1">
+              <SupervisorOnly what="send a report" roles="crew or a supervisor" />
+            </span>
+          )}
           <button
             type="submit"
-            disabled={!ready || create.isPending}
+            disabled={!ready || create.isPending || !mayReport}
             className="flex min-h-14 items-center gap-2 rounded-[4px] bg-accent px-6 text-lg text-accent-ink label-caps disabled:opacity-40"
           >
             {create.isPending ? <Loader2 aria-hidden className="size-5 animate-spin" /> : <Send aria-hidden className="size-5" />}

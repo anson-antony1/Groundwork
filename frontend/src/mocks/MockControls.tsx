@@ -4,6 +4,7 @@
 import { FlaskConical, X } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { useEffect, useState, useSyncExternalStore } from 'react'
+import { TRY_DOCK } from '../api/config'
 import { useHotkeys } from '../hooks/useHotkeys'
 import { useNow } from '../hooks/useNow'
 import { MOCK_CONTROLS_EVENT } from '../state/mockEvents'
@@ -53,12 +54,26 @@ export default function MockControls() {
     return () => window.removeEventListener(MOCK_CONTROLS_EVENT, toggle)
   }, [])
 
-  if (!open) return null
+  // The public demo site has no Shift+M hint for remote judges, so it shows a launcher instead.
+  if (!open) {
+    if (!TRY_DOCK) return null
+    return (
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        className="fixed right-3 bottom-3 z-[2000] flex min-h-12 items-center gap-2 rounded-[4px] border-2 border-accent bg-panel px-4 text-[0.9rem] text-ink shadow-[0_12px_30px_rgb(0_0_0/0.55)] label-caps hover:bg-steel-hi"
+      >
+        <FlaskConical aria-hidden className="size-5 text-accent" />
+        Try it · pour water, start a storm
+      </button>
+    )
+  }
 
   const s = db.sensor
   const reading = latestReading()
   const [status] = demoStatus(now)
-  const replay = (on: boolean) => void handle({ method: 'POST', path: `/api/v1/replay/${on ? 'start' : 'stop'}`, json: { scenario_id: 'demo-storm' } })
+  const replay = (on: boolean, scenarioId = 'demo-storm') =>
+    void handle({ method: 'POST', path: `/api/v1/replay/${on ? 'start' : 'stop'}`, json: { scenario_id: scenarioId } })
 
   return (
     <aside
@@ -91,7 +106,9 @@ export default function MockControls() {
         </Btn>
       </Group>
       <Group title="Storm replay (Aashita)">
-        <Btn onClick={() => replay(true)} active={db.demo.replayActive}>Start</Btn>
+        {/* scripts/demo-run.js clicks the first button starting with "Start": keep the storm first. */}
+        <Btn onClick={() => replay(true)} active={db.demo.replayActive && db.demo.replayScenarioId === 'demo-storm'}>Start storm</Btn>
+        <Btn onClick={() => replay(true, 'calm-day')} active={db.demo.replayActive && db.demo.replayScenarioId === 'calm-day'}>Start calm day</Btn>
         <Btn onClick={() => replay(false)}>Stop</Btn>
       </Group>
       <Group title="Photo tagger (Rithika)">

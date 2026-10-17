@@ -205,3 +205,224 @@
     width: 0%;
   }
 }
+
+/* --- Split-flap numbers (components/SplitFlap.tsx) ------------------------- */
+
+.gw-flapset {
+  display: inline-flex;
+}
+.gw-flap-row {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 0.05em;
+}
+.gw-flap {
+  position: relative;
+  display: inline-block;
+  width: 0.7em;
+  height: 1.1em;
+  perspective: 300px;
+}
+.gw-flap > span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  overflow: hidden;
+}
+.gw-flap > span > b {
+  display: block;
+  height: 1.1em;
+  line-height: 1.1em;
+  text-align: center;
+  font-weight: inherit;
+}
+.gw-flap-top,
+.gw-flap-leaf-top {
+  top: 0;
+  border-radius: 0.06em 0.06em 0 0;
+  background: #262d35;
+}
+.gw-flap-bottom,
+.gw-flap-leaf-bottom {
+  bottom: 0;
+  border-radius: 0 0 0.06em 0.06em;
+  background: #1d2329;
+}
+.gw-flap-bottom > b,
+.gw-flap-leaf-bottom > b {
+  margin-top: -0.55em;
+}
+.gw-flap-leaf-top,
+.gw-flap-leaf-bottom {
+  z-index: 2;
+  visibility: hidden;
+  backface-visibility: hidden;
+}
+.gw-flap-leaf-top {
+  transform-origin: 50% 100%;
+}
+.gw-flap-leaf-bottom {
+  transform-origin: 50% 0;
+  transform: rotateX(90deg);
+}
+/* The hinge seam between the halves. */
+.gw-flap::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(50% - 0.5px);
+  height: 1px;
+  z-index: 3;
+  background: #0b0d0f;
+}
+.gw-flap-sep {
+  line-height: 1.1em;
+  padding: 0 0.02em;
+}
+
+/* --- Ambient motion (state/ambient.ts: hotkey A; reduced motion stops it too) -- */
+
+/* Marching hazard stripes on the STOP WORK bar. The tile matches the 20 px stripe period at 135deg. */
+.hazard-march {
+  background-size: 28.28px 28.28px;
+}
+html[data-ambient='on'] .hazard-march {
+  animation: gw-march 1.1s linear infinite;
+}
+@keyframes gw-march {
+  to {
+    background-position: 28.28px 0;
+  }
+}
+
+/* A faint scanline drifting down the header. Ends invisible, so reduced motion leaves no trace. */
+.gw-scanline {
+  position: absolute;
+  inset-inline: 0;
+  top: -45%;
+  height: 45%;
+  opacity: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgb(185 207 228 / 0.07), transparent);
+}
+html[data-ambient='on'] .gw-scanline {
+  animation: gw-scan 5.5s linear infinite;
+}
+@keyframes gw-scan {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(330%);
+    opacity: 0;
+  }
+}
+
+/* Radio waves from the demo-tray beacon marker on the map. */
+.gw-beacon {
+  position: relative;
+  display: block;
+}
+.gw-beacon > i {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent);
+  opacity: 0;
+  pointer-events: none;
+}
+html[data-ambient='on'] .gw-beacon > i {
+  animation: gw-wave 2.4s ease-out infinite;
+}
+html[data-ambient='on'] .gw-beacon > i:nth-child(2) {
+  animation-delay: 0.8s;
+}
+html[data-ambient='on'] .gw-beacon > i:nth-child(3) {
+  animation-delay: 1.6s;
+}
+@keyframes gw-wave {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+/* Radar sweep over the ops map (screens/ops-map/RadarSweep.tsx). Faint and click-through. */
+.gw-radar {
+  position: absolute;
+  inset: 0;
+  z-index: 450;
+  overflow: hidden;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+.gw-radar-arm {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 150%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg 300deg,
+    rgb(125 159 194 / 0.07) 340deg,
+    rgb(185 207 228 / 0.22) 359.5deg,
+    transparent 360deg
+  );
+}
+.gw-radar-ping {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border-radius: 50%;
+  border: 2px solid rgb(185 207 228 / 0.85);
+}
+
+/* Water surface in the Sensor Lab tray drawing. */
+html[data-ambient='on'] .gw-ripple {
+  animation: gw-ripple 2.4s linear infinite;
+}
+@keyframes gw-ripple {
+  to {
+    transform: translateX(-20px);
+  }
+}
+
+/* --- View transitions (components/viewTransitionNav.ts) --------------------- */
+
+::view-transition-group(*) {
+  animation-duration: 420ms;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 220ms;
+}
+
+/* Typing caret for the freshly generated 6 PM narrative. */
+.gw-caret {
+  display: inline-block;
+  width: 0.5em;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  background: var(--color-ink);
+  animation: gw-blink 1s steps(1, end) infinite;
+}
+@keyframes gw-blink {
+  50% {
+    opacity: 0;
+  }
+}

@@ -11,11 +11,15 @@ import { fmtNum } from '../../domain/format'
 import { STATUS_ORDER, statusVisual } from '../../domain/status'
 import type { StatusKey } from '../../domain/status'
 import { OfflineBasemap } from './OfflineBasemap'
+import { RadarSweep } from './RadarSweep'
 import type { ReportSummary } from './SiteList'
 
 const DEFAULT_CENTER: [number, number] = [39.5, -98.35] // continental US; fitBounds moves to wherever the sites are
 const SIZE = 30
 const BEACON_SIZE = 42
+
+/** The demo-tray beacon, with three radio-wave rings that the ambient CSS animates (theme.css .gw-beacon). */
+const beaconHtml = (svg: string) => `<span class="gw-beacon"><i></i><i></i><i></i>${svg}</span>`
 
 const iconCache = new Map<string, DivIcon>()
 function cachedIcon(key: string, build: () => DivIcon): DivIcon {
@@ -121,6 +125,7 @@ export const SiteMap = memo(function SiteMap(props: SiteMapProps) {
       <ZoomControl position="topright" />
       <FitToSites sites={fieldSites} />
       <FlyToSelected id={selected?.id ?? null} lat={selected?.latitude} lon={selected?.longitude} />
+      <RadarSweep sites={sites} />
 
       {sites.map((site) => {
         const status = statusOf(site)
@@ -134,7 +139,7 @@ export const SiteMap = memo(function SiteMap(props: SiteMapProps) {
         const key = `${isDemo ? 'beacon' : v.shape}|${v.tone}|${site.id === selectedId}|${hot}|${hatched}|${dashed}`
         const icon = cachedIcon(key, () =>
           divIcon({
-            html: isDemo ? beaconMarkerSvg(v.tone, size, site.id === selectedId) : markerSvg(v.shape, v.tone, { size, selected: site.id === selectedId, hatched, dashed }),
+            html: isDemo ? beaconHtml(beaconMarkerSvg(v.tone, size, site.id === selectedId)) : markerSvg(v.shape, v.tone, { size, selected: site.id === selectedId, hatched, dashed }),
             className: hot ? 'gw-marker is-hot' : 'gw-marker',
             iconSize: [size, size],
             iconAnchor: [size / 2, size / 2],

@@ -85,7 +85,7 @@ export function StopWorkLayer({ compact = false }: { compact?: boolean }) {
       {total && <div aria-hidden className="pointer-events-none fixed inset-0 z-[1500] border-[6px] border-stop shadow-[inset_0_0_42px_rgb(229_37_30/0.45)]" />}
 
       <div role="status" className="relative flex shrink-0 flex-wrap items-center gap-x-5 gap-y-2 overflow-hidden border-b-2 border-stop bg-[#3a1210] py-2.5 pr-5 pl-12">
-        <span aria-hidden className="absolute inset-y-0 left-0 w-8 hazard-stripes" />
+        <span aria-hidden className="absolute inset-y-0 left-0 w-8 hazard-stripes hazard-march" />
         <OctagonX aria-hidden className="size-8 text-stop-glow" strokeWidth={2.4} />
         <span className="font-display text-2xl font-bold tracking-wide text-ink uppercase">{total ? 'Stop work · all vehicles' : 'Stop work at some sites'}</span>
         <span className="text-ink">

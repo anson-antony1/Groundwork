@@ -99,7 +99,8 @@ export const api = {
   replayScenarios: (signal?: AbortSignal) =>
     call<Envelope<ReplayScenario[]>>({ method: 'GET', path: `${P}/replay/scenarios`, signal }),
 
-  generateBriefing: () => call<Envelope<BriefingView>>({ method: 'POST', path: `${P}/briefings/generate` }),
+  /** Gemini narration takes about 20 s and the backend allows it 45 s, so this call gets 60 s instead of 8. */
+  generateBriefing: () => call<Envelope<BriefingView>>({ method: 'POST', path: `${P}/briefings/generate`, timeoutMs: 60_000 }),
 
   briefings: (limit = 1, signal?: AbortSignal) =>
     call<PageEnvelope<BriefingView>>({ method: 'GET', path: `${P}/briefings`, query: { limit }, signal }),
@@ -107,10 +108,11 @@ export const api = {
   policies: (signal?: AbortSignal) => call<Envelope<Policy>>({ method: 'GET', path: `${P}/policies`, signal }),
 
   /** The sensor token is entered by the operator at reset time, never bundled. */
-  resetDemo: (token: string) =>
+  /** With a sensor token, or none: then a logged-in supervisor's own Auth0 token is sent instead. */
+  resetDemo: (token: string | null) =>
     call<Envelope<DemoResetResult>>({
       method: 'POST',
       path: `${P}/demo/reset`,
-      headers: { Authorization: `Bearer ${token}` },
+      headers: token ? { Authorization: `Bearer ${token}` } : undefined,
     }),
 }
