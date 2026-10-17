@@ -838,34 +838,38 @@ export interface components {
         /** EvaluationIn */
         EvaluationIn: {
             costs?: components["schemas"]["CostInputs"];
+            /** Layers */
+            layers?: number | null;
+            /** Margin Max */
+            margin_max?: number | null;
+            /** Margin Min */
+            margin_min?: number | null;
             /**
-             * Layers
-             * @default 1
+             * Mat Length
+             * @description Effective coverage per mat, after overlap
              */
-            layers: number;
+            mat_length?: number | null;
             /**
-             * Margin Max
-             * @default 0.25
+             * Mat Width
+             * @description Effective coverage per mat, after overlap
              */
-            margin_max: number;
-            /**
-             * Margin Min
-             * @default 0.1
-             */
-            margin_min: number;
-            /** Mat Length */
-            mat_length: number;
-            /** Mat Width */
-            mat_width: number;
+            mat_width?: number | null;
             /**
              * Mats In Inventory
              * @default 0
              */
             mats_in_inventory: number;
+            /**
+             * Override Quantity
+             * @description Supervisor override of planned mats
+             */
+            override_quantity?: number | null;
+            /** Override Reason */
+            override_reason?: string | null;
             /** Route Length */
             route_length: number;
             /** Route Width */
-            route_width: number;
+            route_width?: number | null;
             /**
              * Unit
              * @default ft
@@ -947,12 +951,63 @@ export interface components {
             /** Version */
             version: string;
         };
+        /** MatDefaultsOut */
+        MatDefaultsOut: {
+            /** Label */
+            label: string;
+            /** Layers */
+            layers: {
+                [key: string]: number;
+            };
+            /** Margin Max */
+            margin_max: number;
+            /** Margin Min */
+            margin_min: number;
+            /** Mat Length */
+            mat_length: number;
+            /** Mat Width */
+            mat_width: number;
+            /** Route Width */
+            route_width: number;
+            /**
+             * Unit
+             * @enum {string}
+             */
+            unit: "ft" | "m";
+        };
+        /** MatInputsOut */
+        MatInputsOut: {
+            /** Layers */
+            layers: number;
+            /** Margin Max */
+            margin_max: number;
+            /** Margin Min */
+            margin_min: number;
+            /** Mat Length */
+            mat_length: number;
+            /** Mat Width */
+            mat_width: number;
+            /** Route Length */
+            route_length: number;
+            /** Route Width */
+            route_width: number;
+        };
+        /** MatOverrideOut */
+        MatOverrideOut: {
+            /** Quantity */
+            quantity: number;
+            /** Reason */
+            reason: string;
+        };
         /** MatsEstimateOut */
         MatsEstimateOut: {
             /** Base Mats */
             base_mats: number;
             /** Caveat */
             caveat: string;
+            /** Defaults Applied */
+            defaults_applied: string[];
+            inputs: components["schemas"]["MatInputsOut"];
             /** Mats In Inventory */
             mats_in_inventory: number;
             /** Max Estimate */
@@ -961,8 +1016,13 @@ export interface components {
             method: string;
             /** Min Estimate */
             min_estimate: number;
+            override: components["schemas"]["MatOverrideOut"] | null;
+            /** Planned Quantity */
+            planned_quantity: number;
             /** Shortfall */
             shortfall: number;
+            /** Steps */
+            steps: string[];
             /**
              * Unit
              * @enum {string}
@@ -1156,6 +1216,7 @@ export interface components {
             hazard_weights: components["schemas"]["HazardWeightsOut"];
             /** Label */
             label: string;
+            mat_defaults: components["schemas"]["MatDefaultsOut"];
             /** Sensor Stale Seconds */
             sensor_stale_seconds: number;
         };

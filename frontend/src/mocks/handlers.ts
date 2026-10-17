@@ -2,7 +2,7 @@
 // as the FastAPI app (backend/app/api/*), plus the PROPOSED endpoints from api/proposed.ts.
 import type { ReplayScenario, ReportView } from '../api/proposed'
 import type { ApiRequest, ApiResponse } from '../api/transport'
-import type { DataMode, EvaluationInput, Health, Reading, ReportCategory, Vehicle } from '../api/types'
+import type { CostInputs, DataMode, Health, Reading, ReportCategory, Vehicle } from '../api/types'
 import { REPORT_CATEGORIES, VEHICLES } from '../api/types'
 import { checkPhoto, readHead } from '../domain/upload'
 import { db, iso, newId, notify } from './db'
@@ -17,8 +17,10 @@ import {
   generateBriefing,
   portfolioMode,
   recordTimeline,
+  resolveMatInputs,
   siteStatus,
 } from './rules'
+import type { ResolvedEvaluationInput } from './rules'
 import { recordDeviceEvent } from './sensorSim'
 
 interface Detail {
@@ -87,15 +89,17 @@ const unknownSite = (siteId: string) => fail(404, 'NOT_FOUND', `Site '${siteId}'
 
 // --- EvaluationIn validation (strict like Pydantic extra="forbid") ------------
 
-const NUMBER_FIELDS: Record<string, { min?: number; gt?: number; max: number; int?: boolean }> = {
+// nullable: may be null or left out; blank mat inputs are then filled from the policy defaults.
+const NUMBER_FIELDS: Record<string, { min?: number; gt?: number; max: number; int?: boolean; nullable?: boolean }> = {
   route_length: { gt: 0, max: 100_000 },
-  route_width: { gt: 0, max: 1_000 },
-  mat_length: { gt: 0, max: 100 },
-  mat_width: { gt: 0, max: 100 },
-  layers: { min: 1, max: 3, int: true },
-  margin_min: { min: 0, max: 1 },
-  margin_max: { min: 0, max: 1 },
+  route_width: { gt: 0, max: 1_000, nullable: true },
+  mat_length: { gt: 0, max: 100, nullable: true },
+  mat_width: { gt: 0, max: 100, nullable: true },
+  layers: { min: 1, max: 3, int: true, nullable: true },
+  margin_min: { min: 0, max: 1, nullable: true },
+  margin_max: { min: 0, max: 1, nullable: true },
   mats_in_inventory: { min: 0, max: Number.MAX_SAFE_INTEGER, int: true },
+  override_quantity: { min: 0, max: 100_000, int: true, nullable: true },
 }
 const COST_FIELDS = [
   'mats_rental',
@@ -109,15 +113,15 @@ const COST_FIELDS = [
   'extra_contract_cost',
 ]
 
-function validateEvaluation(body: unknown): { value: Required<EvaluationInput> } | { details: Detail[] } {
+function validateEvaluation(body: unknown): { value: ResolvedEvaluationInput } | { details: Detail[] } {
   if (typeof body !== 'object' || body === null || Array.isArray(body)) return { details: [{ field: null, issue: 'Input should be a valid dictionary' }] }
   const input = body as Record<string, unknown>
   const details: Detail[] = []
-  const known = new Set(['vehicle', 'unit', 'costs', ...Object.keys(NUMBER_FIELDS)])
+  const known = new Set(['vehicle', 'unit', 'costs', 'override_reason', ...Object.keys(NUMBER_FIELDS)])
   for (const key of Object.keys(input)) if (!known.has(key)) details.push({ field: key, issue: 'Extra inputs are not permitted' })
-  for (const key of ['route_length', 'route_width', 'mat_length', 'mat_width']) if (!(key in input)) details.push({ field: key, issue: 'Field required' })
+  if (!('route_length' in input)) details.push({ field: 'route_length', issue: 'Field required' })
   for (const [key, rule] of Object.entries(NUMBER_FIELDS)) {
-    if (!(key in input)) continue
+    if (!(key in input) || (rule.nullable && input[key] === null)) continue
     const v = input[key]
     if (typeof v !== 'number' || !Number.isFinite(v) || (rule.int && !Number.isInteger(v))) details.push({ field: key, issue: rule.int ? 'Input should be a valid integer' : 'Input should be a valid number' })
     else if ((rule.gt !== undefined && v <= rule.gt) || (rule.min !== undefined && v < rule.min) || v > rule.max) details.push({ field: key, issue: 'Input is out of range' })
@@ -132,25 +136,35 @@ function validateEvaluation(body: unknown): { value: Required<EvaluationInput> }
       else if (typeof v !== 'number' || !Number.isFinite(v) || v < 0) details.push({ field: `costs.${key}`, issue: 'Input should be greater than or equal to 0' })
     }
   }
-  const marginMin = (input.margin_min as number | undefined) ?? 0.1
-  const marginMax = (input.margin_max as number | undefined) ?? 0.25
-  if (!details.length && marginMin > marginMax) details.push({ field: null, issue: 'Value error, margin_min must be <= margin_max' })
-  if (details.length) return { details }
-  return {
-    value: {
-      vehicle: (input.vehicle as Vehicle | undefined) ?? 'pickup',
-      unit: (input.unit as 'ft' | 'm' | undefined) ?? 'ft',
-      route_length: input.route_length as number,
-      route_width: input.route_width as number,
-      mat_length: input.mat_length as number,
-      mat_width: input.mat_width as number,
-      layers: (input.layers as number | undefined) ?? 1,
-      margin_min: marginMin,
-      margin_max: marginMax,
-      mats_in_inventory: (input.mats_in_inventory as number | undefined) ?? 0,
-      costs: costs as Required<EvaluationInput>['costs'],
-    },
+  const reason = input.override_reason ?? null
+  if (reason !== null) {
+    if (typeof reason !== 'string') details.push({ field: 'override_reason', issue: 'Input should be a valid string' })
+    else if (reason.length < 3) details.push({ field: 'override_reason', issue: 'String should have at least 3 characters' })
+    else if (reason.length > 200) details.push({ field: 'override_reason', issue: 'String should have at most 200 characters' })
   }
+  const overrideQuantity = (input.override_quantity as number | null | undefined) ?? null
+  if (!details.length && (overrideQuantity === null) !== (reason === null)) {
+    details.push({ field: null, issue: 'Value error, override_quantity and override_reason must be given together' })
+  }
+  if (details.length) return { details }
+  const blank = (key: string) => (input[key] as number | null | undefined) ?? null
+  const resolved = resolveMatInputs({
+    vehicle: (input.vehicle as Vehicle | undefined) ?? 'pickup',
+    unit: (input.unit as 'ft' | 'm' | undefined) ?? 'ft',
+    route_length: input.route_length as number,
+    route_width: blank('route_width'),
+    mat_length: blank('mat_length'),
+    mat_width: blank('mat_width'),
+    layers: blank('layers'),
+    margin_min: blank('margin_min'),
+    margin_max: blank('margin_max'),
+    mats_in_inventory: (input.mats_in_inventory as number | undefined) ?? 0,
+    override_quantity: overrideQuantity,
+    override_reason: reason as string | null,
+    costs: costs as CostInputs,
+  })
+  // Like the backend, margin order is checked after defaults are filled in (a 422 on margin_min).
+  return 'value' in resolved ? resolved : { details: [resolved] }
 }
 
 // --- Crew reports ------------------------------------------------------------

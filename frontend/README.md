@@ -107,7 +107,10 @@ src/screens/    one folder per screen; /style is the living style tile
 
 Resolved on main and wired up: `POST /demo/reset` (token-gated; the Reset dialog uses it), `DELETE …/crew-flag`
 ("Clear crew flag" in the Sensor Lab and the demo tray's "Why this call?"), `alert_events` and `hazard_explanation`
-(hazard card and "Why this call?"), NWS/USDA observations (access basis, provenance), the sourced Milton replay.
+(hazard card and "Why this call?"), NWS/USDA observations (access basis, provenance), the sourced Milton replay,
+P8 mat staging (the mats panel shows `planned_quantity` and the backend's calculation `steps`; the mock mirrors
+`services/mats.py` and `policies/mats_defaults.json`), scenario-aware replay (the Replay screen counts STOP sites
+instead of assuming all of them).
 
 Still open:
 
@@ -124,7 +127,11 @@ Still open:
    `pressure_tendency` (UNKNOWN under 3 h).
 7. Briefing: when Gemini succeeds the deterministic text is lost. Always return `deterministic_summary` + optional
    `narrative`; add `mat_staging[]` and `sources[]`.
-8. Expose mat/cost defaults via `/policies`; until then UI defaults are labeled "Scenario assumption • adjustable".
+8. Mat defaults are now in `/policies` (`mat_defaults`: 14×8 ft effective coverage), but the form still starts from
+   the README's worked example (8×4 ft mats, 38 base) and sends every field, so `defaults_applied` stays empty.
+   Should it start from the policy defaults? Cost defaults aren't exposed yet; until then they're labeled
+   "Scenario assumption • adjustable". The supervisor override (`override_quantity` + reason) has no UI yet.
 9. OK to treat `backend/openapi.json` as the shared contract instead of `shared/contracts.ts`?
-10. Optional: add `vehicle` to `DisplayOut` so the mirror needn't parse "HVY" from the LCD text, and
-    `GET /replay/scenarios` if more than one storm is ever offered.
+10. `GET /replay/scenarios`: main now has two scenarios (`demo-storm`, `calm-day`) but no way to list them, so the
+    Replay screen offers only the default storm. With the endpoint it lists both. Optional: add `vehicle` to
+    `DisplayOut` so the mirror needn't parse "HVY" from the LCD text.

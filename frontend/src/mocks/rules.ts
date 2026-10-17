@@ -8,7 +8,6 @@ import type {
   DataMode,
   EffectiveStatus,
   Evaluation,
-  EvaluationInput,
   Observation,
   Policy,
   Reading,
@@ -34,6 +33,17 @@ export const POLICY: Policy = {
   },
   hazard_weights: { rain: 0.25, wind: 0.15, heat: 0.2, flood: 0.2, storm: 0.2 },
   sensor_stale_seconds: SENSOR_STALE_SECONDS,
+  // policies/mats_defaults.json (a contract test keeps this copy in step with the file).
+  mat_defaults: {
+    label: "DEMO DEFAULTS - editable starting values, not engineering ratings. Replace mat size with your vendor's effective coverage.",
+    unit: 'ft',
+    route_width: 12,
+    mat_length: 14,
+    mat_width: 8,
+    layers: { pickup: 1, heavy_truck: 1 },
+    margin_min: 0.1,
+    margin_max: 0.25,
+  },
 }
 
 interface MockSite {
@@ -238,9 +248,73 @@ const ZERO_COSTS: Required<CostInputs> = {
   extra_contract_cost: 0,
 }
 
-export function evaluate(site: SiteView, input: Required<EvaluationInput>): Evaluation {
-  const base = ceil6((input.route_length * input.route_width) / (input.mat_length * input.mat_width))
+const FT_PER_M = 3.28084
+// Mat inputs a request may leave blank; they're filled from POLICY.mat_defaults (backend DEFAULTABLE).
+const DEFAULTABLE = ['route_width', 'mat_length', 'mat_width', 'layers', 'margin_min', 'margin_max'] as const
+type Defaultable = (typeof DEFAULTABLE)[number]
+
+/** A validated EvaluationIn with every mat input resolved (backend services/mats.py resolve_inputs). */
+export interface ResolvedEvaluationInput {
+  vehicle: Vehicle
+  unit: 'ft' | 'm'
+  route_length: number
+  route_width: number
+  mat_length: number
+  mat_width: number
+  layers: number
+  margin_min: number
+  margin_max: number
+  mats_in_inventory: number
+  override_quantity: number | null
+  override_reason: string | null
+  costs: CostInputs
+  defaults_applied: Defaultable[]
+}
+
+export type ValidatedEvaluationInput = Omit<ResolvedEvaluationInput, Defaultable | 'defaults_applied'> & Record<Defaultable, number | null>
+
+/** Fills blank inputs from the policy defaults (converted to the request's unit), then checks margin order. */
+export function resolveMatInputs(input: ValidatedEvaluationInput): { value: ResolvedEvaluationInput } | { field: string; issue: string } {
+  const d = POLICY.mat_defaults
+  const scale = input.unit === 'm' && d.unit === 'ft' ? 1 / FT_PER_M : 1
+  const defaults: Record<Defaultable, number> = {
+    route_width: round2(d.route_width * scale),
+    mat_length: round2(d.mat_length * scale),
+    mat_width: round2(d.mat_width * scale),
+    layers: d.layers[input.vehicle] ?? 1,
+    margin_min: d.margin_min,
+    margin_max: d.margin_max,
+  }
+  const applied = DEFAULTABLE.filter((k) => input[k] === null)
+  const value = { ...input, ...Object.fromEntries(applied.map((k) => [k, defaults[k]])), defaults_applied: applied } as ResolvedEvaluationInput
+  if (value.margin_min > value.margin_max) return { field: 'margin_min', issue: `must be <= margin_max (${value.margin_max})` }
+  return { value }
+}
+
+// Python's _n: whole numbers with thousands separators, otherwise up to 2 decimals without trailing zeros.
+const stepNum = (x: number) =>
+  Number.isInteger(x)
+    ? x.toLocaleString('en-US', { maximumFractionDigits: 0 })
+    : x.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).replace(/0+$/, '').replace(/\.$/, '')
+
+export function evaluate(site: SiteView, input: ResolvedEvaluationInput): Evaluation {
+  const u = input.unit
+  const routeArea = input.route_length * input.route_width
+  const matArea = input.mat_length * input.mat_width
+  const base = ceil6(routeArea / matArea)
+  const low = ceil6(base * input.layers * (1 + input.margin_min))
   const high = ceil6(base * input.layers * (1 + input.margin_max))
+  const planned = input.override_quantity ?? high
+  const shortfall = Math.max(0, planned - input.mats_in_inventory)
+  const steps = [
+    `Route area: ${stepNum(input.route_length)} ${u} x ${stepNum(input.route_width)} ${u} = ${stepNum(routeArea)} ${u}2`,
+    `Mat coverage: ${stepNum(input.mat_length)} ${u} x ${stepNum(input.mat_width)} ${u} = ${stepNum(matArea)} ${u}2 per mat`,
+    `Base mats: ceil(${stepNum(routeArea)} / ${stepNum(matArea)}) = ${base}`,
+    `Low estimate: ceil(${base} x ${input.layers} layer(s) x ${stepNum(1 + input.margin_min)}) = ${low}`,
+    `High estimate: ceil(${base} x ${input.layers} layer(s) x ${stepNum(1 + input.margin_max)}) = ${high}`,
+    ...(input.override_quantity !== null ? [`Supervisor override: ${planned} mats (reason: ${input.override_reason})`] : []),
+    `Shortfall: max(0, ${planned} planned - ${input.mats_in_inventory} in stock) = ${shortfall}`,
+  ]
   const c: Required<CostInputs> = { ...ZERO_COSTS, ...input.costs }
   const matsOption = c.mats_rental + c.delivery + c.installation + c.removal + c.delay_not_prevented
   const postpone = c.paid_idle_labor + c.idle_equipment + c.rescheduling + c.extra_contract_cost
@@ -252,12 +326,25 @@ export function evaluate(site: SiteView, input: Required<EvaluationInput>): Eval
     access_call: site.access_call[input.vehicle],
     effective_status: site.effective_status[input.vehicle],
     mats_estimate: {
+      inputs: {
+        route_length: input.route_length,
+        route_width: input.route_width,
+        mat_length: input.mat_length,
+        mat_width: input.mat_width,
+        layers: input.layers,
+        margin_min: input.margin_min,
+        margin_max: input.margin_max,
+      },
+      defaults_applied: input.defaults_applied,
       base_mats: base,
-      min_estimate: ceil6(base * input.layers * (1 + input.margin_min)),
+      min_estimate: low,
       max_estimate: high,
+      planned_quantity: planned,
+      override: input.override_quantity !== null ? { quantity: input.override_quantity, reason: input.override_reason ?? '' } : null,
       mats_in_inventory: input.mats_in_inventory,
-      shortfall: Math.max(0, high - input.mats_in_inventory),
-      unit: input.unit,
+      shortfall,
+      unit: u,
+      steps,
       method: MATS_METHOD,
       caveat: MATS_CAVEAT,
     },

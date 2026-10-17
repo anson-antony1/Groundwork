@@ -8,6 +8,7 @@ import { beforeEach, describe, expect, it } from 'vitest'
 import type { ApiRequest } from '../api/transport'
 import { resetDb } from '../mocks/db'
 import { handle } from '../mocks/handlers'
+import { POLICY } from '../mocks/rules'
 import { tickSensor } from '../mocks/sensorSim'
 
 const ID = 'https://groundwork.local/openapi.json'
@@ -62,8 +63,12 @@ describe('mock responses match backend/openapi.json', () => {
     await expectContract('get', '/api/v1/sites/{site_id}', { path: '/api/v1/sites/DEMO-TRAY' }, 200)
   })
 
-  it('evaluate', async () => {
-    await expectContract('post', '/api/v1/sites/{site_id}/evaluate', { path: '/api/v1/sites/DEMO-TRAY/evaluate', json: EVALUATION }, 200)
+  it('evaluate, including policy defaults and a supervisor override', async () => {
+    const template = '/api/v1/sites/{site_id}/evaluate'
+    const path = '/api/v1/sites/DEMO-TRAY/evaluate'
+    await expectContract('post', template, { path, json: EVALUATION }, 200)
+    await expectContract('post', template, { path, json: { route_length: 100 } }, 200)
+    await expectContract('post', template, { path, json: { route_length: 100, override_quantity: 20, override_reason: 'soft spot near gate' } }, 200)
   })
 
   it('sensors, display and device events', async () => {
@@ -174,5 +179,51 @@ describe('mock mirrors backend behavior from backend/tests/test_api.py', () => {
     const data = (res.body as { data: { mats_estimate: Record<string, number>; cost_comparison: { modeled_difference: number } } }).data
     expect([data.mats_estimate.base_mats, data.mats_estimate.min_estimate, data.mats_estimate.max_estimate, data.mats_estimate.shortfall]).toEqual([38, 42, 48, 8])
     expect(data.cost_comparison.modeled_difference).toBe(1900)
+  })
+})
+
+describe('mock mirrors backend/tests/test_mats.py (P8 mat staging)', () => {
+  type Mats = { defaults_applied: string[]; inputs: Record<string, number>; base_mats: number; min_estimate: number; max_estimate: number; planned_quantity: number; shortfall: number; override: unknown; unit: string; steps: string[] }
+  const evaluate = (json: object) => handle({ method: 'POST', path: '/api/v1/sites/DEMO-TRAY/evaluate', json })
+  const mats = async (json: object) => {
+    const res = await evaluate({ route_length: 100, ...json })
+    expect(res.status, JSON.stringify(res.body)).toBe(200)
+    return (res.body as { data: { mats_estimate: Mats } }).data.mats_estimate
+  }
+
+  it('fills blank inputs from the policy defaults and shows the steps', async () => {
+    const m = await mats({ mats_in_inventory: 5 })
+    expect(m.defaults_applied).toEqual(['route_width', 'mat_length', 'mat_width', 'layers', 'margin_min', 'margin_max'])
+    expect([m.inputs.route_width, m.inputs.mat_length]).toEqual([12, 14])
+    expect([m.base_mats, m.min_estimate, m.max_estimate, m.planned_quantity]).toEqual([11, 13, 14, 14])
+    expect(m.steps[0]).toBe('Route area: 100 ft x 12 ft = 1,200 ft2')
+    expect(m.steps[2]).toBe('Base mats: ceil(1,200 / 112) = 11')
+    expect(m.steps.at(-1)).toBe('Shortfall: max(0, 14 planned - 5 in stock) = 9')
+  })
+
+  it('does not report explicit inputs as defaults', async () => {
+    const m = await mats({ route_width: 10, mat_length: 8, mat_width: 4, layers: 2, margin_min: 0, margin_max: 0 })
+    expect(m.defaults_applied).toEqual([])
+    expect([m.base_mats, m.max_estimate]).toEqual([32, 64])
+  })
+
+  it('applies a supervisor override only with a reason', async () => {
+    const m = await mats({ mats_in_inventory: 5, override_quantity: 20, override_reason: 'soft spot near gate' })
+    expect([m.planned_quantity, m.shortfall, m.max_estimate]).toEqual([20, 15, 14])
+    expect(m.override).toEqual({ quantity: 20, reason: 'soft spot near gate' })
+    expect((await evaluate({ route_length: 100, override_quantity: 20 })).status).toBe(422)
+  })
+
+  it('converts metric defaults and checks margin order after defaults', async () => {
+    const m = await mats({ unit: 'm', route_length: 30 })
+    expect([m.unit, m.inputs.mat_length]).toEqual(['m', 4.27])
+    const bad = await evaluate({ route_length: 100, margin_min: 0.5 })
+    expect(bad.status).toBe(422)
+    expect((bad.body as { error: { details: { field: string }[] } }).error.details[0].field).toBe('margin_min')
+  })
+
+  it('keeps its copy of the mat defaults in step with policies/mats_defaults.json', () => {
+    const file = JSON.parse(readFileSync(resolve(process.cwd(), '../policies/mats_defaults.json'), 'utf8'))
+    expect(POLICY.mat_defaults).toEqual(file)
   })
 })

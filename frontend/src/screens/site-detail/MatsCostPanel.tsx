@@ -105,9 +105,11 @@ export function MatsCostPanel({ site, vehicle }: { site: SiteDetailView; vehicle
                   </p>
                 </div>
                 <p className={cx('text-lg font-semibold', result.mats_estimate.shortfall > 0 ? 'text-caution' : 'text-ink')}>
+                  {/* planned_quantity arrived with P8; an older backend leaves it out. */}
+                  Plan {result.mats_estimate.planned_quantity ?? result.mats_estimate.max_estimate} mats ·{' '}
                   {result.mats_estimate.shortfall > 0
-                    ? `Shortfall: ${result.mats_estimate.shortfall} mats (${result.mats_estimate.mats_in_inventory} on hand)`
-                    : `Covered by the ${result.mats_estimate.mats_in_inventory} mats on hand`}
+                    ? `shortfall ${result.mats_estimate.shortfall} (${result.mats_estimate.mats_in_inventory} on hand)`
+                    : `covered by the ${result.mats_estimate.mats_in_inventory} on hand`}
                 </p>
                 {result.notes.length > 0 ? (
                   <p className="flex items-center gap-2 rounded-[3px] border border-stop bg-stop/15 px-3 py-2 font-semibold">
@@ -123,7 +125,15 @@ export function MatsCostPanel({ site, vehicle }: { site: SiteDetailView; vehicle
                     Not indicated for the {VEHICLE_LABEL[vehicle].toLowerCase()}: its access call is {accessVisual(result.access_call).label}. The range shows what staging would take.
                   </p>
                 )}
-                <p className="font-mono text-[0.78rem] text-muted">{result.mats_estimate.method}</p>
+                {result.mats_estimate.steps?.length ? (
+                  <ol aria-label="How the backend calculated this" className="flex flex-col gap-0.5 font-mono text-[0.78rem] text-muted">
+                    {result.mats_estimate.steps.map((step) => (
+                      <li key={step}>{step}</li>
+                    ))}
+                  </ol>
+                ) : (
+                  <p className="font-mono text-[0.78rem] text-muted">{result.mats_estimate.method}</p>
+                )}
                 <p className="text-[0.82rem] text-muted">{result.mats_estimate.caveat}</p>
               </>
             ) : evaluation.isError ? (

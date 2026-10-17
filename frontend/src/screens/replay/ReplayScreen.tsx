@@ -4,7 +4,7 @@ import { hasEndpoint } from '../../api/config'
 import { describeError } from '../../api/errors'
 import { PROPOSED_ENDPOINTS } from '../../api/proposed'
 import type { ReplayScenario } from '../../api/proposed'
-import { useEvents, useReplayControl, useReplayScenarios } from '../../api/queries'
+import { useEvents, useReplayControl, useReplayScenarios, useSites } from '../../api/queries'
 import { useServerCtx } from '../../api/serverCtx'
 import { Card } from '../../components/Card'
 import { cx } from '../../components/cx'
@@ -25,9 +25,15 @@ export function ReplayScreen() {
   const { start, stop } = useReplayControl()
   const scenariosQuery = useReplayScenarios()
   const events = useEvents()
+  // Scenarios differ (a calm-day replay keeps most sites workable), so count what the backend returned.
+  const sites = useSites().data?.data ?? []
+  const stopCount = sites.filter((s) => s.weather_state === 'STOP_WORK').length
   const scenarios = scenariosQuery.data?.data?.length ? scenariosQuery.data.data : [DEFAULT_SCENARIO]
   const [chosen, setChosen] = useState(scenarios[0].id)
   const active = replay?.active ?? false
+  // While a replay runs, the card follows the server: it may have been started elsewhere (e.g. calm-day via the API).
+  const selected = active && replay?.scenario_id ? replay.scenario_id : chosen
+  const unlisted = active && !scenarios.some((s) => s.id === selected)
   const busy = start.isPending || stop.isPending
   const log = (events.data?.data ?? []).filter((e) => e.kind === 'replay_started' || e.kind === 'replay_stopped').slice(0, 8)
 
@@ -61,7 +67,7 @@ export function ReplayScreen() {
                 <p className="font-display text-4xl font-bold tracking-wide uppercase">{active ? 'Historical replay active' : 'Live data'}</p>
                 <p className="mt-1 text-muted">
                   {active
-                    ? `${replayLabel(replay?.source)}${replay?.started_at ? ` · started ${fmtClock(replay.started_at)}` : ''} · every site shows STOP WORK`
+                    ? `${replayLabel(replay?.source)}${replay?.started_at ? ` · started ${fmtClock(replay.started_at)}` : ''}${sites.length ? ` · ${stopCount} of ${sites.length} sites show STOP WORK` : ''}`
                     : 'Sites show the current live or cached snapshot.'}
                 </p>
               </div>
@@ -104,10 +110,10 @@ export function ReplayScreen() {
                   key={s.id}
                   type="button"
                   role="radio"
-                  aria-checked={chosen === s.id}
+                  aria-checked={selected === s.id}
                   disabled={active}
                   onClick={() => setChosen(s.id)}
-                  className={cx('flex flex-col items-start gap-1 rounded-[4px] border-2 p-4 text-left', chosen === s.id ? 'border-accent bg-steel-hi' : 'border-line hover:border-line-hi')}
+                  className={cx('flex flex-col items-start gap-1 rounded-[4px] border-2 p-4 text-left', selected === s.id ? 'border-accent bg-steel-hi' : 'border-line hover:border-line-hi')}
                 >
                   <span className="text-lg font-semibold">{s.title}</span>
                   <span>{s.event}</span>
@@ -120,6 +126,11 @@ export function ReplayScreen() {
                 </button>
               ))}
             </div>
+            {unlisted && (
+              <p className="mt-3 rounded-[3px] border border-line-hi px-3 py-2">
+                Now replaying <span className="font-semibold">{selected}</span>, started outside this screen. Its source is shown above.
+              </p>
+            )}
             {!hasEndpoint(PROPOSED_ENDPOINTS.replayScenarios) && (
               <p className="mt-3 text-[0.82rem] text-muted">The backend doesn't list scenarios yet; it replays its default storm.</p>
             )}
