@@ -3091,16 +3091,23 @@
             "type": "array"
           },
           "mode": {
-            "enum": [
-              "live",
-              "cached",
-              "replay",
-              "simulated",
-              "sensor_demo",
-              "sensor_replay"
+            "anyOf": [
+              {
+                "enum": [
+                  "live",
+                  "cached",
+                  "replay",
+                  "simulated",
+                  "sensor_demo",
+                  "sensor_replay"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
             ],
-            "title": "Mode",
-            "type": "string"
+            "title": "Mode"
           },
           "name": {
             "title": "Name",
@@ -3123,7 +3130,6 @@
                 "type": "null"
               }
             ],
-<<<<<<< HEAD
             "description": "Rank across all sites, 1 = most urgent; same order as the 6 PM briefing",
             "title": "Priority Rank"
           },
@@ -3137,11 +3143,6 @@
               }
             ]
           },
-=======
-            "description": "Position in the 6 PM briefing's ranking across all sites (1 = most urgent); list only",
-            "title": "Priority Rank"
-          },
->>>>>>> fbe81baf269f988837db77d93d924de7de1dd797
           "region": {
             "anyOf": [
               {
@@ -3185,7 +3186,6 @@
           "observations",
           "missing_fields",
           "evaluated_at",
-          "mode",
           "reports"
         ],
         "title": "SiteDetailOut",
@@ -3282,16 +3282,23 @@
             "type": "array"
           },
           "mode": {
-            "enum": [
-              "live",
-              "cached",
-              "replay",
-              "simulated",
-              "sensor_demo",
-              "sensor_replay"
+            "anyOf": [
+              {
+                "enum": [
+                  "live",
+                  "cached",
+                  "replay",
+                  "simulated",
+                  "sensor_demo",
+                  "sensor_replay"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
             ],
-            "title": "Mode",
-            "type": "string"
+            "title": "Mode"
           },
           "name": {
             "title": "Name",
@@ -3314,7 +3321,6 @@
                 "type": "null"
               }
             ],
-<<<<<<< HEAD
             "description": "Rank across all sites, 1 = most urgent; same order as the 6 PM briefing",
             "title": "Priority Rank"
           },
@@ -3328,11 +3334,6 @@
               }
             ]
           },
-=======
-            "description": "Position in the 6 PM briefing's ranking across all sites (1 = most urgent); list only",
-            "title": "Priority Rank"
-          },
->>>>>>> fbe81baf269f988837db77d93d924de7de1dd797
           "region": {
             "anyOf": [
               {
@@ -3368,8 +3369,7 @@
           "data_status",
           "observations",
           "missing_fields",
-          "evaluated_at",
-          "mode"
+          "evaluated_at"
         ],
         "title": "SiteOut",
         "type": "object"

@@ -85,16 +85,12 @@ class SiteOut(BaseModel):
     evaluated_at: datetime
     hazard_explanation: list[str] = Field(default_factory=list)
     alert_events: list[str] = Field(default_factory=list)
-<<<<<<< HEAD
-    mode: DataMode
+    # Always sent; optional in the contract (as proposed.ts asks) so older fixtures/mocks stay valid.
+    mode: DataMode | None = None
     priority_rank: int | None = Field(None, ge=1, description="Rank across all sites, 1 = most urgent; same order as the 6 PM briefing")
     hazard_subscores: HazardSubscoresOut | None = None
     alerts: list[WeatherAlertOut] = Field(default_factory=list)
     reasons: CallReasonsOut | None = None
-=======
-    priority_rank: int | None = Field(
-        None, ge=1, description="Position in the 6 PM briefing's ranking across all sites (1 = most urgent); list only")
->>>>>>> fbe81baf269f988837db77d93d924de7de1dd797
 
 
 class ReportOut(BaseModel):
