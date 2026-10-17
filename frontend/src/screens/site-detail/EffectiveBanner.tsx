@@ -2,6 +2,7 @@ import type { SiteDetailView } from '../../api/proposed'
 import type { Vehicle } from '../../api/types'
 import { cx } from '../../components/cx'
 import { StatusTag } from '../../components/StatusTag'
+import { siteTagTransition } from '../../components/viewTransitionNav'
 import { TONE_SOFT } from '../../components/tone'
 import { VEHICLE_LABEL } from '../../domain/format'
 import { accessVisual, statusVisual, weatherVisual } from '../../domain/status'
@@ -19,7 +20,7 @@ export function EffectiveBanner({ site, vehicle, status }: { site: SiteDetailVie
       {stop && <span aria-hidden className="absolute inset-y-0 left-0 w-5 hazard-stripes" />}
       <div className="flex flex-col gap-2">
         <p className="text-[0.8rem] text-muted label-caps">Effective status · {VEHICLE_LABEL[vehicle]}</p>
-        <StatusTag status={status} size="xl" emphasize={stop} />
+        <StatusTag status={status} size="xl" emphasize={stop} pulseOnChange viewTransitionName={siteTagTransition(site.id)} />
       </div>
       <div className="flex min-w-[16rem] flex-1 flex-col gap-1.5">
         <p className="text-xl font-semibold">{v.hint}</p>

@@ -50,7 +50,7 @@ export function SiteDetailScreen({ siteId }: { siteId: string }) {
     <div className="mx-auto flex max-w-[1680px] flex-col gap-5 pb-8">
       <header className="flex flex-wrap items-end justify-between gap-4">
         <div className="flex flex-col gap-1.5">
-          <Link href="/" className="flex items-center gap-1.5 text-[0.85rem] text-accent label-caps hover:underline">
+          <Link href="/" transition className="flex items-center gap-1.5 text-[0.85rem] text-accent label-caps hover:underline">
             <ArrowLeft aria-hidden className="size-4" /> All sites
           </Link>
           <h1 className="font-display text-[2.6rem] leading-none font-bold tracking-wide uppercase">{site.name}</h1>

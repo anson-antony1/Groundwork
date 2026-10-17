@@ -1,8 +1,10 @@
 import { statusVisual, weatherVisual } from '../domain/status'
 import type { Tone } from '../domain/status'
 import type { LucideIcon } from 'lucide-react'
+import { useEffect, useRef } from 'react'
+import { useReducedMotion } from '../hooks/useReducedMotion'
 import { cx } from './cx'
-import { TONE_SOLID, TONE_TEXT } from './tone'
+import { TONE_SOLID, TONE_TEXT, TONE_VAR } from './tone'
 
 type Size = 'sm' | 'md' | 'lg' | 'xl'
 
@@ -21,14 +23,42 @@ interface PlacardProps {
   size?: Size
   /** Pulse STOP placards; reserve it for one or two hero placards per screen. */
   emphasize?: boolean
+  /** One ring in the status color when the status changes (never on first render). */
+  pulseOnChange?: boolean
+  /** Pairs this placard with one on another screen for the view-transition morph. */
+  viewTransitionName?: string
   className?: string
 }
 
+/** Rings once in the tone's color whenever `key` changes after mount. */
+function usePulseOnChange(enabled: boolean, key: string, tone: Tone) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const last = useRef(key)
+  const reduced = useReducedMotion()
+  useEffect(() => {
+    if (last.current === key) return
+    last.current = key
+    const el = ref.current
+    if (!enabled || reduced || !el || typeof el.animate !== 'function') return
+    el.animate(
+      [
+        { boxShadow: `0 0 0 0 color-mix(in srgb, ${TONE_VAR[tone]} 75%, transparent)` },
+        { boxShadow: `0 0 0 14px color-mix(in srgb, ${TONE_VAR[tone]} 0%, transparent)` },
+      ],
+      { duration: 700, easing: 'ease-out' },
+    )
+  }, [enabled, key, tone, reduced])
+  return ref
+}
+
 /** Equipment-placard tag: icon + uppercase label on a status fill. Color is never the only cue. */
-export function Placard({ tone, icon: Icon, text, hint, size = 'md', emphasize, className }: PlacardProps) {
+export function Placard({ tone, icon: Icon, text, hint, size = 'md', emphasize, pulseOnChange = false, viewTransitionName, className }: PlacardProps) {
+  const ref = usePulseOnChange(pulseOnChange, `${tone}|${text}`, tone)
   return (
     <span
+      ref={ref}
       title={hint}
+      style={viewTransitionName ? { viewTransitionName } : undefined}
       className={cx(
         'relative inline-flex shrink-0 items-center overflow-hidden rounded-[3px] border-2 leading-none whitespace-nowrap label-caps',
         TONE_SOLID[tone],
@@ -52,10 +82,12 @@ interface StatusTagProps {
   /** Use the short label ("MATS") instead of the full one ("MATS · FOR REVIEW"). */
   compact?: boolean
   emphasize?: boolean
+  pulseOnChange?: boolean
+  viewTransitionName?: string
   className?: string
 }
 
-export function StatusTag({ status, size, compact, emphasize, className }: StatusTagProps) {
+export function StatusTag({ status, size, compact, emphasize, pulseOnChange, viewTransitionName, className }: StatusTagProps) {
   const v = statusVisual(status)
   return (
     <Placard
@@ -65,6 +97,8 @@ export function StatusTag({ status, size, compact, emphasize, className }: Statu
       hint={v.hint}
       size={size}
       emphasize={emphasize}
+      pulseOnChange={pulseOnChange}
+      viewTransitionName={viewTransitionName}
       className={className}
     />
   )

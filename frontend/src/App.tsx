@@ -1,6 +1,6 @@
 import { QueryClientProvider } from '@tanstack/react-query'
 import { Suspense, lazy, useEffect } from 'react'
-import { Link, Route, Switch } from 'wouter'
+import { Link, Route, Router, Switch } from 'wouter'
 import { API_MODE } from './api/config'
 import { queryClient } from './api/queryClient'
 import { ServerCtxProvider } from './api/ServerCtxProvider'
@@ -8,6 +8,7 @@ import { loadMockControls } from './api/transport'
 import { AppShell } from './components/AppShell'
 import { Card } from './components/Card'
 import { LoadingBlock } from './components/States'
+import { viewTransitionNav } from './components/viewTransitionNav'
 import { OpsMapScreen } from './screens/ops-map/OpsMapScreen'
 import { SiteDetailScreen } from './screens/site-detail/SiteDetailScreen'
 import { DemoUiProvider } from './state/DemoUiProvider'
@@ -84,6 +85,7 @@ export function App() {
   usePrefetchScreens()
   return (
     <QueryClientProvider client={queryClient}>
+      <Router aroundNav={viewTransitionNav}>
       <Switch>
         {/* The public front door renders without the ops shell: no STOP bar, polling or hotkeys. */}
         <Route path="/welcome">
@@ -95,6 +97,7 @@ export function App() {
           <OpsApp />
         </Route>
       </Switch>
+      </Router>
     </QueryClientProvider>
   )
 }

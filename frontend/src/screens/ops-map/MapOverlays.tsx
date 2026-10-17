@@ -2,11 +2,13 @@ import { ArrowRight, Camera, ChevronDown, X } from 'lucide-react'
 import { useState } from 'react'
 import { Link } from 'wouter'
 import type { SiteView } from '../../api/proposed'
+import { usePrefetchSite } from '../../api/queries'
 import type { Vehicle } from '../../api/types'
 import { beaconMarkerSvg, markerSvg, reportPinSvg } from '../../components/markerSvg'
 import { MissingValue } from '../../components/Provenance'
 import { StatusMarker } from '../../components/StatusMarker'
 import { StatusTag, WeatherTag } from '../../components/StatusTag'
+import { siteTagTransition } from '../../components/viewTransitionNav'
 import { VEHICLE_LABEL, fieldLabel, fmtNum } from '../../domain/format'
 import { inputsSummary } from '../../domain/inputs'
 import { STATUS_ORDER, statusVisual } from '../../domain/status'
@@ -65,6 +67,7 @@ interface PreviewProps {
 export function SitePreview({ site, status, stale, reportCount, onClose }: PreviewProps) {
   const inputs = inputsSummary(site)
   const vehicleStatus = (v: Vehicle) => (stale ? 'STALE' : site.effective_status[v])
+  usePrefetchSite(site.id)
   return (
     <div className="absolute right-3 bottom-7 z-[1000] w-[23rem] rounded-[4px] border border-line-hi bg-panel/95 p-4 shadow-[0_14px_32px_rgb(0_0_0/0.55)]">
       <div className="flex items-start justify-between gap-3">
@@ -79,7 +82,7 @@ export function SitePreview({ site, status, stale, reportCount, onClose }: Previ
         </button>
       </div>
       <div className="mt-3">
-        <StatusTag status={status} size="lg" />
+        <StatusTag status={status} size="lg" pulseOnChange viewTransitionName={siteTagTransition(site.id)} />
       </div>
       <dl className="mt-3.5 grid grid-cols-2 gap-x-4 gap-y-3 text-[0.85rem]">
         <div className="flex flex-col gap-1">
@@ -109,7 +112,7 @@ export function SitePreview({ site, status, stale, reportCount, onClose }: Previ
           <Camera aria-hidden className="size-4" /> {reportCount} crew report{reportCount > 1 ? 's' : ''} · unverified
         </p>
       )}
-      <Link href={`/sites/${site.id}`} className="mt-4 flex min-h-12 items-center justify-center gap-2 rounded-[3px] bg-accent text-accent-ink label-caps">
+      <Link href={`/sites/${site.id}`} transition className="mt-4 flex min-h-12 items-center justify-center gap-2 rounded-[3px] bg-accent text-accent-ink label-caps">
         Open site detail <ArrowRight aria-hidden className="size-5" />
       </Link>
     </div>

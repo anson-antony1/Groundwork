@@ -4,6 +4,7 @@ import { NAV } from './nav'
 
 const EXTRA: [string, string][] = [
   ['V', 'Switch Pickup ↔ Heavy truck'],
+  ['A', 'Ambient motion on/off (radar, beacon waves, stripes)'],
   ['Esc', 'Collapse the STOP WORK takeover or close a dialog'],
   ['Shift + Alt + R', 'Reset demo (or hold the logo for 2 s)'],
   ['?', 'This help'],

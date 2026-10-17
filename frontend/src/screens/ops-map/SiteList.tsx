@@ -7,6 +7,7 @@ import { cx } from '../../components/cx'
 import { MissingValue } from '../../components/Provenance'
 import { StatusMarker } from '../../components/StatusMarker'
 import { StatusTag, WeatherInline } from '../../components/StatusTag'
+import { siteTagTransition } from '../../components/viewTransitionNav'
 import { fmtAgo, fmtNum } from '../../domain/format'
 import { inputsSummary } from '../../domain/inputs'
 import { LABELS } from '../../domain/provenance'
@@ -84,7 +85,7 @@ function SiteRow({ site, rank, props }: { site: SiteView; rank: number; props: S
       >
         <span className="row-span-2 self-start pt-1 font-display text-lg font-semibold text-faint num">{rank}</span>
         <span className="flex min-w-0 items-center gap-3">
-          <StatusTag status={props.statusOf(site)} compact />
+          <StatusTag status={props.statusOf(site)} compact pulseOnChange />
           <span className="truncate text-[1.05rem] font-semibold">{site.name}</span>
         </span>
         <span className={cx('row-span-2 justify-self-end', stale && 'opacity-40')}>
@@ -122,12 +123,13 @@ function DemoTrayCallout({ site, props }: { site: SiteView; props: SiteListProps
           <Radio aria-hidden className="size-5" />
           Demo tray · venue
         </button>
-        <Link href={`/sites/${site.id}`} className="flex items-center gap-1 text-[0.85rem] text-accent label-caps hover:underline">
+        <Link href={`/sites/${site.id}`} transition className="flex items-center gap-1 text-[0.85rem] text-accent label-caps hover:underline">
           Open <ArrowRight aria-hidden className="size-4" />
         </Link>
       </div>
       <div className="flex flex-wrap items-center gap-3">
-        <StatusTag status={props.statusOf(site)} size="lg" />
+        {/* While the tray is selected, the map preview's tag carries the morph name instead (names must be unique). */}
+        <StatusTag status={props.statusOf(site)} size="lg" pulseOnChange viewTransitionName={selected ? undefined : siteTagTransition(site.id)} />
         <span className="rounded-[3px] border border-line-hi px-2 py-1 text-[0.75rem] text-muted label-caps">Beacon evaluates: Heavy truck</span>
       </div>
       <p className="flex flex-wrap items-center gap-x-3 text-[0.8rem] text-muted">
