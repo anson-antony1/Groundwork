@@ -47,6 +47,7 @@ def priority_key(s: SiteStatus) -> tuple:
     return (
         s.weather_state != "STOP_WORK",
         s.weather_state != "CAUTION",
+        -(s.hazard_score or 0) if s.weather_state == "CAUTION" else 0,
         min(ACCESS_RANK[a] for a in s.access_call.values()),
         -(s.hazard_score if s.hazard_score is not None else 0),
         -len(s.missing_fields),
