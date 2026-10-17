@@ -1,0 +1,504 @@
+{
+ "generated_from": [
+  "fixtures/storm_replay.json",
+  "fixtures/replay_calm.json"
+ ],
+ "scenarios": {
+  "demo-storm": {
+   "label": "milton-2024",
+   "day": "2024-10-09",
+   "alert": "Hurricane Warning (SIMULATED)",
+   "source": "Hurricane Milton, forecast day 2024-10-09 (landfall evening of Oct 9). Rain, gust and apparent-temperature values are real Open-Meteo archive data. The NWS hurricane warning is SIMULATED because historical alerts are not available from the live alerts API.",
+   "sites": {
+    "SITE-001": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-002": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-003": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-004": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-005": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-006": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-007": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-008": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-009": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-010": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-011": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-012": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-013": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-014": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-015": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-016": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-017": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-018": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-019": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-020": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-021": [
+     5.1,
+     "STOP_WORK"
+    ],
+    "SITE-022": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-023": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-024": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-025": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-026": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-027": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-028": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-029": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-030": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-031": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-032": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-033": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-034": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-035": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-036": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-037": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-038": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-039": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-040": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-041": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-042": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-043": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-044": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-045": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-046": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-047": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-048": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-049": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-050": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-051": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-052": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-053": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-054": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-055": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-056": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-057": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-058": [
+     6.1,
+     "STOP_WORK"
+    ],
+    "SITE-059": [
+     7,
+     "STOP_WORK"
+    ],
+    "SITE-060": [
+     7,
+     "STOP_WORK"
+    ]
+   }
+  },
+  "calm-day": {
+   "label": "Ordinary summer day (comparison)",
+   "day": "2024-07-15",
+   "alert": null,
+   "source": "Open-Meteo archive weather for 2024-07-15 (rain, wind, temperature are real). Historical NWS alerts are unavailable, so no alert is assumed: this is a SIMULATED assumption, and a real alert that day would not show here.",
+   "sites": {
+    "SITE-001": [
+     3,
+     "NORMAL"
+    ],
+    "SITE-002": [
+     3,
+     "NORMAL"
+    ],
+    "SITE-003": [
+     3,
+     "NORMAL"
+    ],
+    "SITE-004": [
+     3.2,
+     "NORMAL"
+    ],
+    "SITE-005": [
+     3.6,
+     "CAUTION"
+    ],
+    "SITE-006": [
+     3.2,
+     "NORMAL"
+    ],
+    "SITE-007": [
+     2.9,
+     "NORMAL"
+    ],
+    "SITE-008": [
+     2.9,
+     "NORMAL"
+    ],
+    "SITE-009": [
+     3.6,
+     "CAUTION"
+    ],
+    "SITE-010": [
+     2.8,
+     "NORMAL"
+    ],
+    "SITE-011": [
+     3.2,
+     "NORMAL"
+    ],
+    "SITE-012": [
+     3.2,
+     "NORMAL"
+    ],
+    "SITE-013": [
+     3.2,
+     "NORMAL"
+    ],
+    "SITE-014": [
+     3.6,
+     "CAUTION"
+    ],
+    "SITE-015": [
+     2.7,
+     "NORMAL"
+    ],
+    "SITE-016": [
+     2.7,
+     "NORMAL"
+    ],
+    "SITE-017": [
+     2.8,
+     "NORMAL"
+    ],
+    "SITE-018": [
+     3.6,
+     "CAUTION"
+    ],
+    "SITE-019": [
+     3.5,
+     "CAUTION"
+    ],
+    "SITE-020": [
+     2.9,
+     "NORMAL"
+    ],
+    "SITE-021": [
+     4.9,
+     "CAUTION"
+    ],
+    "SITE-022": [
+     3,
+     "NORMAL"
+    ],
+    "SITE-023": [
+     3.3,
+     "NORMAL"
+    ],
+    "SITE-024": [
+     3.3,
+     "NORMAL"
+    ],
+    "SITE-025": [
+     4.1,
+     "CAUTION"
+    ],
+    "SITE-026": [
+     3.7,
+     "CAUTION"
+    ],
+    "SITE-027": [
+     2.8,
+     "NORMAL"
+    ],
+    "SITE-028": [
+     3,
+     "NORMAL"
+    ],
+    "SITE-029": [
+     3.2,
+     "NORMAL"
+    ],
+    "SITE-030": [
+     2.6,
+     "NORMAL"
+    ],
+    "SITE-031": [
+     3.6,
+     "CAUTION"
+    ],
+    "SITE-032": [
+     3.2,
+     "NORMAL"
+    ],
+    "SITE-033": [
+     3.3,
+     "NORMAL"
+    ],
+    "SITE-034": [
+     3.6,
+     "CAUTION"
+    ],
+    "SITE-035": [
+     3.6,
+     "CAUTION"
+    ],
+    "SITE-036": [
+     3.2,
+     "NORMAL"
+    ],
+    "SITE-037": [
+     3.2,
+     "NORMAL"
+    ],
+    "SITE-038": [
+     3.2,
+     "NORMAL"
+    ],
+    "SITE-039": [
+     3.2,
+     "NORMAL"
+    ],
+    "SITE-040": [
+     3.2,
+     "NORMAL"
+    ],
+    "SITE-041": [
+     3.6,
+     "CAUTION"
+    ],
+    "SITE-042": [
+     3.6,
+     "CAUTION"
+    ],
+    "SITE-043": [
+     3.2,
+     "NORMAL"
+    ],
+    "SITE-044": [
+     3.2,
+     "NORMAL"
+    ],
+    "SITE-045": [
+     3.6,
+     "CAUTION"
+    ],
+    "SITE-046": [
+     3.6,
+     "CAUTION"
+    ],
+    "SITE-047": [
+     3.6,
+     "CAUTION"
+    ],
+    "SITE-048": [
+     3.2,
+     "NORMAL"
+    ],
+    "SITE-049": [
+     3.6,
+     "CAUTION"
+    ],
+    "SITE-050": [
+     3.2,
+     "NORMAL"
+    ],
+    "SITE-051": [
+     2.8,
+     "NORMAL"
+    ],
+    "SITE-052": [
+     2.8,
+     "NORMAL"
+    ],
+    "SITE-053": [
+     2.9,
+     "NORMAL"
+    ],
+    "SITE-054": [
+     3.2,
+     "NORMAL"
+    ],
+    "SITE-055": [
+     3.6,
+     "CAUTION"
+    ],
+    "SITE-056": [
+     2.8,
+     "NORMAL"
+    ],
+    "SITE-057": [
+     2.8,
+     "NORMAL"
+    ],
+    "SITE-058": [
+     4.2,
+     "CAUTION"
+    ],
+    "SITE-059": [
+     4.6,
+     "CAUTION"
+    ],
+    "SITE-060": [
+     4.5,
+     "CAUTION"
+    ]
+   }
+  }
+ }
+}

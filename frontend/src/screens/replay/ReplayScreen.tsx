@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { hasEndpoint } from '../../api/config'
 import { describeError } from '../../api/errors'
 import { PROPOSED_ENDPOINTS } from '../../api/proposed'
-import type { ReplayScenario } from '../../api/proposed'
 import { useEvents, useReplayControl, useReplayScenarios, useSites } from '../../api/queries'
 import { useServerCtx } from '../../api/serverCtx'
 import { Card } from '../../components/Card'
@@ -11,13 +10,7 @@ import { cx } from '../../components/cx'
 import { EmptyBlock } from '../../components/States'
 import { fmtClock, fmtWhen } from '../../domain/format'
 import { replayLabel } from '../../domain/provenance'
-
-const DEFAULT_SCENARIO: ReplayScenario = {
-  id: 'demo-storm',
-  title: 'Recorded storm',
-  event: 'The historical severe-weather event in the backend’s storm fixture',
-  source: 'Shown above once the replay starts (fixtures/storm_replay.json)',
-}
+import { BUILT_IN_SCENARIOS } from './scenarios'
 
 /** Screen 4 (README §9): replay a sourced historical storm; exiting restores live data, never blended. */
 export function ReplayScreen() {
@@ -28,7 +21,7 @@ export function ReplayScreen() {
   // Scenarios differ (a calm-day replay keeps most sites workable), so count what the backend returned.
   const sites = useSites().data?.data ?? []
   const stopCount = sites.filter((s) => s.weather_state === 'STOP_WORK').length
-  const scenarios = scenariosQuery.data?.data?.length ? scenariosQuery.data.data : [DEFAULT_SCENARIO]
+  const scenarios = scenariosQuery.data?.data?.length ? scenariosQuery.data.data : BUILT_IN_SCENARIOS
   const [chosen, setChosen] = useState(scenarios[0].id)
   const active = replay?.active ?? false
   // While a replay runs, the card follows the server: it may have been started elsewhere (e.g. calm-day via the API).
@@ -91,7 +84,7 @@ export function ReplayScreen() {
                 className="flex min-h-16 items-center justify-center gap-3 rounded-[4px] border-2 border-ink bg-ink text-xl text-bg label-caps hover:bg-ink/90 disabled:opacity-60"
               >
                 {start.isPending ? <Loader2 aria-hidden className="size-6 animate-spin" /> : <CloudLightning aria-hidden className="size-6" />}
-                Start storm replay
+                Start replay
               </button>
             )}
             {(start.isError || stop.isError) && (
@@ -132,7 +125,7 @@ export function ReplayScreen() {
               </p>
             )}
             {!hasEndpoint(PROPOSED_ENDPOINTS.replayScenarios) && (
-              <p className="mt-3 text-[0.82rem] text-muted">The backend doesn't list scenarios yet; it replays its default storm.</p>
+              <p className="mt-3 text-[0.82rem] text-muted">The backend doesn't list scenarios yet, so these two come from its replay fixtures.</p>
             )}
           </Card>
 

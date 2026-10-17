@@ -58,7 +58,8 @@ export default function MockControls() {
   const s = db.sensor
   const reading = latestReading()
   const [status] = demoStatus(now)
-  const replay = (on: boolean) => void handle({ method: 'POST', path: `/api/v1/replay/${on ? 'start' : 'stop'}`, json: { scenario_id: 'demo-storm' } })
+  const replay = (on: boolean, scenarioId = 'demo-storm') =>
+    void handle({ method: 'POST', path: `/api/v1/replay/${on ? 'start' : 'stop'}`, json: { scenario_id: scenarioId } })
 
   return (
     <aside
@@ -91,7 +92,8 @@ export default function MockControls() {
         </Btn>
       </Group>
       <Group title="Storm replay (Aashita)">
-        <Btn onClick={() => replay(true)} active={db.demo.replayActive}>Start</Btn>
+        <Btn onClick={() => replay(true)} active={db.demo.replayActive && db.demo.replayScenarioId === 'demo-storm'}>Storm</Btn>
+        <Btn onClick={() => replay(true, 'calm-day')} active={db.demo.replayActive && db.demo.replayScenarioId === 'calm-day'}>Calm day</Btn>
         <Btn onClick={() => replay(false)}>Stop</Btn>
       </Group>
       <Group title="Photo tagger (Rithika)">

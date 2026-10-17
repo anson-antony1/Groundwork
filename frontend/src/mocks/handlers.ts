@@ -10,6 +10,7 @@ import {
   DEMO_DEVICE_ID,
   DEMO_SITE_ID,
   POLICY,
+  REPLAYS,
   SENSOR_TOKEN,
   allSiteStatuses,
   buildDisplay,
@@ -234,18 +235,22 @@ async function createReport({ req, now }: Ctx): Promise<ApiResponse> {
 
 // --- Routes -------------------------------------------------------------------
 
-const SCENARIOS: ReplayScenario[] = [
-  {
-    id: 'demo-storm',
-    title: 'Demo storm (mock)',
-    event: 'Severe Thunderstorm Warning',
-    source: 'Mock scenario — not a real NWS event. The live API replays fixtures/storm_replay.json.',
-    reference_url: null,
-    onset: null,
-    expires: null,
-    area: 'All demo sites',
-  },
-]
+const SCENARIO_TITLES: Record<string, string> = {
+  'demo-storm': 'Hurricane Milton · Oct 9 2024',
+  'calm-day': 'Calm summer day · Jul 15 2024',
+}
+
+/** The backend's replay fixtures, copied by scripts/build-mock-replays.mjs. */
+const SCENARIOS: ReplayScenario[] = Object.entries(REPLAYS).map(([id, r]) => ({
+  id,
+  title: SCENARIO_TITLES[id] ?? r.label,
+  event: r.alert ?? 'No alert assumed',
+  source: r.source,
+  reference_url: null,
+  onset: null,
+  expires: null,
+  area: 'All field sites',
+}))
 
 const routes: [ApiRequest['method'], string, Handler][] = [
   ['GET', '/api/v1/health', () => {

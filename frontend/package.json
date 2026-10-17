@@ -14,7 +14,7 @@
     "preview": "vite preview",
     "check": "npm run typecheck && npm run lint && npm test && npm run build",
     "gen:api": "node scripts/gen-api.mjs",
-    "gen:mocks": "node scripts/build-mock-sites.mjs",
+    "gen:mocks": "node scripts/build-mock-sites.mjs && node scripts/build-mock-replays.mjs",
     "gen:basemap": "node scripts/build-basemap.mjs",
     "shot": "node scripts/shot.mjs",
     "rehearse": "node scripts/shot.mjs http://localhost:5174/ rehearsal/beat.png --wait 2500 --eval-file scripts/demo-run.js --after 500"
