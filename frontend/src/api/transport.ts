@@ -9,6 +9,8 @@ export interface ApiRequest {
   form?: FormData
   headers?: Record<string, string>
   signal?: AbortSignal
+  /** Overrides the default 8 s timeout, for calls the backend is known to answer slowly. */
+  timeoutMs?: number
 }
 
 export interface ApiResponse {

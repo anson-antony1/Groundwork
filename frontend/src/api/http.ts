@@ -25,7 +25,8 @@ export const httpTransport: Transport = async (req) => {
     headers['Content-Type'] = 'application/json'
   }
 
-  const timeout = AbortSignal.timeout(TIMEOUT_MS)
+  const timeoutMs = req.timeoutMs ?? TIMEOUT_MS
+  const timeout = AbortSignal.timeout(timeoutMs)
   const signal = req.signal ? AbortSignal.any([req.signal, timeout]) : timeout
 
   let res: Response
@@ -37,7 +38,7 @@ export const httpTransport: Transport = async (req) => {
     throw new ApiError({
       status: 0,
       code: timedOut ? 'TIMEOUT' : 'NETWORK',
-      message: timedOut ? `No response within ${TIMEOUT_MS / 1000} s` : 'Network error: the API is unreachable',
+      message: timedOut ? `No response within ${timeoutMs / 1000} s` : 'Network error: the API is unreachable',
     })
   }
 
