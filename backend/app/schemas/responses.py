@@ -180,11 +180,20 @@ class BriefingOut(BaseModel):
 
 class TimelineEventOut(BaseModel):
     id: str
-    kind: Literal["ack_touch", "crew_flag", "hazard_report", "replay_started", "replay_stopped", "briefing_generated"]
+    kind: Literal[
+        "ack_touch", "crew_flag", "crew_flag_cleared", "hazard_report",
+        "replay_started", "replay_stopped", "briefing_generated",
+    ]
     site_id: str | None
     summary: str
     ref_id: str | None
     at: datetime
+
+
+class DemoResetOut(BaseModel):
+    replay_stopped: bool
+    reports_cleared: int
+    device_events_cleared: int
 
 
 class AccessThresholdsOut(BaseModel):
