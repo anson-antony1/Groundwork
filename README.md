@@ -1018,3 +1018,11 @@ flowchart LR
 ```
  
 **Live demo:** pour water → sensor reading, dashboard and beacon change → switch vehicles and compare costs → replay storm STOP WORK (beacon alarm, touch to acknowledge) → submit photo report → show 50+ sites and briefing. Sensor tray data is *not* evidence about a remote site.
+
+## Risk intelligence notes (hazard, replay, briefing)
+
+- **Hazard score (0-10)** = forecast rain (4) + gusts (3) + heat (3). Any NWS alert naming a thunderstorm, tornado, hurricane, tropical storm, flash flood or flood warning forces STOP_WORK. Other active alerts give at least CAUTION, except surf and rip-current advisories, which stay visible in `alert_events` but do not raise CAUTION. A failed alert check or missing forecast is UNKNOWN, never safe.
+- **All thresholds are demo policy** (`HAZARD_POLICY` in `backend/app/services/hazard.py`), not validated against field data. Vehicle access is a preliminary screening from ground-wetness indicators, not a measured soil bearing capacity.
+- **Weather snapshot:** `python -m backend.scripts.fetch_weather` (needs internet). The API reads only the snapshot, so the demo works offline. Stale values are still served and flagged.
+- **Storm replay (P13):** Hurricane Milton, forecast day 2024-10-09. Rain and gusts are real Open-Meteo archive data. The hurricane warning is **simulated**, because historical NWS alerts aren't available. Rebuild with `python -m backend.scripts.build_storm_replay_v1` (needs internet). Milton exceeds the scale maximum, so every site scores 7.0.
+- **6 PM briefing:** generating with Gemini takes about 20 seconds, so generate it before the demo and show the saved one (`GET /api/v1/briefings`, newest first). Without internet it falls back to a short template summary.
