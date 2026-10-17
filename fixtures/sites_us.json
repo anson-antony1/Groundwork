@@ -1,5 +1,5 @@
 {
-  "selection": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+  "selection": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
   "sites": [
     {
       "id": "US-001",
@@ -7,7 +7,7 @@
       "latitude": 32.82518,
       "longitude": -85.72844,
       "region": "AL",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-10759691407"
     },
     {
@@ -16,7 +16,7 @@
       "latitude": 32.82753,
       "longitude": -85.72456,
       "region": "AL",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-10759691408"
     },
     {
@@ -25,7 +25,7 @@
       "latitude": 32.42242,
       "longitude": -87.06805,
       "region": "AL",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-7629214"
     },
     {
@@ -34,7 +34,7 @@
       "latitude": 33.49968,
       "longitude": -86.79994,
       "region": "AL",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-7731825"
     },
     {
@@ -43,7 +43,7 @@
       "latitude": 30.55387,
       "longitude": -87.76393,
       "region": "AL",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-40431237"
     },
     {
@@ -52,7 +52,7 @@
       "latitude": 61.23121,
       "longitude": -149.88444,
       "region": "AK",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-28578011"
     },
     {
@@ -61,7 +61,7 @@
       "latitude": 61.22255,
       "longitude": -149.86562,
       "region": "AK",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-28581440"
     },
     {
@@ -70,7 +70,7 @@
       "latitude": 61.16665,
       "longitude": -149.90167,
       "region": "AK",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-28585849"
     },
     {
@@ -79,7 +79,7 @@
       "latitude": 61.20028,
       "longitude": -150.00311,
       "region": "AK",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-28609642"
     },
     {
@@ -88,7 +88,7 @@
       "latitude": 61.19918,
       "longitude": -150.02356,
       "region": "AK",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-28973864"
     },
     {
@@ -97,7 +97,7 @@
       "latitude": 39.67683,
       "longitude": -104.90329,
       "region": "CO",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-3450087846"
     },
     {
@@ -106,7 +106,7 @@
       "latitude": 39.92244,
       "longitude": -105.10003,
       "region": "CO",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-3705030095"
     },
     {
@@ -115,7 +115,7 @@
       "latitude": 39.01024,
       "longitude": -104.36643,
       "region": "CO",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-12963992101"
     },
     {
@@ -124,7 +124,7 @@
       "latitude": 41.00166,
       "longitude": -102.26898,
       "region": "CO",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-14069716"
     },
     {
@@ -133,7 +133,7 @@
       "latitude": 39.56863,
       "longitude": -102.24091,
       "region": "CO",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-17073904"
     },
     {
@@ -142,7 +142,7 @@
       "latitude": 41.80752,
       "longitude": -72.75459,
       "region": "CT",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-5368533444"
     },
     {
@@ -151,7 +151,7 @@
       "latitude": 41.72991,
       "longitude": -73.21781,
       "region": "CT",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-8901712762"
     },
     {
@@ -160,7 +160,7 @@
       "latitude": 41.3148,
       "longitude": -72.16532,
       "region": "CT",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-43050362"
     },
     {
@@ -169,7 +169,7 @@
       "latitude": 41.48828,
       "longitude": -72.4927,
       "region": "CT",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-49810081"
     },
     {
@@ -178,7 +178,7 @@
       "latitude": 41.51037,
       "longitude": -72.56971,
       "region": "CT",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-49810097"
     },
     {
@@ -187,7 +187,7 @@
       "latitude": 39.48963,
       "longitude": -75.74275,
       "region": "DE",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-68286515"
     },
     {
@@ -196,7 +196,7 @@
       "latitude": 39.395,
       "longitude": -75.75346,
       "region": "DE",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-68301618"
     },
     {
@@ -205,7 +205,7 @@
       "latitude": 38.46551,
       "longitude": -75.58308,
       "region": "DE",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-68848845"
     },
     {
@@ -214,7 +214,7 @@
       "latitude": 38.56299,
       "longitude": -75.57802,
       "region": "DE",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-68890867"
     },
     {
@@ -223,7 +223,7 @@
       "latitude": 38.58377,
       "longitude": -75.24067,
       "region": "DE",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-69468741"
     },
     {
@@ -232,7 +232,7 @@
       "latitude": 38.88351,
       "longitude": -77.01475,
       "region": "DC",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-48037366"
     },
     {
@@ -241,7 +241,7 @@
       "latitude": 38.89562,
       "longitude": -77.02329,
       "region": "DC",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-48041458"
     },
     {
@@ -250,7 +250,7 @@
       "latitude": 38.91042,
       "longitude": -77.00206,
       "region": "DC",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-48101719"
     },
     {
@@ -259,7 +259,7 @@
       "latitude": 38.89684,
       "longitude": -77.04787,
       "region": "DC",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-66409255"
     },
     {
@@ -268,7 +268,7 @@
       "latitude": 38.90098,
       "longitude": -77.05655,
       "region": "DC",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-66417781"
     },
     {
@@ -277,7 +277,7 @@
       "latitude": 28.14112,
       "longitude": -82.74396,
       "region": "FL",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-12054068617"
     },
     {
@@ -286,7 +286,7 @@
       "latitude": 26.93353,
       "longitude": -82.04667,
       "region": "FL",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-13203491801"
     },
     {
@@ -295,7 +295,7 @@
       "latitude": 26.44249,
       "longitude": -81.83395,
       "region": "FL",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-25470160"
     },
     {
@@ -304,7 +304,7 @@
       "latitude": 27.94788,
       "longitude": -82.45365,
       "region": "FL",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-25645186"
     },
     {
@@ -313,7 +313,7 @@
       "latitude": 27.90836,
       "longitude": -82.40884,
       "region": "FL",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-25899010"
     },
     {
@@ -322,7 +322,7 @@
       "latitude": 21.42508,
       "longitude": -157.95256,
       "region": "HI",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-12856359137"
     },
     {
@@ -331,7 +331,7 @@
       "latitude": 19.05766,
       "longitude": -155.66313,
       "region": "HI",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-14124041359"
     },
     {
@@ -340,7 +340,7 @@
       "latitude": 19.05205,
       "longitude": -155.66258,
       "region": "HI",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-14124090232"
     },
     {
@@ -349,7 +349,7 @@
       "latitude": 21.90156,
       "longitude": -159.58461,
       "region": "HI",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-100100070"
     },
     {
@@ -358,7 +358,7 @@
       "latitude": 21.35664,
       "longitude": -158.12812,
       "region": "HI",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-160226896"
     },
     {
@@ -367,7 +367,7 @@
       "latitude": 43.52803,
       "longitude": -116.05845,
       "region": "ID",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-53130300"
     },
     {
@@ -376,7 +376,7 @@
       "latitude": 43.50664,
       "longitude": -116.33346,
       "region": "ID",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-53140902"
     },
     {
@@ -385,7 +385,7 @@
       "latitude": 46.52848,
       "longitude": -116.3673,
       "region": "ID",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-55950058"
     },
     {
@@ -394,7 +394,7 @@
       "latitude": 46.43104,
       "longitude": -117.02603,
       "region": "ID",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-98830485"
     },
     {
@@ -403,7 +403,7 @@
       "latitude": 46.46923,
       "longitude": -116.91035,
       "region": "ID",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-98830488"
     },
     {
@@ -412,7 +412,7 @@
       "latitude": 40.69888,
       "longitude": -89.63149,
       "region": "IL",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-8819901640"
     },
     {
@@ -421,7 +421,7 @@
       "latitude": 37.43021,
       "longitude": -88.34407,
       "region": "IL",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-11756981751"
     },
     {
@@ -430,7 +430,7 @@
       "latitude": 41.82166,
       "longitude": -87.61069,
       "region": "IL",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-12360623313"
     },
     {
@@ -439,7 +439,7 @@
       "latitude": 41.13374,
       "longitude": -89.04709,
       "region": "IL",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-13738817337"
     },
     {
@@ -448,7 +448,7 @@
       "latitude": 41.99877,
       "longitude": -87.73915,
       "region": "IL",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-24885939"
     },
     {
@@ -457,7 +457,7 @@
       "latitude": 42.67456,
       "longitude": -94.18878,
       "region": "IA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-12362268141"
     },
     {
@@ -466,7 +466,7 @@
       "latitude": 43.3966,
       "longitude": -95.75008,
       "region": "IA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-15982511"
     },
     {
@@ -475,7 +475,7 @@
       "latitude": 42.60298,
       "longitude": -96.30627,
       "region": "IA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-27051487"
     },
     {
@@ -484,7 +484,7 @@
       "latitude": 42.60018,
       "longitude": -96.30491,
       "region": "IA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-27051494"
     },
     {
@@ -493,7 +493,7 @@
       "latitude": 42.3295,
       "longitude": -96.36563,
       "region": "IA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-27052403"
     },
     {
@@ -502,7 +502,7 @@
       "latitude": 37.97747,
       "longitude": -96.27859,
       "region": "KS",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-14246225363"
     },
     {
@@ -511,7 +511,7 @@
       "latitude": 38.04258,
       "longitude": -96.40453,
       "region": "KS",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-14248283224"
     },
     {
@@ -520,7 +520,7 @@
       "latitude": 38.08587,
       "longitude": -96.26622,
       "region": "KS",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-14252214635"
     },
     {
@@ -529,7 +529,7 @@
       "latitude": 38.04237,
       "longitude": -96.6023,
       "region": "KS",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-14277112599"
     },
     {
@@ -538,7 +538,7 @@
       "latitude": 37.44064,
       "longitude": -94.68467,
       "region": "KS",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-13033986"
     },
     {
@@ -547,7 +547,7 @@
       "latitude": 39.02505,
       "longitude": -84.37663,
       "region": "KY",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-28358513"
     },
     {
@@ -556,7 +556,7 @@
       "latitude": 39.08047,
       "longitude": -84.69317,
       "region": "KY",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-32777636"
     },
     {
@@ -565,7 +565,7 @@
       "latitude": 39.06024,
       "longitude": -84.62613,
       "region": "KY",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-32778603"
     },
     {
@@ -574,7 +574,7 @@
       "latitude": 39.05899,
       "longitude": -84.62545,
       "region": "KY",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-32778616"
     },
     {
@@ -583,7 +583,7 @@
       "latitude": 39.08995,
       "longitude": -84.7294,
       "region": "KY",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-32780375"
     },
     {
@@ -592,7 +592,7 @@
       "latitude": 30.28297,
       "longitude": -89.77056,
       "region": "LA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-10909366190"
     },
     {
@@ -601,7 +601,7 @@
       "latitude": 30.30836,
       "longitude": -89.82953,
       "region": "LA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-10909366609"
     },
     {
@@ -610,7 +610,7 @@
       "latitude": 30.30591,
       "longitude": -89.82871,
       "region": "LA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-10909366616"
     },
     {
@@ -619,7 +619,7 @@
       "latitude": 30.30246,
       "longitude": -89.82746,
       "region": "LA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-10909366624"
     },
     {
@@ -628,7 +628,7 @@
       "latitude": 30.27231,
       "longitude": -89.84443,
       "region": "LA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-10909366810"
     },
     {
@@ -637,7 +637,7 @@
       "latitude": 44.01352,
       "longitude": -70.97183,
       "region": "ME",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-7367556920"
     },
     {
@@ -646,7 +646,7 @@
       "latitude": 44.85245,
       "longitude": -69.90764,
       "region": "ME",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-12641214584"
     },
     {
@@ -655,7 +655,7 @@
       "latitude": 43.93189,
       "longitude": -70.20331,
       "region": "ME",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-82004992"
     },
     {
@@ -664,7 +664,7 @@
       "latitude": 43.08375,
       "longitude": -70.74067,
       "region": "ME",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-95920822"
     },
     {
@@ -673,7 +673,7 @@
       "latitude": 44.15126,
       "longitude": -70.20857,
       "region": "ME",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-130000598"
     },
     {
@@ -682,7 +682,7 @@
       "latitude": 39.48374,
       "longitude": -76.66116,
       "region": "MD",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-2810821301"
     },
     {
@@ -691,7 +691,7 @@
       "latitude": 39.29193,
       "longitude": -76.59941,
       "region": "MD",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-7491477577"
     },
     {
@@ -700,7 +700,7 @@
       "latitude": 38.93635,
       "longitude": -76.56644,
       "region": "MD",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-13718029247"
     },
     {
@@ -709,7 +709,7 @@
       "latitude": 38.9837,
       "longitude": -76.94781,
       "region": "MD",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-24306218"
     },
     {
@@ -718,7 +718,7 @@
       "latitude": 39.48271,
       "longitude": -76.59474,
       "region": "MD",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-35395805"
     },
     {
@@ -727,7 +727,7 @@
       "latitude": 42.29285,
       "longitude": -83.7118,
       "region": "MI",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-9849260336"
     },
     {
@@ -736,7 +736,7 @@
       "latitude": 43.94374,
       "longitude": -84.99905,
       "region": "MI",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-12814765422"
     },
     {
@@ -745,7 +745,7 @@
       "latitude": 42.65197,
       "longitude": -83.22103,
       "region": "MI",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-30256000"
     },
     {
@@ -754,7 +754,7 @@
       "latitude": 42.3102,
       "longitude": -83.46519,
       "region": "MI",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-30480743"
     },
     {
@@ -763,7 +763,7 @@
       "latitude": 42.30812,
       "longitude": -83.41396,
       "region": "MI",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-30483128"
     },
     {
@@ -772,7 +772,7 @@
       "latitude": 34.46486,
       "longitude": -89.81289,
       "region": "MS",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-13683331"
     },
     {
@@ -781,7 +781,7 @@
       "latitude": 30.41742,
       "longitude": -88.76751,
       "region": "MS",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-25052353"
     },
     {
@@ -790,7 +790,7 @@
       "latitude": 30.3983,
       "longitude": -88.6982,
       "region": "MS",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-25282031"
     },
     {
@@ -799,7 +799,7 @@
       "latitude": 30.41412,
       "longitude": -88.77773,
       "region": "MS",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-25686391"
     },
     {
@@ -808,7 +808,7 @@
       "latitude": 34.32523,
       "longitude": -88.17953,
       "region": "MS",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-89108510"
     },
     {
@@ -817,7 +817,7 @@
       "latitude": 38.54243,
       "longitude": -90.97492,
       "region": "MO",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-4854203553"
     },
     {
@@ -826,7 +826,7 @@
       "latitude": 38.52293,
       "longitude": -90.4874,
       "region": "MO",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-13334253004"
     },
     {
@@ -835,7 +835,7 @@
       "latitude": 37.56377,
       "longitude": -90.29993,
       "region": "MO",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-13415903590"
     },
     {
@@ -844,7 +844,7 @@
       "latitude": 39.15115,
       "longitude": -94.54925,
       "region": "MO",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-23548405"
     },
     {
@@ -853,7 +853,7 @@
       "latitude": 38.91497,
       "longitude": -90.29386,
       "region": "MO",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-28609239"
     },
     {
@@ -862,7 +862,7 @@
       "latitude": 48.1585,
       "longitude": -104.37588,
       "region": "MT",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-9820217"
     },
     {
@@ -871,7 +871,7 @@
       "latitude": 48.38555,
       "longitude": -114.23409,
       "region": "MT",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-35416167"
     },
     {
@@ -880,7 +880,7 @@
       "latitude": 47.5423,
       "longitude": -111.22204,
       "region": "MT",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-51474429"
     },
     {
@@ -889,7 +889,7 @@
       "latitude": 45.92011,
       "longitude": -112.45809,
       "region": "MT",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-85525636"
     },
     {
@@ -898,7 +898,7 @@
       "latitude": 46.93187,
       "longitude": -113.09915,
       "region": "MT",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-89279731"
     },
     {
@@ -907,7 +907,7 @@
       "latitude": 41.14415,
       "longitude": -100.81075,
       "region": "NE",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-13384469506"
     },
     {
@@ -916,7 +916,7 @@
       "latitude": 41.14177,
       "longitude": -100.81064,
       "region": "NE",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-13384469508"
     },
     {
@@ -925,7 +925,7 @@
       "latitude": 42.72254,
       "longitude": -102.46506,
       "region": "NE",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-9866126"
     },
     {
@@ -934,7 +934,7 @@
       "latitude": 42.95394,
       "longitude": -100.51526,
       "region": "NE",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-14043777"
     },
     {
@@ -943,7 +943,7 @@
       "latitude": 42.28596,
       "longitude": -96.6863,
       "region": "NE",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-14056902"
     },
     {
@@ -952,7 +952,7 @@
       "latitude": 35.94428,
       "longitude": -115.06771,
       "region": "NV",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-12485176239"
     },
     {
@@ -961,7 +961,7 @@
       "latitude": 36.11536,
       "longitude": -115.27624,
       "region": "NV",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-27500831"
     },
     {
@@ -970,7 +970,7 @@
       "latitude": 36.11399,
       "longitude": -115.21344,
       "region": "NV",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-27503684"
     },
     {
@@ -979,7 +979,7 @@
       "latitude": 36.1866,
       "longitude": -115.27925,
       "region": "NV",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-27620991"
     },
     {
@@ -988,7 +988,7 @@
       "latitude": 36.19931,
       "longitude": -115.25193,
       "region": "NV",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-27631478"
     },
     {
@@ -997,7 +997,7 @@
       "latitude": 43.1362,
       "longitude": -70.93655,
       "region": "NH",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-28338849"
     },
     {
@@ -1006,7 +1006,7 @@
       "latitude": 42.88374,
       "longitude": -71.3325,
       "region": "NH",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-31648775"
     },
     {
@@ -1015,7 +1015,7 @@
       "latitude": 42.90158,
       "longitude": -71.33906,
       "region": "NH",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-39197834"
     },
     {
@@ -1024,7 +1024,7 @@
       "latitude": 42.90258,
       "longitude": -71.34032,
       "region": "NH",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-39197835"
     },
     {
@@ -1033,7 +1033,7 @@
       "latitude": 42.90456,
       "longitude": -71.34214,
       "region": "NH",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-39197836"
     },
     {
@@ -1042,7 +1042,7 @@
       "latitude": 32.05076,
       "longitude": -103.55293,
       "region": "NM",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-9645264070"
     },
     {
@@ -1051,7 +1051,7 @@
       "latitude": 35.52028,
       "longitude": -106.78986,
       "region": "NM",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-14580139"
     },
     {
@@ -1060,7 +1060,7 @@
       "latitude": 35.27373,
       "longitude": -106.66506,
       "region": "NM",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-40171275"
     },
     {
@@ -1069,7 +1069,7 @@
       "latitude": 36.80571,
       "longitude": -108.44383,
       "region": "NM",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-104762747"
     },
     {
@@ -1078,7 +1078,7 @@
       "latitude": 36.80202,
       "longitude": -108.44246,
       "region": "NM",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-104762756"
     },
     {
@@ -1087,7 +1087,7 @@
       "latitude": 33.95967,
       "longitude": -78.01102,
       "region": "NC",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-26206954"
     },
     {
@@ -1096,7 +1096,7 @@
       "latitude": 36.01107,
       "longitude": -78.92293,
       "region": "NC",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-28265124"
     },
     {
@@ -1105,7 +1105,7 @@
       "latitude": 36.00823,
       "longitude": -78.90211,
       "region": "NC",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-28831425"
     },
     {
@@ -1114,7 +1114,7 @@
       "latitude": 36.00458,
       "longitude": -78.94544,
       "region": "NC",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-29029725"
     },
     {
@@ -1123,7 +1123,7 @@
       "latitude": 35.72493,
       "longitude": -78.8125,
       "region": "NC",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-32248243"
     },
     {
@@ -1132,7 +1132,7 @@
       "latitude": 47.34292,
       "longitude": -102.33413,
       "region": "ND",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-9662219"
     },
     {
@@ -1141,7 +1141,7 @@
       "latitude": 46.3715,
       "longitude": -102.31692,
       "region": "ND",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-33819641"
     },
     {
@@ -1150,7 +1150,7 @@
       "latitude": 46.8136,
       "longitude": -100.729,
       "region": "ND",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-46694887"
     },
     {
@@ -1159,7 +1159,7 @@
       "latitude": 46.81118,
       "longitude": -100.7294,
       "region": "ND",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-46694896"
     },
     {
@@ -1168,7 +1168,7 @@
       "latitude": 46.81379,
       "longitude": -100.72696,
       "region": "ND",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-47784816"
     },
     {
@@ -1177,7 +1177,7 @@
       "latitude": 39.96686,
       "longitude": -75.16031,
       "region": "PA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-1698052989"
     },
     {
@@ -1186,7 +1186,7 @@
       "latitude": 40.71114,
       "longitude": -75.3864,
       "region": "PA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-2742965271"
     },
     {
@@ -1195,7 +1195,7 @@
       "latitude": 40.66784,
       "longitude": -75.25973,
       "region": "PA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-2751005224"
     },
     {
@@ -1204,7 +1204,7 @@
       "latitude": 40.72588,
       "longitude": -75.28957,
       "region": "PA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-2803818772"
     },
     {
@@ -1213,7 +1213,7 @@
       "latitude": 39.7687,
       "longitude": -77.57838,
       "region": "PA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-4558909607"
     },
     {
@@ -1222,7 +1222,7 @@
       "latitude": 41.76443,
       "longitude": -71.42912,
       "region": "RI",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-19352523"
     },
     {
@@ -1231,7 +1231,7 @@
       "latitude": 41.97954,
       "longitude": -71.52289,
       "region": "RI",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-19352602"
     },
     {
@@ -1240,7 +1240,7 @@
       "latitude": 41.8673,
       "longitude": -71.38161,
       "region": "RI",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-83918804"
     },
     {
@@ -1249,7 +1249,7 @@
       "latitude": 42.01013,
       "longitude": -71.67366,
       "region": "RI",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-140012533"
     },
     {
@@ -1258,7 +1258,7 @@
       "latitude": 41.96952,
       "longitude": -71.53916,
       "region": "RI",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-140046323"
     },
     {
@@ -1267,7 +1267,7 @@
       "latitude": 44.30012,
       "longitude": -96.76844,
       "region": "SD",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-8155350567"
     },
     {
@@ -1276,7 +1276,7 @@
       "latitude": 44.30714,
       "longitude": -96.76837,
       "region": "SD",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-8155350569"
     },
     {
@@ -1285,7 +1285,7 @@
       "latitude": 44.30969,
       "longitude": -96.76842,
       "region": "SD",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-8155350571"
     },
     {
@@ -1294,7 +1294,7 @@
       "latitude": 44.30647,
       "longitude": -96.79966,
       "region": "SD",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-8158723329"
     },
     {
@@ -1303,7 +1303,7 @@
       "latitude": 44.30728,
       "longitude": -96.80351,
       "region": "SD",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-8158723331"
     },
     {
@@ -1312,7 +1312,7 @@
       "latitude": 40.46276,
       "longitude": -109.5294,
       "region": "UT",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-5802557674"
     },
     {
@@ -1321,7 +1321,7 @@
       "latitude": 40.46311,
       "longitude": -109.58578,
       "region": "UT",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-5849990488"
     },
     {
@@ -1330,7 +1330,7 @@
       "latitude": 41.76725,
       "longitude": -111.83256,
       "region": "UT",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-12805030853"
     },
     {
@@ -1339,7 +1339,7 @@
       "latitude": 41.1599,
       "longitude": -112.00141,
       "region": "UT",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-29054076"
     },
     {
@@ -1348,7 +1348,7 @@
       "latitude": 40.31644,
       "longitude": -111.73349,
       "region": "UT",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-31560161"
     },
     {
@@ -1357,7 +1357,7 @@
       "latitude": 44.63388,
       "longitude": -73.03162,
       "region": "VT",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-10912560120"
     },
     {
@@ -1366,7 +1366,7 @@
       "latitude": 44.24988,
       "longitude": -72.60333,
       "region": "VT",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-135695037"
     },
     {
@@ -1375,7 +1375,7 @@
       "latitude": 44.11877,
       "longitude": -72.49894,
       "region": "VT",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-138895633"
     },
     {
@@ -1384,7 +1384,7 @@
       "latitude": 42.78307,
       "longitude": -72.5184,
       "region": "VT",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-138912070"
     },
     {
@@ -1393,7 +1393,7 @@
       "latitude": 43.56517,
       "longitude": -72.94568,
       "region": "VT",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-138917114"
     },
     {
@@ -1402,7 +1402,7 @@
       "latitude": 37.7813,
       "longitude": -82.05819,
       "region": "WV",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-15578851"
     },
     {
@@ -1411,7 +1411,7 @@
       "latitude": 39.83382,
       "longitude": -80.80593,
       "region": "WV",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-33170263"
     },
     {
@@ -1420,7 +1420,7 @@
       "latitude": 38.97589,
       "longitude": -81.94206,
       "region": "WV",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-42062363"
     },
     {
@@ -1429,7 +1429,7 @@
       "latitude": 38.96511,
       "longitude": -81.93018,
       "region": "WV",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-42062429"
     },
     {
@@ -1438,7 +1438,7 @@
       "latitude": 38.96179,
       "longitude": -81.92963,
       "region": "WV",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-42062430"
     },
     {
@@ -1447,7 +1447,7 @@
       "latitude": 43.02034,
       "longitude": -88.38887,
       "region": "WI",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-2189097087"
     },
     {
@@ -1456,7 +1456,7 @@
       "latitude": 43.14778,
       "longitude": -87.95418,
       "region": "WI",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-2417961537"
     },
     {
@@ -1465,7 +1465,7 @@
       "latitude": 43.03642,
       "longitude": -87.9174,
       "region": "WI",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-3996706236"
     },
     {
@@ -1474,7 +1474,7 @@
       "latitude": 43.19281,
       "longitude": -88.07803,
       "region": "WI",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-5682968670"
     },
     {
@@ -1483,7 +1483,7 @@
       "latitude": 43.19334,
       "longitude": -88.07807,
       "region": "WI",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-5682968674"
     },
     {
@@ -1492,7 +1492,7 @@
       "latitude": 41.33605,
       "longitude": -105.58888,
       "region": "WY",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-15681485"
     },
     {
@@ -1501,7 +1501,7 @@
       "latitude": 41.4843,
       "longitude": -105.76567,
       "region": "WY",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-15682023"
     },
     {
@@ -1510,7 +1510,7 @@
       "latitude": 41.899,
       "longitude": -106.22118,
       "region": "WY",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-15690418"
     },
     {
@@ -1519,7 +1519,7 @@
       "latitude": 41.89716,
       "longitude": -106.22062,
       "region": "WY",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-15700097"
     },
     {
@@ -1528,7 +1528,7 @@
       "latitude": 41.89761,
       "longitude": -106.22117,
       "region": "WY",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-15701946"
     },
     {
@@ -1537,7 +1537,7 @@
       "latitude": 33.35555,
       "longitude": -111.59768,
       "region": "AZ",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-28808694"
     },
     {
@@ -1546,7 +1546,7 @@
       "latitude": 33.32059,
       "longitude": -111.77489,
       "region": "AZ",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-30140447"
     },
     {
@@ -1555,7 +1555,7 @@
       "latitude": 33.32938,
       "longitude": -111.7049,
       "region": "AZ",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-30140734"
     },
     {
@@ -1564,7 +1564,7 @@
       "latitude": 33.29079,
       "longitude": -111.70283,
       "region": "AZ",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-30140875"
     },
     {
@@ -1573,7 +1573,7 @@
       "latitude": 33.2453,
       "longitude": -111.83337,
       "region": "AZ",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-30515650"
     },
     {
@@ -1582,7 +1582,7 @@
       "latitude": 38.2029,
       "longitude": -120.07688,
       "region": "CA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-94633368"
     },
     {
@@ -1591,7 +1591,7 @@
       "latitude": 38.18658,
       "longitude": -120.11212,
       "region": "CA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-94735758"
     },
     {
@@ -1600,7 +1600,7 @@
       "latitude": 37.80924,
       "longitude": -120.29962,
       "region": "CA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-368173858"
     },
     {
@@ -1609,7 +1609,7 @@
       "latitude": 41.98542,
       "longitude": -122.3603,
       "region": "CA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-368174426"
     },
     {
@@ -1618,7 +1618,7 @@
       "latitude": 37.84022,
       "longitude": -122.47752,
       "region": "CA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-669137776"
     },
     {
@@ -1627,7 +1627,7 @@
       "latitude": 31.72251,
       "longitude": -83.27757,
       "region": "GA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-9662501205"
     },
     {
@@ -1636,7 +1636,7 @@
       "latitude": 32.00657,
       "longitude": -84.24009,
       "region": "GA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-9667366078"
     },
     {
@@ -1645,7 +1645,7 @@
       "latitude": 32.2542,
       "longitude": -84.10734,
       "region": "GA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-9667572589"
     },
     {
@@ -1654,7 +1654,7 @@
       "latitude": 32.40507,
       "longitude": -84.07547,
       "region": "GA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-9667572775"
     },
     {
@@ -1663,7 +1663,7 @@
       "latitude": 32.03714,
       "longitude": -84.22924,
       "region": "GA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-9667949275"
     },
     {
@@ -1672,7 +1672,7 @@
       "latitude": 42.58085,
       "longitude": -71.52369,
       "region": "MA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-2009439040"
     },
     {
@@ -1681,7 +1681,7 @@
       "latitude": 42.15644,
       "longitude": -71.14396,
       "region": "MA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-2496164318"
     },
     {
@@ -1690,7 +1690,7 @@
       "latitude": 42.3643,
       "longitude": -71.09929,
       "region": "MA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-13191873714"
     },
     {
@@ -1699,7 +1699,7 @@
       "latitude": 42.35387,
       "longitude": -71.05519,
       "region": "MA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-29569070"
     },
     {
@@ -1708,7 +1708,7 @@
       "latitude": 42.35948,
       "longitude": -71.05493,
       "region": "MA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-29575721"
     },
     {
@@ -1717,7 +1717,7 @@
       "latitude": 44.90633,
       "longitude": -93.42808,
       "region": "MN",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-1368320171"
     },
     {
@@ -1726,7 +1726,7 @@
       "latitude": 44.50659,
       "longitude": -92.91742,
       "region": "MN",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-1614986995"
     },
     {
@@ -1735,7 +1735,7 @@
       "latitude": 44.9131,
       "longitude": -93.41203,
       "region": "MN",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-1691530694"
     },
     {
@@ -1744,7 +1744,7 @@
       "latitude": 44.44212,
       "longitude": -95.76597,
       "region": "MN",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-7576375930"
     },
     {
@@ -1753,7 +1753,7 @@
       "latitude": 44.43929,
       "longitude": -95.76562,
       "region": "MN",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-7576375931"
     },
     {
@@ -1762,7 +1762,7 @@
       "latitude": 39.52764,
       "longitude": -75.02324,
       "region": "NJ",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-11628656284"
     },
     {
@@ -1771,7 +1771,7 @@
       "latitude": 39.32327,
       "longitude": -74.64864,
       "region": "NJ",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-11565754"
     },
     {
@@ -1780,7 +1780,7 @@
       "latitude": 40.73786,
       "longitude": -74.09848,
       "region": "NJ",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-39836038"
     },
     {
@@ -1789,7 +1789,7 @@
       "latitude": 39.81177,
       "longitude": -75.24923,
       "region": "NJ",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-40334135"
     },
     {
@@ -1798,7 +1798,7 @@
       "latitude": 40.30023,
       "longitude": -74.78601,
       "region": "NJ",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-41776569"
     },
     {
@@ -1807,7 +1807,7 @@
       "latitude": 40.80455,
       "longitude": -73.90291,
       "region": "NY",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-368062840"
     },
     {
@@ -1816,7 +1816,7 @@
       "latitude": 43.12013,
       "longitude": -77.69337,
       "region": "NY",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-11274403004"
     },
     {
@@ -1825,7 +1825,7 @@
       "latitude": 43.22179,
       "longitude": -78.02627,
       "region": "NY",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-13899922008"
     },
     {
@@ -1834,7 +1834,7 @@
       "latitude": 42.10839,
       "longitude": -79.2265,
       "region": "NY",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-14080348342"
     },
     {
@@ -1843,7 +1843,7 @@
       "latitude": 42.12098,
       "longitude": -74.39345,
       "region": "NY",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-20223992"
     },
     {
@@ -1852,7 +1852,7 @@
       "latitude": 41.3976,
       "longitude": -82.59417,
       "region": "OH",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-4145069231"
     },
     {
@@ -1861,7 +1861,7 @@
       "latitude": 39.29626,
       "longitude": -84.56528,
       "region": "OH",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-5463269477"
     },
     {
@@ -1870,7 +1870,7 @@
       "latitude": 41.14475,
       "longitude": -80.56865,
       "region": "OH",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-12456212018"
     },
     {
@@ -1879,7 +1879,7 @@
       "latitude": 39.32455,
       "longitude": -83.35331,
       "region": "OH",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-12763332612"
     },
     {
@@ -1888,7 +1888,7 @@
       "latitude": 41.58637,
       "longitude": -81.52628,
       "region": "OH",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-13175814541"
     },
     {
@@ -1897,7 +1897,7 @@
       "latitude": 36.00027,
       "longitude": -96.10842,
       "region": "OK",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-13290066347"
     },
     {
@@ -1906,7 +1906,7 @@
       "latitude": 36.20531,
       "longitude": -95.94067,
       "region": "OK",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-13352518115"
     },
     {
@@ -1915,7 +1915,7 @@
       "latitude": 36.11139,
       "longitude": -95.8657,
       "region": "OK",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-13583272650"
     },
     {
@@ -1924,7 +1924,7 @@
       "latitude": 34.01521,
       "longitude": -95.51493,
       "region": "OK",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-14702837"
     },
     {
@@ -1933,7 +1933,7 @@
       "latitude": 36.00377,
       "longitude": -96.22155,
       "region": "OK",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-68147494"
     },
     {
@@ -1942,7 +1942,7 @@
       "latitude": 44.95011,
       "longitude": -123.00204,
       "region": "OR",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-8915522348"
     },
     {
@@ -1951,7 +1951,7 @@
       "latitude": 45.01474,
       "longitude": -122.9994,
       "region": "OR",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-32333686"
     },
     {
@@ -1960,7 +1960,7 @@
       "latitude": 45.53329,
       "longitude": -122.66015,
       "region": "OR",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-39380969"
     },
     {
@@ -1969,7 +1969,7 @@
       "latitude": 45.54143,
       "longitude": -122.66518,
       "region": "OR",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-39636199"
     },
     {
@@ -1978,7 +1978,7 @@
       "latitude": 45.26735,
       "longitude": -122.72216,
       "region": "OR",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-40941186"
     },
     {
@@ -1987,7 +1987,7 @@
       "latitude": 34.76294,
       "longitude": -81.64521,
       "region": "SC",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-9919465727"
     },
     {
@@ -1996,7 +1996,7 @@
       "latitude": 34.37213,
       "longitude": -80.05242,
       "region": "SC",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-12330415"
     },
     {
@@ -2005,7 +2005,7 @@
       "latitude": 34.71444,
       "longitude": -82.7919,
       "region": "SC",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-27766872"
     },
     {
@@ -2014,7 +2014,7 @@
       "latitude": 34.69124,
       "longitude": -82.81003,
       "region": "SC",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-28476204"
     },
     {
@@ -2023,7 +2023,7 @@
       "latitude": 34.6783,
       "longitude": -82.69766,
       "region": "SC",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-28893616"
     },
     {
@@ -2032,7 +2032,7 @@
       "latitude": 36.31455,
       "longitude": -86.39864,
       "region": "TN",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-27798703"
     },
     {
@@ -2041,7 +2041,7 @@
       "latitude": 35.12205,
       "longitude": -89.86972,
       "region": "TN",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-50278639"
     },
     {
@@ -2050,7 +2050,7 @@
       "latitude": 35.01602,
       "longitude": -85.38923,
       "region": "TN",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-53210862"
     },
     {
@@ -2059,7 +2059,7 @@
       "latitude": 36.27767,
       "longitude": -86.71318,
       "region": "TN",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-53624949"
     },
     {
@@ -2068,7 +2068,7 @@
       "latitude": 35.22707,
       "longitude": -85.09422,
       "region": "TN",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-80436792"
     },
     {
@@ -2077,7 +2077,7 @@
       "latitude": 29.55962,
       "longitude": -95.65307,
       "region": "TX",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-1743496119"
     },
     {
@@ -2086,7 +2086,7 @@
       "latitude": 31.78488,
       "longitude": -101.83603,
       "region": "TX",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-11922386120"
     },
     {
@@ -2095,7 +2095,7 @@
       "latitude": 29.72102,
       "longitude": -97.72564,
       "region": "TX",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-15160692"
     },
     {
@@ -2104,7 +2104,7 @@
       "latitude": 31.54917,
       "longitude": -96.24171,
       "region": "TX",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-15235852"
     },
     {
@@ -2113,7 +2113,7 @@
       "latitude": 29.67898,
       "longitude": -97.3009,
       "region": "TX",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-15248166"
     },
     {
@@ -2122,7 +2122,7 @@
       "latitude": 38.89845,
       "longitude": -77.17774,
       "region": "VA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-6065215158"
     },
     {
@@ -2131,7 +2131,7 @@
       "latitude": 38.91376,
       "longitude": -77.18883,
       "region": "VA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-6065302896"
     },
     {
@@ -2140,7 +2140,7 @@
       "latitude": 38.92034,
       "longitude": -77.23323,
       "region": "VA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-6065450768"
     },
     {
@@ -2149,7 +2149,7 @@
       "latitude": 38.92423,
       "longitude": -77.21077,
       "region": "VA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-6067791369"
     },
     {
@@ -2158,7 +2158,7 @@
       "latitude": 38.92688,
       "longitude": -77.20627,
       "region": "VA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-6067833722"
     },
     {
@@ -2167,7 +2167,7 @@
       "latitude": 47.63824,
       "longitude": -122.38777,
       "region": "WA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-2308991672"
     },
     {
@@ -2176,7 +2176,7 @@
       "latitude": 47.57738,
       "longitude": -122.20192,
       "region": "WA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-2498568227"
     },
     {
@@ -2185,7 +2185,7 @@
       "latitude": 47.63233,
       "longitude": -122.32484,
       "region": "WA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-5479023932"
     },
     {
@@ -2194,7 +2194,7 @@
       "latitude": 47.61753,
       "longitude": -122.32022,
       "region": "WA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-5487520098"
     },
     {
@@ -2203,7 +2203,7 @@
       "latitude": 47.05727,
       "longitude": -122.95988,
       "region": "WA",
-      "location_origin": "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site",
+      "location_origin": "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site",
       "source_id": "osm-5917957736"
     }
   ]

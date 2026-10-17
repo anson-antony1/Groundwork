@@ -20,7 +20,7 @@ except ImportError:
 ENDPOINTS = ["https://overpass-api.de/api/interpreter", "https://overpass.kumi.systems/api/interpreter",
              "https://overpass.private.coffee/api/interpreter"]
 HEADERS = {"User-Agent": "GroundWork-hackathon/0.1", "Accept": "application/json"}
-ORIGIN = "OpenStreetMap power substation (via get_sites_us_v1.py); coordinates are real, not a confirmed utility work site"
+ORIGIN = "OpenStreetMap power substation (via get_sites_us_v2.py); coordinates are real, not a confirmed utility work site"
 STATES = {"AL": "Alabama", "AK": "Alaska", "AZ": "Arizona", "AR": "Arkansas", "CA": "California", "CO": "Colorado",
           "CT": "Connecticut", "DE": "Delaware", "DC": "District of Columbia", "FL": "Florida", "GA": "Georgia",
           "HI": "Hawaii", "ID": "Idaho", "IL": "Illinois", "IN": "Indiana", "IA": "Iowa", "KS": "Kansas",

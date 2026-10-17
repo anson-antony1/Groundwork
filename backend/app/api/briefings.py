@@ -21,7 +21,9 @@ def create_briefing():
 
 @router.get("", response_model=PageEnvelope[BriefingOut], summary="Past briefings, newest first")
 def list_briefings(page: PageParams = Depends(page_params)):
-    return paged(briefings.list_briefings(), page, "simulated", mappers.briefing_out)
+    items = list(briefings.list_briefings())
+    mode = items[0].mode if items else "simulated"
+    return paged(items, page, mode, mappers.briefing_out)
 
 
 @router.get("/{briefing_id}", response_model=Envelope[BriefingOut], responses=error_responses(404),
