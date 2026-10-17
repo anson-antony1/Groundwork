@@ -43,19 +43,19 @@ The **Must** column is the team's launch contract. Demo mode is allowed, but **s
  
 | ID | Requirement | Implementation | Definition of done |
 |---|---|---|---|
-| P1 | **50+ real geographic sites** | Curated set of ≥50 distinct, valid coordinates and names, ideally actual public utility-access-relevant locations without claiming private company work orders | Map and ranked list show ≥50 site records; site coordinates are real, source of coordinates documented |
-| P2 | **Real weather/soil inputs** | Open-Meteo forecast/history + USDA NRCS soil data; optional NWS alerts and FEMA/USGS indicators | Each site shows data origin, observed/forecast period, fetched-at timestamp, and any missing fields |
-| P3 | **Hazard score (0–10)** | Rules-based weather risk composite with transparent sub-scores | Each site has score and explanation; missing data cannot silently become zero risk |
-| P4 | **Lightning stop-work** | Active NWS thunderstorm-related warning/alert as conservative trigger; historical replay fallback. Strike-based radius/countdown only with verified licensed strike feed | Triggering alert displays prominent STOP WORK; no unsupported "30-minute all clear" claim |
-| P5 | **Flooding** | NWS flood-related alerts + precipitation and optional water level/FEMA map context | Flood concern appears in score and safety state; FEMA flood zones are long-term susceptibility, not live flood detection |
-| P6 | **Heat** | Forecast apparent temperature and/or properly calculated heat index with configurable policy | Heat concern displayed and linked to a recommended supervisor review/action; threshold is labeled as demo policy |
-| P7 | **Vehicle-specific access** | Ground-wetness/soil indicators + pickup/heavy-truck sensitivity policy | Changing vehicle changes access call without changing meteorological hazard score |
+| P1 | ✅ **50+ real geographic sites** | Curated set of ≥50 distinct, valid coordinates and names, ideally actual public utility-access-relevant locations without claiming private company work orders | Map and ranked list show ≥50 site records; site coordinates are real, source of coordinates documented |
+| P2 | ✅ **Real weather/soil inputs** | Open-Meteo forecast/history + USDA NRCS soil data; optional NWS alerts and FEMA/USGS indicators | Each site shows data origin, observed/forecast period, fetched-at timestamp, and any missing fields |
+| P3 | ✅ **Hazard score (0–10)** | Rules-based weather risk composite with transparent sub-scores | Each site has score and explanation; missing data cannot silently become zero risk |
+| P4 | ✅ **Lightning stop-work** | Active NWS thunderstorm-related warning/alert as conservative trigger; historical replay fallback. Strike-based radius/countdown only with verified licensed strike feed | Triggering alert displays prominent STOP WORK; no unsupported "30-minute all clear" claim |
+| P5 | ✅ **Flooding** | NWS flood-related alerts + precipitation and optional water level/FEMA map context | Flood concern appears in score and safety state; FEMA flood zones are long-term susceptibility, not live flood detection |
+| P6 | ✅ **Heat** | Forecast apparent temperature and/or properly calculated heat index with configurable policy | Heat concern displayed and linked to a recommended supervisor review/action; threshold is labeled as demo policy |
+| P7 | ✅ **Vehicle-specific access** | Ground-wetness/soil indicators + pickup/heavy-truck sensitivity policy | Changing vehicle changes access call without changing meteorological hazard score |
 | P8 | **Mat staging range** | Editable mat dimensions, effective coverage, route dimensions, layer policy, availability | UI shows range + calculation + units + engineering caveat |
 | P9 | **Mats vs postpone cost** | User inputs for rental, handling, labor, hours, equipment | Recalculates live; labels assumed values and does not call savings guaranteed |
 | P10 | **Crew hazard report** | Photo + text + GPS/site + timestamp; image tagging is advisory | Submitted report displays as map pin/feed item; report is distinguishable from verified official hazard alert |
-| P11 | **6 PM briefing** | Deterministic aggregation → optional LLM narration | A manual Generate 6 PM Plan button creates ranked priority list and mentions data gaps; automated scheduler only if time permits |
+| P11 | ✅ **6 PM briefing** | Deterministic aggregation → optional LLM narration | A manual Generate 6 PM Plan button creates ranked priority list and mentions data gaps; automated scheduler only if time permits |
 | P12 | **Physical demo (site beacon)** | Arduino Uno reads the Grove moisture sensor (plus light and barometer once Tiers 2–3 work) and drives the Grove LCD, red/green LEDs and buzzer; a laptop serial bridge relays readings to the API and status back to the beacon (see §5) | Pouring water changes the actual sensor reading, reaches the UI, can change the demo access recommendation, and the beacon's LEDs/LCD reflect the server's status within ~2 s; recorded replay works when unplugged |
-| P13 | **Incident replay** | Saved past-storm event data with source and timestamps | Replay triggers STOP WORK and restores original live/scenario state when exited |
+| P13 | ✅ **Incident replay** | Saved past-storm event data with source and timestamps | Replay triggers STOP WORK and restores original live/scenario state when exited |
 | P14 | **Reliable end-to-end demonstration** | Dedicated two-minute scripted path and local fallbacks | Full demo works without external API access after initial data snapshot |
 | P15 | **Crew acknowledgment** | Touch sensor on the beacon acknowledges a STOP WORK alarm; the event is logged with a timestamp | Buzzer stops and the dashboard shows "acknowledged at [time]" while status **stays** STOP_WORK |
  
@@ -1018,3 +1018,11 @@ flowchart LR
 ```
  
 **Live demo:** pour water → sensor reading, dashboard and beacon change → switch vehicles and compare costs → replay storm STOP WORK (beacon alarm, touch to acknowledge) → submit photo report → show 50+ sites and briefing. Sensor tray data is *not* evidence about a remote site.
+
+## Risk intelligence notes (hazard, replay, briefing)
+
+- **Hazard score (0-10)** = forecast rain (4) + gusts (3) + heat (3). Any NWS alert naming a thunderstorm, tornado, hurricane, tropical storm, flash flood or flood warning forces STOP_WORK. Other active alerts give at least CAUTION, except surf and rip-current advisories, which stay visible in `alert_events` but do not raise CAUTION. A failed alert check or missing forecast is UNKNOWN, never safe.
+- **All thresholds are demo policy** (`HAZARD_POLICY` in `backend/app/services/hazard.py`), not validated against field data. Vehicle access is a preliminary screening from ground-wetness indicators, not a measured soil bearing capacity.
+- **Weather snapshot:** `python -m backend.scripts.fetch_weather` (needs internet). The API reads only the snapshot, so the demo works offline. Stale values are still served and flagged.
+- **Storm replay (P13):** Hurricane Milton, forecast day 2024-10-09. Rain and gusts are real Open-Meteo archive data. The hurricane warning is **simulated**, because historical NWS alerts aren't available. Rebuild with `python -m backend.scripts.build_storm_replay_v1` (needs internet). Milton exceeds the scale maximum, so every site scores 7.0.
+- **6 PM briefing:** generating with Gemini takes about 20 seconds, so generate it before the demo and show the saved one (`GET /api/v1/briefings`, newest first). Without internet it falls back to a short template summary.

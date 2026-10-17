@@ -241,6 +241,29 @@
         "title": "CostInputs",
         "type": "object"
       },
+      "DemoResetOut": {
+        "properties": {
+          "device_events_cleared": {
+            "title": "Device Events Cleared",
+            "type": "integer"
+          },
+          "replay_stopped": {
+            "title": "Replay Stopped",
+            "type": "boolean"
+          },
+          "reports_cleared": {
+            "title": "Reports Cleared",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "replay_stopped",
+          "reports_cleared",
+          "device_events_cleared"
+        ],
+        "title": "DemoResetOut",
+        "type": "object"
+      },
       "DemoTrayAccessOut": {
         "properties": {
           "basis": {
@@ -530,6 +553,58 @@
         "title": "Envelope[BriefingOut]",
         "type": "object"
       },
+      "Envelope_DemoResetOut_": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/DemoResetOut"
+          },
+          "errors": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Errors",
+            "type": "array"
+          },
+          "generated_at": {
+            "format": "date-time",
+            "title": "Generated At",
+            "type": "string"
+          },
+          "missing_fields": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Missing Fields",
+            "type": "array"
+          },
+          "mode": {
+            "enum": [
+              "live",
+              "cached",
+              "replay",
+              "simulated",
+              "sensor_demo",
+              "sensor_replay"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "sources": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Sources",
+            "type": "array"
+          }
+        },
+        "required": [
+          "mode",
+          "generated_at",
+          "data"
+        ],
+        "title": "Envelope[DemoResetOut]",
+        "type": "object"
+      },
       "Envelope_DeviceEventOut_": {
         "properties": {
           "data": {
@@ -580,6 +655,58 @@
           "data"
         ],
         "title": "Envelope[DeviceEventOut]",
+        "type": "object"
+      },
+      "Envelope_DisplayOut_": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/DisplayOut"
+          },
+          "errors": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Errors",
+            "type": "array"
+          },
+          "generated_at": {
+            "format": "date-time",
+            "title": "Generated At",
+            "type": "string"
+          },
+          "missing_fields": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Missing Fields",
+            "type": "array"
+          },
+          "mode": {
+            "enum": [
+              "live",
+              "cached",
+              "replay",
+              "simulated",
+              "sensor_demo",
+              "sensor_replay"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "sources": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Sources",
+            "type": "array"
+          }
+        },
+        "required": [
+          "mode",
+          "generated_at",
+          "data"
+        ],
+        "title": "Envelope[DisplayOut]",
         "type": "object"
       },
       "Envelope_EvaluationOut_": {
@@ -2324,6 +2451,13 @@
           "access_call": {
             "$ref": "#/components/schemas/VehicleAccessOut"
           },
+          "alert_events": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Alert Events",
+            "type": "array"
+          },
           "data_status": {
             "enum": [
               "sensor_demo",
@@ -2341,6 +2475,13 @@
             "format": "date-time",
             "title": "Evaluated At",
             "type": "string"
+          },
+          "hazard_explanation": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Hazard Explanation",
+            "type": "array"
           },
           "hazard_score": {
             "anyOf": [
@@ -2442,6 +2583,13 @@
           "access_call": {
             "$ref": "#/components/schemas/VehicleAccessOut"
           },
+          "alert_events": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Alert Events",
+            "type": "array"
+          },
           "data_status": {
             "enum": [
               "sensor_demo",
@@ -2459,6 +2607,13 @@
             "format": "date-time",
             "title": "Evaluated At",
             "type": "string"
+          },
+          "hazard_explanation": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Hazard Explanation",
+            "type": "array"
           },
           "hazard_score": {
             "anyOf": [
@@ -2562,6 +2717,7 @@
             "enum": [
               "ack_touch",
               "crew_flag",
+              "crew_flag_cleared",
               "hazard_report",
               "replay_started",
               "replay_stopped",
@@ -2887,6 +3043,144 @@
         "summary": "One briefing",
         "tags": [
           "briefings"
+        ]
+      }
+    },
+    "/api/v1/demo/reset": {
+      "post": {
+        "operationId": "reset_demo_api_v1_demo_reset_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_DemoResetOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Missing or invalid sensor token"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Validation failed"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Rate limit exceeded"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unexpected server error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Demo only: end replay, clear session reports/acks, re-arm beacon",
+        "tags": [
+          "demo"
+        ]
+      }
+    },
+    "/api/v1/devices/{device_id}/crew-flag": {
+      "delete": {
+        "operationId": "clear_crew_flag_api_v1_devices__device_id__crew_flag_delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "device_id",
+            "required": true,
+            "schema": {
+              "title": "Device Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_DisplayOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Resource not found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Validation failed"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Rate limit exceeded"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unexpected server error"
+          }
+        },
+        "summary": "Clear a crew flag (supervisor); returns the updated beacon display",
+        "tags": [
+          "devices"
         ]
       }
     },
