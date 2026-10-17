@@ -368,7 +368,7 @@ GET /api/v1/devices/tray-01/display
 - Arduino Uno, **USB-B cable** (and adapter), laptop with the Arduino IDE and libraries installed: Seeed's Grove LCD RGB Backlight library, plus the library matching the barometer's chip (check the board label: BMP180, BMP280 or BME280).
 - Grove modules from §5.1, a connection method from §5.3, breadboard, resistors, jumpers.
 - Two shallow trays, soil/sand, water bottle, towels, waterproof tray under electronics, zip ties/tape, a small box to raise the electronics.
-- Laptop browser with Groundwork's Sensor Lab view; backup `sensor_replay.csv`; a short phone video of the beacon working.
+- Laptop browser with Groundwork's Demo Tray tab; backup `sensor_replay.csv`; a short phone video of the beacon working.
 - Keep electronics and mains power protected from spilled water.
 ### 5.11 Demo event behavior
  
@@ -798,7 +798,7 @@ The Vite dev server proxies `/api` and `/uploads` to the backend, so the browser
  
 - The demo site is up: the health URL above says `ok` with 301 sites. A backend on a laptop (§"Running everything") is only the offline backup.
 - Serial bridge running against the demo site's API: `python hardware/serial_bridge.py --port auto --api https://groundwork-api-hsiu.onrender.com`. The beacon shows green `GO` with the probe in the dry corner, and the damp patch reads 40–60.
-- Browser tabs open in order: Operations map → DEMO-TRAY site detail → Sensor Lab → 6 PM briefing. Zoom set so someone standing two steps back can read it.
+- Browser tabs open in order: Map → Demo Tray tab → the tray's mats and cost page (its "Plan mats and cost" link) → 6 PM brief. Zoom set so someone standing two steps back can read it.
 - A 6 PM briefing already generated once, **after the last deploy** (every deploy wipes the hosted database, saved briefings included), so the cached version is ready if Gemini is slow.
 - Do Not Disturb on, screen sleep off, other apps closed.
 **Backups**
@@ -833,7 +833,7 @@ Lines in quotes are what to say. Adapt the wording naturally, but keep the order
 |---|---|---|---|
 | **0:00–0:10** | Rishi | Operations map on screen | "It's 6 PM. A utility supervisor has 300 job sites tomorrow, a week of rain behind them and storms in the forecast. Groundwork turns all of that into one plan for tomorrow." |
 | **0:10–0:30** | Anson | Probe starts in the dry corner (green); he moves it into the damp patch, then points at the beacon | "This is our site beacon, reading real soil. Dry ground: green, go. This patch has had water mixed in, like ground after a week of rain. The reading climbs, our server re-scores the site, and the beacon turns amber: mats for review." |
-| **0:30–0:55** | Rishi | Hands the judge the mouse to switch Pickup → Heavy truck, then scrolls to the cost cards | "Go ahead and switch it to a heavy truck. Same ground, different vehicle: the pickup is fine, but the heavy truck needs roughly 42 to 48 mats. Here's mats versus postponing the job. Every cost is editable, because these are planning assumptions, not quotes." |
+| **0:30–0:55** | Rishi | On the tray's mats and cost page, hands the judge the mouse to switch Pickup → Heavy truck; the mats count and mats vs postponing sit at the top | "Go ahead and switch it to a heavy truck. Same ground, different vehicle: the pickup is fine, but the heavy truck needs roughly 42 to 48 mats. Here's mats versus postponing the job. Every cost is editable, because these are planning assumptions, not quotes." |
 | **0:55–1:25** | Aashita (Anson guides the tap) | Starts the storm replay; the beacon turns red and the buzzer sounds; Anson invites the judge to tap the beacon; Aashita stops the replay at the end (lightning reports are ignored during a replay) | "Now a real storm: this is real weather data from Hurricane Milton, October 2024, replayed, with the real Weather Service warnings issued that day from the Iowa Environmental Mesonet archive. Even with mats staged, every vehicle goes to STOP WORK. Safety always overrides access, and it can't be averaged away. Go ahead and tap the beacon. That records that the crew saw the alarm, but it doesn't clear STOP WORK. Only the weather logic can." |
 | **1:25–1:45** | Rithika, then Anson | Submits a **Lightning observed** report for the venue (DEMO-TRAY) from the phone; the pin appears, the beacon alarms again and its screen counts down from `STOP - CLR 30:00` | **Rithika:** "A crew member at the venue reports lightning. It lands on the map, marked unverified until a supervisor reviews it." **Anson:** "Because it's within 10 miles, the site stops work and the beacon starts a 30-minute all clear, and every new strike restarts it, as Sperry's brief asks. It's crew-reported lightning, not a strike-detection network, and AI never sets a site's status." |
 | **1:45–2:00** | Rithika, then Rishi | Opens the 6 PM briefing, then zooms out to all sites | **Rithika:** "At 6 PM, here's tomorrow's plan: 300 real sites ranked, every number traced to USDA, Open-Meteo or the Weather Service with a timestamp, and the data gaps called out." **Rishi:** "That's Groundwork. Happy to go deeper on anything." |
@@ -853,7 +853,7 @@ The beacon always shows the **heavy truck** (`HVY` on its screen), so it turns a
  
 **Five-minute deep dive** (Sperry, AI-track and hardware judges often have time and want depth). After the two-minute script, pick what fits the judge:
  
-- **"Why this call?" panel:** open a real site and walk through the trigger, soil drainage rating, vehicle class and missing fields.
+- **A real site's call:** open a flagged site; the banner says the call and why, the weather and ground cards show the inputs, and Data and sources lists each input's source and fetch time.
 - **Data coverage:** how many sites have USDA data, weather, both, or gaps, and how fresh each source is.
 - **Safety tests:** show the passing tests for the STOP WORK override and "missing data never means safe."
 - **AI grounding:** the Gemini prompt contract, schema validation, the number check against backend data, and the deterministic fallback working with Gemini switched off.

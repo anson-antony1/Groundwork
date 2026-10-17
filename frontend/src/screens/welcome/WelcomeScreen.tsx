@@ -45,18 +45,18 @@ const TEAM: [string, string][] = [
 
 const BUTTON = 'inline-flex min-h-12 items-center gap-2 rounded-[3px] px-5 text-[0.95rem] label-caps'
 
-/** On the live site the interactive beacon lives on the demo site; everywhere else it's this site's Sensor Lab. */
+/** On the live site the interactive beacon lives on the demo site; everywhere else it's this site's Demo Tray tab. */
 function BeaconDemoLink() {
   const className = `${BUTTON} border-2 border-line-hi text-ink hover:bg-steel-hi`
   if (API_MODE === 'live' && DEMO_URL) {
     return (
-      <a href={`${DEMO_URL}/sensor-lab`} className={className}>
+      <a href={`${DEMO_URL}/demo-tray`} className={className}>
         Try the beacon demo
       </a>
     )
   }
   return (
-    <Link href="/sensor-lab" className={className}>
+    <Link href="/demo-tray" className={className}>
       Try the beacon demo
     </Link>
   )

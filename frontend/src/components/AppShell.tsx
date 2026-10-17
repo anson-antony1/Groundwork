@@ -137,7 +137,7 @@ function DemoBanner({ compact }: { compact: boolean }) {
           </button>
         </>
       ) : (
-        <span className="text-ink">Hackathon prototype · not certified safety guidance</span>
+        <span className="text-ink">Prototype, not certified safety guidance · a supervisor makes the final call</span>
       )}
       {replay?.active ? (
         <span className="font-semibold text-ink" title={replay.source ?? undefined}>
@@ -148,7 +148,6 @@ function DemoBanner({ compact }: { compact: boolean }) {
         sitesMode && <span className="text-muted">Field sites: {MODE_LABEL[sitesMode]}</span>
       )}
       <span className="text-muted">Demo tray: {LABELS.demoSensor}</span>
-      <span className="text-muted">Rules: {LABELS.prototypePolicy}</span>
       {offline && <span className="rounded-[3px] border border-dashed border-unknown px-2 py-0.5 text-unknown label-caps">API unreachable · statuses withheld</span>}
     </div>
   )

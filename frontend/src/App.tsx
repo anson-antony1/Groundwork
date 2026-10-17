@@ -69,6 +69,8 @@ function OpsApp() {
             <Switch>
               <Route path="/" component={OpsMapScreen} />
               <Route path="/sites/:siteId">{(params) => <SiteDetailScreen key={params.siteId} siteId={params.siteId} />}</Route>
+              <Route path="/demo-tray" component={SensorLabScreen} />
+              {/* Old address of the same screen, kept so saved links still work. */}
               <Route path="/sensor-lab" component={SensorLabScreen} />
               <Route path="/replay" component={ReplayScreen} />
               <Route path="/briefing" component={BriefingScreen} />

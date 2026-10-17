@@ -29,9 +29,11 @@ interface TileProps {
   stale: boolean
   /** No reading has arrived at all (vs. a reading without this module's value). */
   noReading: boolean
+  /** What the reading is for, in one line. */
+  use: string
 }
 
-function Tile({ label, icon: Icon, value, digits, unit, provenance, hero, stale, noReading }: TileProps) {
+function Tile({ label, icon: Icon, value, digits, unit, provenance, hero, stale, noReading, use }: TileProps) {
   const present = typeof value === 'number' && !stale
   return (
     <div className={cx('flex flex-col gap-2 rounded-[4px] border border-line bg-panel p-4', hero && 'border-accent/50 bg-gradient-to-br from-accent/10 to-transparent sm:col-span-2')}>
@@ -54,6 +56,7 @@ function Tile({ label, icon: Icon, value, digits, unit, provenance, hero, stale,
       ) : (
         <NoValue text={noReading ? 'No reading yet' : 'Not connected'} />
       )}
+      <p className="border-t border-line pt-2 text-[0.9rem] leading-snug">{use}</p>
       <div className="text-[0.78rem] leading-snug text-muted">{provenance}</div>
     </div>
   )
@@ -72,8 +75,10 @@ export function ReadingTiles({ reading, now, stale }: { reading: Reading | null;
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 2xl:grid-cols-3">
       <Tile
         hero
-        label="Soil moisture index · demo tray"
+        label="Soil moisture · demo tray"
         icon={Droplets}
+        use="Used for the ground call: go, mats or no-go."
+
         value={reading?.moisture_index}
         digits={1}
         unit="/ 100"
@@ -84,24 +89,25 @@ export function ReadingTiles({ reading, now, stale }: { reading: Reading | null;
             {LABELS.demoSensor} · {when}
             {quality}
             <br />
-            Calibrated 0–100 relative scale, not volumetric water content
+            0–100 between the tray's dry and wet calibration points, not volumetric water content
             {reading?.calibration && ` · ${reading.calibration}`}
             {reading?.raw_adc != null && ` · raw ADC ${reading.raw_adc}`}
           </>
         }
       />
-      <Tile label="Light index" noReading={!reading} icon={Sun} value={reading?.light_index} digits={1} unit="/ 100" stale={stale} provenance={<>{LABELS.demoBeacon}</>} />
+      <Tile label="Light" noReading={!reading} icon={Sun} value={reading?.light_index} digits={1} unit="/ 100" stale={stale} use="Below 25 adds a “check work lights” note." provenance={<>{LABELS.demoBeacon}</>} />
       <Tile
-        label="Pressure"
+        label="Air pressure"
+        use="A storm hint when it falls over 3 hours. Never stops work by itself."
         noReading={!reading}
         icon={Gauge}
         value={reading?.pressure_hpa}
         digits={1}
         unit="hPa"
         stale={stale}
-        provenance={<>Station pressure, not sea-level · advisory only, never a STOP WORK trigger</>}
+        provenance={<>Station pressure, not sea-level · {LABELS.demoBeacon}</>}
       />
-      <Tile label="Temperature" noReading={!reading} icon={Thermometer} value={cToF(reading?.temp_c)} digits={0} unit="°F" stale={stale} provenance={<>{LABELS.demoBeacon}</>} />
+      <Tile label="Temperature" noReading={!reading} icon={Thermometer} value={cToF(reading?.temp_c)} digits={0} unit="°F" stale={stale} use="Shown for the crew. Not used in the call." provenance={<>{LABELS.demoBeacon}</>} />
     </div>
   )
 }
