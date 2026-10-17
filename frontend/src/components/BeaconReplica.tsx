@@ -1,10 +1,14 @@
 import { BellRing, Hand, MousePointerClick, VolumeX } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 import type { Display } from '../api/types'
 import { fmtClock } from '../domain/format'
 import { LABELS } from '../domain/provenance'
 import { beaconVisual } from '../domain/status'
 import type { Backlight, LedState } from '../domain/status'
+import { useReducedMotion } from '../hooks/useReducedMotion'
 import { cx } from './cx'
+
+const NBSP = String.fromCharCode(160)
 
 const BACKLIGHT: Record<Backlight, string> = {
   green: 'bg-lcd-green shadow-[0_0_44px_6px_rgb(126_226_161/0.35)]',
@@ -45,6 +49,43 @@ function Screw({ className }: { className: string }) {
   )
 }
 
+/**
+ * One LCD character cell. When its character changes it turns edge-on, swaps the glyph and turns
+ * back, staggered left to right like the real 16x2 refreshing. Reduced motion shows it at once.
+ */
+function LcdCell({ ch, order }: { ch: string; order: number }) {
+  const reduced = useReducedMotion()
+  const [shown, setShown] = useState(ch)
+  const glyph = useRef<HTMLSpanElement>(null)
+  useEffect(() => {
+    const el = glyph.current
+    if (reduced || ch === shown || !el || typeof el.animate !== 'function') return
+    const turn = el.animate([{ transform: 'rotateX(0deg)' }, { transform: 'rotateX(90deg)' }], {
+      duration: 80,
+      delay: order * 18,
+      easing: 'ease-in',
+      fill: 'forwards',
+    })
+    turn.onfinish = () => {
+      setShown(ch)
+      turn.cancel()
+      el.animate([{ transform: 'rotateX(-90deg)' }, { transform: 'rotateX(0deg)' }], { duration: 110, easing: 'ease-out' })
+    }
+    return () => {
+      turn.onfinish = null
+      turn.cancel()
+    }
+  }, [ch, shown, reduced, order])
+  const text = reduced ? ch : shown
+  return (
+    <span className="flex w-[0.62em] justify-center rounded-[1px] bg-lcd-ink/[0.07] [perspective:400px]">
+      <span ref={glyph} className="inline-block">
+        {text === ' ' ? NBSP : text}
+      </span>
+    </span>
+  )
+}
+
 /** Pads or trims to the LCD's 16 columns. */
 function lcdRow(text: string | null | undefined): string[] {
   return [...(text ?? '').slice(0, 16).padEnd(16, ' ')]
@@ -68,6 +109,18 @@ export function BeaconReplica({ display, linked, deviceId = 'tray-01', className
   const line1 = live ? display.lcd_line1 : 'NO LINK'
   const line2 = live ? display.lcd_line2 : 'CHECK APP'
   const acked = live && display.code === 'STOP' && display.acknowledged_at
+  const reduced = useReducedMotion()
+  const backlight = useRef<HTMLDivElement>(null)
+  const lastBacklight = useRef(v.backlight)
+
+  // A real backlight flickers when its color switches.
+  useEffect(() => {
+    if (lastBacklight.current === v.backlight) return
+    lastBacklight.current = v.backlight
+    const el = backlight.current
+    if (reduced || !el || typeof el.animate !== 'function') return
+    el.animate([{ filter: 'brightness(1)' }, { filter: 'brightness(0.65)' }, { filter: 'brightness(1.15)' }, { filter: 'brightness(1)' }], { duration: 280 })
+  }, [v.backlight, reduced])
 
   return (
     <figure className={cx('flex flex-col gap-3', className)}>
@@ -87,13 +140,11 @@ export function BeaconReplica({ display, linked, deviceId = 'tray-01', className
         </div>
 
         <div className="rounded-[6px] bg-black p-3 shadow-[inset_0_2px_6px_rgb(0_0_0/0.9)]">
-          <div className={cx('rounded-[3px] px-3 py-2.5 transition-colors duration-300', BACKLIGHT[v.backlight])}>
+          <div ref={backlight} className={cx('rounded-[3px] px-3 py-2.5 transition-colors duration-300', BACKLIGHT[v.backlight])}>
             {[lcdRow(line1), lcdRow(line2)].map((row, r) => (
               <div key={r} className="flex justify-between gap-[0.06em] font-lcd text-[2.35rem] leading-[1.08] text-lcd-ink">
                 {row.map((ch, c) => (
-                  <span key={c} className="flex w-[0.62em] justify-center rounded-[1px] bg-lcd-ink/[0.07]">
-                    {ch === ' ' ? ' ' : ch}
-                  </span>
+                  <LcdCell key={c} ch={ch} order={r * 16 + c} />
                 ))}
               </div>
             ))}

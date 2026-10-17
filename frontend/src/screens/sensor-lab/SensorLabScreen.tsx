@@ -13,6 +13,7 @@ import { STALE_BUDGET_MS, isStale } from '../../domain/staleness'
 import { AckLog } from './AckLog'
 import { MoistureChart, PressurePanel } from './charts'
 import { ReadingTiles } from './ReadingTiles'
+import { TrayCrossSection } from './TrayCrossSection'
 
 /** The beacon goes NO LINK after 6 s without a status line; readings stop on the same USB link. */
 const LINK_SECONDS = 6
@@ -72,7 +73,10 @@ export function SensorLabScreen() {
       </header>
 
       <div className="grid items-start gap-5 xl:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
-        <BeaconReplica display={display.data ?? null} linked={link.ok} deviceId={DEMO_DEVICE_ID} />
+        <div className="flex flex-col gap-5">
+          <BeaconReplica display={display.data ?? null} linked={link.ok} deviceId={DEMO_DEVICE_ID} />
+          <TrayCrossSection moisture={link.ok ? (reading?.moisture_index ?? null) : null} heavy={policy?.demo_tray_access.heavy_truck} />
+        </div>
         <div className="flex flex-col gap-5">
           <ReadingTiles reading={reading} now={now} stale={!link.ok} />
           <Card title="What the dashboard calls the tray" icon={<Radio aria-hidden className="size-4" />}>
