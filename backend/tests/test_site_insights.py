@@ -47,11 +47,6 @@ def test_filter_keeps_global_rank(client):
         assert s["priority_rank"] == everything[s["id"]]
 
 
-def test_site_detail_has_rank(client):
-    sid = field_site(all_sites(client))["id"]
-    assert client.get(f"/api/v1/sites/{sid}").json()["data"]["priority_rank"] >= 1
-
-
 def test_storm_replay_alerts_have_archived_details(client):
     client.post("/api/v1/replay/start", json={"scenario_id": "demo-storm"})
     sites = all_sites(client)

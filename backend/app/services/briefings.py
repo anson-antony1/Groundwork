@@ -7,7 +7,7 @@ from .. import repositories as repo
 from ..core.errors import NotFoundError
 from ..repositories.records import BriefingRecord, PrioritySite
 from . import timeline
-from .site_status import list_statuses, portfolio_mode
+from .site_status import SiteStatus, list_statuses, portfolio_mode, priority_key
 
 from . import narration
 
@@ -16,24 +16,11 @@ log = logging.getLogger("groundwork.briefings")
 TOP_N = 10
 
 
-<<<<<<< HEAD
-=======
-def _priority_key(s: SiteStatus) -> tuple:
-    # Critical alerts first, then hazard score, then access restriction, then missing data.
-    return (
-        s.weather_state != "STOP_WORK",
-        -(s.hazard_score or 0),
-        min(ACCESS_RANK[a] for a in s.access_call.values()),
-        -len(s.missing_fields),
-    )
-
-
 def priority_ranks(statuses: list[SiteStatus]) -> dict[str, int]:
     """1-based rank of every site in briefing order, so the map list and the 6 PM brief agree."""
-    return {s.site.id: i for i, s in enumerate(sorted(statuses, key=_priority_key), start=1)}
+    return {s.site.id: i for i, s in enumerate(sorted(statuses, key=priority_key), start=1)}
 
 
->>>>>>> fbe81baf269f988837db77d93d924de7de1dd797
 def generate_briefing(now: datetime) -> BriefingRecord:
     # Same order as each site's priority_rank, so the map list and the brief always agree.
     statuses = sorted(list_statuses(now), key=lambda s: s.priority_rank)
