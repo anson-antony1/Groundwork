@@ -104,6 +104,18 @@ whoever is at the tray before anyone starts one.
 Verified end to end against `main` with the fake beacon (below): GO → pour → MATS → NO GO →
 replay STOP (buzzer) → touch → `STOP WORK - ACKD`, still STOP → replay stop → NO GO.
 
+**Cable pulled or board reset mid-demo:** the bridge logs `beacon disconnected`, keeps running
+(anything already queued still goes to the API) and retries the port every 2 s; plug it back into the same
+USB socket (or run with `--port auto`) and it logs `beacon reconnected` and resends the status.
+The beacon shows `NO LINK` while the bridge is gone, never green.
+
+**Latency (README section 15 metric):** each LCD change the beacon caused is logged with its
+time, e.g. `beacon <- S|MATS|… (454 ms after the reading)` or `(13 ms after the touch)`, and
+Ctrl+C prints a summary: `latency: reading accepted by API … ; reading -> LCD … ; touch -> LCD …`.
+Changes the beacon didn't cause (a replay started from the dashboard) aren't timed. Against a
+local API with the fake beacon: reading → LCD about 0.5 s, touch → LCD about 15 ms. Add up to
+1 s for the firmware's sampling period, which the bridge can't see.
+
 ## 6. Recorded fallback (USB or Arduino fails on stage)
 
 `fixtures/sensor_replay.csv` is the team's **simulated** fallback (rows labeled
@@ -146,7 +158,7 @@ LCD, LEDs and buzzer would do. Its lines are flagged, so the bridge posts them a
 - [ ] USB-B cable (and adapter), beacon in its box, wires labeled, LCD facing judges
 - [ ] Fresh `moisture-dry` / `moisture-wet` calibration with the stage soil
 - [ ] Bridge prints `ok` for readings; beacon shows green `GO` on the dry tray
-- [ ] Pour → amber within ~2 s; time it in rehearsal (latency metric)
+- [ ] Pour → amber within ~2 s; copy the bridge's `latency:` line at Ctrl+C (latency metric)
 - [ ] Storm replay → red, buzzer; touch → silent, still STOP
 - [ ] Unplug USB → `NO LINK` within 6 s, never green; replug recovers
 - [ ] Real recording copied to `fixtures/sensor_replay.csv`; `--replay` tested with the Uno unplugged

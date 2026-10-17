@@ -21,6 +21,7 @@ import csv
 import json
 import math
 import os
+import signal
 import statistics
 import sys
 import time
@@ -366,7 +367,7 @@ class Api:
 # ---------------------------------------------------------------------------
 
 
-def find_port() -> str:
+def find_ports() -> list[str]:
     from serial.tools import list_ports
 
     candidates = []
@@ -377,39 +378,99 @@ def find_port() -> str:
             candidates.append(name)
     # macOS lists each device as /dev/cu.* and /dev/tty.*; cu does not wait for carrier.
     candidates.sort(key=lambda n: (not n.startswith("/dev/cu."), n))
+    return candidates
+
+
+def find_port() -> str:
+    candidates = find_ports()
     if not candidates:
         raise SystemExit("no Arduino serial port found; plug in the USB-B cable or pass --port (see --list-ports)")
     return candidates[0]
 
 
 class SerialLink:
+    """USB serial to the beacon. If the board disappears (cable pulled, board reset), the link
+    reports it once, keeps the bridge running, and reopens the port when it comes back."""
+    RETRY_SECONDS = 2.0
+
     def __init__(self, port: str, baud: int = 115200, reset_wait: float = 2.0):
         import serial
 
+        self._serial_errors = (serial.SerialException, OSError)
+        self.requested, self.baud, self.reset_wait = port, baud, reset_wait
         self.port = find_port() if port == "auto" else port
+        self.serial = None
+        self.next_retry = 0.0
         try:
-            self.serial = serial.Serial(self.port, baud, timeout=0)
+            self._open(self.port)
         except serial.SerialException as exc:
             raise SystemExit(f"cannot open {self.port}: {exc}. Close the Arduino IDE Serial Monitor; "
                              "only one program can hold the port.") from exc
-        time.sleep(reset_wait)  # opening the port resets the Uno
+
+    @property
+    def connected(self) -> bool:
+        return self.serial is not None
+
+    def _open(self, port: str) -> None:
+        import serial
+
+        self.serial = serial.Serial(port, self.baud, timeout=0)
+        time.sleep(self.reset_wait)  # opening the port resets the Uno
         self.serial.reset_input_buffer()
-        self._buffer = b""
+        self.port, self._buffer = port, b""
+
+    def _lost(self, exc: Exception) -> None:
+        log(f"beacon disconnected ({exc}); retrying every {self.RETRY_SECONDS:g} s")
+        try:
+            self.serial.close()
+        except self._serial_errors:
+            pass
+        self.serial, self._buffer = None, b""
+        self.next_retry = time.monotonic() + self.RETRY_SECONDS
+
+    def _reconnect(self) -> None:
+        if time.monotonic() < self.next_retry:
+            return
+        self.next_retry = time.monotonic() + self.RETRY_SECONDS
+        ports = find_ports() if self.requested == "auto" else [self.requested]
+        for port in ports:
+            try:
+                self._open(port)
+            except self._serial_errors:
+                self.serial = None
+                continue
+            log(f"beacon reconnected on {port}")
+            return
 
     def read_lines(self) -> list[str]:
-        waiting = self.serial.in_waiting
-        if waiting:
-            self._buffer += self.serial.read(waiting)
+        if not self.connected:
+            self._reconnect()
+            return []
+        try:
+            waiting = self.serial.in_waiting
+            if waiting:
+                self._buffer += self.serial.read(waiting)
+        except self._serial_errors as exc:
+            self._lost(exc)
+            return []
         if len(self._buffer) > 4096 and b"\n" not in self._buffer:
             self._buffer = b""  # garbage with no line breaks
         *lines, self._buffer = self._buffer.split(b"\n")
         return [line.decode("utf-8", errors="replace").rstrip("\r") for line in lines]
 
-    def write_line(self, line: str) -> None:
-        self.serial.write((line + "\n").encode("ascii", errors="replace"))
+    def write_line(self, line: str) -> bool:
+        if not self.connected:
+            return False
+        try:
+            self.serial.write((line + "\n").encode("ascii", errors="replace"))
+        except self._serial_errors as exc:
+            self._lost(exc)
+            return False
+        return True
 
     def close(self) -> None:
-        self.serial.close()
+        if self.serial is not None:
+            self.serial.close()
 
 
 # ---------------------------------------------------------------------------
@@ -498,6 +559,55 @@ class Recorder:
 # ---------------------------------------------------------------------------
 
 
+class Latency:
+    """Rehearsal timings for README section 15: how long the beacon takes to show what it caused.
+
+    "accepted" is a reading's POST round trip. "reading" is a moisture-driven LCD change (GO, MATS
+    and NOGO only) timed from the newest serial reading; "touch" is an LCD change within EVENT_WINDOW
+    of a touch or crew flag, timed from that event. Changes the beacon didn't cause (a replay started
+    from the dashboard, the server coming back) are not timed. The firmware's own sampling period
+    (up to 1 s before a line is sent) is not visible here.
+    """
+    ACCESS_CODES = {"GO", "MATS", "NOGO"}
+    EVENT_WINDOW = 5.0
+
+    def __init__(self) -> None:
+        self.reading_at: Optional[float] = None
+        self.event_at: Optional[float] = None
+        self.samples: dict[str, list[float]] = {"accepted": [], "reading": [], "touch": []}
+
+    @staticmethod
+    def _code(line: Optional[str]) -> Optional[str]:
+        parts = (line or "").split("|")
+        return parts[1] if len(parts) > 1 else None
+
+    def accepted(self, seconds: float) -> None:
+        self.samples["accepted"].append(seconds * 1000)
+
+    def changed(self, old_line: Optional[str], new_line: str, at: float) -> Optional[str]:
+        """Times an LCD change if a beacon input explains it; returns a note for the log."""
+        if self.event_at is not None and at - self.event_at <= self.EVENT_WINDOW:
+            kind, start = "touch", self.event_at
+            self.event_at = None
+        elif (self.reading_at is not None and self._code(old_line) in self.ACCESS_CODES
+              and self._code(new_line) in self.ACCESS_CODES):
+            kind, start = "reading", self.reading_at
+        else:
+            return None
+        ms = (at - start) * 1000
+        self.samples[kind].append(ms)
+        return f"{ms:.0f} ms after the {kind}"
+
+    def summary(self) -> str:
+        names = {"accepted": "reading accepted by API", "reading": "reading -> LCD", "touch": "touch -> LCD"}
+        parts = []
+        for kind, values in self.samples.items():
+            if values:
+                parts.append(f"{names[kind]} n={len(values)} median {statistics.median(values):.0f} ms "
+                             f"max {max(values):.0f} ms")
+        return "; ".join(parts) or "nothing timed"
+
+
 class Bridge:
     def __init__(self, args: argparse.Namespace, api: Api, link: Optional[SerialLink],
                  replay: Optional[ReplaySource], recorder: Optional[Recorder], cal: dict):
@@ -510,6 +620,7 @@ class Bridge:
         self.rejected_lines = 0
         self.dropped_lines = 0
         self.replay_seq = 0
+        self.latency = Latency()
 
     def _check_sequence(self, msg: dict) -> None:
         if self.last_uptime is not None and msg.get("uptime_ms", self.last_uptime) < self.last_uptime:
@@ -521,7 +632,10 @@ class Bridge:
         self.last_uptime = msg.get("uptime_ms", self.last_uptime)
 
     def _submit(self, payload: dict) -> None:
+        started = time.monotonic()
         status = self.api.submit_reading(payload)
+        if status == "ok":
+            self.latency.accepted(time.monotonic() - started)
         shown = ("raw_adc", "moisture_index", "light_raw", "pressure_hpa", "temp_c")
         values = " ".join(f"{k} {payload[k]:g}" for k in shown if k in payload)
         queued = f" (backlog {len(self.api.readings)})" if self.api.readings else ""
@@ -547,11 +661,13 @@ class Bridge:
         mode = "sensor_replay" if simulated else "sensor_demo"
         if msg["type"] == "event":
             payload = {"event": msg["event"], "seq": msg["seq"], "recorded_at": now_iso(), "mode": mode}
+            self.latency.event_at = time.monotonic()
             log(f"beacon event {msg['event']} -> {self.api.submit_event(payload)}")
             self.next_display = 0.0  # show the server's reaction right away
             return
         if self.replay:
             return  # replay supplies the readings; the board only drives display and events
+        self.latency.reading_at = time.monotonic()
         cal = simulated_calibration() if simulated else self.cal
         payload = reading_payload(msg, cal, self.args.device, self.args.site, mode, now_iso())
         if self.recorder:
@@ -573,9 +689,12 @@ class Bridge:
             display = self.api.display()
             line = status_line(display) if display else NO_SERVER_LINE
             if line != self.last_line or now - self.last_write >= HEARTBEAT_SECONDS:
-                self.link.write_line(line)
+                if not self.link.write_line(line):
+                    self.last_line = None  # resend as soon as the beacon is back
+                    return
                 if line != self.last_line:
-                    log(f"beacon <- {line}")
+                    note = self.latency.changed(self.last_line, line, time.monotonic())
+                    log(f"beacon <- {line}" + (f" ({note})" if note else ""))
                 self.last_line, self.last_write = line, now
 
     def run(self) -> None:
@@ -616,6 +735,7 @@ def cmd_bridge(args: argparse.Namespace) -> int:
     if recorder:
         log(f"recording to {recorder.path}")
     bridge = Bridge(args, api, link, replay, recorder, cal)
+    signal.signal(signal.SIGTERM, _interrupt)
     try:
         bridge.run()
     except KeyboardInterrupt:
@@ -625,9 +745,14 @@ def cmd_bridge(args: argparse.Namespace) -> int:
             link.close()
         if recorder:
             recorder.close()
-    log(f"done: sent {api.sent}, rejected {api.rejected}, unsent readings {len(api.readings)}, "
-        f"unsent events {len(api.events)}, bad serial lines {bridge.rejected_lines}, dropped {bridge.dropped_lines}")
+        log(f"done: sent {api.sent}, rejected {api.rejected}, unsent readings {len(api.readings)}, "
+            f"unsent events {len(api.events)}, bad serial lines {bridge.rejected_lines}, dropped {bridge.dropped_lines}")
+        log(f"latency: {bridge.latency.summary()}")
     return 0
+
+
+def _interrupt(signum, frame) -> None:
+    raise KeyboardInterrupt
 
 
 def cmd_monitor(args: argparse.Namespace) -> int:
