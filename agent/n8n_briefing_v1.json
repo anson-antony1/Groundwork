@@ -1,0 +1,18 @@
+{
+  "name": "GroundWork 6PM briefing",
+  "nodes": [
+    {"parameters": {}, "name": "Manual test", "type": "n8n-nodes-base.manualTrigger", "typeVersion": 1, "position": [0, 0]},
+    {"parameters": {"rule": {"interval": [{"field": "cronExpression", "expression": "0 18 * * *"}]}},
+     "name": "6 PM daily", "type": "n8n-nodes-base.scheduleTrigger", "typeVersion": 1.2, "position": [0, 200]},
+    {"parameters": {"method": "POST", "url": "http://localhost:8000/api/v1/briefings/generate", "options": {"timeout": 60000}},
+     "name": "Generate briefing", "type": "n8n-nodes-base.httpRequest", "typeVersion": 4.2, "position": [260, 100]},
+    {"parameters": {"assignments": {"assignments": [{"id": "1", "name": "summary", "value": "={{ $json.data.summary }}", "type": "string"}]}, "options": {}},
+     "name": "Extract summary", "type": "n8n-nodes-base.set", "typeVersion": 3.4, "position": [520, 100]}
+  ],
+  "connections": {
+    "Manual test": {"main": [[{"node": "Generate briefing", "type": "main", "index": 0}]]},
+    "6 PM daily": {"main": [[{"node": "Generate briefing", "type": "main", "index": 0}]]},
+    "Generate briefing": {"main": [[{"node": "Extract summary", "type": "main", "index": 0}]]}
+  },
+  "active": false
+}
