@@ -11,7 +11,7 @@ export function fmtNum(value: number | null | undefined, digits = 1): string {
   return isNumber(value) ? value.toFixed(digits) : MISSING
 }
 
-/** "43.5 mm", or "Missing". */
+/** "1.71 in", or "Missing". */
 export function fmtValue(value: number | null | undefined, unit: string, digits = 1): string {
   return isNumber(value) ? `${value.toFixed(digits)} ${unit}`.trim() : MISSING
 }
@@ -99,6 +99,22 @@ const FIELD_LABELS: Record<string, string> = {
 }
 
 /**
+ * US display units for metric backend values. The API, thresholds and scoring stay metric (Open-Meteo's
+ * native units); only what a person reads is converted. Returns null for units shown as they are.
+ */
+export function toUsUnits(value: number, unit: string): { value: number; unit: string; digits: number } | null {
+  if (unit === 'mm') return { value: value / 25.4, unit: 'in', digits: 2 }
+  if (unit === 'km/h') return { value: value / 1.609344, unit: 'mph', digits: 0 }
+  if (unit === '°C') return { value: (value * 9) / 5 + 32, unit: '°F', digits: 0 }
+  return null
+}
+
+/** Celsius to Fahrenheit for a sensor reading, keeping null as null. */
+export function cToF(c: number | null | undefined): number | null | undefined {
+  return isNumber(c) ? (c * 9) / 5 + 32 : c
+}
+
+/**
  * A sourced observation's value in words. Most are "value unit"; a few backend units read better spelled out
  * ("0 active" NWS alerts, "rank 3 of 4" drainage wetness). Missing stays "Missing".
  */
@@ -108,7 +124,8 @@ export function fmtObservation(o: { variable: string; value: number | null; unit
   const rank = /rank (\d+)\s*[-–]\s*(\d+)/.exec(o.unit)
   if (rank) return `${o.value.toFixed(0)} of ${rank[2]} (wetness rank)`
   if (o.unit === '%') return `${o.value.toFixed(1)}%`
-  return fmtValue(o.value, o.unit)
+  const us = toUsUnits(o.value, o.unit)
+  return us ? fmtValue(us.value, us.unit, us.digits) : fmtValue(o.value, o.unit)
 }
 
 export function fieldLabel(name: string): string {

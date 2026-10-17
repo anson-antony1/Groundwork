@@ -1049,6 +1049,58 @@
         "title": "Envelope[EvaluationOut]",
         "type": "object"
       },
+      "Envelope_ForecastModelOut_": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ForecastModelOut"
+          },
+          "errors": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Errors",
+            "type": "array"
+          },
+          "generated_at": {
+            "format": "date-time",
+            "title": "Generated At",
+            "type": "string"
+          },
+          "missing_fields": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Missing Fields",
+            "type": "array"
+          },
+          "mode": {
+            "enum": [
+              "live",
+              "cached",
+              "replay",
+              "simulated",
+              "sensor_demo",
+              "sensor_replay"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "sources": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Sources",
+            "type": "array"
+          }
+        },
+        "required": [
+          "mode",
+          "generated_at",
+          "data"
+        ],
+        "title": "Envelope[ForecastModelOut]",
+        "type": "object"
+      },
       "Envelope_HealthOut_": {
         "properties": {
           "data": {
@@ -1767,6 +1819,47 @@
           "notes"
         ],
         "title": "EvaluationOut",
+        "type": "object"
+      },
+      "ForecastModelOut": {
+        "description": "Model card for the learned STOP-WORK forecast: what it predicts, from what, and how well.",
+        "properties": {
+          "evaluation": {
+            "additionalProperties": true,
+            "title": "Evaluation",
+            "type": "object"
+          },
+          "features": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Features",
+            "type": "array"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "sources": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Sources",
+            "type": "array"
+          },
+          "version": {
+            "title": "Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "version",
+          "label",
+          "sources",
+          "features",
+          "evaluation"
+        ],
+        "title": "ForecastModelOut",
         "type": "object"
       },
       "HazardSubscoresOut": {
@@ -3507,6 +3600,17 @@
             "title": "Evaluated At",
             "type": "string"
           },
+          "forecast_model": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/StopWorkForecastOut"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Learned STOP-WORK probability; null for the demo tray, stale data or a missing input"
+          },
           "hazard_explanation": {
             "items": {
               "type": "string"
@@ -3705,6 +3809,17 @@
             "format": "date-time",
             "title": "Evaluated At",
             "type": "string"
+          },
+          "forecast_model": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/StopWorkForecastOut"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Learned STOP-WORK probability; null for the demo tray, stale data or a missing input"
           },
           "hazard_explanation": {
             "items": {
@@ -3912,6 +4027,56 @@
           "stale"
         ],
         "title": "SourceFreshnessOut",
+        "type": "object"
+      },
+      "StopWorkForecastOut": {
+        "description": "Learned forecast beside the rule-based call (backend/ml). Advisory: it never changes a status.",
+        "properties": {
+          "base_rate": {
+            "description": "Share of site-days with such an alert in the held-out test year",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Base Rate",
+            "type": "number"
+          },
+          "drivers": {
+            "description": "Factors that moved this site's probability most, in plain words",
+            "items": {
+              "type": "string"
+            },
+            "title": "Drivers",
+            "type": "array"
+          },
+          "model_version": {
+            "title": "Model Version",
+            "type": "string"
+          },
+          "note": {
+            "title": "Note",
+            "type": "string"
+          },
+          "probability": {
+            "description": "Chance a STOP-WORK-class NWS alert covers the site during working hours",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Probability",
+            "type": "number"
+          },
+          "test_roc_auc": {
+            "description": "ROC AUC on the held-out year (see GET /forecast-model)",
+            "title": "Test Roc Auc",
+            "type": "number"
+          }
+        },
+        "required": [
+          "probability",
+          "base_rate",
+          "drivers",
+          "model_version",
+          "test_roc_auc",
+          "note"
+        ],
+        "title": "StopWorkForecastOut",
         "type": "object"
       },
       "TimelineEventOut": {
@@ -4941,6 +5106,67 @@
         "summary": "Timeline of alerts, reports and acks",
         "tags": [
           "events"
+        ]
+      }
+    },
+    "/api/v1/forecast-model": {
+      "get": {
+        "operationId": "get_forecast_model_api_v1_forecast_model_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_ForecastModelOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Resource not found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Validation failed"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Rate limit exceeded"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unexpected server error"
+          }
+        },
+        "summary": "Model card: the learned STOP-WORK forecast, its training data and held-out evaluation",
+        "tags": [
+          "forecast-model"
         ]
       }
     },

@@ -10,6 +10,7 @@ export const ENDPOINTS: readonly string[] = [
   "GET /api/v1/devices/{device_id}/display",
   "GET /api/v1/devices/{device_id}/events",
   "GET /api/v1/events",
+  "GET /api/v1/forecast-model",
   "GET /api/v1/health",
   "GET /api/v1/policies",
   "GET /api/v1/replay",

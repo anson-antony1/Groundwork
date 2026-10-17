@@ -5,7 +5,7 @@ from datetime import datetime, timedelta, timezone
 import pytest
 
 from backend.app.core.clock import now_utc
-from backend.app.services import field_hazards, ml_index, reports, site_status
+from backend.app.services import field_hazards, forecast_model, ml_index, reports, site_status
 from backend.app.services.sites import load_sites
 from .conftest import AUTH, TRAY
 
@@ -138,6 +138,7 @@ def test_distant_fire_or_stale_hazard_data_changes_nothing(client, hazards_file)
 
 
 def test_ml_forecast_line_appears_only_with_a_model_and_never_changes_status(client, tmp_path, monkeypatch):
+    monkeypatch.setattr(forecast_model, "load_model", lambda *a: None)  # this line is the fallback model
     sid = normal_site_id()
     monkeypatch.setattr(ml_index, "MODEL_PATH", tmp_path / "no_model.json")
     monkeypatch.setattr(ml_index, "_cache", None)
@@ -168,11 +169,21 @@ def test_ml_index_is_a_percentile_of_training_days_with_log_inputs():
     assert ml_index.predict({"rain_forecast": -5.0, "gust_forecast": 0.0}, model)[0] == 0.0  # clipped at 0
 
 
-def test_the_shipped_model_is_advisory_and_honest_about_its_region(client):
+def test_the_shipped_model_is_advisory_and_honest_about_its_region(client, monkeypatch):
     """policies/ml_hazard_model_v1.json: every field site gets a line; Florida lines cite the Florida scores."""
+    monkeypatch.setattr(forecast_model, "load_model", lambda *a: None)  # this line is the fallback model
     model = ml_index.load_model()
     assert model and model["metrics"]["test_year"] == 2025 and "by_group" in model["metrics"]
     fl, us = site(client, "SITE-007"), site(client, "US-180")
     fl_line = next(l for l in fl["hazard_explanation"] if l.startswith("ML forecast"))
     assert "on Florida demo sites" in fl_line and "Advisory" in fl_line
     assert "on nationwide sites" in next(l for l in us["hazard_explanation"] if l.startswith("ML forecast"))
+
+
+def test_one_ml_number_per_site(client):
+    """With the learned STOP-WORK forecast available, the NOAA model's line steps aside (no duplicate ML numbers)."""
+    if forecast_model.load_model() is None:
+        return
+    s = site(client, "US-180")
+    if s["forecast_model"] is not None:
+        assert not any(line.startswith("ML forecast") for line in s["hazard_explanation"])

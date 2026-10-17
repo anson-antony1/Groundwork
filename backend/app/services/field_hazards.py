@@ -177,10 +177,13 @@ def apply(status, now: datetime):
             explanation.append(f"Wildlife: {wild['count']} American alligator sighting(s) within 10 km in the last "
                                "30 days (iNaturalist community observations, unverified). Brief the crew.")
 
-    from . import ml_index
-    ml = ml_index.explain(status)
-    if ml:
-        explanation.append(ml)
+    # One ML number per site: the learned STOP-WORK forecast (forecast_model.py, shown in its own panel) when it
+    # has a prediction; otherwise the NOAA storm-report model's line. Both are advisory.
+    if status.forecast_model is None:
+        from . import ml_index
+        ml = ml_index.explain(status)
+        if ml:
+            explanation.append(ml)
 
     return replace(status, weather_state=weather_state, effective_status=effective,
                    hazard_explanation=tuple(explanation), alert_events=tuple(events), alerts=tuple(alerts),

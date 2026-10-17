@@ -423,6 +423,10 @@ const routes: [ApiRequest['method'], string, Handler][] = [
 
   ['GET', '/api/v1/coverage', ({ now }) => ok(coverage(now), 'simulated')],
 
+  // The learned forecast is trained offline (backend/ml); the in-browser mock has no model, as the backend
+  // answers before training. Sites in mock mode carry no forecast_model.
+  ['GET', '/api/v1/forecast-model', () => fail(404, 'NOT_FOUND', 'No trained model in the in-browser mock. Use live mode.')],
+
   // Between judge groups (README §14.3). Needs the sensor token, like the backend's.
   ['POST', '/api/v1/demo/reset', ({ req, now }) => {
     const denied = requireToken(req)

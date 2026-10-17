@@ -1,4 +1,4 @@
-import { CloudRain, ListTree, Siren } from 'lucide-react'
+import { BrainCircuit, CloudRain, ListTree, Siren } from 'lucide-react'
 import { createElement } from 'react'
 import { DEMO_SITE_ID } from '../../api/config'
 import type { SiteDetailView } from '../../api/proposed'
@@ -96,6 +96,8 @@ export function HazardCard({ site, stale }: { site: SiteDetailView; stale: boole
           </dl>
         )}
 
+        {site.forecast_model && <ModelForecast forecast={site.forecast_model} />}
+
         {alerts.length > 0 ? (
           <ul className="flex flex-col gap-2">
             {alerts.map((event) => (
@@ -143,5 +145,36 @@ export function HazardCard({ site, stale }: { site: SiteDetailView; stale: boole
         )}
       </div>
     </Card>
+  )
+}
+
+type Forecast = NonNullable<SiteDetailView['forecast_model']>
+
+/** The learned STOP-WORK probability (backend/ml). Advisory: shown beside the rules, never instead of them. */
+function ModelForecast({ forecast }: { forecast: Forecast }) {
+  const pct = Math.round(forecast.probability * 100)
+  const times = forecast.base_rate > 0 ? forecast.probability / forecast.base_rate : null
+  return (
+    <div className="flex flex-col gap-2 rounded-[3px] border border-line-hi px-3 py-2.5">
+      <p className="flex items-center gap-1.5 text-[0.75rem] text-muted label-caps">
+        <BrainCircuit aria-hidden className="size-4" /> Learned forecast · advisory
+      </p>
+      <p className="text-[0.98rem]">
+        <span className="font-display text-2xl font-bold">{pct < 1 ? '<1' : pct}%</span> chance of a STOP-WORK alert here during
+        working hours
+        {times !== null && (
+          <span className="text-muted">
+            {' '}
+            · {times >= 1.5 ? `${times.toFixed(1)}× the usual rate` : times <= 0.67 ? 'below the usual rate' : 'about the usual rate'} (
+            {(forecast.base_rate * 100).toFixed(1)}% of site-days)
+          </span>
+        )}
+      </p>
+      {forecast.drivers.length > 0 && <p className="text-[0.88rem]">{forecast.drivers.map((d) => d.charAt(0).toUpperCase() + d.slice(1)).join(' · ')}</p>}
+      <p className="text-[0.78rem] text-muted">
+        Logistic regression trained on 3 years of archived forecasts and real NWS alerts at 300 sites; ROC AUC{' '}
+        {forecast.test_roc_auc.toFixed(2)} on a held-out year. {forecast.note}
+      </p>
+    </div>
   )
 }

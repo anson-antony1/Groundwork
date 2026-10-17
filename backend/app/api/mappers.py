@@ -8,7 +8,7 @@ from ..repositories.records import (
 from ..schemas.requests import CostInputs
 from ..schemas.responses import (
     BriefingOut, CallReasonsOut, CostComparisonOut, HazardSubscoresOut, WeatherAlertOut, MatInputsOut, MatOverrideOut, DeviceEventOut, DisplayOut, EvaluationOut, MatsEstimateOut,
-    MatStagingOut, MissingDataNoteOut, ObservationOut, PrioritySiteOut, ReadingOut, ReplayOut, ReportOut, SiteDetailOut, SiteOut,
+    MatStagingOut, MissingDataNoteOut, ObservationOut, PrioritySiteOut, ReadingOut, ReplayOut, ReportOut, SiteDetailOut, SiteOut, StopWorkForecastOut,
     TimelineEventOut, VehicleAccessOut, VehicleStatusOut,
 )
 from ..services.display import Display
@@ -31,6 +31,7 @@ def site_out(s: SiteStatus) -> SiteOut:
         alerts=[WeatherAlertOut(**a) for a in s.alerts],
         reasons=CallReasonsOut(**s.reasons) if s.reasons else None,
         advisories=list(s.advisories),
+        forecast_model=StopWorkForecastOut(**s.forecast_model) if s.forecast_model else None,
     )
 
 

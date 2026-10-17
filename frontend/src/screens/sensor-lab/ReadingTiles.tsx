@@ -5,7 +5,7 @@ import type { Reading } from '../../api/types'
 import { cx } from '../../components/cx'
 import { QualityChip } from '../../components/Provenance'
 import { SplitFlap } from '../../components/SplitFlap'
-import { fmtAgo } from '../../domain/format'
+import { cToF, fmtAgo } from '../../domain/format'
 import { LABELS, sensorReplayLabel } from '../../domain/provenance'
 
 /** A module that isn't plugged in sends nothing (README §5.7). Shown as such, never as zero. */
@@ -101,7 +101,7 @@ export function ReadingTiles({ reading, now, stale }: { reading: Reading | null;
         stale={stale}
         provenance={<>Station pressure, not sea-level · advisory only, never a STOP WORK trigger</>}
       />
-      <Tile label="Temperature" noReading={!reading} icon={Thermometer} value={reading?.temp_c} digits={1} unit="°C" stale={stale} provenance={<>{LABELS.demoBeacon}</>} />
+      <Tile label="Temperature" noReading={!reading} icon={Thermometer} value={cToF(reading?.temp_c)} digits={0} unit="°F" stale={stale} provenance={<>{LABELS.demoBeacon}</>} />
     </div>
   )
 }
