@@ -2,6 +2,9 @@
 
 Readme · MD
 # Groundwork — Utility Crew Ground-Access and Hazard Planning
+
+<img width="1122" height="1402" alt="GroundWork System Architecture Flowchart" src="https://github.com/user-attachments/assets/f2bdd7cd-a2d6-449d-bf6f-bdb9405b19e0" />
+
  
 > **SwampHacks XII · 36-hour hackathon · Team of 4**  
 > **Pitch:** "By 6 PM, Groundwork tells utility crews which sites to prioritize tomorrow, which vehicles may need ground protection, when dangerous weather demands STOP WORK, and what delays could cost—using traceable weather and USDA soil data plus real crew reports."
@@ -866,9 +869,9 @@ Stay calm, say one honest sentence, switch to the fallback, and keep going.
 - [x] Storm replay can enter/exit without contaminating live status.
 - [x] Demo reset returns DEMO-TRAY and the beacon to a clean state (no replay, no demo reports, alarm re-armed).
 - [x] 6 PM briefing mentions STOP WORK sites, mat needs, reports, and missing data, with no invented figures.
-- [ ] (Manual hardware test) Stop the bridge: within 6 seconds the beacon shows `NO LINK` and never shows green.
+- [x] (Manual hardware test) Stop the bridge: within 6 seconds the beacon shows `NO LINK` and never shows green.
 
-The ticked items pass in `pytest backend/tests hardware/tests`; `backend/tests/test_readme_acceptance_v1.py` lists which test covers each one. The manual hardware test needs the Uno.
+The ticked items pass in `pytest backend/tests hardware/tests`; `backend/tests/test_readme_acceptance_v1.py` lists which test covers each one. The manual hardware test passed on the real beacon (see `hardware/calibration.md` §5).
 ### Validation metrics to show judges
  
 - Geographic coverage: `total_sites`, `sites_with_USDA_soil`, `sites_with_weather`, `sites_with_both`, `sites_with_missing`.

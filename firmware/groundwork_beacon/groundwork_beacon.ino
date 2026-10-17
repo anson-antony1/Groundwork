@@ -17,7 +17,7 @@
 #define HAS_MOISTURE 1  // Tier 1
 #endif
 #ifndef HAS_LIGHT
-#define HAS_LIGHT 0  // Tier 3: set to 1 once the light sensor is on A2
+#define HAS_LIGHT 1  // Tier 3: light sensor on A2 (set 0 if not wired)
 #endif
 #ifndef HAS_LCD
 #define HAS_LCD 1  // Tier 2: needs Seeed's "Grove - LCD RGB Backlight" library
@@ -26,8 +26,9 @@
 #define BARO_BMP280 1  // library "Grove - Barometer Sensor BMP280"
 #define BARO_BME280 2  // library "Grove - Barometer Sensor BME280"
 #define BARO_BMP180 3  // library "Grove Barometer Sensor" (BMP085/BMP180)
+#define BARO_SPL 4     // DPS310 / SPL06 / SPL07 (product id 0x10/0x11 at 0x77); built in, no library
 #ifndef BARO_CHIP
-#define BARO_CHIP BARO_NONE  // Tier 3: match the chip printed on the module
+#define BARO_CHIP BARO_SPL  // Tier 3: match the chip on the module (firmware/i2c_scan finds it)
 #endif
 
 #if HAS_LCD
@@ -43,6 +44,9 @@ BME280 baro;
 #elif BARO_CHIP == BARO_BMP180
 #include "BMP085.h"
 BMP085 baro;
+#elif BARO_CHIP == BARO_SPL
+#include "spl_baro.h"
+SplBaro baro;
 #endif
 
 // ---- Pin map (README section 5.4) ----
@@ -132,6 +136,8 @@ void readBarometer() {
 #elif BARO_CHIP == BARO_BMP180
   tempC = baro.bmp085GetTemperature(baro.bmp085ReadUT());
   pressureHpa = baro.bmp085GetPressure(baro.bmp085ReadUP()) / 100.0;
+#elif BARO_CHIP == BARO_SPL
+  if (!baro.read(pressureHpa, tempC)) pressureHpa = 0;  // 0 fails the plausibility check: nothing sent
 #endif
 }
 
@@ -376,9 +382,15 @@ void setup() {
 #elif BARO_CHIP == BARO_BMP180
   baro.init();
   baroOk = true;
+#elif BARO_CHIP == BARO_SPL
+  baroOk = baro.init();
 #endif
+#if BARO_CHIP == BARO_SPL
+  const char *baroName = baro.productId() == 0x11 ? "spl07" : "dps310_spl06";
+#else
   const char *baroName = BARO_CHIP == BARO_BMP280 ? "bmp280" : BARO_CHIP == BARO_BME280 ? "bme280"
                          : BARO_CHIP == BARO_BMP180 ? "bmp180" : "none";
+#endif
   Serial.print(F("{\"type\":\"hello\",\"fw\":\"groundwork_beacon/1.0\",\"moisture\":"));
   Serial.print(HAS_MOISTURE ? F("true") : F("false"));
   Serial.print(F(",\"light\":"));
