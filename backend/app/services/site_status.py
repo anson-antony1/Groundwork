@@ -11,6 +11,7 @@ from .sites import WEATHER_FIELDS, Site, load_sites, require_site
 from .weather import details_for, load_snapshot, observations_for
 
 VEHICLES = ("pickup", "heavy_truck")
+NO_REPLAY_DATA = "REPLAY: this scenario has no archived data for this site, so its weather is UNKNOWN"
 
 
 @dataclass(frozen=True)
@@ -55,11 +56,18 @@ def evaluate_status(site: Site, now: datetime) -> SiteStatus:
     hazard_score = None
     replay_info = None
     if state.replay_active:
-        weather_state, mode = "STOP_WORK", "replay"
+        mode = "replay"
         replay_info = None if is_demo else replay_site_v2(site.id, state.replay_scenario_id)
-        if replay_info:
+        if is_demo:
+            weather_state = "STOP_WORK"  # the tray always plays the storm in the demo (README 14.4)
+        elif replay_info:
             hazard_score = replay_info["hazard_score"]
-            weather_state = replay_info["weather_state"] or weather_state
+            weather_state = replay_info["weather_state"] or "UNKNOWN"
+        else:
+            # The scenario has no data for this site: never invent a storm here, never call it safe,
+            # and never show live data inside a replay.
+            weather_state = "UNKNOWN"
+            replay_info = {"explanation": (NO_REPLAY_DATA,), "alert_events": ()}
     elif is_demo:
         # The tray has no live weather feed; it runs a calm-weather demo scenario.
         weather_state, mode = "NORMAL", "sensor_demo"
