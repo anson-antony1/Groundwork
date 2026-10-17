@@ -16,12 +16,22 @@ def test_health_envelope(client):
     assert body["data"]["status"] == "ok"
 
 
-def test_field_sites_are_unknown_not_safe(client):
+WEATHER_INPUTS = {"nws_alerts", "rain_forecast", "gust_forecast", "apparent_temp"}
+GROUND_INPUTS = {"rain_7d", "rain_forecast", "usda_soil"}
+
+
+def test_field_sites_are_never_safe_by_default(client):
+    """Missing data must read as UNKNOWN, never as safe (README P3). Rules are unit-tested in test_hazard.py."""
     sites = client.get("/api/v1/sites").json()["data"]
     assert any(s["id"] == "DEMO-TRAY" for s in sites)
     for s in sites:
-        if s["id"] != "DEMO-TRAY":
-            assert s["weather_state"] == "UNKNOWN" and s["hazard_score"] is None
+        if s["id"] == "DEMO-TRAY":
+            continue
+        missing = set(s["missing_fields"])
+        if missing & WEATHER_INPUTS:
+            assert s["weather_state"] == "UNKNOWN" and s["hazard_score"] is None, s["id"]
+        if missing & GROUND_INPUTS:
+            assert s["access_call"] == {"pickup": "UNKNOWN", "heavy_truck": "UNKNOWN"}, s["id"]
 
 
 def test_no_reading_means_unknown(display):
@@ -125,3 +135,13 @@ def test_timeline_records_actions(client):
     client.post("/api/v1/replay/stop")
     kinds = [e["kind"] for e in client.get("/api/v1/events").json()["data"]]
     assert kinds == ["replay_stopped", "replay_started"]
+
+
+def test_sites_expose_hazard_explanation(client):
+    """README P3: every scored field site shows why (sub-scores) and any active alert names."""
+    sites = client.get("/api/v1/sites").json()["data"]
+    scored = [s for s in sites if s["id"] != "DEMO-TRAY" and s["hazard_score"] is not None]
+    assert scored, "no scored field sites in the snapshot"
+    for s in scored:
+        assert s["hazard_explanation"], s["id"]
+        assert isinstance(s["alert_events"], list)
