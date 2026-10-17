@@ -2,7 +2,7 @@ import { statusVisual, weatherVisual } from '../domain/status'
 import type { Tone } from '../domain/status'
 import type { LucideIcon } from 'lucide-react'
 import { cx } from './cx'
-import { TONE_SOLID } from './tone'
+import { TONE_SOLID, TONE_TEXT } from './tone'
 
 type Size = 'sm' | 'md' | 'lg' | 'xl'
 
@@ -73,4 +73,16 @@ export function StatusTag({ status, size, compact, emphasize, className }: Statu
 export function WeatherTag({ state, size, emphasize, className }: { state: string | null | undefined; size?: Size; emphasize?: boolean; className?: string }) {
   const v = weatherVisual(state)
   return <Placard tone={v.tone} icon={v.icon} text={v.label} hint={v.hint} size={size} emphasize={emphasize} className={className} />
+}
+
+/** Light inline weather indicator for dense rows, where a second placard would compete with the status. */
+export function WeatherInline({ state, className }: { state: string | null | undefined; className?: string }) {
+  const v = weatherVisual(state)
+  const Icon = v.icon
+  return (
+    <span title={v.hint} className={cx('inline-flex items-center gap-1 text-[0.78rem] label-caps', TONE_TEXT[v.tone], className)}>
+      <Icon aria-hidden className="size-[1.1em]" strokeWidth={2.4} />
+      Weather · {v.label}
+    </span>
+  )
 }

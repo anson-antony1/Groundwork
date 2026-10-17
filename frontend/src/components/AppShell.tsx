@@ -6,6 +6,7 @@ import { LABELS } from '../domain/provenance'
 import { useHotkeys } from '../hooks/useHotkeys'
 import { useNow } from '../hooks/useNow'
 import { useDemoUi } from '../state/demoUiContext'
+import { MOCK_CONTROLS_EVENT } from '../state/mockEvents'
 import { cx } from './cx'
 import { Wordmark } from './Logo'
 import { NAV } from './nav'
@@ -44,7 +45,7 @@ function ApiBadge() {
 function TopBar({ compact }: { compact: boolean }) {
   const [location] = useLocation()
   return (
-    <header className="sticky top-0 z-[1000] border-b-2 border-line bg-gradient-to-b from-[#20262d] to-[#171b20] shadow-[0_6px_18px_rgb(0_0_0/0.45)]">
+    <header className="relative z-[1100] shrink-0 border-b-2 border-line bg-gradient-to-b from-[#20262d] to-[#171b20] shadow-[0_6px_18px_rgb(0_0_0/0.45)]">
       <div className="flex h-[4.25rem] items-stretch gap-3 px-3 sm:px-5 xl:gap-4">
         <Link href="/" className="flex min-w-0 items-center pr-1" aria-label="Groundwork home">
           <Wordmark />
@@ -91,10 +92,19 @@ function TopBar({ compact }: { compact: boolean }) {
 function DemoBanner() {
   const mock = API_MODE === 'mock'
   return (
-    <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 border-b border-line bg-steel px-5 py-2 text-[0.85rem]">
+    <div className="flex shrink-0 flex-wrap items-center gap-x-5 gap-y-1.5 border-b border-line bg-steel px-5 py-2 text-[0.85rem]">
       <span className="rounded-[2px] bg-ink px-2 py-0.5 text-[0.8rem] text-bg label-caps">Demo mode</span>
       {mock ? (
-        <span className="font-semibold text-ink">{LABELS.demoFixture}: statuses are invented to exercise every state</span>
+        <>
+          <span className="font-semibold text-ink">{LABELS.demoFixture}: statuses are invented to exercise every state</span>
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new Event(MOCK_CONTROLS_EVENT))}
+            className="rounded-[3px] border border-dashed border-line-hi px-2 py-0.5 text-[0.75rem] text-muted label-caps hover:text-ink"
+          >
+            Rehearsal controls · Shift+M
+          </button>
+        </>
       ) : (
         <span className="text-ink">Hackathon prototype · not certified safety guidance</span>
       )}
@@ -115,10 +125,13 @@ export function AppShell({ children }: { children: ReactNode }) {
   })
 
   return (
-    <div className="flex min-h-dvh flex-col">
+    // Full-height shell: header and banner stay put, only <main> scrolls, so the map can fill the rest.
+    <div className="flex h-dvh flex-col">
       <TopBar compact={phone} />
       <DemoBanner />
-      <main className={cx('flex-1', phone ? 'mx-auto w-full max-w-xl px-4 py-5' : 'px-6 py-6')}>{children}</main>
+      <main className="min-h-0 flex-1 overflow-y-auto">
+        <div className={cx('h-full', phone ? 'mx-auto w-full max-w-xl px-4 py-5' : 'px-6 py-5')}>{children}</div>
+      </main>
     </div>
   )
 }

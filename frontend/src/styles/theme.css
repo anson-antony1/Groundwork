@@ -145,3 +145,53 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* --- Map (React Leaflet) ------------------------------------------------ */
+
+.leaflet-container {
+  background: #0d0f11;
+  font-family: var(--font-sans);
+}
+/* OSM tiles turned dark steel, so only status markers carry color. */
+.gw-tiles {
+  filter: grayscale(1) invert(1) brightness(0.86) contrast(1.12);
+}
+.leaflet-control-attribution {
+  background: rgb(17 19 21 / 0.82) !important;
+  color: var(--color-muted) !important;
+  font-size: 0.7rem;
+}
+.leaflet-control-attribution a {
+  color: var(--color-accent) !important;
+}
+.leaflet-bar a,
+.leaflet-bar a:hover {
+  background: var(--color-steel);
+  color: var(--color-ink);
+  border-bottom-color: var(--color-line);
+}
+.leaflet-tooltip.gw-tooltip {
+  background: var(--color-panel);
+  border: 1px solid var(--color-line-hi);
+  border-radius: 4px;
+  color: var(--color-ink);
+  box-shadow: 0 8px 22px rgb(0 0 0 / 0.5);
+  padding: 8px 10px;
+  font-size: 0.85rem;
+}
+.leaflet-tooltip-top.gw-tooltip::before {
+  border-top-color: var(--color-line-hi);
+}
+/* divIcon wrappers: no default white box; the SVG is the marker. */
+.gw-marker {
+  background: none;
+  border: none;
+}
+.gw-marker svg {
+  display: block;
+  filter: drop-shadow(0 2px 3px rgb(0 0 0 / 0.65));
+  transition: transform 160ms ease-out;
+}
+.gw-marker.is-hot svg {
+  transform: scale(1.3);
+}

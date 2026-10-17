@@ -33,3 +33,6 @@ export function getTransport(): Promise<Transport> {
       : import('./http').then((m) => m.httpTransport)
   return transport
 }
+
+/** The mock-mode rehearsal panel (Shift+M). Loaded through here so src/api stays the only door to mocks. */
+export const loadMockControls = () => import('../mocks/MockControls')

@@ -7,6 +7,7 @@ import '@fontsource/barlow-condensed/500.css'
 import '@fontsource/barlow-condensed/600.css'
 import '@fontsource/barlow-condensed/700.css'
 import '@fontsource/vt323/400.css'
+import 'leaflet/dist/leaflet.css'
 import './styles/theme.css'
 
 import { StrictMode } from 'react'
