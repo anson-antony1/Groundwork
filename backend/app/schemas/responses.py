@@ -100,8 +100,8 @@ class ReportOut(BaseModel):
     site_id: str
     description: str
     category_user: ReportCategory
-    category_ai: ReportCategory | None
-    ai_confidence: float | None = Field(None, ge=0, le=1)
+    category_ai: ReportCategory | None = Field(description="Always null: AI photo tagging is out of scope")
+    ai_confidence: float | None = Field(None, ge=0, le=1, description="Always null: AI photo tagging is out of scope")
     image_url: str | None
     reported_at: datetime
     verification: Literal["unreviewed", "confirmed", "rejected"]
