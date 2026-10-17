@@ -29,7 +29,7 @@ class SiteStatus:
     alert_events: tuple[str, ...] = ()
 
 
-from .storm_replay_v1 import replay_site
+from .storm_replay_v2 import replay_site_v2
 
 
 def evaluate_status(site: Site, now: datetime) -> SiteStatus:
@@ -56,9 +56,10 @@ def evaluate_status(site: Site, now: datetime) -> SiteStatus:
     replay_info = None
     if state.replay_active:
         weather_state, mode = "STOP_WORK", "replay"
-        replay_info = None if is_demo else replay_site(site.id)
+        replay_info = None if is_demo else replay_site_v2(site.id, state.replay_scenario_id)
         if replay_info:
             hazard_score = replay_info["hazard_score"]
+            weather_state = replay_info["weather_state"] or weather_state
     elif is_demo:
         # The tray has no live weather feed; it runs a calm-weather demo scenario.
         weather_state, mode = "NORMAL", "sensor_demo"

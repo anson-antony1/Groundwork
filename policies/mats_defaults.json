@@ -1,0 +1,13 @@
+{
+  "label": "DEMO DEFAULTS - editable starting values, not engineering ratings. Replace mat size with your vendor's effective coverage.",
+  "unit": "ft",
+  "route_width": 12,
+  "mat_length": 14,
+  "mat_width": 8,
+  "layers": {
+    "pickup": 1,
+    "heavy_truck": 1
+  },
+  "margin_min": 0.10,
+  "margin_max": 0.25
+}

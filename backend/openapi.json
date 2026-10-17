@@ -1152,43 +1152,104 @@
             "$ref": "#/components/schemas/CostInputs"
           },
           "layers": {
-            "default": 1,
-            "maximum": 3.0,
-            "minimum": 1.0,
-            "title": "Layers",
-            "type": "integer"
+            "anyOf": [
+              {
+                "maximum": 3.0,
+                "minimum": 1.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Layers"
           },
           "margin_max": {
-            "default": 0.25,
-            "maximum": 1.0,
-            "minimum": 0.0,
-            "title": "Margin Max",
-            "type": "number"
+            "anyOf": [
+              {
+                "maximum": 1.0,
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Margin Max"
           },
           "margin_min": {
-            "default": 0.1,
-            "maximum": 1.0,
-            "minimum": 0.0,
-            "title": "Margin Min",
-            "type": "number"
+            "anyOf": [
+              {
+                "maximum": 1.0,
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Margin Min"
           },
           "mat_length": {
-            "exclusiveMinimum": 0.0,
-            "maximum": 100.0,
-            "title": "Mat Length",
-            "type": "number"
+            "anyOf": [
+              {
+                "exclusiveMinimum": 0.0,
+                "maximum": 100.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Effective coverage per mat, after overlap",
+            "title": "Mat Length"
           },
           "mat_width": {
-            "exclusiveMinimum": 0.0,
-            "maximum": 100.0,
-            "title": "Mat Width",
-            "type": "number"
+            "anyOf": [
+              {
+                "exclusiveMinimum": 0.0,
+                "maximum": 100.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Effective coverage per mat, after overlap",
+            "title": "Mat Width"
           },
           "mats_in_inventory": {
             "default": 0,
             "minimum": 0.0,
             "title": "Mats In Inventory",
             "type": "integer"
+          },
+          "override_quantity": {
+            "anyOf": [
+              {
+                "maximum": 100000.0,
+                "minimum": 0.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Supervisor override of planned mats",
+            "title": "Override Quantity"
+          },
+          "override_reason": {
+            "anyOf": [
+              {
+                "maxLength": 200,
+                "minLength": 3,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Override Reason"
           },
           "route_length": {
             "exclusiveMinimum": 0.0,
@@ -1197,10 +1258,17 @@
             "type": "number"
           },
           "route_width": {
-            "exclusiveMinimum": 0.0,
-            "maximum": 1000.0,
-            "title": "Route Width",
-            "type": "number"
+            "anyOf": [
+              {
+                "exclusiveMinimum": 0.0,
+                "maximum": 1000.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Route Width"
           },
           "unit": {
             "default": "ft",
@@ -1222,10 +1290,7 @@
           }
         },
         "required": [
-          "route_length",
-          "route_width",
-          "mat_length",
-          "mat_width"
+          "route_length"
         ],
         "title": "EvaluationIn",
         "type": "object"
@@ -1396,6 +1461,122 @@
         "title": "HealthOut",
         "type": "object"
       },
+      "MatDefaultsOut": {
+        "properties": {
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "layers": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Layers",
+            "type": "object"
+          },
+          "margin_max": {
+            "title": "Margin Max",
+            "type": "number"
+          },
+          "margin_min": {
+            "title": "Margin Min",
+            "type": "number"
+          },
+          "mat_length": {
+            "title": "Mat Length",
+            "type": "number"
+          },
+          "mat_width": {
+            "title": "Mat Width",
+            "type": "number"
+          },
+          "route_width": {
+            "title": "Route Width",
+            "type": "number"
+          },
+          "unit": {
+            "enum": [
+              "ft",
+              "m"
+            ],
+            "title": "Unit",
+            "type": "string"
+          }
+        },
+        "required": [
+          "label",
+          "unit",
+          "route_width",
+          "mat_length",
+          "mat_width",
+          "layers",
+          "margin_min",
+          "margin_max"
+        ],
+        "title": "MatDefaultsOut",
+        "type": "object"
+      },
+      "MatInputsOut": {
+        "properties": {
+          "layers": {
+            "title": "Layers",
+            "type": "integer"
+          },
+          "margin_max": {
+            "title": "Margin Max",
+            "type": "number"
+          },
+          "margin_min": {
+            "title": "Margin Min",
+            "type": "number"
+          },
+          "mat_length": {
+            "title": "Mat Length",
+            "type": "number"
+          },
+          "mat_width": {
+            "title": "Mat Width",
+            "type": "number"
+          },
+          "route_length": {
+            "title": "Route Length",
+            "type": "number"
+          },
+          "route_width": {
+            "title": "Route Width",
+            "type": "number"
+          }
+        },
+        "required": [
+          "route_length",
+          "route_width",
+          "mat_length",
+          "mat_width",
+          "layers",
+          "margin_min",
+          "margin_max"
+        ],
+        "title": "MatInputsOut",
+        "type": "object"
+      },
+      "MatOverrideOut": {
+        "properties": {
+          "quantity": {
+            "title": "Quantity",
+            "type": "integer"
+          },
+          "reason": {
+            "title": "Reason",
+            "type": "string"
+          }
+        },
+        "required": [
+          "quantity",
+          "reason"
+        ],
+        "title": "MatOverrideOut",
+        "type": "object"
+      },
       "MatsEstimateOut": {
         "properties": {
           "base_mats": {
@@ -1405,6 +1586,16 @@
           "caveat": {
             "title": "Caveat",
             "type": "string"
+          },
+          "defaults_applied": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Defaults Applied",
+            "type": "array"
+          },
+          "inputs": {
+            "$ref": "#/components/schemas/MatInputsOut"
           },
           "mats_in_inventory": {
             "title": "Mats In Inventory",
@@ -1422,9 +1613,30 @@
             "title": "Min Estimate",
             "type": "integer"
           },
+          "override": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/MatOverrideOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "planned_quantity": {
+            "title": "Planned Quantity",
+            "type": "integer"
+          },
           "shortfall": {
             "title": "Shortfall",
             "type": "integer"
+          },
+          "steps": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Steps",
+            "type": "array"
           },
           "unit": {
             "enum": [
@@ -1436,12 +1648,17 @@
           }
         },
         "required": [
+          "inputs",
+          "defaults_applied",
           "base_mats",
           "min_estimate",
           "max_estimate",
+          "planned_quantity",
+          "override",
           "mats_in_inventory",
           "shortfall",
           "unit",
+          "steps",
           "method",
           "caveat"
         ],
@@ -1947,6 +2164,9 @@
             "title": "Label",
             "type": "string"
           },
+          "mat_defaults": {
+            "$ref": "#/components/schemas/MatDefaultsOut"
+          },
           "sensor_stale_seconds": {
             "title": "Sensor Stale Seconds",
             "type": "integer"
@@ -1956,7 +2176,8 @@
           "label",
           "demo_tray_access",
           "hazard_weights",
-          "sensor_stale_seconds"
+          "sensor_stale_seconds",
+          "mat_defaults"
         ],
         "title": "PolicyOut",
         "type": "object"

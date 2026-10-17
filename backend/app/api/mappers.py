@@ -6,7 +6,7 @@ from ..repositories.records import (
 )
 from ..schemas.requests import CostInputs
 from ..schemas.responses import (
-    BriefingOut, CostComparisonOut, DeviceEventOut, DisplayOut, EvaluationOut, MatsEstimateOut,
+    BriefingOut, CostComparisonOut, MatInputsOut, MatOverrideOut, DeviceEventOut, DisplayOut, EvaluationOut, MatsEstimateOut,
     MissingDataNoteOut, ObservationOut, PrioritySiteOut, ReadingOut, ReplayOut, ReportOut, SiteDetailOut, SiteOut,
     TimelineEventOut, VehicleAccessOut, VehicleStatusOut,
 )
@@ -47,9 +47,18 @@ def evaluation_out(e: Evaluation) -> EvaluationOut:
         site_id=e.status.site.id, vehicle=e.vehicle, weather_state=e.status.weather_state,
         access_call=e.status.access_call[e.vehicle], effective_status=e.status.effective_status[e.vehicle],
         mats_estimate=MatsEstimateOut(
+            inputs=MatInputsOut(
+                route_length=m.inputs.route_length, route_width=m.inputs.route_width,
+                mat_length=m.inputs.mat_length, mat_width=m.inputs.mat_width, layers=m.inputs.layers,
+                margin_min=m.inputs.margin_min, margin_max=m.inputs.margin_max,
+            ),
+            defaults_applied=list(m.defaults_applied),
             base_mats=m.base_mats, min_estimate=m.min_estimate, max_estimate=m.max_estimate,
-            mats_in_inventory=m.mats_in_inventory, shortfall=m.shortfall, unit=m.unit,
-            method=m.method, caveat=m.caveat,
+            planned_quantity=m.planned_quantity,
+            override=(MatOverrideOut(quantity=m.inputs.override_quantity, reason=m.inputs.override_reason)
+                      if m.inputs.override_quantity is not None else None),
+            mats_in_inventory=m.inputs.mats_in_inventory, shortfall=m.shortfall, unit=m.inputs.unit,
+            steps=list(m.steps), method=m.method, caveat=m.caveat,
         ),
         mats_recommended=e.mats_recommended,
         cost_comparison=CostComparisonOut(
