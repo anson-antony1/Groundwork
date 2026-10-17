@@ -51,7 +51,7 @@ The **Must** column is the team's launch contract. Demo mode is allowed, but **s
 | P6 | ✅ **Heat** | Forecast apparent temperature and/or properly calculated heat index with configurable policy | Heat concern displayed and linked to a recommended supervisor review/action; threshold is labeled as demo policy |
 | P7 | ✅ **Vehicle-specific access** | Ground-wetness/soil indicators + pickup/heavy-truck sensitivity policy | Changing vehicle changes access call without changing meteorological hazard score |
 | P8 | ✅ **Mat staging range** | Editable mat dimensions, effective coverage, route dimensions, layer policy, availability | UI shows range + calculation + units + engineering caveat |
-| P9 | **Mats vs postpone cost** | User inputs for rental, handling, labor, hours, equipment | Recalculates live; labels assumed values and does not call savings guaranteed |
+| P9 | ✅ **Mats vs postpone cost** | User inputs for rental, handling, labor, hours, equipment | Recalculates live; labels assumed values and does not call savings guaranteed |
 | P10 | **Crew hazard report** | Photo + text + GPS/site + timestamp; image tagging is advisory | Submitted report displays as map pin/feed item; report is distinguishable from verified official hazard alert |
 | P11 | ✅ **6 PM briefing** | Deterministic aggregation → optional LLM narration | A manual Generate 6 PM Plan button creates ranked priority list and mentions data gaps; automated scheduler only if time permits |
 | P12 | **Physical demo (site beacon)** | Arduino Uno reads the Grove moisture sensor (plus light and barometer once Tiers 2–3 work) and drives the Grove LCD, red/green LEDs and buzzer; a laptop serial bridge relays readings to the API and status back to the beacon (see §5) | Pouring water changes the actual sensor reading, reaches the UI, can change the demo access recommendation, and the beacon's LEDs/LCD reflect the server's status within ~2 s; recorded replay works when unplugged |
@@ -1054,10 +1054,9 @@ From the repo root with the venv active: `cd ~/Desktop/Groundwork && source .ven
 
 Resume notes live in `HANDOFF_v4.md`.
 
-**Done:** P1-P8, P11, P13 (P8 verified through the API: 13-14 mats, steps, ft units, engineering caveat, editable layers 1-3).
+**Done:** P1-P9, P11, P13 (P8 verified through the API: 13-14 mats, steps, ft units, engineering caveat, editable layers 1-3).
 
 **Partial or not done**
-- **P9:** cost inputs move the comparison and the label says "Not guaranteed savings", but there is no hours input (nine dollar fields only).
 - **P10:** the backend saves crew reports (site, text, timestamp, verification "unreviewed"). The UI path is not checked end to end. AI image tagging is not implemented (`category_ai` stays `None`).
 - **P12/P15:** DEMO-TRAY shows UNKNOWN ("NO SENSOR DATA") until the beacon, or the replay script, sends readings. `hardware/` (`serial_bridge.py`, firmware, calibration) is not in the repo yet, so the README 14 unplugged-beacon fallback through `serial_bridge.py` does not exist.
 - **P14:** the timed wifi-off run (README 14.4) is not verified.
@@ -1066,5 +1065,5 @@ Resume notes live in `HANDOFF_v4.md`.
 
 **Known problems**
 - `backend/app/api/health.py` reports `usda_nrcs` and `nws` as `not_built` although both work.
-- Whether Reset demo clears stored sensor readings is unconfirmed. After a reset, `GET /api/v1/sensors/tray-01/history` should show `total` 0.
+- Reset demo keeps sensor readings by design. Delete leftover replay rows after testing (see `HANDOFF_v4.md`).
 - Run the tests with the server stopped; `test_demo.py` failed once while uvicorn was running.
