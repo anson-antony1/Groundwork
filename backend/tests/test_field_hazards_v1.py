@@ -139,6 +139,8 @@ def test_distant_fire_or_stale_hazard_data_changes_nothing(client, hazards_file)
 
 def test_ml_forecast_line_appears_only_with_a_model_and_never_changes_status(client, tmp_path, monkeypatch):
     sid = normal_site_id()
+    monkeypatch.setattr(ml_index, "MODEL_PATH", tmp_path / "no_model.json")
+    monkeypatch.setattr(ml_index, "_cache", None)
     before = site(client, sid)
     assert not any(line.startswith("ML forecast") for line in before["hazard_explanation"])
     model = tmp_path / "ml_hazard_model_v1.json"
@@ -149,6 +151,28 @@ def test_ml_forecast_line_appears_only_with_a_model_and_never_changes_status(cli
     monkeypatch.setattr(ml_index, "_cache", None)
     after = site(client, sid)
     line = next(line for line in after["hazard_explanation"] if line.startswith("ML forecast"))
-    assert "5.0/10" in line and "AUC 0.71" in line
+    assert "5.0/10" in line and "50% chance" in line and "AUC 0.71" in line
     assert after["weather_state"] == before["weather_state"] and after["hazard_score"] == before["hazard_score"]
     assert ml_index.predict({"rain_forecast": 1.0}, json.loads(model.read_text())) is None  # missing input
+
+
+def test_ml_index_is_a_percentile_of_training_days_with_log_inputs():
+    model = {"features": ["rain_forecast", "gust_forecast"], "transforms": ["log1p", "identity"],
+             "means": [0.0, 0.0], "scales": [1.0, 1.0], "coef": [1.0, 0.0], "intercept": 0.0,
+             "z_quantiles": [i / 100 for i in range(101)]}  # training scores spread evenly over 0..1
+    index, p = ml_index.predict({"rain_forecast": 0.0, "gust_forecast": 30.0}, model)
+    assert index == 0.0 and abs(p - 0.5) < 1e-9          # log1p(0) = 0 -> lowest training score
+    index, p = ml_index.predict({"rain_forecast": 0.6487212707, "gust_forecast": 0.0}, model)  # log1p -> 0.5
+    assert abs(index - 5.0) < 0.05 and p > 0.5
+    assert ml_index.predict({"rain_forecast": 1000.0, "gust_forecast": 0.0}, model)[0] == 10.0
+    assert ml_index.predict({"rain_forecast": -5.0, "gust_forecast": 0.0}, model)[0] == 0.0  # clipped at 0
+
+
+def test_the_shipped_model_is_advisory_and_honest_about_its_region(client):
+    """policies/ml_hazard_model_v1.json: every field site gets a line; Florida lines cite the Florida scores."""
+    model = ml_index.load_model()
+    assert model and model["metrics"]["test_year"] == 2025 and "by_group" in model["metrics"]
+    fl, us = site(client, "SITE-007"), site(client, "US-180")
+    fl_line = next(l for l in fl["hazard_explanation"] if l.startswith("ML forecast"))
+    assert "on Florida demo sites" in fl_line and "Advisory" in fl_line
+    assert "on nationwide sites" in next(l for l in us["hazard_explanation"] if l.startswith("ML forecast"))
