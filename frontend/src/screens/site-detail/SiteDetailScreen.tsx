@@ -16,6 +16,7 @@ import { useDemoUi } from '../../state/demoUiContext'
 import { AccessCard } from './AccessCard'
 import { EffectiveBanner } from './EffectiveBanner'
 import { HazardCard } from './HazardCard'
+import { MatsCostPanel } from './MatsCostPanel'
 import { ProvenanceTable } from './ProvenanceTable'
 import { SiteTimeline } from './SiteTimeline'
 import { WhyThisCall } from './WhyThisCall'
@@ -89,6 +90,8 @@ export function SiteDetailScreen({ siteId }: { siteId: string }) {
       </div>
 
       <WhyThisCall site={site} vehicle={vehicle} policy={policy} reading={reading} readingFresh={readingFresh} />
+
+      <MatsCostPanel site={site} vehicle={vehicle} />
 
       <div className="grid gap-5 xl:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
         <ProvenanceTable site={site} />
