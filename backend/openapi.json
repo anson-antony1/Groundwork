@@ -1342,6 +1342,89 @@
         "title": "MissingDataNoteOut",
         "type": "object"
       },
+      "ObservationOut": {
+        "description": "One sourced value with provenance (README section 4). `value` is null when unavailable.",
+        "properties": {
+          "fetched_at": {
+            "format": "date-time",
+            "title": "Fetched At",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "observed",
+              "forecast",
+              "modeled",
+              "survey"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "quality": {
+            "enum": [
+              "available",
+              "stale",
+              "missing",
+              "simulated",
+              "sensor_demo",
+              "sensor_replay"
+            ],
+            "title": "Quality",
+            "type": "string"
+          },
+          "reference_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reference Url"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          },
+          "unit": {
+            "title": "Unit",
+            "type": "string"
+          },
+          "valid_at": {
+            "title": "Valid At",
+            "type": "string"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          },
+          "variable": {
+            "title": "Variable",
+            "type": "string"
+          }
+        },
+        "required": [
+          "variable",
+          "value",
+          "unit",
+          "source",
+          "kind",
+          "valid_at",
+          "fetched_at",
+          "quality",
+          "reference_url"
+        ],
+        "title": "ObservationOut",
+        "type": "object"
+      },
       "PageEnvelope_BriefingOut_": {
         "properties": {
           "data": {
@@ -2244,7 +2327,9 @@
           "data_status": {
             "enum": [
               "sensor_demo",
-              "not_fetched"
+              "not_fetched",
+              "available",
+              "stale"
             ],
             "title": "Data Status",
             "type": "string"
@@ -2296,6 +2381,13 @@
           "name": {
             "title": "Name",
             "type": "string"
+          },
+          "observations": {
+            "items": {
+              "$ref": "#/components/schemas/ObservationOut"
+            },
+            "title": "Observations",
+            "type": "array"
           },
           "region": {
             "anyOf": [
@@ -2337,6 +2429,7 @@
           "access_call",
           "effective_status",
           "data_status",
+          "observations",
           "missing_fields",
           "evaluated_at",
           "reports"
@@ -2352,7 +2445,9 @@
           "data_status": {
             "enum": [
               "sensor_demo",
-              "not_fetched"
+              "not_fetched",
+              "available",
+              "stale"
             ],
             "title": "Data Status",
             "type": "string"
@@ -2405,6 +2500,13 @@
             "title": "Name",
             "type": "string"
           },
+          "observations": {
+            "items": {
+              "$ref": "#/components/schemas/ObservationOut"
+            },
+            "title": "Observations",
+            "type": "array"
+          },
           "region": {
             "anyOf": [
               {
@@ -2438,6 +2540,7 @@
           "access_call",
           "effective_status",
           "data_status",
+          "observations",
           "missing_fields",
           "evaluated_at"
         ],

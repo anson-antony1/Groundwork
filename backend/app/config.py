@@ -4,6 +4,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[2]
 FIXTURES_DIR = REPO_ROOT / "fixtures"
 UPLOADS_DIR = REPO_ROOT / "backend" / "uploads"
+DATABASE_PATH = Path(os.getenv("GROUNDWORK_DB_PATH", REPO_ROOT / "backend" / "groundwork.db"))
 
 API_VERSION = "0.2.0"
 API_PREFIX = "/api/v1"

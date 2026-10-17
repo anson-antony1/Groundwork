@@ -1,0 +1,545 @@
+{
+  "selection": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+  "sites": [
+    {
+      "id": "SITE-001",
+      "name": "Gainesville, FL area",
+      "latitude": 29.65163,
+      "longitude": -82.32483,
+      "region": "Alachua",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4156404
+    },
+    {
+      "id": "SITE-002",
+      "name": "Ocala, FL area",
+      "latitude": 29.1872,
+      "longitude": -82.14009,
+      "region": "Marion",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4166673
+    },
+    {
+      "id": "SITE-003",
+      "name": "Jacksonville, FL area",
+      "latitude": 30.33218,
+      "longitude": -81.65565,
+      "region": "Duval",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4160021
+    },
+    {
+      "id": "SITE-004",
+      "name": "Tallahassee, FL area",
+      "latitude": 30.43826,
+      "longitude": -84.28073,
+      "region": "Leon",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4174715
+    },
+    {
+      "id": "SITE-005",
+      "name": "Pensacola, FL area",
+      "latitude": 30.42131,
+      "longitude": -87.21691,
+      "region": "Escambia",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4168228
+    },
+    {
+      "id": "SITE-006",
+      "name": "Panama City, FL area",
+      "latitude": 30.15946,
+      "longitude": -85.65983,
+      "region": "Bay County",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4167694
+    },
+    {
+      "id": "SITE-007",
+      "name": "Fort Walton Beach, FL area",
+      "latitude": 30.42059,
+      "longitude": -86.61707,
+      "region": "Okaloosa",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4156042
+    },
+    {
+      "id": "SITE-008",
+      "name": "Lake City, FL area",
+      "latitude": 30.18968,
+      "longitude": -82.63929,
+      "region": "Columbia",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4161187
+    },
+    {
+      "id": "SITE-009",
+      "name": "Live Oak, FL area",
+      "latitude": 30.29495,
+      "longitude": -82.98402,
+      "region": "Suwannee County",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4162461
+    },
+    {
+      "id": "SITE-010",
+      "name": "Palatka, FL area",
+      "latitude": 29.64858,
+      "longitude": -81.63758,
+      "region": "Putnam",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4167482
+    },
+    {
+      "id": "SITE-011",
+      "name": "Saint Augustine, FL area",
+      "latitude": 29.89469,
+      "longitude": -81.31452,
+      "region": "Saint Johns",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4170894
+    },
+    {
+      "id": "SITE-012",
+      "name": "Daytona Beach, FL area",
+      "latitude": 29.21081,
+      "longitude": -81.02283,
+      "region": "Volusia",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4152872
+    },
+    {
+      "id": "SITE-013",
+      "name": "DeLand, FL area",
+      "latitude": 29.02832,
+      "longitude": -81.30312,
+      "region": "Volusia",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4152890
+    },
+    {
+      "id": "SITE-014",
+      "name": "Orlando, FL area",
+      "latitude": 28.53834,
+      "longitude": -81.37924,
+      "region": "Orange",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4167147
+    },
+    {
+      "id": "SITE-015",
+      "name": "Kissimmee, FL area",
+      "latitude": 28.30468,
+      "longitude": -81.41667,
+      "region": "Osceola",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4160983
+    },
+    {
+      "id": "SITE-016",
+      "name": "Sanford, FL area",
+      "latitude": 28.80055,
+      "longitude": -81.27312,
+      "region": "Seminole",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4172086
+    },
+    {
+      "id": "SITE-017",
+      "name": "Leesburg, FL area",
+      "latitude": 28.81082,
+      "longitude": -81.87786,
+      "region": "Lake",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4161771
+    },
+    {
+      "id": "SITE-018",
+      "name": "Lakeland, FL area",
+      "latitude": 28.03947,
+      "longitude": -81.9498,
+      "region": "Polk",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4161438
+    },
+    {
+      "id": "SITE-019",
+      "name": "Winter Haven, FL area",
+      "latitude": 28.02224,
+      "longitude": -81.73286,
+      "region": "Polk",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4178552
+    },
+    {
+      "id": "SITE-020",
+      "name": "Bartow, FL area",
+      "latitude": 27.89641,
+      "longitude": -81.84314,
+      "region": "Polk",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4146723
+    },
+    {
+      "id": "SITE-021",
+      "name": "Tampa, FL area",
+      "latitude": 27.94752,
+      "longitude": -82.45843,
+      "region": "Hillsborough County",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4174757
+    },
+    {
+      "id": "SITE-022",
+      "name": "St. Petersburg, FL area",
+      "latitude": 27.77086,
+      "longitude": -82.67927,
+      "region": "Pinellas",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4171563
+    },
+    {
+      "id": "SITE-023",
+      "name": "Clearwater, FL area",
+      "latitude": 27.96585,
+      "longitude": -82.8001,
+      "region": "Pinellas",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4151316
+    },
+    {
+      "id": "SITE-024",
+      "name": "Brooksville, FL area",
+      "latitude": 28.55554,
+      "longitude": -82.38991,
+      "region": "Hernando",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4148986
+    },
+    {
+      "id": "SITE-025",
+      "name": "Sebring, FL area",
+      "latitude": 27.49559,
+      "longitude": -81.44091,
+      "region": "Highlands",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4172383
+    },
+    {
+      "id": "SITE-026",
+      "name": "Lake Wales, FL area",
+      "latitude": 27.90141,
+      "longitude": -81.58591,
+      "region": "Polk",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4161400
+    },
+    {
+      "id": "SITE-027",
+      "name": "Melbourne, FL area",
+      "latitude": 28.08363,
+      "longitude": -80.60811,
+      "region": "Brevard",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4163971
+    },
+    {
+      "id": "SITE-028",
+      "name": "Palm Bay, FL area",
+      "latitude": 28.03446,
+      "longitude": -80.58866,
+      "region": "Brevard",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4167499
+    },
+    {
+      "id": "SITE-029",
+      "name": "Titusville, FL area",
+      "latitude": 28.61222,
+      "longitude": -80.80755,
+      "region": "Brevard",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4175437
+    },
+    {
+      "id": "SITE-030",
+      "name": "Vero Beach, FL area",
+      "latitude": 27.63864,
+      "longitude": -80.39727,
+      "region": "Indian River",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4176409
+    },
+    {
+      "id": "SITE-031",
+      "name": "Ft. Pierce, FL area",
+      "latitude": 27.44671,
+      "longitude": -80.32561,
+      "region": "Saint Lucie",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4156018
+    },
+    {
+      "id": "SITE-032",
+      "name": "Port Saint Lucie, FL area",
+      "latitude": 27.29393,
+      "longitude": -80.35033,
+      "region": "Saint Lucie",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4169171
+    },
+    {
+      "id": "SITE-033",
+      "name": "Stuart, FL area",
+      "latitude": 27.19755,
+      "longitude": -80.25283,
+      "region": "Martin",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4174201
+    },
+    {
+      "id": "SITE-034",
+      "name": "Okeechobee, FL area",
+      "latitude": 27.24393,
+      "longitude": -80.82978,
+      "region": "Okeechobee County",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4166822
+    },
+    {
+      "id": "SITE-035",
+      "name": "West Palm Beach, FL area",
+      "latitude": 26.71534,
+      "longitude": -80.05337,
+      "region": "Palm Beach",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4177887
+    },
+    {
+      "id": "SITE-036",
+      "name": "Boca Raton, FL area",
+      "latitude": 26.35869,
+      "longitude": -80.0831,
+      "region": "Palm Beach",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4148411
+    },
+    {
+      "id": "SITE-037",
+      "name": "Fort Lauderdale, FL area",
+      "latitude": 26.12231,
+      "longitude": -80.14338,
+      "region": "Broward",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4155966
+    },
+    {
+      "id": "SITE-038",
+      "name": "Miami, FL area",
+      "latitude": 25.77427,
+      "longitude": -80.19366,
+      "region": "Miami-Dade County",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4164138
+    },
+    {
+      "id": "SITE-039",
+      "name": "Homestead, FL area",
+      "latitude": 25.46872,
+      "longitude": -80.47756,
+      "region": "Miami-Dade County",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4159050
+    },
+    {
+      "id": "SITE-040",
+      "name": "Key West, FL area",
+      "latitude": 24.55524,
+      "longitude": -81.78163,
+      "region": "Monroe",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4160812
+    },
+    {
+      "id": "SITE-041",
+      "name": "Naples, FL area",
+      "latitude": 26.14234,
+      "longitude": -81.79596,
+      "region": "Collier",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4165565
+    },
+    {
+      "id": "SITE-042",
+      "name": "Fort Myers, FL area",
+      "latitude": 26.62168,
+      "longitude": -81.84059,
+      "region": "Lee",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4155995
+    },
+    {
+      "id": "SITE-043",
+      "name": "Cape Coral, FL area",
+      "latitude": 26.56285,
+      "longitude": -81.94953,
+      "region": "Lee",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4149962
+    },
+    {
+      "id": "SITE-044",
+      "name": "Punta Gorda, FL area",
+      "latitude": 26.92978,
+      "longitude": -82.04537,
+      "region": "Charlotte",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4169452
+    },
+    {
+      "id": "SITE-045",
+      "name": "Sarasota, FL area",
+      "latitude": 27.33643,
+      "longitude": -82.53065,
+      "region": "Sarasota",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4172131
+    },
+    {
+      "id": "SITE-046",
+      "name": "Bradenton, FL area",
+      "latitude": 27.49893,
+      "longitude": -82.57482,
+      "region": "Manatee",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4148708
+    },
+    {
+      "id": "SITE-047",
+      "name": "Venice, FL area",
+      "latitude": 27.09978,
+      "longitude": -82.45426,
+      "region": "Sarasota",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4176380
+    },
+    {
+      "id": "SITE-048",
+      "name": "Arcadia, FL area",
+      "latitude": 27.21588,
+      "longitude": -81.85842,
+      "region": "DeSoto",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4146206
+    },
+    {
+      "id": "SITE-049",
+      "name": "Wauchula, FL area",
+      "latitude": 27.54726,
+      "longitude": -81.81147,
+      "region": "Hardee",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4177569
+    },
+    {
+      "id": "SITE-050",
+      "name": "Clewiston, FL area",
+      "latitude": 26.75423,
+      "longitude": -80.93368,
+      "region": "Hendry",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4151366
+    },
+    {
+      "id": "SITE-051",
+      "name": "Immokalee, FL area",
+      "latitude": 26.41869,
+      "longitude": -81.4173,
+      "region": "Collier",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4159553
+    },
+    {
+      "id": "SITE-052",
+      "name": "Crystal River, FL area",
+      "latitude": 28.90248,
+      "longitude": -82.5926,
+      "region": "Citrus",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4152487
+    },
+    {
+      "id": "SITE-053",
+      "name": "Chiefland, FL area",
+      "latitude": 29.47496,
+      "longitude": -82.85984,
+      "region": "Levy",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4150733
+    },
+    {
+      "id": "SITE-054",
+      "name": "Perry, FL area",
+      "latitude": 30.11766,
+      "longitude": -83.58274,
+      "region": "Taylor",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4168244
+    },
+    {
+      "id": "SITE-055",
+      "name": "Marianna, FL area",
+      "latitude": 30.77436,
+      "longitude": -85.22687,
+      "region": "Jackson",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4163428
+    },
+    {
+      "id": "SITE-056",
+      "name": "Crestview, FL area",
+      "latitude": 30.76213,
+      "longitude": -86.57051,
+      "region": "Okaloosa",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4152311
+    },
+    {
+      "id": "SITE-057",
+      "name": "Starke, FL area",
+      "latitude": 29.94413,
+      "longitude": -82.10983,
+      "region": "Bradford",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4173999
+    },
+    {
+      "id": "SITE-058",
+      "name": "Palm Coast, FL area",
+      "latitude": 29.58497,
+      "longitude": -81.20784,
+      "region": "Flagler",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4167538
+    },
+    {
+      "id": "SITE-059",
+      "name": "Inverness, FL area",
+      "latitude": 28.83582,
+      "longitude": -82.33037,
+      "region": "Citrus",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4159786
+    },
+    {
+      "id": "SITE-060",
+      "name": "Madison, FL area",
+      "latitude": 30.46938,
+      "longitude": -83.41293,
+      "region": "Madison",
+      "location_origin": "Open-Meteo Geocoding API (GeoNames) town centroid; illustrative planning area, not a utility work site",
+      "geonames_id": 4163140
+    }
+  ]
+}

@@ -7,6 +7,7 @@ from ..config import DEMO_DEVICE_ID, DEMO_SITE_ID
 from .access import demo_tray_access
 from .display import fresh_reading
 from .sites import WEATHER_FIELDS, Site, load_sites, require_site
+from .weather import load_snapshot, observations_for
 
 VEHICLES = ("pickup", "heavy_truck")
 
@@ -19,6 +20,7 @@ class SiteStatus:
     access_call: dict[str, str]
     effective_status: dict[str, str]
     data_status: str
+    observations: tuple[dict, ...]
     missing_fields: tuple[str, ...]
     mode: str
     evaluated_at: datetime
@@ -34,8 +36,11 @@ def evaluate_status(site: Site, now: datetime) -> SiteStatus:
         # The tray has no live weather feed; it runs a calm-weather demo scenario.
         weather_state, mode = "NORMAL", "sensor_demo"
     else:
-        # Connectors not built yet: unknown, never "safe".
-        weather_state, mode = "UNKNOWN", "simulated"
+        # No NWS alerts connector yet, so weather can't be declared safe: UNKNOWN, never NORMAL.
+        weather_state, mode = "UNKNOWN", "cached" if load_snapshot() else "simulated"
+
+    observations, stale = ([], False) if is_demo else observations_for(site.id, now)
+    have = {o["variable"] for o in observations if o["value"] is not None}
 
     reading = fresh_reading(DEMO_DEVICE_ID, now) if is_demo else None
     moisture = reading.moisture_index if reading else None
@@ -50,9 +55,16 @@ def evaluate_status(site: Site, now: datetime) -> SiteStatus:
         else:
             effective[v] = access[v]
 
-    missing = () if is_demo else WEATHER_FIELDS
+    missing = () if is_demo else tuple(f for f in WEATHER_FIELDS if f not in have)
     if is_demo and reading is None:
         missing = ("demo_tray_moisture",)
+
+    if is_demo:
+        data_status = "sensor_demo"
+    elif not observations:
+        data_status = "not_fetched"
+    else:
+        data_status = "stale" if stale else "available"
 
     return SiteStatus(
         site=site,
@@ -60,7 +72,8 @@ def evaluate_status(site: Site, now: datetime) -> SiteStatus:
         weather_state=weather_state,
         access_call=access,
         effective_status=effective,
-        data_status="sensor_demo" if is_demo else "not_fetched",
+        data_status=data_status,
+        observations=tuple(observations),
         missing_fields=missing,
         mode=mode,
         evaluated_at=now,
@@ -79,4 +92,6 @@ def get_status(site_id: str, now: datetime) -> SiteStatus:
 
 
 def portfolio_mode() -> str:
-    return "replay" if repo.demo_state.get().replay_active else "simulated"
+    if repo.demo_state.get().replay_active:
+        return "replay"
+    return "cached" if load_snapshot() else "simulated"

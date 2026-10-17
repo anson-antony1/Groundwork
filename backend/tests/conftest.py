@@ -1,9 +1,15 @@
-import pytest
-from fastapi.testclient import TestClient
+import os
+import tempfile
 
-from backend.app import repositories
-from backend.app.config import SENSOR_TOKEN
-from backend.app.main import app
+# Point the app at a throwaway database before it's imported, so tests never touch backend/groundwork.db.
+os.environ["GROUNDWORK_DB_PATH"] = os.path.join(tempfile.mkdtemp(), "test.db")
+
+import pytest  # noqa: E402
+from fastapi.testclient import TestClient  # noqa: E402
+
+from backend.app import repositories  # noqa: E402
+from backend.app.config import SENSOR_TOKEN  # noqa: E402
+from backend.app.main import app  # noqa: E402
 
 AUTH = {"Authorization": f"Bearer {SENSOR_TOKEN}"}
 TRAY = "/api/v1/devices/tray-01"
