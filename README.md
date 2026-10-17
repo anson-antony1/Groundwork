@@ -50,7 +50,7 @@ The **Must** column is the team's launch contract. Demo mode is allowed, but **s
 | P5 | ✅ **Flooding** | NWS flood-related alerts + precipitation and optional water level/FEMA map context | Flood concern appears in score and safety state; FEMA flood zones are long-term susceptibility, not live flood detection |
 | P6 | ✅ **Heat** | Forecast apparent temperature and/or properly calculated heat index with configurable policy | Heat concern displayed and linked to a recommended supervisor review/action; threshold is labeled as demo policy |
 | P7 | ✅ **Vehicle-specific access** | Ground-wetness/soil indicators + pickup/heavy-truck sensitivity policy | Changing vehicle changes access call without changing meteorological hazard score |
-| P8 | **Mat staging range** | Editable mat dimensions, effective coverage, route dimensions, layer policy, availability | UI shows range + calculation + units + engineering caveat |
+| P8 | ✅ **Mat staging range** | Editable mat dimensions, effective coverage, route dimensions, layer policy, availability | UI shows range + calculation + units + engineering caveat |
 | P9 | **Mats vs postpone cost** | User inputs for rental, handling, labor, hours, equipment | Recalculates live; labels assumed values and does not call savings guaranteed |
 | P10 | **Crew hazard report** | Photo + text + GPS/site + timestamp; image tagging is advisory | Submitted report displays as map pin/feed item; report is distinguishable from verified official hazard alert |
 | P11 | ✅ **6 PM briefing** | Deterministic aggregation → optional LLM narration | A manual Generate 6 PM Plan button creates ranked priority list and mentions data gaps; automated scheduler only if time permits |
@@ -680,19 +680,19 @@ groundwork/
 # backend
 python -m venv .venv
 source .venv/bin/activate
-pip install fastapi uvicorn httpx sqlalchemy pydantic python-multipart pyserial
+pip install -r backend/requirements.txt
 uvicorn backend.app.main:app --reload --port 8000
  
 # frontend (separate terminal)
 cd frontend
-npm install
+npm ci
 npm run dev
  
 # beacon bridge (separate terminal, after flashing firmware/groundwork_beacon)
 python hardware/serial_bridge.py --port /dev/cu.usbmodem1101 --api http://localhost:8000 --device tray-01
  
-# no hardware? stream the recording instead
-python hardware/serial_bridge.py --replay fixtures/sensor_replay.csv --api http://localhost:8000 --device tray-01
+# no hardware? post the simulated recording (dashboard only, beacon unplugged)
+python replay_sensor_v2.py --loop --interval 2 --token dev-sensor-token
 ```
  
 Use `VITE_API_BASE_URL=http://localhost:8000` locally; configure FastAPI CORS for the actual frontend origin. The beacon talks to the laptop over USB, so it does not depend on venue Wi-Fi. If a Raspberry Pi runs the bridge instead, point it at the laptop's LAN IP address, **not** `localhost`.
@@ -775,8 +775,8 @@ Lines in quotes are what to say. Adapt the wording naturally, but keep the order
 | **0:00–0:10** | Rishi | Operations map on screen | "It's 6 PM. A utility supervisor has [N] job sites tomorrow, a week of rain behind them and storms in the forecast. Groundwork turns all of that into one plan for tomorrow." |
 | **0:10–0:30** | Anson | Pours the measured cup into the dry tray, then points at the beacon | "This is our site beacon. Watch the soil sensor as I water the tray. The reading climbs, our server re-scores the site, and the beacon turns amber: mats for review." |
 | **0:30–0:55** | Rishi | Hands the judge the mouse to switch Pickup → Heavy truck, then scrolls to the cost cards | "Go ahead and switch it to a heavy truck. Same ground, different vehicle: the pickup is fine, but the heavy truck needs roughly [X–Y] mats. Here's mats versus postponing the job. Every cost is editable, because these are planning assumptions, not quotes." |
-| **0:55–1:25** | Aashita (Anson guides the tap) | Starts the storm replay; the beacon turns red and the buzzer sounds; Anson invites the judge to tap the beacon | "Now a real storm: this is the National Weather Service warning from [date] near [place], replayed. Even with mats staged, every vehicle goes to STOP WORK. Safety always overrides access, and it can't be averaged away. Go ahead and tap the beacon. That records that the crew saw the alarm, but it doesn't clear STOP WORK. Only the weather logic can." |
-| **1:25–1:45** | Rithika | Submits the standing-water report from the phone; the pin appears on screen | "A crew member reports standing water at the gate, and it lands on the map instantly. Gemini suggests a tag, but it's marked as needing human review. AI never sets a site's status." |
+| **0:55–1:25** | Aashita (Anson guides the tap) | Starts the storm replay; the beacon turns red and the buzzer sounds; Anson invites the judge to tap the beacon | "Now a real storm: this is real weather data from Hurricane Milton, October 2024, replayed. The warning itself is simulated, because past alerts aren't available. Even with mats staged, every vehicle goes to STOP WORK. Safety always overrides access, and it can't be averaged away. Go ahead and tap the beacon. That records that the crew saw the alarm, but it doesn't clear STOP WORK. Only the weather logic can." |
+| **1:25–1:45** | Rithika | Submits the standing-water report from the phone; the pin appears on screen | "A crew member reports standing water at the gate, and it lands on the map instantly. It's marked unverified until a supervisor reviews it. AI never sets a site's status." |
 | **1:45–2:00** | Rithika, then Rishi | Opens the 6 PM briefing, then zooms out to all sites | **Rithika:** "At 6 PM, here's tomorrow's plan: [N] real sites ranked, every number traced to USDA, Open-Meteo or the Weather Service with a timestamp, and the data gaps called out." **Rishi:** "That's Groundwork. Happy to go deeper on anything." |
  
 **Delivery rules**
@@ -817,7 +817,7 @@ Stay calm, say one honest sentence, switch to the fallback, and keep going.
  
 | Failure | Fallback | Say |
 |---|---|---|
-| Arduino or USB link fails | Aashita restarts the bridge with `--replay fixtures/sensor_replay.csv`; the screen shows `Recorded demo`, and the dashboard's beacon mirror still shows status | "Our USB link just dropped, so here's the same sequence we recorded earlier. It's labeled Recorded up top." |
+| Arduino or USB link fails | Aashita runs `python replay_sensor_v2.py --loop --interval 2 --token dev-sensor-token` (dashboard only; needs the beacon unplugged; `hardware/serial_bridge.py` is not in the repo yet); the screen shows `Recorded demo`, and the dashboard's beacon mirror still shows status | "Our USB link just dropped, so this is a simulated sequence standing in for the beacon. The UI labels it Recorded demo, but these values are simulated, not recorded." |
 | Moisture doesn't cross the threshold | Pour a little more; if it's still stuck, move the probe to the wet tray | "Real soil takes a moment to soak through." |
 | LCD or barometer fails (I2C) | Unplug it; LEDs, buzzer and touch still carry the demo | "The screen's taking a break; the lights and alarm show the same status." |
 | Loose Grove lead | Pre-labeled spare leads + tape; re-seat and rerun the I2C scanner | (Keep talking through the software part while Anson fixes it.) |
@@ -886,6 +886,7 @@ Stay calm, say one honest sentence, switch to the fallback, and keep going.
 | Beacon light / pressure / temperature | `Demo beacon • venue observation • advisory only` |
 | Beacon LCD, LEDs and buzzer | `Displays server status • not an independent safety device` |
 | Recorded beacon stream | `Recorded demo` |
+| Simulated sensor replay (`replay_sensor_v2.py`) | UI shows `Recorded demo`; values are simulated, not recorded |
 | Vehicles/weights/rental costs for demonstration | `Scenario assumption • adjustable` |
 | Rules/thresholds and mat layers | `Prototype policy • supervisor review required` |
 | AI photo tag | `AI suggested • unverified` |
@@ -1048,3 +1049,22 @@ From the repo root with the venv active: `cd ~/Desktop/Groundwork && source .ven
 5. **Tests:** `python -m pytest backend/tests -q`, with the backend stopped.
 
 **Replays:** `POST /api/v1/replay/start` with no body runs Hurricane Milton. A `calm-day` scenario (2024-07-15, a mix of NORMAL and CAUTION) starts with body `{"scenario_id": "calm-day"}`. In both, weather is real archived data and alerts are simulated or assumed. End with `POST /api/v1/replay/stop`.
+
+## Current status and known gaps (Oct 17, 2026)
+
+Resume notes live in `HANDOFF_v4.md`.
+
+**Done:** P1-P8, P11, P13 (P8 verified through the API: 13-14 mats, steps, ft units, engineering caveat, editable layers 1-3).
+
+**Partial or not done**
+- **P9:** cost inputs move the comparison and the label says "Not guaranteed savings", but there is no hours input (nine dollar fields only).
+- **P10:** the backend saves crew reports (site, text, timestamp, verification "unreviewed"). The UI path is not checked end to end. AI image tagging is not implemented (`category_ai` stays `None`).
+- **P12/P15:** DEMO-TRAY shows UNKNOWN ("NO SENSOR DATA") until the beacon, or the replay script, sends readings. `hardware/` (`serial_bridge.py`, firmware, calibration) is not in the repo yet, so the README 14 unplugged-beacon fallback through `serial_bridge.py` does not exist.
+- **P14:** the timed wifi-off run (README 14.4) is not verified.
+
+**Sensor replay fallback (dashboard only):** `python replay_sensor_v2.py --loop --interval 2 --token dev-sensor-token` posts `fixtures/sensor_replay.csv` as `tray-01` with `mode: "sensor_replay"` (shown as Recorded demo). The CSV is simulated, not recorded. It does not drive the LCD, LEDs or buzzer, and it must not run while the real beacon is plugged in. Readings older than 15 s are ignored, so keep `--loop` running. Added in branch `feature/sensor-fallback`.
+
+**Known problems**
+- `backend/app/api/health.py` reports `usda_nrcs` and `nws` as `not_built` although both work.
+- Whether Reset demo clears stored sensor readings is unconfirmed. After a reset, `GET /api/v1/sensors/tray-01/history` should show `total` 0.
+- Run the tests with the server stopped; `test_demo.py` failed once while uvicorn was running.
