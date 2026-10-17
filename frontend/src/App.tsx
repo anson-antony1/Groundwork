@@ -10,6 +10,7 @@ import { AppShell } from './components/AppShell'
 import { Card } from './components/Card'
 import { OpsMapScreen } from './screens/ops-map/OpsMapScreen'
 import { ReplayScreen } from './screens/replay/ReplayScreen'
+import { ReportScreen } from './screens/report/ReportScreen'
 import { SensorLabScreen } from './screens/sensor-lab/SensorLabScreen'
 import { SiteDetailScreen } from './screens/site-detail/SiteDetailScreen'
 import { StyleScreen } from './screens/style/StyleScreen'
@@ -59,9 +60,7 @@ export function App() {
               <Route path="/briefing">
                 <Pending title="6 PM briefing" checkpoint={7} />
               </Route>
-              <Route path="/report/:siteId?">
-                <Pending title="Crew hazard report" checkpoint={5} />
-              </Route>
+              <Route path="/report/:siteId?">{(params) => <ReportScreen siteId={params.siteId} />}</Route>
               <Route path="/style" component={StyleScreen} />
               <Route>
                 <NotFound />

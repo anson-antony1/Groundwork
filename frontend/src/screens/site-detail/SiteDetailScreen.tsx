@@ -5,6 +5,7 @@ import { ApiError } from '../../api/errors'
 import { useLatestReading, usePolicies, useSite } from '../../api/queries'
 import { Card } from '../../components/Card'
 import { ReportCard } from '../../components/ReportCard'
+import { ReportReview } from '../../components/ReportReview'
 import { EmptyBlock, ErrorBlock, LoadingBlock, StaleBanner } from '../../components/States'
 import { useNow } from '../../hooks/useNow'
 import { ageSeconds, fmtAgo, fmtWhen } from '../../domain/format'
@@ -102,7 +103,7 @@ export function SiteDetailScreen({ siteId }: { siteId: string }) {
             ) : (
               <div className="flex flex-col gap-3">
                 {site.reports.map((r) => (
-                  <ReportCard key={r.id} report={r} now={now} />
+                  <ReportCard key={r.id} report={r} now={now} actions={<ReportReview report={r} />} />
                 ))}
               </div>
             )}

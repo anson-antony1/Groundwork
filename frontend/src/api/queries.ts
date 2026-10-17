@@ -186,7 +186,10 @@ export function useReviewReport() {
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: ({ reportId, input }: { reportId: string; input: ReportReviewInput }) => api.reviewReport(reportId, input),
-    onSuccess: () => void queryClient.invalidateQueries({ queryKey: ['reports'] }),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ['reports'] })
+      void queryClient.invalidateQueries({ queryKey: ['site'] })
+    },
   })
 }
 

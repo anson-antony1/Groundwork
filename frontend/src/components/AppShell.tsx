@@ -96,10 +96,21 @@ function TopBar({ compact }: { compact: boolean }) {
 }
 
 /** Always-visible honesty strip: what kind of data is on screen (README §14, §15). */
-function DemoBanner() {
+function DemoBanner({ compact }: { compact: boolean }) {
   const { replay, offline } = useServerCtx()
   const sitesMode = useSites().data?.mode
   const mock = API_MODE === 'mock'
+  if (compact) {
+    // Phone: one line, so the crew form starts on the first screen.
+    return (
+      <div className="flex shrink-0 items-center gap-2.5 border-b border-line bg-steel px-4 py-1.5 text-[0.8rem]">
+        <span className="rounded-[2px] bg-ink px-1.5 py-0.5 text-[0.72rem] text-bg label-caps">Demo mode</span>
+        <span className="truncate text-ink">
+          {offline ? 'API unreachable' : replay?.active ? 'Historical replay' : mock ? LABELS.demoFixture : 'Prototype · not certified safety guidance'}
+        </span>
+      </div>
+    )
+  }
   return (
     <div className="flex shrink-0 flex-wrap items-center gap-x-5 gap-y-1.5 border-b border-line bg-steel px-5 py-2 text-[0.85rem]">
       <span className="rounded-[2px] bg-ink px-2 py-0.5 text-[0.8rem] text-bg label-caps">Demo mode</span>
@@ -146,8 +157,8 @@ export function AppShell({ children }: { children: ReactNode }) {
     // Full-height shell: header and banner stay put, only <main> scrolls, so the map can fill the rest.
     <div className="flex h-dvh flex-col">
       <TopBar compact={phone} />
-      <DemoBanner />
-      <StopWorkLayer />
+      <DemoBanner compact={phone} />
+      <StopWorkLayer compact={phone} />
       <ContextTransition />
       <main className="min-h-0 flex-1 overflow-y-auto">
         <div className={cx('h-full', phone ? 'mx-auto w-full max-w-xl px-4 py-5' : 'px-6 py-5')}>{children}</div>

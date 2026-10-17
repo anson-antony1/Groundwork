@@ -129,8 +129,16 @@ function DemoTrayCallout({ site, props }: { site: SiteView; props: SiteListProps
         <StatusTag status={props.statusOf(site)} size="lg" />
         <span className="rounded-[3px] border border-line-hi px-2 py-1 text-[0.75rem] text-muted label-caps">Beacon evaluates: Heavy truck</span>
       </div>
-      <p className="text-[0.8rem] text-muted">
-        {LABELS.demoSensor} · updated {fmtAgo(site.evaluated_at, props.now)}
+      <p className="flex flex-wrap items-center gap-x-3 text-[0.8rem] text-muted">
+        <span>
+          {LABELS.demoSensor} · updated {fmtAgo(site.evaluated_at, props.now)}
+        </span>
+        {props.reports.get(site.id) && (
+          <span className="flex items-center gap-1 text-ink">
+            <Camera aria-hidden className="size-3.5" />
+            {props.reports.get(site.id)!.count} crew report{props.reports.get(site.id)!.count > 1 ? 's' : ''} · unverified
+          </span>
+        )}
       </p>
     </div>
   )

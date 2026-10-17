@@ -18,7 +18,7 @@ const TAKEOVER_MS = 5_000
  *   show STOP WORK overriding access.
  * Acknowledging on the beacon silences the alarm; it never clears STOP WORK.
  */
-export function StopWorkLayer() {
+export function StopWorkLayer({ compact = false }: { compact?: boolean }) {
   const { ctx, replay } = useServerCtx()
   const sites = useSites().data?.data ?? []
   const stopSites = sites.filter((s) => s.weather_state === 'STOP_WORK')
@@ -62,6 +62,18 @@ export function StopWorkLayer() {
   const collapse = () => {
     setDismissed(episode)
     setReopened(false)
+  }
+
+  if (compact) {
+    // Phone: a single line, so a crew member can still reach the report form.
+    return (
+      <div role="status" className="flex shrink-0 items-center gap-2 border-b-2 border-stop bg-[#3a1210] px-4 py-2 text-[0.9rem]">
+        <OctagonX aria-hidden className="size-5 shrink-0 text-stop-glow" />
+        <span className="truncate font-semibold text-ink">
+          STOP WORK · {total ? 'all vehicles' : `${stopIds.length} site${stopIds.length > 1 ? 's' : ''}`}
+        </span>
+      </div>
+    )
   }
 
   return (
