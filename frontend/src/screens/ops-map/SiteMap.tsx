@@ -10,6 +10,7 @@ import { StatusTag } from '../../components/StatusTag'
 import { fmtNum } from '../../domain/format'
 import { STATUS_ORDER, statusVisual } from '../../domain/status'
 import type { StatusKey } from '../../domain/status'
+import { OfflineBasemap } from './OfflineBasemap'
 import type { ReportSummary } from './SiteList'
 
 const FLORIDA_CENTER: [number, number] = [28.2, -83.4]
@@ -69,7 +70,12 @@ function FlyToSelected({ id, lat, lon }: { id: string | null; lat?: number; lon?
   return null
 }
 
+export type Basemap = 'tiles' | 'offline'
+
 interface SiteMapProps {
+  basemap: Basemap
+  /** Tiles keep failing (4 errors within 10 s): the screen switches to the offline basemap. */
+  onTilesFailing: () => void
   sites: SiteView[]
   /** Envelope mode of the site list; per-site `mode` (proposed) wins when present. */
   listMode: DataMode | undefined
@@ -88,15 +94,30 @@ export const SiteMap = memo(function SiteMap(props: SiteMapProps) {
   const { sites, statusOf, selectedId, hoveredId } = props
   const fieldSites = sites.filter((s) => s.id !== DEMO_SITE_ID)
   const selected = sites.find((s) => s.id === selectedId)
+  const tileErrors = useRef<number[]>([])
 
   return (
     <MapContainer center={FLORIDA_CENTER} zoom={7} zoomControl={false} className="h-full w-full" aria-label="Map of sites">
-      <TileLayer
-        url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        className="gw-tiles"
-        maxZoom={18}
-      />
+      {props.basemap === 'tiles' ? (
+        <TileLayer
+          url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          className="gw-tiles"
+          maxZoom={18}
+          eventHandlers={{
+            tileerror: () => {
+              const now = Date.now()
+              tileErrors.current = [...tileErrors.current.filter((t) => now - t < 10_000), now]
+              if (tileErrors.current.length >= 4) props.onTilesFailing()
+            },
+            tileload: () => {
+              tileErrors.current = []
+            },
+          }}
+        />
+      ) : (
+        <OfflineBasemap />
+      )}
       <ZoomControl position="topright" />
       <FitToSites sites={fieldSites} />
       <FlyToSelected id={selected?.id ?? null} lat={selected?.latitude} lon={selected?.longitude} />

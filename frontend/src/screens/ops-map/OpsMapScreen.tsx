@@ -1,8 +1,8 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { DEMO_SITE_ID } from '../../api/config'
 import type { SiteView } from '../../api/proposed'
 import { useReports, useSites } from '../../api/queries'
-import { ErrorBlock, LoadingBlock, StaleBanner } from '../../components/States'
+import { EmptyBlock, ErrorBlock, LoadingBlock, StaleBanner } from '../../components/States'
 import { VehicleSwitch } from '../../components/VehicleSwitch'
 import { useNow } from '../../hooks/useNow'
 import { rankSites } from '../../domain/ranking'
@@ -13,6 +13,7 @@ import { MapLegend, SitePreview } from './MapOverlays'
 import { SiteList } from './SiteList'
 import type { ReportSummary } from './SiteList'
 import { SiteMap } from './SiteMap'
+import type { Basemap } from './SiteMap'
 import { StatsStrip } from './StatsStrip'
 
 /** Screen 1 (README §9): every site on a map and in a ranked list, with headline counts. */
@@ -25,6 +26,13 @@ export function OpsMapScreen() {
   const [hoveredId, setHoveredId] = useState<string | null>(null)
   const [filter, setFilter] = useState<ReadonlySet<StatusKey>>(new Set())
   const [query, setQuery] = useState('')
+  // OpenStreetMap tiles need the internet; the bundled outline basemap doesn't (README P14, §14.7).
+  const [basemap, setBasemap] = useState<Basemap>(() => (navigator.onLine ? 'tiles' : 'offline'))
+  useEffect(() => {
+    const goOffline = () => setBasemap('offline')
+    window.addEventListener('offline', goOffline)
+    return () => window.removeEventListener('offline', goOffline)
+  }, [])
 
   const sites = useMemo(() => sitesQuery.data?.data ?? [], [sitesQuery.data])
   const stale = isStale({ updatedAt: sitesQuery.dataUpdatedAt, now, budgetMs: STALE_BUDGET_MS.map, failed: sitesQuery.isError })
@@ -79,8 +87,12 @@ export function OpsMapScreen() {
       <StatsStrip sites={sites} vehicle={vehicle} stale={stale} />
       {stale && <StaleBanner updatedAt={sitesQuery.dataUpdatedAt} what="Site data" />}
       <div className="grid min-h-0 flex-1 gap-4 lg:grid-cols-[minmax(27rem,37%)_1fr]">
-        {sites.length === 0 ? (
+        {!sitesQuery.data ? (
           <LoadingBlock label="Loading sites" className="rounded-[4px] border border-line bg-panel" />
+        ) : sites.length === 0 ? (
+          <EmptyBlock title="No sites loaded" className="bg-panel">
+            The backend returned no sites. Check that fixtures/sites_50.json is present (see /api/v1/health).
+          </EmptyBlock>
         ) : (
           <SiteList
             rows={rows}
@@ -104,6 +116,8 @@ export function OpsMapScreen() {
         )}
         <div className="relative min-h-[30rem] overflow-hidden rounded-[4px] border border-line">
           <SiteMap
+            basemap={basemap}
+            onTilesFailing={() => setBasemap('offline')}
             sites={sites}
             listMode={sitesQuery.data?.mode}
             statusOf={statusOf}
@@ -117,6 +131,20 @@ export function OpsMapScreen() {
           {/* Wide screens have the vehicle switch in the header; narrower ones get it on the map. */}
           <div className="absolute top-3 left-3 z-[1000] xl:hidden">
             <VehicleSwitch />
+          </div>
+          <div className="absolute top-[5.5rem] right-3 z-[1000] flex flex-col items-end gap-2">
+            {basemap === 'offline' && (
+              <span className="rounded-[3px] border border-dashed border-line-hi bg-panel/95 px-2.5 py-1 text-[0.75rem] text-muted label-caps">
+                Offline basemap · map tiles unavailable
+              </span>
+            )}
+            <button
+              type="button"
+              onClick={() => setBasemap(basemap === 'tiles' ? 'offline' : 'tiles')}
+              className="rounded-[3px] border border-line-hi bg-panel/95 px-2.5 py-1.5 text-[0.75rem] text-ink label-caps hover:bg-steel-hi"
+            >
+              {basemap === 'tiles' ? 'Use offline basemap' : 'Try map tiles again'}
+            </button>
           </div>
           <MapLegend vehicle={vehicle} />
           {selected && (

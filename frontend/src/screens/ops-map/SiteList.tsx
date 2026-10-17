@@ -60,6 +60,7 @@ function Inputs({ site }: { site: SiteView }) {
 
 function SiteRow({ site, rank, props }: { site: SiteView; rank: number; props: SiteListProps }) {
   const ref = useRef<HTMLLIElement>(null)
+  const stale = props.statusOf(site) === 'STALE'
   const selected = props.selectedId === site.id
   const hovered = props.hoveredId === site.id
   const reports = props.reports.get(site.id)
@@ -86,11 +87,11 @@ function SiteRow({ site, rank, props }: { site: SiteView; rank: number; props: S
           <StatusTag status={props.statusOf(site)} compact />
           <span className="truncate text-[1.05rem] font-semibold">{site.name}</span>
         </span>
-        <span className="row-span-2 justify-self-end">
+        <span className={cx('row-span-2 justify-self-end', stale && 'opacity-40')}>
           <Hazard value={site.hazard_score} />
         </span>
         <span className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1 text-[0.82rem] text-muted">
-          <WeatherInline state={site.weather_state} />
+          <WeatherInline state={stale ? 'UNKNOWN' : site.weather_state} />
           <Inputs site={site} />
           <span>{fmtAgo(site.evaluated_at, props.now)}</span>
           {reports && (

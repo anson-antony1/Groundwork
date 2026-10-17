@@ -18,6 +18,9 @@ export default defineConfig(({ mode }) => {
     plugins: [react(), tailwindcss()],
     server: { host: true, proxy },
     preview: { host: true, proxy },
+    // The main chunk is the map stack (React + Leaflet) the home screen needs at once; secondary screens
+    // and mocks are split out. Served over a LAN for the demo, so ~530 KB isn't worth more config.
+    build: { chunkSizeWarningLimit: 650 },
     test: {
       environment: 'jsdom',
       setupFiles: ['./src/test/setup.ts'],

@@ -53,7 +53,9 @@ venue Wi-Fi isolates devices).
 | `npm test` | Vitest unit tests |
 | `npm run gen:api` | Regenerate `src/api/schema.gen.ts` and `endpoints.gen.ts` from `backend/openapi.json` |
 | `npm run gen:mocks` | Rebuild the mock site fixture from `fixtures/` (read-only) |
-| `npm run shot -- <url> <out.png> [--size WxH] [--scale N] [--mobile] [--full]` | Exact-viewport screenshot via headless Chrome |
+| `npm run gen:basemap` | Rebuild the offline Florida basemap from `us-atlas` (public-domain Census boundaries) |
+| `npm run shot -- <url> <out.png> [--size WxH] [--scale N] [--mobile] [--eval js]` | Exact-viewport screenshot via headless Chrome |
+| `npm run rehearse` | With `npm run dev:mock` running: plays the §14 script and saves a screenshot per beat to `rehearsal/` |
 
 After Aashita changes the API, run `npm run gen:api`, fix any type errors, and commit the generated files.
 The types come straight from the backend's committed contract, so they can't silently drift.
@@ -72,8 +74,24 @@ The types come straight from the backend's committed contract, so they can't sil
 
 ## Hotkeys
 
-`1` Map · `2` Demo tray · `3` Sensor lab · `4` Storm replay · `5` 6 PM brief · `V` toggle vehicle.
+`1` Map · `2` Demo tray · `3` Sensor lab · `4` Storm replay · `5` 6 PM brief · `V` toggle vehicle · `?` help ·
+`Esc` collapse the STOP WORK takeover · `Shift+Alt+R` (or hold the logo 2 s) reset demo · `Shift+M` mock rehearsal panel.
 Ignored while typing in a field.
+
+## Demo day (README §14)
+
+1. `frontend/.env.local`: `VITE_API_MODE=live`. Run the backend on :8000, or set `API_PROXY_TARGET` if that port is
+   taken (on Rishi's laptop another app, RepairRecord, was using 8000).
+2. One browser tab on the laptop, `http://localhost:5173`, zoomed for the back of the room; navigate with `1`–`5`.
+3. Phone: `http://<laptop-ip>:5173/report/DEMO-TRAY` (same Wi-Fi or a phone hotspot).
+4. Standby: `npm run dev:mock` on :5174. If the backend dies, switch tabs; its banner says "Demo fixture".
+5. Between judge groups: `Shift+Alt+R`, enter the sensor token once per browser session, Reset. Until the backend adds
+   `POST /api/v1/demo/reset`, the dialog ends any replay and resets the vehicle, and says what it couldn't clear.
+6. No internet: map tiles fall back to the bundled Florida outline automatically (or press "Use offline basemap").
+   Fonts, the basemap and the app itself are all local.
+
+STOP WORK covering the demo tray or every site (a storm replay) takes over the screen for ~5 s, then stays as a red bar
+and frame until the weather logic clears it. STOP at only some field sites shows a named bar instead.
 
 ## Layout
 

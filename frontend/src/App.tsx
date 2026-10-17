@@ -1,5 +1,5 @@
 import { QueryClientProvider } from '@tanstack/react-query'
-import { Suspense, lazy } from 'react'
+import { Suspense, lazy, useEffect } from 'react'
 import { Link, Route, Switch } from 'wouter'
 import { API_MODE } from './api/config'
 import { queryClient } from './api/queryClient'
@@ -7,14 +7,30 @@ import { ServerCtxProvider } from './api/ServerCtxProvider'
 import { loadMockControls } from './api/transport'
 import { AppShell } from './components/AppShell'
 import { Card } from './components/Card'
-import { BriefingScreen } from './screens/briefing/BriefingScreen'
+import { LoadingBlock } from './components/States'
 import { OpsMapScreen } from './screens/ops-map/OpsMapScreen'
-import { ReplayScreen } from './screens/replay/ReplayScreen'
-import { ReportScreen } from './screens/report/ReportScreen'
-import { SensorLabScreen } from './screens/sensor-lab/SensorLabScreen'
 import { SiteDetailScreen } from './screens/site-detail/SiteDetailScreen'
-import { StyleScreen } from './screens/style/StyleScreen'
 import { DemoUiProvider } from './state/DemoUiProvider'
+
+// Secondary screens load on demand (Recharts is only needed by the Sensor Lab) and are prefetched
+// shortly after start-up, so the first jump to them during the demo is still instant.
+const loadSensorLab = () => import('./screens/sensor-lab/SensorLabScreen')
+const loadReplay = () => import('./screens/replay/ReplayScreen')
+const loadBriefing = () => import('./screens/briefing/BriefingScreen')
+const loadReport = () => import('./screens/report/ReportScreen')
+const SensorLabScreen = lazy(() => loadSensorLab().then((m) => ({ default: m.SensorLabScreen })))
+const ReplayScreen = lazy(() => loadReplay().then((m) => ({ default: m.ReplayScreen })))
+const BriefingScreen = lazy(() => loadBriefing().then((m) => ({ default: m.BriefingScreen })))
+const ReportScreen = lazy(() => loadReport().then((m) => ({ default: m.ReportScreen })))
+const StyleScreen = lazy(() => import('./screens/style/StyleScreen').then((m) => ({ default: m.StyleScreen })))
+
+function usePrefetchScreens() {
+  useEffect(() => {
+    const prefetch = () => [loadSensorLab, loadReplay, loadBriefing, loadReport].forEach((load) => void load())
+    const timer = window.setTimeout(prefetch, 2000)
+    return () => window.clearTimeout(timer)
+  }, [])
+}
 
 // Rehearsal panel exists only in mock mode; live builds never load it.
 const MockControls = API_MODE === 'mock' ? lazy(loadMockControls) : null
@@ -33,11 +49,13 @@ function NotFound() {
 }
 
 export function App() {
+  usePrefetchScreens()
   return (
     <QueryClientProvider client={queryClient}>
       <ServerCtxProvider>
         <DemoUiProvider>
           <AppShell>
+            <Suspense fallback={<LoadingBlock label="Loading screen" />}>
             <Switch>
               <Route path="/" component={OpsMapScreen} />
               <Route path="/sites/:siteId">{(params) => <SiteDetailScreen key={params.siteId} siteId={params.siteId} />}</Route>
@@ -50,6 +68,7 @@ export function App() {
                 <NotFound />
               </Route>
             </Switch>
+            </Suspense>
           </AppShell>
           {MockControls && (
             <Suspense fallback={null}>

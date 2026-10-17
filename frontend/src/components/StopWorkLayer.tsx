@@ -20,7 +20,10 @@ const TAKEOVER_MS = 5_000
  */
 export function StopWorkLayer({ compact = false }: { compact?: boolean }) {
   const { ctx, replay } = useServerCtx()
-  const sites = useSites().data?.data ?? []
+  const sitesQuery = useSites()
+  const sites = sitesQuery.data?.data ?? []
+  // During an outage the last known STOP stays up (the conservative failure) but says it's last known.
+  const lastKnown = sitesQuery.isError ? ' · last known, API unreachable' : ''
   const stopSites = sites.filter((s) => s.weather_state === 'STOP_WORK')
   const stopIds = stopSites.map((s) => s.id)
   const active = stopIds.length > 0
@@ -88,6 +91,7 @@ export function StopWorkLayer({ compact = false }: { compact?: boolean }) {
         <span className="text-ink">
           {stopIds.length} site{stopIds.length > 1 ? 's' : ''} · {source}
           {started}
+          {lastKnown}
         </span>
         <AckStatus ack={ack} alarm={alarm} />
         <span className="ml-auto flex gap-2">

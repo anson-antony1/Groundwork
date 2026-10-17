@@ -1,18 +1,22 @@
 import type { ReactNode } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'wouter'
 import { API_MODE } from '../api/config'
 import { useSites } from '../api/queries'
 import { useServerCtx } from '../api/serverCtx'
 import { fmtClock } from '../domain/format'
 import { LABELS, MODE_LABEL, replayLabel } from '../domain/provenance'
-import { useHotkeys } from '../hooks/useHotkeys'
+import { isTypingTarget, useHotkeys } from '../hooks/useHotkeys'
+import { useLongPress } from '../hooks/useLongPress'
 import { useNow } from '../hooks/useNow'
 import { useDemoUi } from '../state/demoUiContext'
 import { MOCK_CONTROLS_EVENT } from '../state/mockEvents'
 import { ContextTransition } from './ContextTransition'
+import { HotkeyHelp } from './HotkeyHelp'
 import { cx } from './cx'
 import { Wordmark } from './Logo'
 import { NAV } from './nav'
+import { ResetDialog } from './ResetDialog'
 import { StopWorkLayer } from './StopWorkLayer'
 import { VehicleSwitch } from './VehicleSwitch'
 
@@ -49,12 +53,13 @@ function ApiBadge() {
   )
 }
 
-function TopBar({ compact }: { compact: boolean }) {
+function TopBar({ compact, onReset }: { compact: boolean; onReset: () => void }) {
   const [location] = useLocation()
+  const hold = useLongPress(onReset, 2000)
   return (
     <header className="relative z-[1100] shrink-0 border-b-2 border-line bg-gradient-to-b from-[#20262d] to-[#171b20] shadow-[0_6px_18px_rgb(0_0_0/0.45)]">
       <div className="flex h-[4.25rem] items-stretch gap-3 px-3 sm:px-5 xl:gap-4">
-        <Link href="/" className="flex min-w-0 items-center pr-1" aria-label="Groundwork home">
+        <Link href="/" className="flex min-w-0 items-center pr-1" aria-label="Groundwork home" {...hold}>
           <Wordmark />
         </Link>
         {!compact && (
@@ -147,22 +152,39 @@ export function AppShell({ children }: { children: ReactNode }) {
   const [location, navigate] = useLocation()
   const { vehicle, setVehicle } = useDemoUi()
   const phone = location.startsWith('/report')
+  const [resetOpen, setResetOpen] = useState(false)
+  const [helpOpen, setHelpOpen] = useState(false)
 
   useHotkeys({
     ...Object.fromEntries(NAV.map((n) => [n.key, () => navigate(n.to)])),
     v: () => setVehicle(vehicle === 'pickup' ? 'heavy_truck' : 'pickup'),
+    '?': () => setHelpOpen((o) => !o),
   })
+
+  // Hidden reset: Shift+Alt+R. Matched on e.code because Alt changes e.key on macOS.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.code === 'KeyR' && e.altKey && e.shiftKey && !e.metaKey && !e.ctrlKey && !isTypingTarget(e.target)) {
+        e.preventDefault()
+        setResetOpen(true)
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
 
   return (
     // Full-height shell: header and banner stay put, only <main> scrolls, so the map can fill the rest.
     <div className="flex h-dvh flex-col">
-      <TopBar compact={phone} />
+      <TopBar compact={phone} onReset={() => setResetOpen(true)} />
       <DemoBanner compact={phone} />
       <StopWorkLayer compact={phone} />
       <ContextTransition />
       <main className="min-h-0 flex-1 overflow-y-auto">
         <div className={cx('h-full', phone ? 'mx-auto w-full max-w-xl px-4 py-5' : 'px-6 py-5')}>{children}</div>
       </main>
+      <ResetDialog open={resetOpen} onClose={() => setResetOpen(false)} />
+      <HotkeyHelp open={helpOpen} onClose={() => setHelpOpen(false)} />
     </div>
   )
 }
