@@ -1,3 +1,4 @@
+import { DEMO_SITE_ID } from '../../api/config'
 import type { SiteDetailView } from '../../api/proposed'
 import type { Vehicle } from '../../api/types'
 import { cx } from '../../components/cx'
@@ -19,14 +20,15 @@ export function EffectiveBanner({ site, vehicle, status }: { site: SiteDetailVie
     >
       {stop && <span aria-hidden className="absolute inset-y-0 left-0 w-5 hazard-stripes" />}
       <div className="flex flex-col gap-2">
-        <p className="text-[0.8rem] text-muted label-caps">Effective status · {VEHICLE_LABEL[vehicle]}</p>
+        {/* The tray is read live; every field site is a forecast for tomorrow. */}
+        <p className="text-[0.8rem] text-muted label-caps">{site.id === DEMO_SITE_ID ? 'The call now' : "Tomorrow's call"} · {VEHICLE_LABEL[vehicle]}</p>
         <StatusTag status={status} size="xl" emphasize={stop} pulseOnChange viewTransitionName={siteTagTransition(site.id)} />
       </div>
       <div className="flex min-w-[16rem] flex-1 flex-col gap-1.5">
         <p className="text-xl font-semibold">{v.hint}</p>
         <p className="text-muted">
-          Weather {weatherVisual(site.weather_state).label} · access for {VEHICLE_LABEL[vehicle].toLowerCase()}{' '}
-          {accessVisual(site.access_call[vehicle]).label} · planning recommendation, supervisor confirms
+          Weather: {weatherVisual(site.weather_state).label} · Ground for the {VEHICLE_LABEL[vehicle].toLowerCase()}: {accessVisual(site.access_call[vehicle]).label} · a
+          supervisor makes the final call
         </p>
       </div>
     </section>

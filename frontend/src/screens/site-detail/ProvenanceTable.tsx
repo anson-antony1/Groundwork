@@ -12,7 +12,7 @@ export function ProvenanceTable({ site }: { site: SiteDetailView }) {
   const observed = new Set(site.observations.map((o) => o.variable))
   const missingOnly = site.missing_fields.filter((f) => !observed.has(f))
   return (
-    <Card collapsedByDefault title="Data and sources" icon={<Table2 aria-hidden className="size-4" />} bodyClassName="p-0">
+    <Card title="Data and sources" icon={<Table2 aria-hidden className="size-4" />} bodyClassName="p-0">
       <div className="overflow-x-auto">
         <table className="w-full text-left text-[0.88rem]">
           <thead className="text-[0.72rem] text-muted label-caps">
@@ -65,7 +65,7 @@ export function ProvenanceTable({ site }: { site: SiteDetailView }) {
             {site.observations.length === 0 && missingOnly.length === 0 && (
               <tr>
                 <td colSpan={7} className="px-4 py-4 text-muted">
-                  No field inputs for this site. The demo tray is driven by its beacon sensor (see Sensor lab).
+                  No forecast or soil-survey inputs here: the demo tray is driven by its beacon's soil sensor (see the Demo Tray tab).
                 </td>
               </tr>
             )}

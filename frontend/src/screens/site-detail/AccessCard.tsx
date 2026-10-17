@@ -78,15 +78,15 @@ export function AccessCard({ site, vehicle, policy, reading, now, stale }: Acces
               <span className="-rotate-3 rounded-[3px] border-2 border-stop-glow px-2.5 py-1 text-stop-glow label-caps">Overridden by STOP WORK</span>
             )}
           </div>
-          <p className="text-muted">{overridden ? 'Weather stops work for every vehicle. Mats do not make severe weather safe.' : v.hint}</p>
+          {overridden && <p className="text-muted">Weather stops work for every vehicle. Mats do not make severe weather safe.</p>}
         </div>
 
         <table className="w-full text-left text-[0.92rem]">
           <thead>
             <tr className="text-[0.75rem] text-muted label-caps">
               <th className="pb-2 font-normal">Vehicle</th>
-              <th className="pb-2 font-normal">Access call</th>
-              <th className="pb-2 font-normal">Effective</th>
+              <th className="pb-2 font-normal">Ground</th>
+              <th className="pb-2 font-normal">Final call</th>
             </tr>
           </thead>
           <tbody>
@@ -103,6 +103,7 @@ export function AccessCard({ site, vehicle, policy, reading, now, stale }: Acces
             ))}
           </tbody>
         </table>
+        <p className="-mt-3 text-[0.82rem] text-muted">Final call = the ground call, unless the weather says stop work or needs a supervisor.</p>
 
         <div className="flex flex-col gap-3 rounded-[3px] border border-line bg-bg/40 p-4">
           <p className="text-[0.75rem] text-muted label-caps">Basis</p>
@@ -110,7 +111,7 @@ export function AccessCard({ site, vehicle, policy, reading, now, stale }: Acces
             <>
               <p className="flex flex-wrap items-baseline gap-x-2">
                 <Droplets aria-hidden className="size-4 self-center text-accent" />
-                Tray moisture index
+                Tray soil moisture
                 <span className="font-display text-2xl font-bold">{readingFresh ? fmtNum(reading.moisture_index) : <MissingValue what="tray moisture" />}</span>
                 <span className="text-[0.82rem] text-muted">
                   {reading ? `${LABELS.demoSensor} · ${fmtAgo(reading.received_at, now)}` : 'No reading yet: beacon not connected'}

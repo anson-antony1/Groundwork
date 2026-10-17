@@ -14,6 +14,13 @@ import './styles/print.css'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { App } from './App'
+import { reloadForNewBuild } from './components/staleBuild'
+
+// Vite reports here when a screen's files fail to preload, e.g. after a deploy renamed them. Reloading picks
+// up the new build; preventDefault keeps the error from reaching the error boundary in the meantime.
+window.addEventListener('vite:preloadError', (event) => {
+  if (reloadForNewBuild()) event.preventDefault()
+})
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

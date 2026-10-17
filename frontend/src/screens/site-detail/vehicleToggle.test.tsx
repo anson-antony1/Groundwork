@@ -1,8 +1,9 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
 import type { SiteDetailView } from '../../api/proposed'
 import { POLICY } from '../../mocks/rules'
+import { statusVisual } from '../../domain/status'
 import { DemoUiProvider } from '../../state/DemoUiProvider'
 import { useDemoUi } from '../../state/demoUiContext'
 import { AccessCard } from './AccessCard'
@@ -42,6 +43,8 @@ function Harness() {
 }
 
 const section = (title: string) => screen.getByText(title).closest('section')!
+/** Status tags carry their hint as a title; the big tag plus the table's two columns make 3 for the selected vehicle. */
+const tagsShowing = (status: string) => within(section('Ground access · per vehicle')).getAllByTitle(statusVisual(status).hint).length
 
 describe('vehicle toggle (README P7)', () => {
   it('changes the access call but never the weather hazard card', async () => {
@@ -51,13 +54,13 @@ describe('vehicle toggle (README P7)', () => {
         <Harness />
       </DemoUiProvider>,
     )
-    const hazardBefore = section('Weather hazard · all vehicles').textContent
-    expect(section('Ground access · per vehicle').textContent).toContain('GO · FOR REVIEW')
+    const hazardBefore = section('Weather · every vehicle').textContent
+    expect([tagsShowing('GO_FOR_REVIEW'), tagsShowing('MATS_FOR_REVIEW')]).toEqual([3, 2])
 
     await userEvent.click(screen.getByRole('radio', { name: /heavy truck/i }))
 
     expect(screen.getByRole('radio', { name: /heavy truck/i })).toHaveAttribute('aria-checked', 'true')
-    expect(section('Ground access · per vehicle').textContent).toContain('MATS · FOR REVIEW')
-    expect(section('Weather hazard · all vehicles').textContent).toBe(hazardBefore)
+    expect([tagsShowing('GO_FOR_REVIEW'), tagsShowing('MATS_FOR_REVIEW')]).toEqual([2, 3])
+    expect(section('Weather · every vehicle').textContent).toBe(hazardBefore)
   })
 })

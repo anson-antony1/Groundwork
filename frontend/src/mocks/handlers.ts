@@ -113,6 +113,9 @@ const COST_FIELDS = [
   'idle_equipment',
   'rescheduling',
   'extra_contract_cost',
+  'idle_hours',
+  'labor_rate_per_hour',
+  'equipment_rate_per_hour',
 ]
 
 function validateEvaluation(body: unknown): { value: ResolvedEvaluationInput } | { details: Detail[] } {

@@ -1,13 +1,15 @@
 import { QueryClientProvider } from '@tanstack/react-query'
 import { Suspense, lazy, useEffect } from 'react'
-import { Link, Route, Router, Switch } from 'wouter'
+import { Link, Route, Router, Switch, useLocation } from 'wouter'
 import { API_MODE } from './api/config'
 import { queryClient } from './api/queryClient'
 import { ServerCtxProvider } from './api/ServerCtxProvider'
 import { loadMockControls } from './api/transport'
 import { AppShell } from './components/AppShell'
 import { Card } from './components/Card'
+import { ErrorBoundary } from './components/ErrorBoundary'
 import { LoadingBlock } from './components/States'
+import { reloadingImport } from './components/staleBuild'
 import { viewTransitionNav } from './components/viewTransitionNav'
 import { AuthProvider } from './auth/AuthProvider'
 import { OpsMapScreen } from './screens/ops-map/OpsMapScreen'
@@ -15,21 +17,25 @@ import { SiteDetailScreen } from './screens/site-detail/SiteDetailScreen'
 import { DemoUiProvider } from './state/DemoUiProvider'
 
 // Secondary screens load on demand (Recharts is only needed by the Sensor Lab) and are prefetched
-// shortly after start-up, so the first jump to them during the demo is still instant.
-const loadSensorLab = () => import('./screens/sensor-lab/SensorLabScreen')
-const loadReplay = () => import('./screens/replay/ReplayScreen')
-const loadBriefing = () => import('./screens/briefing/BriefingScreen')
-const loadReport = () => import('./screens/report/ReportScreen')
+// shortly after start-up, so the first jump to them during the demo is still instant. A tab opened before
+// a deploy reloads instead of failing on a screen file the new build renamed (reloadingImport).
+const loadSensorLab = reloadingImport(() => import('./screens/sensor-lab/SensorLabScreen'))
+const loadReplay = reloadingImport(() => import('./screens/replay/ReplayScreen'))
+const loadBriefing = reloadingImport(() => import('./screens/briefing/BriefingScreen'))
+const loadReport = reloadingImport(() => import('./screens/report/ReportScreen'))
+const loadStyle = reloadingImport(() => import('./screens/style/StyleScreen'))
+const loadWelcome = reloadingImport(() => import('./screens/welcome/WelcomeScreen'))
 const SensorLabScreen = lazy(() => loadSensorLab().then((m) => ({ default: m.SensorLabScreen })))
 const ReplayScreen = lazy(() => loadReplay().then((m) => ({ default: m.ReplayScreen })))
 const BriefingScreen = lazy(() => loadBriefing().then((m) => ({ default: m.BriefingScreen })))
 const ReportScreen = lazy(() => loadReport().then((m) => ({ default: m.ReportScreen })))
-const StyleScreen = lazy(() => import('./screens/style/StyleScreen').then((m) => ({ default: m.StyleScreen })))
-const WelcomeScreen = lazy(() => import('./screens/welcome/WelcomeScreen').then((m) => ({ default: m.WelcomeScreen })))
+const StyleScreen = lazy(() => loadStyle().then((m) => ({ default: m.StyleScreen })))
+const WelcomeScreen = lazy(() => loadWelcome().then((m) => ({ default: m.WelcomeScreen })))
 
 function usePrefetchScreens() {
   useEffect(() => {
-    const prefetch = () => [loadSensorLab, loadReplay, loadBriefing, loadReport].forEach((load) => void load())
+    // A failed prefetch is harmless: the screen loads (and can fail visibly) when it opens.
+    const prefetch = () => [loadSensorLab, loadReplay, loadBriefing, loadReport].forEach((load) => void load().catch(() => {}))
     const timer = window.setTimeout(prefetch, 2000)
     return () => window.clearTimeout(timer)
   }, [])
@@ -53,14 +59,18 @@ function NotFound() {
 
 /** The operations console: everything behind the top bar, polling the server's live/replay context. */
 function OpsApp() {
+  const [location] = useLocation()
   return (
       <ServerCtxProvider>
         <DemoUiProvider>
           <AppShell>
+            <ErrorBoundary resetKey={location}>
             <Suspense fallback={<LoadingBlock label="Loading screen" />}>
             <Switch>
               <Route path="/" component={OpsMapScreen} />
               <Route path="/sites/:siteId">{(params) => <SiteDetailScreen key={params.siteId} siteId={params.siteId} />}</Route>
+              <Route path="/demo-tray" component={SensorLabScreen} />
+              {/* Old address of the same screen, kept so saved links still work. */}
               <Route path="/sensor-lab" component={SensorLabScreen} />
               <Route path="/replay" component={ReplayScreen} />
               <Route path="/briefing" component={BriefingScreen} />
@@ -71,6 +81,7 @@ function OpsApp() {
               </Route>
             </Switch>
             </Suspense>
+            </ErrorBoundary>
           </AppShell>
           {MockControls && (
             <Suspense fallback={null}>
@@ -91,9 +102,11 @@ export function App() {
       <Switch>
         {/* The public front door renders without the ops shell: no STOP bar, polling or hotkeys. */}
         <Route path="/welcome">
-          <Suspense fallback={<LoadingBlock label="Loading" />}>
-            <WelcomeScreen />
-          </Suspense>
+          <ErrorBoundary>
+            <Suspense fallback={<LoadingBlock label="Loading" />}>
+              <WelcomeScreen />
+            </Suspense>
+          </ErrorBoundary>
         </Route>
         <Route>
           <OpsApp />

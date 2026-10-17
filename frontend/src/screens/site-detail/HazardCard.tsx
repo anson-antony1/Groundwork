@@ -29,12 +29,12 @@ export function HazardCard({ site, stale }: { site: SiteDetailView; stale: boole
 
   return (
     <Card
-      title="Weather hazard · all vehicles"
+      title="Weather · every vehicle"
       icon={<CloudRain aria-hidden className="size-4" />}
       right={<WeatherTag state={stale ? 'UNKNOWN' : site.weather_state} size="md" emphasize={site.weather_state === 'STOP_WORK'} />}
       footer={
         <ProvenanceLine>
-          {weatherObs[0] ? observationLabel(weatherObs[0]) : isDemo ? 'Demo tray: no weather feed; it runs a calm-weather demo scenario' : 'No weather inputs received'}
+          {weatherObs[0] ? observationLabel(weatherObs[0]) : isDemo ? 'Demo tray: no forecast of its own' : 'No weather inputs received'}
         </ProvenanceLine>
       }
     >
@@ -46,28 +46,32 @@ export function HazardCard({ site, stale }: { site: SiteDetailView; stale: boole
                 <SplitFlap text={fmtNum(score)} className="font-display text-[5.5rem] leading-none font-bold" />
                 <span className="pb-1.5 text-2xl text-muted">/ 10</span>
               </>
+            ) : isDemo ? (
+              <span className="font-display text-4xl font-bold text-muted label-caps">No forecast</span>
             ) : (
               <span className="font-display text-4xl font-bold">
-                <MissingValue what="hazard score" />
+                <MissingValue what="weather risk" />
               </span>
             )}
           </div>
           <p className="max-w-xs pb-1 text-[0.85rem] text-muted">
             {isDemo && !hasScore
-              ? 'No hazard score: the demo tray has no weather feed and runs a calm-weather demo scenario.'
-              : "Rules-based 0–10 composite. Doesn't change with the vehicle. A severe-weather alert overrides it; it can't be averaged away."}
+              ? 'The tray sits at the venue and has no forecast of its own. A storm replay or a lightning report still stops it.'
+              : 'Tomorrow’s weather risk, 0 calm to 10 severe. The same for every vehicle. A severe-weather warning means STOP WORK whatever the score.'}
           </p>
         </div>
 
-        {/* Neutral ink: the score explains; only the weather state carries status color. */}
-        <div className={hasScore ? 'h-3 rounded-full bg-steel' : 'h-3 rounded-full border-2 border-dashed border-line-hi'}>
-          {hasScore && <div className="h-full rounded-full bg-ink/85" style={{ width: `${Math.min(100, Math.max(0, score * 10))}%` }} />}
-        </div>
+        {/* Neutral ink: the score explains; only the weather state carries status color. The tray has no score to draw. */}
+        {!(isDemo && !hasScore) && (
+          <div className={hasScore ? 'h-3 rounded-full bg-steel' : 'h-3 rounded-full border-2 border-dashed border-line-hi'}>
+            {hasScore && <div className="h-full rounded-full bg-ink/85" style={{ width: `${Math.min(100, Math.max(0, score * 10))}%` }} />}
+          </div>
+        )}
 
         {explanation.length > 0 && (
           <div className="flex flex-col gap-1.5">
             <p className="flex items-center gap-1.5 text-[0.75rem] text-muted label-caps">
-              <ListTree aria-hidden className="size-4" /> How the backend scored it
+              <ListTree aria-hidden className="size-4" /> Why this score
             </p>
             <ul className="flex flex-col gap-1 text-[0.98rem]">
               {explanation.map((line) => (

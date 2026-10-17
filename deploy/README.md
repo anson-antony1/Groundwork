@@ -26,15 +26,17 @@ Nothing under `backend/` changes. [`deploy/asgi.py`](asgi.py) imports `backend.a
 
 - **Sleep:**
   - The live service sleeps after 15 minutes with no traffic, and the next visit takes about a minute to wake it.
-  - Open the live URL 2 minutes before judges arrive.
+  - Wake the live URL at least 15 minutes before judges arrive, so the weather refresh can finish, or keep it awake overnight with an uptime pinger on `/api/v1/health` every 10 minutes.
   - The demo site never sleeps.
 - **Resets:**
   - Each restart starts from a fresh database in `/tmp`: no crew reports and no saved briefings.
   - Uploaded photos also reset.
-  - At boot, [`bootstrap.py`](bootstrap.py) refreshes the weather snapshot, then generates one briefing.
-- **Weather:**
-  - The snapshot is refreshed at boot and every 3 hours while awake ([`refresh_weather.py`](refresh_weather.py) swaps the file atomically).
-  - If a refresh fails, the previous snapshot keeps being served and is flagged stale after 6 hours.
+  - At boot, [`bootstrap.py`](bootstrap.py) writes a 6 PM plan straight to the database, so the 6 PM Brief is never empty, even with login on. It uses the template narrative, which keeps Gemini's free daily quota for supervisors pressing Generate.
+- **Weather and hazards:**
+  - At boot and every 3 hours while awake, `bootstrap.py` runs the backend's refreshers: weather ([`refresh_weather_loop_v2.py`](../backend/scripts/refresh_weather_loop_v2.py)), then wildfire and wildlife ([`refresh_hazards_loop_v1.py`](../backend/scripts/refresh_hazards_loop_v1.py)). After the first weather refresh it writes a fresh plan.
+  - Each swaps its file in atomically and keeps the previous snapshot if a fetch fails. Weather is flagged stale 6 hours after it was fetched, hazards after 12.
+  - A weather refresh takes about 2 minutes on a laptop. A restart starts it over, so merges in quick succession keep the live app on the committed snapshots.
+  - The Render log shows `[bootstrap] weather refreshed` or `weather refresh failed: …` for each attempt.
 - **One shared server:** Replay is global, so anyone who starts a storm flips it for every visitor. The Replay screen says so.
 - **No beacon:** The Arduino isn't attached, so DEMO-TRAY shows NO LINK. The beacon story lives on the demo site and at the table.
 
@@ -57,7 +59,9 @@ Port 8000 may be taken on the demo laptop, so this uses 8010. From the repo root
 PORT=8010 GROUNDWORK_DB_PATH=/tmp/groundwork-local.db sh deploy/start.sh
 ```
 
-Leave `GROUNDWORK_REFRESH_WEATHER` unset locally; with it set to `1`, the boot refresh rewrites the committed `fixtures/weather_snapshot.json`. To test a refresh without touching the fixture, run `python -m deploy.refresh_weather --out /tmp/weather.json`.
+Leave `GROUNDWORK_REFRESH_WEATHER` unset locally; with it set to `1`, the boot refreshes rewrite the committed `fixtures/weather_snapshot.json` and `fixtures/hazards_snapshot.json`. To test the weather refresh without touching the fixture, run `python -c 'from pathlib import Path; from backend.scripts.refresh_weather_loop_v2 import refresh_once; refresh_once(Path("/tmp/weather.json"))'`.
+
+Tests for the deploy files: `python -m pytest deploy/tests`.
 
 ## Auth0 (crew and supervisor login)
 

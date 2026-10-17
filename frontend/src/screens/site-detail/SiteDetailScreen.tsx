@@ -8,7 +8,7 @@ import { ReportCard } from '../../components/ReportCard'
 import { ReportReview } from '../../components/ReportReview'
 import { EmptyBlock, ErrorBlock, LoadingBlock, StaleBanner } from '../../components/States'
 import { useNow } from '../../hooks/useNow'
-import { ageSeconds, fmtAgo, fmtWhen } from '../../domain/format'
+import { fmtAgo, fmtWhen } from '../../domain/format'
 import { inputsSummary } from '../../domain/inputs'
 import { MODE_LABEL } from '../../domain/provenance'
 import { STALE_BUDGET_MS, isStale } from '../../domain/staleness'
@@ -19,7 +19,6 @@ import { HazardCard } from './HazardCard'
 import { MatsCostPanel } from './MatsCostPanel'
 import { ProvenanceTable } from './ProvenanceTable'
 import { SiteTimeline } from './SiteTimeline'
-import { WhyThisCall } from './WhyThisCall'
 
 /** Screen 2 (README §9): one site's weather hazard and per-vehicle access, side by side, with the evidence. */
 export function SiteDetailScreen({ siteId }: { siteId: string }) {
@@ -42,8 +41,6 @@ export function SiteDetailScreen({ siteId }: { siteId: string }) {
   const site = env.data
   const stale = isStale({ updatedAt: siteQuery.dataUpdatedAt, now, budgetMs: STALE_BUDGET_MS.site, failed: siteQuery.isError })
   const reading = readingQuery.data?.data ?? null
-  const readingAge = reading ? ageSeconds(reading.received_at, now) : null
-  const readingFresh = readingAge !== null && readingAge <= (policy?.sensor_stale_seconds ?? 15)
   const inputs = inputsSummary(site)
 
   return (
@@ -88,8 +85,6 @@ export function SiteDetailScreen({ siteId }: { siteId: string }) {
         <HazardCard site={site} stale={stale} />
         <AccessCard site={site} vehicle={vehicle} policy={policy} reading={reading} now={now} stale={stale} />
       </div>
-
-      <WhyThisCall site={site} vehicle={vehicle} policy={policy} reading={reading} readingFresh={readingFresh} />
 
       <MatsCostPanel site={site} vehicle={vehicle} />
 

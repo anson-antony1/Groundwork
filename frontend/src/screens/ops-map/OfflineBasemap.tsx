@@ -3,6 +3,7 @@ import { divIcon } from 'leaflet'
 import type { PathOptions } from 'leaflet'
 import { useEffect, useState } from 'react'
 import { GeoJSON, Marker } from 'react-leaflet'
+import { reloadingImport } from '../../components/staleBuild'
 
 const STYLE: Record<string, PathOptions> = {
   florida: { color: '#6b7682', weight: 2, fillColor: '#1e242b', fillOpacity: 1 },
@@ -34,7 +35,7 @@ export function OfflineBasemap() {
   const [data, setData] = useState<FeatureCollection | null>(null)
   useEffect(() => {
     let alive = true
-    void import('../../assets/basemap/florida.json').then((m) => {
+    void reloadingImport(() => import('../../assets/basemap/florida.json'))().then((m) => {
       if (alive) setData(m.default as unknown as FeatureCollection)
     })
     return () => {

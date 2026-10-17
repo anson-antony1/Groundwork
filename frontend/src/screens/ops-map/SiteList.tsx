@@ -8,7 +8,7 @@ import { MissingValue } from '../../components/Provenance'
 import { StatusMarker } from '../../components/StatusMarker'
 import { StatusTag, WeatherInline } from '../../components/StatusTag'
 import { siteTagTransition } from '../../components/viewTransitionNav'
-import { fmtAgo, fmtNum } from '../../domain/format'
+import { fmtAgo, fmtNum, fmtObservation } from '../../domain/format'
 import { inputsSummary } from '../../domain/inputs'
 import { LABELS } from '../../domain/provenance'
 import { STATUS_ORDER, statusVisual } from '../../domain/status'
@@ -40,11 +40,14 @@ interface SiteListProps {
 }
 
 function Hazard({ value }: { value: number | null | undefined }) {
-  if (value === null || value === undefined) return <MissingValue what="hazard score" className="text-[0.85rem]" />
+  if (value === null || value === undefined) return <MissingValue what="weather risk" className="text-[0.85rem]" />
   return (
-    <span className="flex items-baseline gap-1">
-      <span className="font-display text-[1.75rem] leading-none font-bold">{fmtNum(value)}</span>
-      <span className="text-[0.8rem] text-muted">/10</span>
+    <span className="flex flex-col items-end">
+      <span className="flex items-baseline gap-1">
+        <span className="font-display text-[1.75rem] leading-none font-bold">{fmtNum(value)}</span>
+        <span className="text-[0.8rem] text-muted">/10</span>
+      </span>
+      <span className="text-[0.68rem] text-muted label-caps">Weather risk</span>
     </span>
   )
 }
@@ -52,11 +55,33 @@ function Hazard({ value }: { value: number | null | undefined }) {
 function Inputs({ site }: { site: SiteView }) {
   const s = inputsSummary(site)
   if (s.total === 0) return null
+  const missing = s.total - s.have
   return (
-    <span className={cx('num', s.stale ? 'text-caution' : s.have < s.total ? 'text-unknown' : 'text-muted')}>
-      {s.have}/{s.total} inputs{s.stale ? ' · stale' : ''}
+    <span className={cx('num', s.stale ? 'text-caution' : missing ? 'text-unknown' : 'text-muted')}>
+      {missing ? `${missing} of ${s.total} inputs missing` : 'All data in'}
+      {s.stale ? ' · old' : ''}
     </span>
   )
+}
+
+/** The one-line "why" for a flagged row, from the backend's own reasons; null when there's nothing to explain. */
+function rowReason(site: SiteView, status: StatusKey): string | null {
+  const reasons = site.reasons
+  if (status === 'STOP_WORK' || status === 'SUPERVISOR_REVIEW') {
+    const triggers = reasons?.weather_triggers ?? []
+    const alert = triggers.find((t) => t.startsWith('NWS alert: '))
+    if (alert) return `${alert.slice('NWS alert: '.length)} (Weather Service)`
+    return triggers[0]?.replace(/ \(points from [^)]*\)$/, '') ?? null
+  }
+  if (status === 'MATS_FOR_REVIEW' || status === 'NO_GO_FOR_REVIEW') {
+    // Name the week's rain, and the soil only when it drains poorly ("well drained" next to "soft" reads wrong).
+    const rain = site.observations.find((o) => o.variable === 'rain_7d')
+    const parts = ['Soft ground']
+    if (rain && rain.value !== null) parts.push(`${fmtObservation(rain)} of rain in 7 days`)
+    if (reasons?.soil_drainage?.includes('poorly')) parts.push(`${reasons.soil_drainage} soil`)
+    return parts.join(' · ')
+  }
+  return null
 }
 
 function SiteRow({ site, rank, props }: { site: SiteView; rank: number; props: SiteListProps }) {
@@ -92,7 +117,11 @@ function SiteRow({ site, rank, props }: { site: SiteView; rank: number; props: S
           <Hazard value={site.hazard_score} />
         </span>
         <span className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1 text-[0.82rem] text-muted">
-          <WeatherInline state={stale ? 'UNKNOWN' : site.weather_state} />
+          {(!stale && rowReason(site, props.statusOf(site))) ? (
+            <span className="text-ink">{rowReason(site, props.statusOf(site))}</span>
+          ) : (
+            <WeatherInline state={stale ? 'UNKNOWN' : site.weather_state} />
+          )}
           <Inputs site={site} />
           <span>{fmtAgo(site.evaluated_at, props.now)}</span>
           {reports && (
@@ -123,7 +152,7 @@ function DemoTrayCallout({ site, props }: { site: SiteView; props: SiteListProps
           <Radio aria-hidden className="size-5" />
           Demo tray · venue
         </button>
-        <Link href={`/sites/${site.id}`} transition className="flex items-center gap-1 text-[0.85rem] text-accent label-caps hover:underline">
+        <Link href="/demo-tray" transition className="flex items-center gap-1 text-[0.85rem] text-accent label-caps hover:underline">
           Open <ArrowRight aria-hidden className="size-4" />
         </Link>
       </div>
