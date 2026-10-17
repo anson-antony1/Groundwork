@@ -25,7 +25,7 @@ interface LinkState {
 
 function linkState(displayOk: boolean, reading: Reading | null, age: number | null, now: number): LinkState {
   if (!displayOk) return { ok: false, text: 'API unreachable · beacon status unknown' }
-  if (!reading || age === null) return { ok: false, text: 'No link · no readings yet (is serial_bridge.py running?)' }
+  if (!reading || age === null) return { ok: false, text: 'Beacon not connected · no readings yet' }
   if (age > LINK_SECONDS) return { ok: false, text: `No link · last reading ${fmtAgo(reading.received_at, now)}` }
   return { ok: true, text: `Link OK · reading ${age < 2 ? 'just now' : `${age} s ago`}` }
 }

@@ -1,0 +1,111 @@
+{
+  "name": "GroundWork 6PM briefing",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Manual test",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            { "field": "cronExpression", "expression": "0 18 * * *" }
+          ]
+        }
+      },
+      "name": "6 PM daily",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [0, 200]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8000/api/v1/briefings/generate",
+        "options": { "timeout": 60000 }
+      },
+      "name": "Generate briefing",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [260, 100]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "1", "name": "summary", "value": "={{ $json.data.summary }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Extract summary",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [520, 100]
+    },
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "groundwork-email",
+        "responseMode": "lastNode",
+        "options": { "allowedOrigins": "*" }
+      },
+      "name": "Email button",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "groundwork-email-webhook",
+      "position": [0, 400]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "http://127.0.0.1:8000/api/v1/briefings",
+        "options": { "timeout": 30000 }
+      },
+      "name": "Get latest briefing",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [260, 400]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "1", "name": "summary", "value": "={{ $json.data[0].summary }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Extract latest summary",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [520, 400]
+    },
+    {
+      "parameters": {
+        "fromEmail": "groundwork@example.com",
+        "toEmail": "dispatcher@example.com",
+        "subject": "=GroundWork 6 PM plan - {{ $now.plus({days:1}).toFormat('cccc, LLL d') }}",
+        "emailFormat": "text",
+        "text": "={{ $json.summary }}\n\nFull plan with the ranked site list: http://localhost:5173 (6 PM Brief tab).\nPrototype planning guidance, not certified safety advice. A supervisor confirms every call."
+      },
+      "name": "Email dispatcher",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [780, 100]
+    }
+  ],
+  "connections": {
+    "Manual test": { "main": [[{ "node": "Generate briefing", "type": "main", "index": 0 }]] },
+    "6 PM daily": { "main": [[{ "node": "Generate briefing", "type": "main", "index": 0 }]] },
+    "Generate briefing": { "main": [[{ "node": "Extract summary", "type": "main", "index": 0 }]] },
+    "Extract summary": { "main": [[{ "node": "Email dispatcher", "type": "main", "index": 0 }]] },
+    "Email button": { "main": [[{ "node": "Get latest briefing", "type": "main", "index": 0 }]] },
+    "Get latest briefing": { "main": [[{ "node": "Extract latest summary", "type": "main", "index": 0 }]] },
+    "Extract latest summary": { "main": [[{ "node": "Email dispatcher", "type": "main", "index": 0 }]] }
+  },
+  "active": false
+}

@@ -192,6 +192,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/replay/scenarios": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Replay scenarios available for the scenario picker */
+        get: operations["list_scenarios_api_v1_replay_scenarios_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/replay/start": {
         parameters: {
             query?: never;
@@ -255,6 +272,23 @@ export interface paths {
         get: operations["get_report_api_v1_reports__report_id__get"];
         put?: never;
         post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/reports/{report_id}/review": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Supervisor confirms or rejects a crew report (optionally correcting its category) */
+        post: operations["review_report_api_v1_reports__report_id__review_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -828,6 +862,27 @@ export interface components {
             /** Sources */
             sources?: string[];
         };
+        /** Envelope[list[ReplayScenarioOut]] */
+        Envelope_list_ReplayScenarioOut__: {
+            /** Data */
+            data: components["schemas"]["ReplayScenarioOut"][];
+            /** Errors */
+            errors?: string[];
+            /**
+             * Generated At
+             * Format: date-time
+             */
+            generated_at: string;
+            /** Missing Fields */
+            missing_fields?: string[];
+            /**
+             * Mode
+             * @enum {string}
+             */
+            mode: "live" | "cached" | "replay" | "simulated" | "sensor_demo" | "sensor_replay";
+            /** Sources */
+            sources?: string[];
+        };
         /** ErrorBody */
         ErrorBody: {
             /** Code */
@@ -1307,6 +1362,25 @@ export interface components {
             /** Started At */
             started_at: string | null;
         };
+        /** ReplayScenarioOut */
+        ReplayScenarioOut: {
+            /** Area */
+            area: string | null;
+            /** Event */
+            event: string;
+            /** Expires */
+            expires: string | null;
+            /** Id */
+            id: string;
+            /** Onset */
+            onset: string | null;
+            /** Reference Url */
+            reference_url: string | null;
+            /** Source */
+            source: string | null;
+            /** Title */
+            title: string;
+        };
         /** ReportOut */
         ReportOut: {
             /** Ai Confidence */
@@ -1336,6 +1410,16 @@ export interface components {
              * @enum {string}
              */
             verification: "unreviewed" | "confirmed" | "rejected";
+        };
+        /** ReportReviewIn */
+        ReportReviewIn: {
+            /** Category User */
+            category_user?: ("mud" | "standing_water" | "flooded_road" | "fallen_tree" | "overhead_hazard" | "lightning_observed" | "heat" | "other") | null;
+            /**
+             * Verification
+             * @enum {string}
+             */
+            verification: "confirmed" | "rejected";
         };
         /**
          * SensorReadingIn
@@ -1472,7 +1556,7 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "ack_touch" | "crew_flag" | "crew_flag_cleared" | "hazard_report" | "replay_started" | "replay_stopped" | "briefing_generated";
+            kind: "ack_touch" | "crew_flag" | "crew_flag_cleared" | "hazard_report" | "report_reviewed" | "replay_started" | "replay_stopped" | "briefing_generated";
             /** Ref Id */
             ref_id: string | null;
             /** Site Id */
@@ -2181,6 +2265,53 @@ export interface operations {
             };
         };
     };
+    list_scenarios_api_v1_replay_scenarios_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_list_ReplayScenarioOut__"];
+                };
+            };
+            /** @description Validation failed */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Rate limit exceeded */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unexpected server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
     start_replay_api_v1_replay_start_post: {
         parameters: {
             query?: never;
@@ -2420,6 +2551,68 @@ export interface operations {
             cookie?: never;
         };
         requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_ReportOut_"];
+                };
+            };
+            /** @description Resource not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation failed */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Rate limit exceeded */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unexpected server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    review_report_api_v1_reports__report_id__review_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                report_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ReportReviewIn"];
+            };
+        };
         responses: {
             /** @description Successful Response */
             200: {

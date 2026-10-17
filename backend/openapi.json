@@ -1091,6 +1091,62 @@
         "title": "Envelope[SiteDetailOut]",
         "type": "object"
       },
+      "Envelope_list_ReplayScenarioOut__": {
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/ReplayScenarioOut"
+            },
+            "title": "Data",
+            "type": "array"
+          },
+          "errors": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Errors",
+            "type": "array"
+          },
+          "generated_at": {
+            "format": "date-time",
+            "title": "Generated At",
+            "type": "string"
+          },
+          "missing_fields": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Missing Fields",
+            "type": "array"
+          },
+          "mode": {
+            "enum": [
+              "live",
+              "cached",
+              "replay",
+              "simulated",
+              "sensor_demo",
+              "sensor_replay"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "sources": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Sources",
+            "type": "array"
+          }
+        },
+        "required": [
+          "mode",
+          "generated_at",
+          "data"
+        ],
+        "title": "Envelope[list[ReplayScenarioOut]]",
+        "type": "object"
+      },
       "ErrorBody": {
         "properties": {
           "code": {
@@ -2443,6 +2499,91 @@
         "title": "ReplayOut",
         "type": "object"
       },
+      "ReplayScenarioOut": {
+        "properties": {
+          "area": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Area"
+          },
+          "event": {
+            "title": "Event",
+            "type": "string"
+          },
+          "expires": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expires"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "onset": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Onset"
+          },
+          "reference_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reference Url"
+          },
+          "source": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "event",
+          "source",
+          "reference_url",
+          "onset",
+          "expires",
+          "area"
+        ],
+        "title": "ReplayScenarioOut",
+        "type": "object"
+      },
       "ReportOut": {
         "properties": {
           "ai_confidence": {
@@ -2542,6 +2683,45 @@
           "verification"
         ],
         "title": "ReportOut",
+        "type": "object"
+      },
+      "ReportReviewIn": {
+        "additionalProperties": false,
+        "properties": {
+          "category_user": {
+            "anyOf": [
+              {
+                "enum": [
+                  "mud",
+                  "standing_water",
+                  "flooded_road",
+                  "fallen_tree",
+                  "overhead_hazard",
+                  "lightning_observed",
+                  "heat",
+                  "other"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category User"
+          },
+          "verification": {
+            "enum": [
+              "confirmed",
+              "rejected"
+            ],
+            "title": "Verification",
+            "type": "string"
+          }
+        },
+        "required": [
+          "verification"
+        ],
+        "title": "ReportReviewIn",
         "type": "object"
       },
       "SensorReadingIn": {
@@ -2958,6 +3138,7 @@
               "crew_flag",
               "crew_flag_cleared",
               "hazard_report",
+              "report_reviewed",
               "replay_started",
               "replay_stopped",
               "briefing_generated"
@@ -3948,6 +4129,57 @@
         ]
       }
     },
+    "/api/v1/replay/scenarios": {
+      "get": {
+        "operationId": "list_scenarios_api_v1_replay_scenarios_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_list_ReplayScenarioOut__"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Validation failed"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Rate limit exceeded"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unexpected server error"
+          }
+        },
+        "summary": "Replay scenarios available for the scenario picker",
+        "tags": [
+          "replay"
+        ]
+      }
+    },
     "/api/v1/replay/start": {
       "post": {
         "operationId": "start_replay_api_v1_replay_start_post",
@@ -4319,6 +4551,88 @@
           }
         },
         "summary": "One crew report",
+        "tags": [
+          "reports"
+        ]
+      }
+    },
+    "/api/v1/reports/{report_id}/review": {
+      "post": {
+        "operationId": "review_report_api_v1_reports__report_id__review_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "report_id",
+            "required": true,
+            "schema": {
+              "title": "Report Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportReviewIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_ReportOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Resource not found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Validation failed"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Rate limit exceeded"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unexpected server error"
+          }
+        },
+        "summary": "Supervisor confirms or rejects a crew report (optionally correcting its category)",
         "tags": [
           "reports"
         ]

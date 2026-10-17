@@ -8,7 +8,7 @@ import { SplitFlap } from '../../components/SplitFlap'
 import { MissingValue, ProvenanceLine, QualityChip } from '../../components/Provenance'
 import { WeatherTag } from '../../components/StatusTag'
 import { fieldLabel, fmtNum, fmtObservation, fmtWhen } from '../../domain/format'
-import { LABELS, observationLabel } from '../../domain/provenance'
+import { observationLabel } from '../../domain/provenance'
 
 /** Inputs to the weather decision. Soil observations belong to ground access, not here. */
 const WEATHER_VARS = ['rain_7d', 'rain_forecast', 'gust_forecast', 'apparent_temp']
@@ -35,8 +35,6 @@ export function HazardCard({ site, stale }: { site: SiteDetailView; stale: boole
       footer={
         <ProvenanceLine>
           {weatherObs[0] ? observationLabel(weatherObs[0]) : isDemo ? 'Demo tray: no weather feed; it runs a calm-weather demo scenario' : 'No weather inputs received'}
-          {' · '}
-          {LABELS.prototypePolicy}
         </ProvenanceLine>
       }
     >

@@ -61,7 +61,7 @@ export function AccessCard({ site, vehicle, policy, reading, now, stale }: Acces
       title="Ground access · per vehicle"
       icon={<Layers aria-hidden className="size-4" />}
       tone={stale ? 'unknown' : v.tone}
-      footer={<ProvenanceLine>Planning recommendation, not a soil-load certification · {LABELS.prototypePolicy}</ProvenanceLine>}
+      footer={<ProvenanceLine>Planning recommendation, not a soil-load certification</ProvenanceLine>}
     >
       <div className="flex flex-col gap-5">
         <div className="flex flex-wrap items-center gap-3">
@@ -113,7 +113,7 @@ export function AccessCard({ site, vehicle, policy, reading, now, stale }: Acces
                 Tray moisture index
                 <span className="font-display text-2xl font-bold">{readingFresh ? fmtNum(reading.moisture_index) : <MissingValue what="tray moisture" />}</span>
                 <span className="text-[0.82rem] text-muted">
-                  {reading ? `${LABELS.demoSensor} · ${fmtAgo(reading.received_at, now)}` : 'No reading yet: is the bridge running?'}
+                  {reading ? `${LABELS.demoSensor} · ${fmtAgo(reading.received_at, now)}` : 'No reading yet: beacon not connected'}
                 </span>
               </p>
               {policy && <MoistureScale policy={policy} vehicle={vehicle} moisture={readingFresh ? reading.moisture_index : null} />}

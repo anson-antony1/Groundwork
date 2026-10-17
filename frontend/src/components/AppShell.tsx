@@ -58,7 +58,7 @@ function TopBar({ compact, onReset }: { compact: boolean; onReset: () => void })
   const [location] = useLocation()
   const hold = useLongPress(onReset, 2000)
   return (
-    <header className="relative z-[1100] shrink-0 border-b-2 border-line bg-gradient-to-b from-[#20262d] to-[#171b20] shadow-[0_6px_18px_rgb(0_0_0/0.45)]">
+    <header className="relative z-[1100] shrink-0 print:hidden border-b-2 border-line bg-gradient-to-b from-[#20262d] to-[#171b20] shadow-[0_6px_18px_rgb(0_0_0/0.45)]">
       <span aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
         <span className="gw-scanline" />
       </span>
@@ -191,12 +191,12 @@ export function AppShell({ children }: { children: ReactNode }) {
 
   return (
     // Full-height shell: header and banner stay put, only <main> scrolls, so the map can fill the rest.
-    <div className="flex h-dvh flex-col">
+    <div className="flex h-dvh flex-col print:block print:h-auto">
       <TopBar compact={phone} onReset={() => setResetOpen(true)} />
       <DemoBanner compact={phone} />
       <StopWorkLayer compact={phone} />
       <ContextTransition />
-      <main className="min-h-0 flex-1 overflow-y-auto">
+      <main className="min-h-0 flex-1 overflow-y-auto print:overflow-visible">
         <div className={cx('h-full', phone ? 'mx-auto w-full max-w-xl px-4 py-5' : 'px-6 py-5')}>{children}</div>
       </main>
       {ambientNote && (

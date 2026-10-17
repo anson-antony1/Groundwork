@@ -1,4 +1,4 @@
-import { Camera, CloudLightning, CloudSun, FileText, Flag, FlagOff, Hand, History } from 'lucide-react'
+import { Camera, ClipboardCheck, CloudLightning, CloudSun, FileText, Flag, FlagOff, Hand, History } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { useEvents } from '../../api/queries'
 import type { TimelineKind } from '../../api/types'
@@ -11,6 +11,7 @@ const KIND: Record<TimelineKind, { icon: LucideIcon; label: string }> = {
   crew_flag: { icon: Flag, label: 'Crew flag' },
   crew_flag_cleared: { icon: FlagOff, label: 'Crew flag cleared' },
   hazard_report: { icon: Camera, label: 'Crew report' },
+  report_reviewed: { icon: ClipboardCheck, label: 'Crew report reviewed' },
   replay_started: { icon: CloudLightning, label: 'Storm replay started' },
   replay_stopped: { icon: CloudSun, label: 'Storm replay ended' },
   briefing_generated: { icon: FileText, label: '6 PM plan generated' },
@@ -20,7 +21,7 @@ const KIND: Record<TimelineKind, { icon: LucideIcon; label: string }> = {
 export function SiteTimeline({ siteId }: { siteId: string }) {
   const events = useEvents(siteId)
   return (
-    <Card title="Event log" icon={<History aria-hidden className="size-4" />}>
+    <Card collapsedByDefault title="Event log" icon={<History aria-hidden className="size-4" />}>
       {events.isLoading && <LoadingBlock label="Loading events" />}
       {events.isError && !events.data && <ErrorBlock title="Event log unavailable" error={events.error} />}
       {events.data && events.data.data.length === 0 && <EmptyBlock title="Nothing logged yet">Acknowledgments, crew reports and replays appear here.</EmptyBlock>}

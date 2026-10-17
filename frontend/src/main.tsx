@@ -9,6 +9,7 @@ import '@fontsource/barlow-condensed/700.css'
 import '@fontsource/vt323/400.css'
 import 'leaflet/dist/leaflet.css'
 import './styles/theme.css'
+import './styles/print.css'
 
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'

@@ -38,7 +38,7 @@ def test_replay_site_unknown_returns_none():
     assert replay_site_v2("NO-SUCH-SITE", "demo-storm") is None
 
 
-def test_milton_replay_site_is_stop_work_with_simulated_alert():
+def test_milton_replay_site_is_stop_work_from_archived_alerts():
     r = replay_site_v2("SITE-001", "demo-storm")
     assert r["weather_state"] == "STOP_WORK"
-    assert r["alert_events"]
+    assert "Hurricane Warning" in r["alert_events"]

@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Generic, TypeVar
 
 from sqlalchemy import (
-    Column, Engine, Float, Integer, MetaData, String, Table, Text, create_engine, delete, insert, literal_column, select,
+    Column, Engine, Float, Integer, MetaData, String, Table, Text, create_engine, delete, insert, literal_column, select, update,
 )
 
 from .records import BriefingRecord, DemoState, PrioritySite, ReadingRecord, ReportRecord
@@ -157,6 +157,12 @@ class TableRepository(Generic[R]):
         with self._engine.connect() as conn:
             return [self._to_record(r) for r in conn.execute(query)]
 
+    def save(self, rec: R) -> R:
+        """Overwrite an existing record (matched on id)."""
+        with self._engine.begin() as conn:
+            conn.execute(update(self._table).where(self._col("id") == rec.id).values(self._to_row(rec)))
+        return rec
+
     def clear(self) -> None:
         with self._engine.begin() as conn:
             conn.execute(delete(self._table))
@@ -180,6 +186,10 @@ class ReadingRepository(TableRepository[ReadingRecord]):
 
     def list(self, device_id: str) -> list[ReadingRecord]:
         return super().list(limit=HISTORY_LIMIT, device_id=device_id)
+
+    def delete_by_calibration(self, calibration: str) -> int:
+        with self._engine.begin() as conn:
+            return conn.execute(delete(self._table).where(self._table.c.calibration == calibration)).rowcount
 
 
 def _report_to_json(r: ReportRecord) -> dict:

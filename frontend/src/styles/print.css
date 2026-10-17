@@ -1,0 +1,11 @@
+/* Print: light page, dark text, no clipped panels. */
+@media print {
+  :root {
+    --color-bg: #ffffff; --color-panel: #ffffff; --color-steel: #f3f4f6; --color-steel-hi: #e5e7eb;
+    --color-line: #d1d5db; --color-line-hi: #9ca3af; --color-ink: #111827; --color-muted: #4b5563;
+    --color-faint: #4b5563; --color-accent: #0b6e99; --color-nogo-text: #b91c1c; --color-unknown: #374151;
+  }
+  html, body, #root { height: auto !important; overflow: visible !important; background: #fff !important; color: #111827 !important; }
+  * { box-shadow: none !important; }
+  tr, section, article { break-inside: avoid; }
+}

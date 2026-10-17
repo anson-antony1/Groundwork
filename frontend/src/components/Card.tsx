@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
 import type { Tone } from '../domain/status'
 import { cx } from './cx'
 import { TONE_BORDER } from './tone'
@@ -14,11 +14,14 @@ interface CardProps {
   tone?: Tone
   className?: string
   bodyClassName?: string
+  /** Starts folded; the title bar gets a Show/Hide toggle. */
+  collapsedByDefault?: boolean
   children?: ReactNode
 }
 
 /** Steel panel with an uppercase title bar: the building block of every screen. */
-export function Card({ title, icon, right, footer, tone, className, bodyClassName, children }: CardProps) {
+export function Card({ title, icon, right, footer, tone, className, bodyClassName, collapsedByDefault, children }: CardProps) {
+  const [open, setOpen] = useState(!collapsedByDefault)
   return (
     <section
       className={cx(
@@ -33,11 +36,18 @@ export function Card({ title, icon, right, footer, tone, className, bodyClassNam
             {icon}
             {title}
           </h2>
-          {right}
+          <span className="flex items-center gap-3">
+            {right}
+            {collapsedByDefault !== undefined && (
+              <button type="button" onClick={() => setOpen((o) => !o)} aria-expanded={open} className="text-[0.8rem] text-accent label-caps hover:underline print:hidden">
+                {open ? 'Hide' : 'Show'}
+              </button>
+            )}
+          </span>
         </header>
       )}
-      <div className={cx('flex-1 p-5', bodyClassName)}>{children}</div>
-      {footer && <footer className="border-t border-line px-5 py-2.5 text-[0.78rem] text-muted">{footer}</footer>}
+      {open && <div className={cx('flex-1 p-5', bodyClassName)}>{children}</div>}
+      {open && footer && <footer className="border-t border-line px-5 py-2.5 text-[0.78rem] text-muted">{footer}</footer>}
     </section>
   )
 }

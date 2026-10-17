@@ -1,12 +1,13 @@
 import json
 import logging
+from dataclasses import dataclass
 from datetime import datetime
 
 from .. import repositories as repo
 from ..config import FIXTURES_DIR
 from ..repositories.records import DemoState
 from . import timeline
-from .storm_replay_v2 import scenario_file
+from .storm_replay_v2 import SCENARIO_FILES, archived_alerts, scenario_file, scenario_source
 
 log = logging.getLogger("groundwork.replay")
 
@@ -14,10 +15,58 @@ MISSING_SOURCE_WARNING = "fixtures/storm_replay.json not added yet; replay has n
 
 
 def _scenario_source(scenario_id: str = "demo-storm") -> str | None:
-    path = FIXTURES_DIR / scenario_file(scenario_id)
-    if not path.exists():
+    if not (FIXTURES_DIR / scenario_file(scenario_id)).exists():
         return None
-    return json.loads(path.read_text(encoding="utf-8")).get("source")
+    return scenario_source(scenario_id)
+
+
+@dataclass(frozen=True)
+class Scenario:
+    id: str
+    title: str
+    event: str
+    source: str | None
+    reference_url: str | None
+    onset: str | None
+    expires: str | None
+    area: str | None
+
+
+def _event_summary(archived: dict | None, data: dict) -> str:
+    """Distinct NWS event names for the day, warnings first; falls back to the fixture's simulated alert."""
+    names = sorted({e["event"] for e in (archived or {}).get("events", {}).values()},
+                   key=lambda n: ("Warning" not in n, "Watch" not in n, n))
+    if not names:
+        return data.get("simulated_alert") or "No NWS alerts that day"
+    shown = ", ".join(names[:3])
+    return shown + (f" and {len(names) - 3} more" if len(names) > 3 else "")
+
+
+def list_scenarios() -> list[Scenario]:
+    """Replay scenarios that have a fixture file, for the frontend's scenario picker."""
+    scenarios = []
+    for scenario_id, filename in SCENARIO_FILES.items():
+        path = FIXTURES_DIR / filename
+        if not path.exists():
+            continue
+        data = json.loads(path.read_text(encoding="utf-8"))
+        archived = archived_alerts(scenario_id)
+        source = scenario_source(scenario_id)
+        window = (archived or {}).get("window_utc") or [None, None]
+        alert_source = (archived or {}).get("source", {})
+        state = alert_source.get("state")
+        scenarios.append(Scenario(
+            id=scenario_id,
+            # Fixture label if present, else the first clause of the source line ("Hurricane Milton, 2024-10-09").
+            title=data.get("label") or (source or scenario_id).split(". ")[0],
+            event=_event_summary(archived, data),
+            source=source,
+            reference_url=alert_source.get("url"),
+            onset=window[0],
+            expires=window[1],
+            area=f"{len(data.get('sites', {}))} sites" + (f" in {state}" if state else ""),
+        ))
+    return scenarios
 
 
 def get_replay() -> DemoState:
