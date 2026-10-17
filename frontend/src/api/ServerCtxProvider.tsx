@@ -7,6 +7,7 @@ import type { ServerCtx } from './context'
 import { qk } from './queryKeys'
 import { ServerCtxContext } from './serverCtx'
 import type { ServerCtxValue } from './serverCtx'
+import type { Envelope, Replay } from './types'
 
 const SWITCH_MS = 700
 
@@ -17,6 +18,13 @@ export function ServerCtxProvider({ children }: { children: ReactNode }) {
     queryKey: qk.replay,
     queryFn: ({ signal }) => api.replay(signal),
     refetchInterval: 2_000,
+    // Monotonic: an answer the server generated earlier (a poll that raced a start/stop) never
+    // replaces a newer one, so the screen can't flicker back to the old context.
+    structuralSharing: (previous: unknown, next: unknown) => {
+      const prev = previous as Envelope<Replay> | undefined
+      const fresh = next as Envelope<Replay>
+      return prev && Date.parse(prev.generated_at) > Date.parse(fresh.generated_at) ? prev : fresh
+    },
   })
 
   const replay = replayQuery.data?.data ?? null

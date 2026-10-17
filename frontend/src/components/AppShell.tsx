@@ -1,15 +1,19 @@
 import type { ReactNode } from 'react'
 import { Link, useLocation } from 'wouter'
 import { API_MODE } from '../api/config'
+import { useSites } from '../api/queries'
+import { useServerCtx } from '../api/serverCtx'
 import { fmtClock } from '../domain/format'
-import { LABELS } from '../domain/provenance'
+import { LABELS, MODE_LABEL, replayLabel } from '../domain/provenance'
 import { useHotkeys } from '../hooks/useHotkeys'
 import { useNow } from '../hooks/useNow'
 import { useDemoUi } from '../state/demoUiContext'
 import { MOCK_CONTROLS_EVENT } from '../state/mockEvents'
+import { ContextTransition } from './ContextTransition'
 import { cx } from './cx'
 import { Wordmark } from './Logo'
 import { NAV } from './nav'
+import { StopWorkLayer } from './StopWorkLayer'
 import { VehicleSwitch } from './VehicleSwitch'
 
 function isActive(location: string, to: string): boolean {
@@ -27,17 +31,20 @@ function Clock() {
 }
 
 function ApiBadge() {
+  const { offline } = useServerCtx()
   const mock = API_MODE === 'mock'
+  const label = offline ? 'API offline' : mock ? 'Mock API' : 'Live API'
   return (
     <span
+      role="status"
       className={cx(
         'inline-flex shrink-0 items-center gap-2 rounded-[3px] border-2 px-2 py-1 text-[0.72rem] whitespace-nowrap label-caps sm:px-2.5 sm:py-1.5 sm:text-[0.78rem]',
-        mock ? 'border-dashed border-line-hi text-muted' : 'border-line-hi text-ink',
+        offline || mock ? 'border-dashed border-line-hi text-muted' : 'border-line-hi text-ink',
       )}
-      title={mock ? 'Serving the in-browser demo fixture (VITE_API_MODE=mock)' : 'Connected to the backend (VITE_API_MODE=live)'}
+      title={offline ? 'The API is not answering: statuses are withheld until it does' : mock ? 'Serving the in-browser demo fixture (VITE_API_MODE=mock)' : 'Connected to the backend (VITE_API_MODE=live)'}
     >
-      <span aria-hidden className={cx('size-2.5 rounded-full', mock ? 'bg-muted' : 'bg-accent')} />
-      {mock ? 'Mock API' : 'Live API'}
+      <span aria-hidden className={cx('size-2.5 rounded-full', offline ? 'border border-unknown' : mock ? 'bg-muted' : 'bg-accent')} />
+      {label}
     </span>
   )
 }
@@ -90,6 +97,8 @@ function TopBar({ compact }: { compact: boolean }) {
 
 /** Always-visible honesty strip: what kind of data is on screen (README §14, §15). */
 function DemoBanner() {
+  const { replay, offline } = useServerCtx()
+  const sitesMode = useSites().data?.mode
   const mock = API_MODE === 'mock'
   return (
     <div className="flex shrink-0 flex-wrap items-center gap-x-5 gap-y-1.5 border-b border-line bg-steel px-5 py-2 text-[0.85rem]">
@@ -108,8 +117,17 @@ function DemoBanner() {
       ) : (
         <span className="text-ink">Hackathon prototype · not certified safety guidance</span>
       )}
+      {replay?.active ? (
+        <span className="font-semibold text-ink">
+          {replayLabel(replay.source)}
+          {replay.started_at && ` · started ${fmtClock(replay.started_at)}`}
+        </span>
+      ) : (
+        sitesMode && <span className="text-muted">Field sites: {MODE_LABEL[sitesMode]}</span>
+      )}
       <span className="text-muted">Demo tray: {LABELS.demoSensor}</span>
       <span className="text-muted">Rules: {LABELS.prototypePolicy}</span>
+      {offline && <span className="rounded-[3px] border border-dashed border-unknown px-2 py-0.5 text-unknown label-caps">API unreachable · statuses withheld</span>}
     </div>
   )
 }
@@ -129,6 +147,8 @@ export function AppShell({ children }: { children: ReactNode }) {
     <div className="flex h-dvh flex-col">
       <TopBar compact={phone} />
       <DemoBanner />
+      <StopWorkLayer />
+      <ContextTransition />
       <main className="min-h-0 flex-1 overflow-y-auto">
         <div className={cx('h-full', phone ? 'mx-auto w-full max-w-xl px-4 py-5' : 'px-6 py-5')}>{children}</div>
       </main>

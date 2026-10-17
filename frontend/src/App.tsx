@@ -9,6 +9,7 @@ import { loadMockControls } from './api/transport'
 import { AppShell } from './components/AppShell'
 import { Card } from './components/Card'
 import { OpsMapScreen } from './screens/ops-map/OpsMapScreen'
+import { ReplayScreen } from './screens/replay/ReplayScreen'
 import { SiteDetailScreen } from './screens/site-detail/SiteDetailScreen'
 import { StyleScreen } from './screens/style/StyleScreen'
 import { DemoUiProvider } from './state/DemoUiProvider'
@@ -55,9 +56,7 @@ export function App() {
               <Route path="/sensor-lab">
                 <Pending title="Sensor lab" checkpoint={4} />
               </Route>
-              <Route path="/replay">
-                <Pending title="Storm replay" checkpoint={3} />
-              </Route>
+              <Route path="/replay" component={ReplayScreen} />
               <Route path="/briefing">
                 <Pending title="6 PM briefing" checkpoint={7} />
               </Route>

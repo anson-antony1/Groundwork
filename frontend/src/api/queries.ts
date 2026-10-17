@@ -140,12 +140,16 @@ export function useReplayScenarios() {
 
 // --- Mutations -------------------------------------------------------------
 
-/** Start/stop write the server's answer straight into the replay query, so this screen switches instantly. */
+/**
+ * Start/stop write the server's answer straight into the replay query, so this screen switches instantly.
+ * An in-flight /replay poll is cancelled first: its older answer must not land afterwards and flip us back.
+ */
 export function useReplayControl() {
   const queryClient = useQueryClient()
+  const onMutate = () => queryClient.cancelQueries({ queryKey: qk.replay })
   const onSuccess = (env: Envelope<unknown>) => queryClient.setQueryData(qk.replay, env)
-  const start = useMutation({ mutationFn: (scenarioId?: string) => api.startReplay(scenarioId), onSuccess })
-  const stop = useMutation({ mutationFn: () => api.stopReplay(), onSuccess })
+  const start = useMutation({ mutationFn: (scenarioId?: string) => api.startReplay(scenarioId), onMutate, onSuccess })
+  const stop = useMutation({ mutationFn: () => api.stopReplay(), onMutate, onSuccess })
   return { start, stop }
 }
 
