@@ -4,6 +4,7 @@ import { DEMO_SITE_ID } from '../../api/config'
 import type { SiteDetailView } from '../../api/proposed'
 import { Card } from '../../components/Card'
 import { fieldIcon } from '../../components/fieldIcons'
+import { SplitFlap } from '../../components/SplitFlap'
 import { MissingValue, ProvenanceLine, QualityChip } from '../../components/Provenance'
 import { WeatherTag } from '../../components/StatusTag'
 import { fieldLabel, fmtNum, fmtObservation, fmtWhen } from '../../domain/format'
@@ -44,7 +45,7 @@ export function HazardCard({ site, stale }: { site: SiteDetailView; stale: boole
           <div className="flex items-end gap-2">
             {hasScore ? (
               <>
-                <span className="font-display text-[5.5rem] leading-[0.82] font-bold">{fmtNum(score)}</span>
+                <SplitFlap text={fmtNum(score)} className="font-display text-[5.5rem] leading-none font-bold" />
                 <span className="pb-1.5 text-2xl text-muted">/ 10</span>
               </>
             ) : (

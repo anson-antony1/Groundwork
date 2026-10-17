@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { RollingNumber } from '../../components/RollingNumber'
+import { FlapCount } from '../../components/SplitFlap'
 import { TONE_VAR } from '../../components/tone'
 import { cx } from '../../components/cx'
 import { useInView } from '../../hooks/useInView'
@@ -34,7 +34,7 @@ function Counter({ status, value }: { status: HeroStatus; value: number }) {
         </svg>
         {LABEL[status]}
       </span>
-      <RollingNumber value={value} minDigits={2} durationMs={380} className="font-display text-[1.4rem] leading-none font-bold sm:text-[1.9rem]" />
+      <FlapCount value={value} className="font-display text-[1.4rem] leading-none font-bold sm:text-[1.9rem]" />
     </div>
   )
 }
