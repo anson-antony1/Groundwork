@@ -2,6 +2,9 @@
 
 Readme · MD
 # Groundwork — Utility Crew Ground-Access and Hazard Planning
+
+<img width="1122" height="1402" alt="GroundWork System Architecture Flowchart" src="https://github.com/user-attachments/assets/f2bdd7cd-a2d6-449d-bf6f-bdb9405b19e0" />
+
  
 > **SwampHacks XII · 36-hour hackathon · Team of 4**  
 > **Pitch:** "By 6 PM, Groundwork tells utility crews which sites to prioritize tomorrow, which vehicles may need ground protection, when dangerous weather demands STOP WORK, and what delays could cost—using traceable weather and USDA soil data plus real crew reports."
