@@ -918,7 +918,4 @@ flowchart LR
 ```
  
 **Live demo:** pour water → sensor reading, dashboard and beacon change → switch vehicles and compare costs → replay storm STOP WORK (beacon alarm, touch to acknowledge) → submit photo report → show 50+ sites and briefing. Sensor tray data is *not* evidence about a remote site.
- 
----
- 
-Claude finished the response
+
