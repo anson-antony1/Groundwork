@@ -1,0 +1,11 @@
+seq,raw_adc,moisture_index,light_raw,light_index,pressure_hpa,temp_c,calibration
+1,212,12.0,410,40.1,1013.2,24.5,simulated_replay_v1
+2,240,15.4,408,39.9,1013.1,24.5,simulated_replay_v1
+3,301,22.8,405,39.6,1013.0,24.6,simulated_replay_v1
+4,388,33.1,402,39.3,1012.8,24.6,simulated_replay_v1
+5,470,43.0,398,38.9,1012.6,24.7,simulated_replay_v1
+6,552,52.9,380,37.1,1012.3,24.7,simulated_replay_v1
+7,630,62.4,361,35.3,1011.9,24.8,simulated_replay_v1
+8,678,68.2,340,33.2,1011.5,24.8,simulated_replay_v1
+9,731,74.6,322,31.5,1011.0,24.9,simulated_replay_v1
+10,790,81.7,300,29.3,1010.6,24.9,simulated_replay_v1
