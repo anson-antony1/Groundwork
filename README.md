@@ -1026,3 +1026,25 @@ flowchart LR
 - **Weather snapshot:** `python -m backend.scripts.fetch_weather` (needs internet). The API reads only the snapshot, so the demo works offline. Stale values are still served and flagged.
 - **Storm replay (P13):** Hurricane Milton, forecast day 2024-10-09. Rain and gusts are real Open-Meteo archive data. The hurricane warning is **simulated**, because historical NWS alerts aren't available. Rebuild with `python -m backend.scripts.build_storm_replay_v1` (needs internet). Milton exceeds the scale maximum, so every site scores 7.0.
 - **6 PM briefing:** generating with Gemini takes about 20 seconds, so generate it before the demo and show the saved one (`GET /api/v1/briefings`, newest first). Without internet it falls back to a short template summary.
+
+## Agent layer (optional): MCP server, Claude Desktop, n8n
+
+Nothing in `backend/` depends on this. It lives in `agent/` and talks to the running API at `http://localhost:8000`.
+
+- **MCP server** (`agent/groundwork_mcp_v1.py`): lets an AI agent query GroundWork in plain English. Tools: `list_sites`, `get_site`, `latest_briefing` (read-only, never generates a briefing), `start_storm_replay`, `stop_storm_replay`. Install with `pip install "mcp[cli]<2" httpx` (the code uses the 1.x API; mcp 2.x renamed `FastMCP`). Test with `npx @modelcontextprotocol/inspector python agent/groundwork_mcp_v1.py`, flip the toggle on the server card, open Tools and run `list_sites`.
+- **Claude Desktop:** `python agent/install_claude_desktop_v1.py` adds the server to Claude Desktop's config (macOS, backs up the old config first). Fully quit and reopen Claude Desktop, with the backend running. Claude picks a tool by reading each tool's description, then answers from real API data. It only works on the machine running the backend.
+- **Gemini vs Claude:** the 6 PM briefing text is still written by Gemini inside the backend. Claude Desktop is a separate chat layer for follow-up questions and does not replace it. STOP_WORK decisions come from the deterministic hazard rules, never from an LLM.
+- **n8n 6 PM scheduler** (`agent/n8n_briefing_v2.json`): run `npx n8n`, open http://localhost:5678, Import from file, then run the Manual test node. It uses 127.0.0.1 because n8n can resolve localhost to IPv6 and get refused (v1 has that problem). It ships inactive. Each run saves a new briefing at the top of the list, so keep it off around a demo.
+- **Replays and the sensor:** only the DEMO-TRAY site uses sensor data. The other substations use forecast-based screening. Any replay forces the tray to STOP_WORK and re-arms the physical beacon alarm, so stop it afterwards and warn the hardware owner first.
+
+## Running everything (start order)
+
+From the repo root with the venv active: `cd ~/Desktop/Groundwork && source .venv/bin/activate`.
+
+1. **Backend (required):** `uvicorn backend.app.main:app --reload --port 8000`. Docs at http://localhost:8000/docs, API prefix `/api/v1`. `--reload` does not watch `.env` or `fixtures/`, so restart after changing either. Port stuck: `lsof -ti :8000 | xargs kill`.
+2. **Gemini key:** in `.env` (gitignored; keep a private backup). Without it, or offline, the briefing falls back to a short template summary. Check that a generate returns `narrative_source: llm` before a demo.
+3. **Frontend:** see `frontend/README.md`.
+4. **n8n and Claude Desktop (optional):** see the agent layer section above.
+5. **Tests:** `python -m pytest backend/tests -q`, with the backend stopped.
+
+**Replays:** `POST /api/v1/replay/start` with no body runs Hurricane Milton. A `calm-day` scenario (2024-07-15, a mix of NORMAL and CAUTION) starts with body `{"scenario_id": "calm-day"}`. In both, weather is real archived data and alerts are simulated or assumed. End with `POST /api/v1/replay/stop`.
