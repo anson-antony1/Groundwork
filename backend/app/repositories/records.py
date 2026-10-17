@@ -77,6 +77,7 @@ class BriefingRecord:
     missing_data_notes: tuple[tuple[str, tuple[str, ...]], ...]
     crew_report_followups: tuple[ReportRecord, ...]  # snapshot at generation time
     narrative_source: str
+    deterministic_summary: str | None = None  # template text; None on briefs saved before this existed
 
 
 @dataclass(frozen=True)

@@ -1,6 +1,6 @@
 """Response DTOs. Internal records are mapped onto these in api/mappers.py; nothing else is serialized."""
 from datetime import datetime
-from typing import Literal
+from typing import Any, Literal
 
 from pydantic import BaseModel, Field
 
@@ -58,6 +58,8 @@ class SiteOut(BaseModel):
     evaluated_at: datetime
     hazard_explanation: list[str] = Field(default_factory=list)
     alert_events: list[str] = Field(default_factory=list)
+    priority_rank: int | None = Field(
+        None, ge=1, description="Position in the 6 PM briefing's ranking across all sites (1 = most urgent); list only")
 
 
 class ReportOut(BaseModel):
@@ -209,6 +211,8 @@ class BriefingOut(BaseModel):
     missing_data_notes: list[MissingDataNoteOut]
     crew_report_followups: list[ReportOut]
     narrative_source: Literal["deterministic_template", "llm"]
+    deterministic_summary: str | None = Field(
+        None, description="The template summary built from the facts, kept even when `summary` is an LLM narrative")
 
 
 class TimelineEventOut(BaseModel):
@@ -263,5 +267,7 @@ class PolicyOut(BaseModel):
     label: str
     demo_tray_access: DemoTrayAccessOut
     hazard_weights: HazardWeightsOut
+    hazard_policy: dict[str, Any] | None = Field(
+        None, description="The live hazard rules: points per factor, CAUTION/STOP_WORK thresholds, stop-work alert terms")
     sensor_stale_seconds: int
     mat_defaults: MatDefaultsOut

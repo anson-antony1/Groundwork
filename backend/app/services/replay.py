@@ -55,6 +55,9 @@ def list_scenarios() -> list[Scenario]:
         window = (archived or {}).get("window_utc") or [None, None]
         alert_source = (archived or {}).get("source", {})
         state = alert_source.get("state")
+        area = f"{len(data.get('sites', {}))} sites" + (f" in {state}" if state else "")
+        if archived:  # where that day's real alerts actually landed
+            area += f", NWS alerts at {sum(1 for ids in archived['sites'].values() if ids)}"
         scenarios.append(Scenario(
             id=scenario_id,
             # Fixture label if present, else the first clause of the source line ("Hurricane Milton, 2024-10-09").
@@ -64,7 +67,7 @@ def list_scenarios() -> list[Scenario]:
             reference_url=alert_source.get("url"),
             onset=window[0],
             expires=window[1],
-            area=f"{len(data.get('sites', {}))} sites" + (f" in {state}" if state else ""),
+            area=area,
         ))
     return scenarios
 

@@ -15,7 +15,7 @@ from ..services.evaluation import Evaluation
 from ..services.site_status import SiteStatus
 
 
-def site_out(s: SiteStatus) -> SiteOut:
+def site_out(s: SiteStatus, priority_rank: int | None = None) -> SiteOut:
     return SiteOut(
         id=s.site.id, name=s.site.name, latitude=s.site.latitude, longitude=s.site.longitude,
         region=s.site.region, location_origin=s.site.location_origin,
@@ -25,6 +25,7 @@ def site_out(s: SiteStatus) -> SiteOut:
         data_status=s.data_status, observations=[ObservationOut(**o) for o in s.observations],
         missing_fields=list(s.missing_fields), evaluated_at=s.evaluated_at,
         hazard_explanation=list(s.hazard_explanation), alert_events=list(s.alert_events),
+        priority_rank=priority_rank,
     )
 
 
@@ -112,6 +113,7 @@ def briefing_out(b: BriefingRecord) -> BriefingOut:
         missing_data_notes=[MissingDataNoteOut(site_id=sid, missing_fields=list(f)) for sid, f in b.missing_data_notes],
         crew_report_followups=[report_out(r) for r in b.crew_report_followups],
         narrative_source=b.narrative_source,
+        deterministic_summary=b.deterministic_summary,
     )
 
 
