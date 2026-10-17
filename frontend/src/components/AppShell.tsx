@@ -9,6 +9,7 @@ import { LABELS, MODE_LABEL, replayLabel, shortReplaySource } from '../domain/pr
 import { isTypingTarget, useHotkeys } from '../hooks/useHotkeys'
 import { useLongPress } from '../hooks/useLongPress'
 import { useNow } from '../hooks/useNow'
+import { AccountButton } from '../auth/AccountButton'
 import { setAmbient, useAmbient } from '../state/ambient'
 import { useDemoUi } from '../state/demoUiContext'
 import { MOCK_CONTROLS_EVENT } from '../state/mockEvents'
@@ -96,6 +97,7 @@ function TopBar({ compact, onReset }: { compact: boolean; onReset: () => void })
               <VehicleSwitch />
             </div>
           )}
+          <AccountButton />
           <ApiBadge />
           <Clock />
         </div>

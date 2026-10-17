@@ -3,6 +3,8 @@ import { useMemo, useState } from 'react'
 import { describeError } from '../../api/errors'
 import type { SiteDetailView } from '../../api/proposed'
 import { useEvaluate } from '../../api/queries'
+import { SupervisorOnly } from '../../auth/AccountButton'
+import { useCan } from '../../auth/session'
 import type { EvaluationInput, Vehicle } from '../../api/types'
 import { Card } from '../../components/Card'
 import { cx } from '../../components/cx'
@@ -54,13 +56,24 @@ export function MatsCostPanel({ site, vehicle }: { site: SiteDetailView; vehicle
   const debounced = useDebounced(bodyJson, 400)
   const input = useMemo(() => (debounced ? (JSON.parse(debounced) as EvaluationInput) : null), [debounced])
   const statusKey = `${site.weather_state}|${site.access_call[vehicle]}|${site.effective_status[vehicle]}`
-  const evaluation = useEvaluate(site.id, input, statusKey)
+  // POST /evaluate is supervisor-only with auth on: don't send it for crew, show why instead.
+  const { can } = useCan()
+  const planning = can('planMats')
+  const evaluation = useEvaluate(site.id, planning ? input : null, statusKey)
   const result = evaluation.data?.data
   const recalculating = evaluation.isPlaceholderData || evaluation.isFetching || bodyJson !== debounced
 
   const setMat = (field: MatField, text: string) => setForm((f) => ({ ...f, mats: { ...f.mats, [field]: text } }))
   const setCost = (field: CostField, text: string) => setForm((f) => ({ ...f, costs: { ...f.costs, [field]: text } }))
   const unit = form.unit
+
+  if (!planning) {
+    return (
+      <Card title="Mats and cost planning" icon={<Calculator aria-hidden className="size-4" />}>
+        <SupervisorOnly what="plan mats and compare costs" />
+      </Card>
+    )
+  }
 
   return (
     <Card

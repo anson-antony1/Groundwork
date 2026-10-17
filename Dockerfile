@@ -9,6 +9,10 @@ FROM node:24-slim AS frontend
 ARG VITE_DEMO_URL=
 ARG VITE_PUBLIC_URL=
 ARG RENDER_EXTERNAL_URL
+# Auth0 login (public values for the single-page app). Unset, the site has no Log in button.
+ARG VITE_AUTH0_DOMAIN=
+ARG VITE_AUTH0_CLIENT_ID=
+ARG VITE_AUTH0_AUDIENCE=https://groundwork-api
 WORKDIR /app/frontend
 COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci

@@ -21,6 +21,19 @@ services:
       # Render picked the hostnames on the first deploy (groundwork.onrender.com belongs to someone else).
       - key: VITE_DEMO_URL # build arg: /welcome links to the demo site's interactive beacon
         value: https://groundwork-demo.onrender.com
+      # Auth0 (deploy/README.md "Auth0"). Typed in the dashboard, so a Blueprint sync never overwrites them.
+      - key: GROUNDWORK_AUTH_ENABLED # "true" turns role checks on; "false" is the safe fallback
+        sync: false
+      - key: AUTH0_DOMAIN # e.g. groundwork-demo.us.auth0.com
+        sync: false
+      - key: VITE_AUTH0_DOMAIN # build arg: same tenant domain, for the Log in button
+        sync: false
+      - key: VITE_AUTH0_CLIENT_ID # build arg: the "Groundwork Web" single-page app's client ID
+        sync: false
+      - key: AUTH0_AUDIENCE # the Auth0 API identifier, exactly (no trailing slash)
+        value: https://groundwork-api
+      - key: AUTH0_ROLES_CLAIM
+        value: https://groundwork-api/roles
 
   - type: web
     name: groundwork-demo

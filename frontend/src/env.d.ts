@@ -13,6 +13,13 @@ interface ImportMetaEnv {
   readonly VITE_LIVE_URL?: string
   /** Public URL of the mock-mode demo site, linked from /welcome on the live app. */
   readonly VITE_DEMO_URL?: string
+  /** Auth0 single-page app (public values). Login appears in live builds once domain and client ID are set. */
+  readonly VITE_AUTH0_DOMAIN?: string
+  readonly VITE_AUTH0_CLIENT_ID?: string
+  /** Must equal the backend's AUTH0_AUDIENCE. Default https://groundwork-api (no trailing slash). */
+  readonly VITE_AUTH0_AUDIENCE?: string
+  /** Must equal the backend's AUTH0_ROLES_CLAIM. Default https://groundwork-api/roles. */
+  readonly VITE_AUTH0_ROLES_CLAIM?: string
 }
 
 interface ImportMeta {

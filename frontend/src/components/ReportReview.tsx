@@ -4,6 +4,7 @@ import { describeError } from '../api/errors'
 import { PROPOSED_ENDPOINTS } from '../api/proposed'
 import type { ReportView } from '../api/proposed'
 import { useReviewReport } from '../api/queries'
+import { useCan } from '../auth/session'
 import { REPORT_CATEGORIES } from '../api/types'
 import type { ReportCategory } from '../api/types'
 import { categoryLabel } from '../domain/format'
@@ -16,7 +17,8 @@ const BUTTON = 'flex min-h-10 items-center gap-1.5 rounded-[3px] border px-2.5 t
  */
 export function ReportReview({ report }: { report: ReportView }) {
   const review = useReviewReport()
-  if (report.verification !== 'unreviewed') return null
+  const { can } = useCan()
+  if (report.verification !== 'unreviewed' || !can('reviewReports')) return null
   if (!hasEndpoint(PROPOSED_ENDPOINTS.reportReview)) {
     return <p className="text-[0.78rem] text-muted">Review controls appear once the backend adds report review.</p>
   }

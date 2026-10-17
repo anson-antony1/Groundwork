@@ -9,6 +9,7 @@ import { AppShell } from './components/AppShell'
 import { Card } from './components/Card'
 import { LoadingBlock } from './components/States'
 import { viewTransitionNav } from './components/viewTransitionNav'
+import { AuthProvider } from './auth/AuthProvider'
 import { OpsMapScreen } from './screens/ops-map/OpsMapScreen'
 import { SiteDetailScreen } from './screens/site-detail/SiteDetailScreen'
 import { DemoUiProvider } from './state/DemoUiProvider'
@@ -86,6 +87,7 @@ export function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Router aroundNav={viewTransitionNav}>
+      <AuthProvider>
       <Switch>
         {/* The public front door renders without the ops shell: no STOP bar, polling or hotkeys. */}
         <Route path="/welcome">
@@ -97,6 +99,7 @@ export function App() {
           <OpsApp />
         </Route>
       </Switch>
+      </AuthProvider>
       </Router>
     </QueryClientProvider>
   )

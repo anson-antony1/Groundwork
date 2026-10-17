@@ -17,6 +17,8 @@ import { useNow } from '../../hooks/useNow'
 import { fieldLabel, fmtAgo, fmtNum, fmtShortClock, fmtWhen } from '../../domain/format'
 import { sourceCoverage } from '../../domain/inputs'
 import { LABELS, MODE_LABEL } from '../../domain/provenance'
+import { SupervisorOnly } from '../../auth/AccountButton'
+import { useCan } from '../../auth/session'
 import { BuildSequence } from './BuildSequence'
 
 /** The plan is for the day after it was generated. */
@@ -76,6 +78,7 @@ function Stat({ label, value, tone }: { label: string; value: number; tone?: 'st
 export function BriefingScreen() {
   const latest = useLatestBriefing()
   const generate = useGenerateBriefing()
+  const { can } = useCan()
   const sites = useSites().data
   const now = useNow(5000)
   const envelope = latest.data
@@ -110,15 +113,19 @@ export function BriefingScreen() {
               <Printer aria-hidden className="size-5" /> Print
             </button>
           )}
-          <button
-            type="button"
-            disabled={generate.isPending}
-            onClick={() => generate.mutate()}
-            className="flex min-h-14 items-center gap-2.5 rounded-[3px] bg-accent px-6 text-lg text-accent-ink label-caps disabled:opacity-60"
-          >
-            {generate.isPending ? <Loader2 aria-hidden className="size-6 animate-spin" /> : <RefreshCw aria-hidden className="size-6" />}
-            {generate.isPending ? 'Building the plan…' : brief ? 'Regenerate 6 PM plan' : 'Generate 6 PM plan'}
-          </button>
+          {can('generatePlan') ? (
+            <button
+              type="button"
+              disabled={generate.isPending}
+              onClick={() => generate.mutate()}
+              className="flex min-h-14 items-center gap-2.5 rounded-[3px] bg-accent px-6 text-lg text-accent-ink label-caps disabled:opacity-60"
+            >
+              {generate.isPending ? <Loader2 aria-hidden className="size-6 animate-spin" /> : <RefreshCw aria-hidden className="size-6" />}
+              {generate.isPending ? 'Building the plan…' : brief ? 'Regenerate 6 PM plan' : 'Generate 6 PM plan'}
+            </button>
+          ) : (
+            <SupervisorOnly what="generate a new plan" />
+          )}
         </div>
       </header>
 
@@ -128,7 +135,13 @@ export function BriefingScreen() {
       {latest.isError && !envelope && <ErrorBlock title="Briefings unavailable" error={latest.error} onRetry={() => void latest.refetch()} />}
       {envelope && !brief && !generate.isPending && (
         <EmptyBlock title="No plan generated yet" className="p-8 text-lg">
-          Press <strong>Generate 6 PM plan</strong> to rank tomorrow’s sites from the current data.
+          {can('generatePlan') ? (
+            <>
+              Press <strong>Generate 6 PM plan</strong> to rank tomorrow’s sites from the current data.
+            </>
+          ) : (
+            'A supervisor generates the 6 PM plan.'
+          )}
         </EmptyBlock>
       )}
 

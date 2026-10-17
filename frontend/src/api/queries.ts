@@ -229,7 +229,7 @@ export function useClearCrewFlag(deviceId = DEMO_DEVICE_ID) {
 export function useResetDemo() {
   const queryClient = useQueryClient()
   return useMutation({
-    mutationFn: (token: string) => api.resetDemo(token),
+    mutationFn: (token: string | null) => api.resetDemo(token),
     // Everything may have changed (replay ended, reports cleared): refetch from scratch.
     onSuccess: () => queryClient.resetQueries(),
   })

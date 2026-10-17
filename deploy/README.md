@@ -58,3 +58,28 @@ PORT=8010 GROUNDWORK_DB_PATH=/tmp/groundwork-local.db sh deploy/start.sh
 ```
 
 Leave `GROUNDWORK_REFRESH_WEATHER` unset locally; with it set to `1`, the boot refresh rewrites the committed `fixtures/weather_snapshot.json`. To test a refresh without touching the fixture, run `python -m deploy.refresh_weather --out /tmp/weather.json`.
+
+## Auth0 (crew and supervisor login)
+
+The backend checks Auth0 tokens when `GROUNDWORK_AUTH_ENABLED=true`. With it off (the default), every caller is a demo user with both roles, and the site shows no login. The frontend reads the switch from `/api/v1/health` (`auth: "auth0"` or `"disabled"`) and hides supervisor-only buttons for crew and logged-out visitors only while it's on.
+
+| Who | Can |
+|---|---|
+| Anyone | Read everything; start and stop replays |
+| `crew` | Send crew reports |
+| `supervisor` | Everything crew can, plus generate the 6 PM plan, plan mats and cost, review reports, clear the crew flag, reset the demo |
+
+**On Render, service `groundwork` → Environment** (saving redeploys):
+
+| Key | Value |
+|---|---|
+| `AUTH0_DOMAIN` and `VITE_AUTH0_DOMAIN` | your tenant domain, e.g. `groundwork-demo.us.auth0.com` |
+| `VITE_AUTH0_CLIENT_ID` | the client ID of the "Groundwork Web" single-page app |
+| `GROUNDWORK_AUTH_ENABLED` | `true` once the users and roles work; `false` to fall back |
+
+`AUTH0_AUDIENCE` (`https://groundwork-api`) and `AUTH0_ROLES_CLAIM` come from `render.yaml`. The Auth0 API identifier must match the audience character for character; a trailing slash breaks every login with 401s.
+
+**On the laptop**, put the same values in the repo's `.env` (backend) and `frontend/.env.local` (`VITE_AUTH0_DOMAIN`, `VITE_AUTH0_CLIENT_ID`, `VITE_API_MODE=live`), and add `http://localhost:5173` to the Auth0 app's callback, logout and web-origin URLs.
+
+**If Auth0 or the venue network fails mid-demo**, set `GROUNDWORK_AUTH_ENABLED=false` (Render) or remove it from `.env` and restart (laptop). Everything works again without a login. The beacon bridge keeps using the sensor token either way.
+

@@ -6,6 +6,7 @@ import { ApiError, describeError } from '../api/errors'
 import { PROPOSED_ENDPOINTS } from '../api/proposed'
 import { useReplayControl, useResetDemo } from '../api/queries'
 import { useServerCtx } from '../api/serverCtx'
+import { useCan, useSession } from '../auth/session'
 import { useDemoUi } from '../state/demoUiContext'
 
 const TOKEN_KEY = 'groundwork.sensorToken'
@@ -37,6 +38,10 @@ export function ResetDialog({ open, onClose }: { open: boolean; onClose: () => v
   const { setVehicle } = useDemoUi()
   const [, navigate] = useLocation()
   const available = hasEndpoint(PROPOSED_ENDPOINTS.demoReset)
+  const { can, authOn } = useCan()
+  const { loggedIn } = useSession()
+  // With Auth0 on, a supervisor's own login is enough (backend: sensor credential or supervisor role).
+  const viaLogin = authOn && loggedIn && can('resetDemo')
   const [token, setToken] = useState(() => readToken() || (API_MODE === 'mock' ? 'dev-sensor-token' : ''))
   const [done, setDone] = useState(false)
 
@@ -61,9 +66,9 @@ export function ResetDialog({ open, onClose }: { open: boolean; onClose: () => v
 
   const confirm = () => {
     if (available) {
-      reset.mutate(token.trim(), {
+      reset.mutate(viaLogin ? null : token.trim(), {
         onSuccess: () => {
-          saveToken(token.trim())
+          if (!viaLogin) saveToken(token.trim())
           finish()
         },
       })
@@ -119,7 +124,8 @@ export function ResetDialog({ open, onClose }: { open: boolean; onClose: () => v
               <li>Sets the dashboard vehicle back to Pickup and returns to the map</li>
             </ul>
 
-            {available && (
+            {available && viaLogin && <p className="mt-5 text-muted">Resetting with your supervisor login.</p>}
+            {available && !viaLogin && (
               <label className="mt-5 flex flex-col gap-1.5">
                 <span className="flex items-center gap-1.5 text-[0.8rem] text-muted label-caps">
                   <KeyRound aria-hidden className="size-4" /> Sensor token
@@ -137,7 +143,7 @@ export function ResetDialog({ open, onClose }: { open: boolean; onClose: () => v
 
             {reset.isError && (
               <p role="alert" className="mt-3 text-caution">
-                {rejected ? 'Token rejected. Check GROUNDWORK_SENSOR_TOKEN on the backend.' : describeError(reset.error)}
+                {rejected && !viaLogin ? 'Token rejected. Check GROUNDWORK_SENSOR_TOKEN on the backend.' : describeError(reset.error)}
               </p>
             )}
 
@@ -148,7 +154,7 @@ export function ResetDialog({ open, onClose }: { open: boolean; onClose: () => v
               <button
                 type="button"
                 autoFocus
-                disabled={reset.isPending || (available && !token.trim())}
+                disabled={reset.isPending || (available && !viaLogin && !token.trim())}
                 onClick={confirm}
                 className="flex min-h-12 items-center gap-2 rounded-[3px] bg-accent px-5 text-accent-ink label-caps disabled:opacity-50"
               >

@@ -108,10 +108,11 @@ export const api = {
   policies: (signal?: AbortSignal) => call<Envelope<Policy>>({ method: 'GET', path: `${P}/policies`, signal }),
 
   /** The sensor token is entered by the operator at reset time, never bundled. */
-  resetDemo: (token: string) =>
+  /** With a sensor token, or none: then a logged-in supervisor's own Auth0 token is sent instead. */
+  resetDemo: (token: string | null) =>
     call<Envelope<DemoResetResult>>({
       method: 'POST',
       path: `${P}/demo/reset`,
-      headers: { Authorization: `Bearer ${token}` },
+      headers: token ? { Authorization: `Bearer ${token}` } : undefined,
     }),
 }
