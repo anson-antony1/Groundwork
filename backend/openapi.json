@@ -2544,6 +2544,45 @@
         "title": "ReportOut",
         "type": "object"
       },
+      "ReportReviewIn": {
+        "additionalProperties": false,
+        "properties": {
+          "category_user": {
+            "anyOf": [
+              {
+                "enum": [
+                  "mud",
+                  "standing_water",
+                  "flooded_road",
+                  "fallen_tree",
+                  "overhead_hazard",
+                  "lightning_observed",
+                  "heat",
+                  "other"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category User"
+          },
+          "verification": {
+            "enum": [
+              "confirmed",
+              "rejected"
+            ],
+            "title": "Verification",
+            "type": "string"
+          }
+        },
+        "required": [
+          "verification"
+        ],
+        "title": "ReportReviewIn",
+        "type": "object"
+      },
       "SensorReadingIn": {
         "additionalProperties": false,
         "description": "One beacon reading, as posted by hardware/serial_bridge.py (README 5.8).",
@@ -2958,6 +2997,7 @@
               "crew_flag",
               "crew_flag_cleared",
               "hazard_report",
+              "report_reviewed",
               "replay_started",
               "replay_stopped",
               "briefing_generated"
@@ -4319,6 +4359,88 @@
           }
         },
         "summary": "One crew report",
+        "tags": [
+          "reports"
+        ]
+      }
+    },
+    "/api/v1/reports/{report_id}/review": {
+      "post": {
+        "operationId": "review_report_api_v1_reports__report_id__review_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "report_id",
+            "required": true,
+            "schema": {
+              "title": "Report Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportReviewIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope_ReportOut_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Resource not found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Validation failed"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Rate limit exceeded"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unexpected server error"
+          }
+        },
+        "summary": "Supervisor confirms or rejects a crew report (optionally correcting its category)",
         "tags": [
           "reports"
         ]

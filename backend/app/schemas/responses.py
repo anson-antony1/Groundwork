@@ -203,7 +203,7 @@ class BriefingOut(BaseModel):
 class TimelineEventOut(BaseModel):
     id: str
     kind: Literal[
-        "ack_touch", "crew_flag", "crew_flag_cleared", "hazard_report",
+        "ack_touch", "crew_flag", "crew_flag_cleared", "hazard_report", "report_reviewed",
         "replay_started", "replay_stopped", "briefing_generated",
     ]
     site_id: str | None

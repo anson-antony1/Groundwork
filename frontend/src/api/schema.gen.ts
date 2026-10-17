@@ -261,6 +261,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/reports/{report_id}/review": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Supervisor confirms or rejects a crew report (optionally correcting its category) */
+        post: operations["review_report_api_v1_reports__report_id__review_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/sensors/readings": {
         parameters: {
             query?: never;
@@ -1337,6 +1354,16 @@ export interface components {
              */
             verification: "unreviewed" | "confirmed" | "rejected";
         };
+        /** ReportReviewIn */
+        ReportReviewIn: {
+            /** Category User */
+            category_user?: ("mud" | "standing_water" | "flooded_road" | "fallen_tree" | "overhead_hazard" | "lightning_observed" | "heat" | "other") | null;
+            /**
+             * Verification
+             * @enum {string}
+             */
+            verification: "confirmed" | "rejected";
+        };
         /**
          * SensorReadingIn
          * @description One beacon reading, as posted by hardware/serial_bridge.py (README 5.8).
@@ -1472,7 +1499,7 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "ack_touch" | "crew_flag" | "crew_flag_cleared" | "hazard_report" | "replay_started" | "replay_stopped" | "briefing_generated";
+            kind: "ack_touch" | "crew_flag" | "crew_flag_cleared" | "hazard_report" | "report_reviewed" | "replay_started" | "replay_stopped" | "briefing_generated";
             /** Ref Id */
             ref_id: string | null;
             /** Site Id */
@@ -2420,6 +2447,68 @@ export interface operations {
             cookie?: never;
         };
         requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_ReportOut_"];
+                };
+            };
+            /** @description Resource not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation failed */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Rate limit exceeded */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unexpected server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    review_report_api_v1_reports__report_id__review_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                report_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ReportReviewIn"];
+            };
+        };
         responses: {
             /** @description Successful Response */
             200: {

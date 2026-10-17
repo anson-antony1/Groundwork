@@ -11,7 +11,11 @@ const spec = fileURLToPath(new URL('../../backend/openapi.json', import.meta.url
 const typesOut = fileURLToPath(new URL('../src/api/schema.gen.ts', import.meta.url))
 const endpointsOut = fileURLToPath(new URL('../src/api/endpoints.gen.ts', import.meta.url))
 
-execFileSync('npx', ['--yes', 'openapi-typescript@7.13.0', spec, '--output', typesOut], { stdio: 'inherit' })
+// Windows ships npx as npx.cmd, which Node can only launch through a shell.
+execFileSync('npx', ['--yes', 'openapi-typescript@7.13.0', spec, '--output', typesOut], {
+  stdio: 'inherit',
+  shell: process.platform === 'win32',
+})
 
 const doc = JSON.parse(readFileSync(spec, 'utf8'))
 const endpoints = Object.entries(doc.paths)
