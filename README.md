@@ -680,7 +680,7 @@ groundwork/
 # backend
 python -m venv .venv
 source .venv/bin/activate
-pip install fastapi uvicorn httpx sqlalchemy pydantic python-multipart pyserial
+pip install -r backend/requirements.txt
 uvicorn backend.app.main:app --reload --port 8000
  
 # frontend (separate terminal)
@@ -817,7 +817,7 @@ Stay calm, say one honest sentence, switch to the fallback, and keep going.
  
 | Failure | Fallback | Say |
 |---|---|---|
-| Arduino or USB link fails | Aashita runs `python replay_sensor_v2.py --loop --interval 2 --token dev-sensor-token` (dashboard only; needs the beacon unplugged; `hardware/serial_bridge.py` is not in the repo yet); the screen shows `Recorded demo`, and the dashboard's beacon mirror still shows status | "Our USB link just dropped, so here's the same sequence we recorded earlier. It's labeled Recorded up top." |
+| Arduino or USB link fails | Aashita runs `python replay_sensor_v2.py --loop --interval 2 --token dev-sensor-token` (dashboard only; needs the beacon unplugged; `hardware/serial_bridge.py` is not in the repo yet); the screen shows `Recorded demo`, and the dashboard's beacon mirror still shows status | "Our USB link just dropped, so this is a simulated sequence standing in for the beacon. The UI labels it Recorded demo, but these values are simulated, not recorded." |
 | Moisture doesn't cross the threshold | Pour a little more; if it's still stuck, move the probe to the wet tray | "Real soil takes a moment to soak through." |
 | LCD or barometer fails (I2C) | Unplug it; LEDs, buzzer and touch still carry the demo | "The screen's taking a break; the lights and alarm show the same status." |
 | Loose Grove lead | Pre-labeled spare leads + tape; re-seat and rerun the I2C scanner | (Keep talking through the software part while Anson fixes it.) |
@@ -886,6 +886,7 @@ Stay calm, say one honest sentence, switch to the fallback, and keep going.
 | Beacon light / pressure / temperature | `Demo beacon • venue observation • advisory only` |
 | Beacon LCD, LEDs and buzzer | `Displays server status • not an independent safety device` |
 | Recorded beacon stream | `Recorded demo` |
+| Simulated sensor replay (`replay_sensor_v2.py`) | UI shows `Recorded demo`; values are simulated, not recorded |
 | Vehicles/weights/rental costs for demonstration | `Scenario assumption • adjustable` |
 | Rules/thresholds and mat layers | `Prototype policy • supervisor review required` |
 | AI photo tag | `AI suggested • unverified` |
