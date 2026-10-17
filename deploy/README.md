@@ -15,7 +15,10 @@ Nothing under `backend/` changes. [`deploy/asgi.py`](asgi.py) imports `backend.a
 2. **Create the services:** In Render, choose **New → Blueprint** and pick the repo. Render reads `render.yaml` and creates both services on the `ui` branch.
 3. **Gemini key:** When Render asks for `GEMINI_API_KEY`, paste a **new** key with a quota cap. The old keys were exposed (HANDOFF_v4). Without a key, briefings fall back to the template summary.
 4. **Sensor token:** Render generates `GROUNDWORK_SENSOR_TOKEN`. The **Reset demo** dialog asks for it, and you can copy it from the service's Environment tab. The code default (`dev-sensor-token`) is public, which is why it's replaced.
-5. **Switch branches after the merge:** Once the PR merges, change both services' branch to `main` in the dashboard, or edit `branch:` in `render.yaml`.
+5. **Check the two URLs:** The sites link to each other from `/welcome`, assuming Render named them `groundwork.onrender.com` and `groundwork-demo.onrender.com`. If Render added a suffix because a name was taken, set the real addresses and redeploy:
+   - on `groundwork`: `VITE_DEMO_URL` and `VITE_PUBLIC_URL`;
+   - on `groundwork-demo`: `VITE_LIVE_URL` and `VITE_PUBLIC_URL`.
+6. **Switch branches after the merge:** Once the PR merges, change both services' branch to `main` in the dashboard, or edit `branch:` in `render.yaml`.
 
 ## What to expect on the free plan
 

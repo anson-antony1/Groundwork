@@ -23,6 +23,7 @@ const ReplayScreen = lazy(() => loadReplay().then((m) => ({ default: m.ReplayScr
 const BriefingScreen = lazy(() => loadBriefing().then((m) => ({ default: m.BriefingScreen })))
 const ReportScreen = lazy(() => loadReport().then((m) => ({ default: m.ReportScreen })))
 const StyleScreen = lazy(() => import('./screens/style/StyleScreen').then((m) => ({ default: m.StyleScreen })))
+const WelcomeScreen = lazy(() => import('./screens/welcome/WelcomeScreen').then((m) => ({ default: m.WelcomeScreen })))
 
 function usePrefetchScreens() {
   useEffect(() => {
@@ -48,10 +49,9 @@ function NotFound() {
   )
 }
 
-export function App() {
-  usePrefetchScreens()
+/** The operations console: everything behind the top bar, polling the server's live/replay context. */
+function OpsApp() {
   return (
-    <QueryClientProvider client={queryClient}>
       <ServerCtxProvider>
         <DemoUiProvider>
           <AppShell>
@@ -77,6 +77,24 @@ export function App() {
           )}
         </DemoUiProvider>
       </ServerCtxProvider>
+  )
+}
+
+export function App() {
+  usePrefetchScreens()
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Switch>
+        {/* The public front door renders without the ops shell: no STOP bar, polling or hotkeys. */}
+        <Route path="/welcome">
+          <Suspense fallback={<LoadingBlock label="Loading" />}>
+            <WelcomeScreen />
+          </Suspense>
+        </Route>
+        <Route>
+          <OpsApp />
+        </Route>
+      </Switch>
     </QueryClientProvider>
   )
 }

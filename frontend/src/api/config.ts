@@ -11,6 +11,12 @@ export const HOSTED = import.meta.env.VITE_HOSTED === '1'
 /** The public mock-mode demo site: the rehearsal controls get a visible launcher for remote judges. */
 export const TRY_DOCK = import.meta.env.VITE_TRY_DOCK === '1'
 
+const trimUrl = (url: string | undefined) => (url ?? '').trim().replace(/\/+$/, '')
+
+/** The two public deployments link to each other from /welcome. Empty when not set (local dev). */
+export const LIVE_URL = trimUrl(import.meta.env.VITE_LIVE_URL)
+export const DEMO_URL = trimUrl(import.meta.env.VITE_DEMO_URL)
+
 /** Empty means same origin; the Vite dev server proxies /api and /uploads to the backend. */
 export const API_BASE = (import.meta.env.VITE_API_BASE_URL ?? '').replace(/\/+$/, '')
 

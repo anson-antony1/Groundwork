@@ -9,6 +9,10 @@ interface ImportMetaEnv {
   readonly VITE_HOSTED?: string
   /** "1" on the public mock-mode demo site: shows a visible launcher for the rehearsal controls. */
   readonly VITE_TRY_DOCK?: string
+  /** Public URL of the live app, linked from /welcome on the demo site (no trailing slash). */
+  readonly VITE_LIVE_URL?: string
+  /** Public URL of the mock-mode demo site, linked from /welcome on the live app. */
+  readonly VITE_DEMO_URL?: string
 }
 
 interface ImportMeta {
