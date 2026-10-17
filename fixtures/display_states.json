@@ -1,0 +1,9 @@
+[
+  {"device_id":"tray-01","site_id":"DEMO-TRAY","effective_status":"GO_FOR_REVIEW","code":"GO","lcd_line1":"DEMO TRAY   PKP","lcd_line2":"GO FOR REVIEW","alarm":false,"acknowledged_at":null,"mode":"sensor_demo"},
+  {"device_id":"tray-01","site_id":"DEMO-TRAY","effective_status":"MATS_FOR_REVIEW","code":"MATS","lcd_line1":"DEMO TRAY   PKP","lcd_line2":"MATS FOR REVIEW","alarm":false,"acknowledged_at":null,"mode":"sensor_demo"},
+  {"device_id":"tray-01","site_id":"DEMO-TRAY","effective_status":"SUPERVISOR_REVIEW","code":"REVIEW","lcd_line1":"DEMO TRAY   PKP","lcd_line2":"SUPV REVIEW","alarm":false,"acknowledged_at":null,"mode":"sensor_demo"},
+  {"device_id":"tray-01","site_id":"DEMO-TRAY","effective_status":"NO_GO_FOR_REVIEW","code":"NOGO","lcd_line1":"DEMO TRAY   PKP","lcd_line2":"NO GO - REVIEW","alarm":false,"acknowledged_at":null,"mode":"sensor_demo"},
+  {"device_id":"tray-01","site_id":"DEMO-TRAY","effective_status":"STOP_WORK","code":"STOP","lcd_line1":"DEMO TRAY   PKP","lcd_line2":"STOP WORK - ACK?","alarm":true,"acknowledged_at":null,"mode":"replay"},
+  {"device_id":"tray-01","site_id":"DEMO-TRAY","effective_status":"STOP_WORK","code":"STOP","lcd_line1":"DEMO TRAY   PKP","lcd_line2":"STOP WORK - ACKD","alarm":false,"acknowledged_at":"2026-10-17T12:00:00Z","mode":"replay"},
+  {"device_id":"tray-01","site_id":"DEMO-TRAY","effective_status":"UNKNOWN","code":"UNKNOWN","lcd_line1":"DEMO TRAY   PKP","lcd_line2":"NO SENSOR DATA","alarm":false,"acknowledged_at":null,"mode":"sensor_demo"}
+]
