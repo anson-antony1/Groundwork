@@ -16,14 +16,15 @@ class Evaluation:
     notes: tuple[str, ...]
 
 
-def evaluate_site(site_id: str, vehicle: str, mats: MatInputs, costs: CostAssumptions, now: datetime) -> Evaluation:
+def evaluate_site(site_id: str, vehicle: str, mats: MatInputs, defaults_applied: tuple[str, ...],
+                  costs: CostAssumptions, now: datetime) -> Evaluation:
     """Stateless calculation; nothing is stored."""
     status = get_status(site_id, now)
     stop_work = status.weather_state == "STOP_WORK"
     return Evaluation(
         status=status,
         vehicle=vehicle,
-        mats_estimate=estimate_mats(mats),
+        mats_estimate=estimate_mats(mats, defaults_applied),
         # Mats never make lightning/flood/severe weather safe (README section 6).
         mats_recommended=not stop_work and status.access_call[vehicle] == "MATS_FOR_REVIEW",
         cost_comparison=compare_costs(costs),

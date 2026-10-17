@@ -6,7 +6,7 @@ from ..schemas.requests import EvaluationIn
 from ..schemas.responses import EvaluationOut, SiteDetailOut, SiteOut
 from ..services import evaluation, reports, site_status
 from ..services.cost import CostAssumptions
-from ..services.mats import MatInputs
+from ..services.mats import resolve_inputs
 from . import mappers
 from .deps import PageParams, page_params
 from .responses import error_responses, ok, paged
@@ -32,11 +32,8 @@ def get_site(site_id: str):
 @router.post("/{site_id}/evaluate", response_model=Envelope[EvaluationOut], responses=error_responses(404),
              summary="Compute access, mat range and cost comparison (stateless)")
 def evaluate_site(site_id: str, body: EvaluationIn):
-    mats = MatInputs(
-        route_length=body.route_length, route_width=body.route_width,
-        mat_length=body.mat_length, mat_width=body.mat_width, layers=body.layers,
-        margin_min=body.margin_min, margin_max=body.margin_max,
-        mats_in_inventory=body.mats_in_inventory, unit=body.unit,
-    )
-    result = evaluation.evaluate_site(site_id, body.vehicle, mats, CostAssumptions(**body.costs.model_dump()), now_utc())
+    mats, defaults_applied = resolve_inputs(body.vehicle, body.unit, body.model_dump(
+        exclude={"vehicle", "unit", "costs"}))
+    result = evaluation.evaluate_site(site_id, body.vehicle, mats, defaults_applied,
+                                      CostAssumptions(**body.costs.model_dump()), now_utc())
     return ok(mappers.evaluation_out(result), result.status.mode, missing_fields=result.status.missing_fields)
