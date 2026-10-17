@@ -84,9 +84,9 @@ def parse_soil(payload: dict) -> tuple[str, float | None]:
 
 
 def _soil_sql(lat: float, lon: float) -> str:
-    return ("SELECT TOP 1 c.drainagecl, ch.claytotal_r FROM component c JOIN chorizon ch ON c.cokey=ch.cokey "
+    return ("SELECT TOP 1 c.drainagecl, ch.claytotal_r FROM component c LEFT JOIN chorizon ch ON c.cokey=ch.cokey AND ch.hzdept_r=0 "
             "WHERE c.mukey IN (SELECT * FROM SDA_Get_Mukey_from_intersection_with_WktWgs84('point(%s %s)')) "
-            "AND c.majcompflag='Yes' AND ch.hzdept_r=0 ORDER BY c.comppct_r DESC" % (float(lon), float(lat)))
+            "AND c.majcompflag='Yes' AND c.drainagecl IS NOT NULL ORDER BY c.comppct_r DESC" % (float(lon), float(lat)))
 
 
 def fetch_observations(sites: list, fetched_at: datetime) -> dict[str, list[dict]]:
