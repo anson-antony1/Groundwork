@@ -853,7 +853,7 @@ Lines in quotes are what to say. Adapt the wording naturally, but keep the order
 - **Data coverage:** how many sites have USDA data, weather, both, or gaps, and how fresh each source is.
 - **Safety tests:** show the passing tests for the STOP WORK override and "missing data never means safe."
 - **AI grounding:** the Gemini prompt contract, schema validation, the number check against backend data, and the deterministic fallback working with Gemini switched off.
-- **ML forecast:** the 2025 holdout scores (section 4.1), including the Florida sites where the rules beat it, and why it stays advisory.
+- **ML forecast:** the learned forecast's held-out-year scores (section 8, "Built: learned STOP-WORK forecast"), including the Florida sites where it only ties the rules, and why it stays advisory.
 - **Hardware integrity:** unplug the USB cable live. Within 6 seconds the beacon shows `NO LINK` and never shows green; plug it back in and it recovers.
 - **Time series:** the beacon's pressure and temperature log over the whole event (from Tiger Data, if integrated).
 - **Code:** the GitHub README and repo structure, if the judge asks.
@@ -861,7 +861,7 @@ Lines in quotes are what to say. Adapt the wording naturally, but keep the order
  
 | Judge | Lead with | Make sure they see |
 |---|---|---|
-| **Sperry Tech** | Their own scenario: a remote site, heat climbing, storms building, ground soaked after a week of rain | Every line of their brief: site locations, continuously pulled conditions, crew alerts the moment conditions turn dangerous, and the hazard scoring/forecast (plus the ML backtest, if built) |
+| **Sperry Tech** | Their own scenario: a remote site, heat climbing, storms building, ground soaked after a week of rain | Every line of their brief: site locations, continuously pulled conditions, crew alerts the moment conditions turn dangerous, and the hazard scoring/forecast (plus the learned forecast's held-out scores) |
 | **Hardware track** | The beacon | The sensor → server → beacon loop, touch acknowledgment, stale-link `NO LINK` behavior, calibration |
 | **AI track / Gemini** | What AI does and doesn't do | Grounded briefing with validation and fallback, photo tags with human review, evaluation numbers, a clean repo |
 | **Tiger Data** | The sensor and pressure history | A real time-series query and chart from stored rows |
@@ -977,7 +977,7 @@ No. It proves the physical ingestion-to-decision pipeline; the demo tray has a d
 Never. Weather STOP WORK overrides any ground-access recommendation.
  
 **Q: What exactly does AI do?**  
-Gemini writes the 6 PM summary from structured facts, with a number check and a template fallback, and a small ML model gives an advisory storm and flood forecast. We dropped AI photo tagging. The deterministic engine owns numeric scoring and safety overrides.
+Gemini writes the 6 PM summary from structured facts, with a number check and a template fallback, and a small ML model gives an advisory forecast of tomorrow's STOP-WORK risk. We dropped AI photo tagging. The deterministic engine owns numeric scoring and safety overrides.
  
 **Q: Why an Arduino instead of just a Raspberry Pi?**  
 The Uno has analog inputs for the moisture and light sensors, which a Pi lacks, and its USB link to the laptop keeps the physical demo independent of venue Wi-Fi.
