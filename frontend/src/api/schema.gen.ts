@@ -520,80 +520,57 @@ export interface components {
         /** CostComparisonOut */
         CostComparisonOut: {
             assumptions: components["schemas"]["CostInputs"];
+            /**
+             * Complete
+             * @description True when every cost item was entered
+             */
+            complete: boolean;
             /** Label */
             label: string;
             /** Mats Option */
             mats_option: number;
             /** Modeled Difference */
             modeled_difference: number;
+            /**
+             * Not Entered
+             * @description Cost items left blank and counted as $0 (labels assumed values, P9)
+             */
+            not_entered?: string[];
             /** Postpone Option */
             postpone_option: number;
         };
         /**
          * CostInputs
          * @description Supervisor-entered assumptions. Nothing here is a real price.
+         *
+         *     Leave a field out (or null) when it wasn't entered: it counts as $0 but is listed in
+         *     cost_comparison.not_entered. Send 0 only when the cost really is zero.
          */
         CostInputs: {
-            /**
-             * Delay Not Prevented
-             * @default 0
-             */
-            delay_not_prevented: number;
-            /**
-             * Delivery
-             * @default 0
-             */
-            delivery: number;
-            /**
-             * Equipment Rate Per Hour
-             * @default 0
-             */
-            equipment_rate_per_hour: number;
-            /**
-             * Extra Contract Cost
-             * @default 0
-             */
-            extra_contract_cost: number;
-            /**
-             * Idle Equipment
-             * @default 0
-             */
-            idle_equipment: number;
-            /**
-             * Idle Hours
-             * @default 0
-             */
-            idle_hours: number;
-            /**
-             * Installation
-             * @default 0
-             */
-            installation: number;
-            /**
-             * Labor Rate Per Hour
-             * @default 0
-             */
-            labor_rate_per_hour: number;
-            /**
-             * Mats Rental
-             * @default 0
-             */
-            mats_rental: number;
-            /**
-             * Paid Idle Labor
-             * @default 0
-             */
-            paid_idle_labor: number;
-            /**
-             * Removal
-             * @default 0
-             */
-            removal: number;
-            /**
-             * Rescheduling
-             * @default 0
-             */
-            rescheduling: number;
+            /** Delay Not Prevented */
+            delay_not_prevented?: number | null;
+            /** Delivery */
+            delivery?: number | null;
+            /** Equipment Rate Per Hour */
+            equipment_rate_per_hour?: number | null;
+            /** Extra Contract Cost */
+            extra_contract_cost?: number | null;
+            /** Idle Equipment */
+            idle_equipment?: number | null;
+            /** Idle Hours */
+            idle_hours?: number | null;
+            /** Installation */
+            installation?: number | null;
+            /** Labor Rate Per Hour */
+            labor_rate_per_hour?: number | null;
+            /** Mats Rental */
+            mats_rental?: number | null;
+            /** Paid Idle Labor */
+            paid_idle_labor?: number | null;
+            /** Removal */
+            removal?: number | null;
+            /** Rescheduling */
+            rescheduling?: number | null;
         };
         /**
          * CoverageOut
@@ -1463,6 +1440,11 @@ export interface components {
             hazard_weights: components["schemas"]["HazardWeightsOut"];
             /** Label */
             label: string;
+            /**
+             * Low Light Index Below
+             * @description Demo-site low-light advisory threshold (0-100 light index)
+             */
+            low_light_index_below: number;
             mat_defaults: components["schemas"]["MatDefaultsOut"];
             /** Sensor Stale Seconds */
             sensor_stale_seconds: number;
@@ -1674,6 +1656,11 @@ export interface components {
         /** SiteDetailOut */
         SiteDetailOut: {
             access_call: components["schemas"]["VehicleAccessOut"];
+            /**
+             * Advisories
+             * @description Informational notes (e.g. low light at the demo site); never change a status
+             */
+            advisories?: string[];
             /** Alert Events */
             alert_events?: string[];
             /** Alerts */
@@ -1729,6 +1716,11 @@ export interface components {
         /** SiteOut */
         SiteOut: {
             access_call: components["schemas"]["VehicleAccessOut"];
+            /**
+             * Advisories
+             * @description Informational notes (e.g. low light at the demo site); never change a status
+             */
+            advisories?: string[];
             /** Alert Events */
             alert_events?: string[];
             /** Alerts */
