@@ -27,7 +27,8 @@ GLUE_RE = re.compile(r"\b(for|and|to|at|of|in|by|on|with)(?=[A-Z][a-z])")  # fix
 DROPPED_SPACE_RE = re.compile(r"\b([Tt]here)(are|is|were|was)\b")  # fixes "Thereare"
 LEAK_RE = re.compile(
     r"\bN others\b|top_priority_sites|stop_work_sites|stop_work_count|unknown_weather_count|data_mode|"
-    r"sites_evaluated|vehicle_access|vehicle_status|missing_fields|unreviewed_crew_reports|sites_with_missing")
+    r"sites_evaluated|vehicle_access|vehicle_status|missing_fields|unreviewed_crew_reports|sites_with_missing|"
+    r"sites_needing_mats|mats_low|mats_high|route_length_ft")
 
 PROMPT = """You are writing the short 6 PM operations briefing for a utility dispatcher.
 Use ONLY the facts in the JSON below. Do NOT invent sites, numbers, alerts, or statuses, and do not add numbers
@@ -40,6 +41,8 @@ Rules:
 - If data_mode is not "live", say plainly what kind of data this is (for example simulated or sensor demo).
 - Name at most 5 sites per point, then say "and others" (no number, never a placeholder like N).
 - Mention unreviewed crew reports if the count is above zero.
+- If sites_needing_mats is not empty, say those sites need ground mats staged for review and give the mats_low to
+  mats_high range per route_length_ft feet of access route exactly as given; never plan mats for STOP_WORK sites.
 Plain text, complete sentences, under 200 words.
 
 FACTS:

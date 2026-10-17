@@ -25,6 +25,8 @@ export type Health = S['HealthOut']
 export type Pagination = S['Pagination']
 export type ApiErrorBody = S['ErrorResponse']
 export type DemoResetResult = S['DemoResetOut']
+export type Coverage = S['CoverageOut']
+export type PressureTendency = S['PressureTendencyOut']
 
 export type WeatherState = Site['weather_state']
 export type AccessCall = S['VehicleAccessOut']['pickup']
