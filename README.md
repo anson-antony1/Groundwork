@@ -1043,8 +1043,8 @@ From the repo root with the venv active: `cd ~/Desktop/Groundwork && source .ven
 
 1. **Backend (required):** `uvicorn backend.app.main:app --reload --port 8000`. Docs at http://localhost:8000/docs, API prefix `/api/v1`. `--reload` does not watch `.env` or `fixtures/`, so restart after changing either. Port stuck: `lsof -ti :8000 | xargs kill`.
 2. **Gemini key:** in `.env` (gitignored; keep a private backup). Without it, or offline, the briefing falls back to a short template summary. Check that a generate returns `narrative_source: llm` before a demo.
-3. **Frontend:** see the UI team's instructions (the start command lives with the frontend).
+3. **Frontend:** see `frontend/README.md`.
 4. **n8n and Claude Desktop (optional):** see the agent layer section above.
 5. **Tests:** `python -m pytest backend/tests -q`, with the backend stopped.
 
-**Replays:** `POST /api/v1/replay/start` with no body runs Hurricane Milton. A `calm-day` scenario (2024-07-15) is available once `feature/calm-replay` is merged. In both, weather is real archived data and alerts are simulated or assumed. End with `POST /api/v1/replay/stop`.
+**Replays:** `POST /api/v1/replay/start` with no body runs Hurricane Milton. A `calm-day` scenario (2024-07-15, a mix of NORMAL and CAUTION) starts with body `{"scenario_id": "calm-day"}`. In both, weather is real archived data and alerts are simulated or assumed. End with `POST /api/v1/replay/stop`.
