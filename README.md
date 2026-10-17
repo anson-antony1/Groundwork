@@ -46,7 +46,7 @@ The **Must** column is the team's launch contract. Demo mode is allowed, but **s
 | P1 | ✅ **50+ real geographic sites** | Curated set of ≥50 distinct, valid coordinates and names, ideally actual public utility-access-relevant locations without claiming private company work orders | Map and ranked list show ≥50 site records; site coordinates are real, source of coordinates documented |
 | P2 | ✅ **Real weather/soil inputs** | Open-Meteo forecast/history + USDA NRCS soil data; optional NWS alerts and FEMA/USGS indicators | Each site shows data origin, observed/forecast period, fetched-at timestamp, and any missing fields |
 | P3 | ✅ **Hazard score (0–10)** | Rules-based weather risk composite with transparent sub-scores | Each site has score and explanation; missing data cannot silently become zero risk |
-| P4 | ✅ **Lightning stop-work** | Active NWS thunderstorm-related warning/alert as conservative trigger; historical replay fallback. Strike-based radius/countdown only with verified licensed strike feed | Triggering alert displays prominent STOP WORK; no unsupported "30-minute all clear" claim |
+| P4 | ✅ **Lightning stop-work** | Active NWS thunderstorm-related warning/alert as conservative trigger, plus crew-reported lightning: any report within 10 mi stops work with a 30-minute all-clear countdown that restarts with each new strike (Sperry PlanIT brief). No licensed strike network, so strikes come from crew reports and are labelled that way | Triggering alert displays prominent STOP WORK; the beacon counts down `STOP - CLR 29:59`; the source is always shown |
 | P5 | ✅ **Flooding** | NWS flood-related alerts + precipitation and optional water level/FEMA map context | Flood concern appears in score and safety state; FEMA flood zones are long-term susceptibility, not live flood detection |
 | P6 | ✅ **Heat** | Forecast apparent temperature and/or properly calculated heat index with configurable policy | Heat concern displayed and linked to a recommended supervisor review/action; threshold is labeled as demo policy |
 | P7 | ✅ **Vehicle-specific access** | Ground-wetness/soil indicators + pickup/heavy-truck sensitivity policy | Changing vehicle changes access call without changing meteorological hazard score |
@@ -128,6 +128,11 @@ Use this only as an **illustrative initial formula**, with scores calibrated by 
 | Beacon light level | Arduino beacon (Grove light sensor) | Observed at the demo table | Relative 0–100 index; advisory "low light" note on the demo site only |
 | Beacon pressure/temperature | Arduino beacon (Grove barometer) | Observed at the venue | Station pressure, not sea-level adjusted; 3-hour pressure tendency is an advisory note only and **never** a STOP WORK trigger |
 | Crew photos and notes | Submitted by team/user | Reported; unverified until reviewed | Show upload time and review status |
+| Lightning strikes | Crew reports (category `lightning_observed`) | Reported; unverified until reviewed | Counted within 10 mi for 30 min unless a supervisor rejects the report; **not** a strike-detection network |
+| Active wildfires | NIFC WFIGS current incident locations | Official incident list (not fully contained) | Distance to nearest fire; refreshed every 3 h; stale after 12 h |
+| Wildlife sightings | iNaturalist (American alligator, 10 km, last 30 days) | Community observations, unverified | A briefing note only; never changes a status |
+| Historical severe events (ML labels) | NOAA Storm Events 2023–2025 | Reported events with coordinates | Heat, high wind and winter events are zone-wide and not used; rural areas under-reported |
+| Historical daily weather (ML inputs) | Open-Meteo historical archive | Reanalysis | Live predictions use forecasts, so live skill is lower than test skill |
  
 **Required metadata per value:**
  
@@ -155,6 +160,28 @@ Use this only as an **illustrative initial formula**, with scores calibrated by 
 - NWS alert API: https://www.weather.gov/documentation/services-web-api
 - FEMA National Flood Hazard Layer: https://www.fema.gov/flood-maps/national-flood-hazard-layer
 - USGS water services: https://waterservices.usgs.gov/
+- NIFC wildfire incidents: https://data-nifc.opendata.arcgis.com/datasets/nifc::wfigs-current-incident-locations
+- iNaturalist American alligator: https://www.inaturalist.org/taxa/26039-Alligator-mississippiensis
+- NOAA Storm Events: https://www.ncei.noaa.gov/stormevents/
+
+### 4.1 Added for Sperry's PlanIT Control brief (Oct 17)
+
+| Brief asks for | What Groundwork does | Where |
+|---|---|---|
+| Lightning: strike within 10 mi → stop work, 30-minute all clear that restarts with each strike | A crew lightning report stops every site within 10 mi until 30 min after the newest strike; each new report restarts it. Shown as an alert whose `expires` is the all-clear time, and on the beacon as `STOP - CLR 29:59` (`ACKD - CLR …` after a touch). A new strike near the tray re-sounds the alarm. Not applied during storm replays | `services/field_hazards.py`, `services/display.py` |
+| Wildfire in the combined picture | NIFC active incidents; a fire within 10 mi raises NORMAL to CAUTION (demo policy) | `scripts/fetch_hazards_v1.py`, `fixtures/hazards_snapshot.json` |
+| Wildlife sightings | iNaturalist alligator sightings within 10 km in the last 30 days, as an observation and a "brief the crew" note | same |
+| Hazard index (0–10) from an ML model trained on historical data | A logistic regression on NOAA Storm Events + Open-Meteo history gives an advisory "ML forecast x/10" next to the rule-based score. It never sets STOP WORK | `scripts/train_hazard_model_v1.py`, `policies/ml_hazard_model_v1.json`, `services/ml_index.py` |
+
+**The ML forecast, honestly.** It predicts the chance of a located severe storm or flood event (thunderstorm wind, hail, lightning, tornado, flash flood, flood, heavy rain) within 25 km of a site that day, from that day's rain, gusts and apparent temperature plus the prior week's rain. It was trained on 60 sites for 2023–24 (43,860 site-days, 846 events) and tested on 2025, which it never saw (21,900 site-days, 437 events, 2% base rate). The 0–10 index is a percentile: 7.8 means riskier than 78% of past site-days.
+
+| 2025 test (AUC: 1.0 perfect, 0.5 coin flip) | ML forecast | Rule-based score |
+|---|---|---|
+| All test sites | **0.877** | 0.831 |
+| Nationwide sites | **0.902** | 0.827 |
+| Florida demo sites | 0.871 | **0.899** |
+
+A season-only guess scores 0.745 and the model still scores 0.835 within the same month, so it adds day-to-day signal beyond "summer is stormy". Its riskiest 5% of days had an event 13% of the time (6.5× the base rate) and caught a third of all events. **On the Florida demo sites the rules rank storm days better**, which is one more reason it stays advisory; each site's explanation line quotes its own region's scores. Heat isn't in the labels (heat events have no coordinates), and live inputs are forecasts while training used observed weather.
 ---
  
 ## 5. Physical hardware path (Anson): the Groundwork site beacon
@@ -755,7 +782,7 @@ Put the tray and beacon closest to the judges so they can touch them. Keep the e
  
 ### 14.3 Reset between judge groups (about 60 seconds)
  
-1. **Rishi** clicks **Reset demo**, a hidden button that calls `POST /api/v1/demo/reset` (ends any replay, clears demo-session reports and acknowledgments) and sets the vehicle back to Pickup.
+1. **Rishi** clicks **Reset demo**, a hidden button that calls `POST /api/v1/demo/reset` (ends any replay, clears demo-session reports, including lightning reports and so any all-clear countdown, and acknowledgments) and sets the vehicle back to Pickup.
 2. **Anson** moves the probe back into the dry tray, wipes the prongs, and refills the cup to the line.
 3. Confirm the beacon shows green `GO` and DEMO-TRAY shows `GO_FOR_REVIEW` on the dashboard.
 4. **Rishi** returns to the Operations map tab; **Rithika** opens a fresh report form on the phone.
@@ -769,8 +796,8 @@ Lines in quotes are what to say. Adapt the wording naturally, but keep the order
 | **0:00–0:10** | Rishi | Operations map on screen | "It's 6 PM. A utility supervisor has [N] job sites tomorrow, a week of rain behind them and storms in the forecast. Groundwork turns all of that into one plan for tomorrow." |
 | **0:10–0:30** | Anson | Pours the measured cup into the dry tray, then points at the beacon | "This is our site beacon. Watch the soil sensor as I water the tray. The reading climbs, our server re-scores the site, and the beacon turns amber: mats for review." |
 | **0:30–0:55** | Rishi | Hands the judge the mouse to switch Pickup → Heavy truck, then scrolls to the cost cards | "Go ahead and switch it to a heavy truck. Same ground, different vehicle: the pickup is fine, but the heavy truck needs roughly [X–Y] mats. Here's mats versus postponing the job. Every cost is editable, because these are planning assumptions, not quotes." |
-| **0:55–1:25** | Aashita (Anson guides the tap) | Starts the storm replay; the beacon turns red and the buzzer sounds; Anson invites the judge to tap the beacon | "Now a real storm: this is real weather data from Hurricane Milton, October 2024, replayed. The warning itself is simulated, because past alerts aren't available. Even with mats staged, every vehicle goes to STOP WORK. Safety always overrides access, and it can't be averaged away. Go ahead and tap the beacon. That records that the crew saw the alarm, but it doesn't clear STOP WORK. Only the weather logic can." |
-| **1:25–1:45** | Rithika | Submits the standing-water report from the phone; the pin appears on screen | "A crew member reports standing water at the gate, and it lands on the map instantly. It's marked unverified until a supervisor reviews it. AI never sets a site's status." |
+| **0:55–1:25** | Aashita (Anson guides the tap) | Starts the storm replay; the beacon turns red and the buzzer sounds; Anson invites the judge to tap the beacon; Aashita stops the replay at the end (lightning reports are ignored during a replay) | "Now a real storm: this is real weather data from Hurricane Milton, October 2024, replayed, with the real Weather Service warnings issued that day from the Iowa Environmental Mesonet archive. Even with mats staged, every vehicle goes to STOP WORK. Safety always overrides access, and it can't be averaged away. Go ahead and tap the beacon. That records that the crew saw the alarm, but it doesn't clear STOP WORK. Only the weather logic can." |
+| **1:25–1:45** | Rithika, then Anson | Submits a **Lightning observed** report for the venue (DEMO-TRAY) from the phone; the pin appears, the beacon alarms again and its screen counts down from `STOP - CLR 30:00` | **Rithika:** "A crew member at the venue reports lightning. It lands on the map, marked unverified until a supervisor reviews it." **Anson:** "Because it's within 10 miles, the site stops work and the beacon starts a 30-minute all clear, and every new strike restarts it, as Sperry's brief asks. It's crew-reported lightning, not a strike-detection network, and AI never sets a site's status." |
 | **1:45–2:00** | Rithika, then Rishi | Opens the 6 PM briefing, then zooms out to all sites | **Rithika:** "At 6 PM, here's tomorrow's plan: [N] real sites ranked, every number traced to USDA, Open-Meteo or the Weather Service with a timestamp, and the data gaps called out." **Rishi:** "That's Groundwork. Happy to go deeper on anything." |
  
 **Delivery rules**
@@ -782,7 +809,7 @@ Lines in quotes are what to say. Adapt the wording naturally, but keep the order
 - Stop at 2:00 and invite questions. Don't fill silence with extra features.
 ### 14.5 Shorter and longer versions
  
-**30-second version** (busy judge or a passer-by): Rishi's opening line → Anson pours and the beacon turns amber → Aashita triggers STOP WORK and the beacon alarms → Rishi: "Fifty real sites, real weather and soil data, and a plan every evening at 6. Want the full two minutes?"
+**30-second version** (busy judge or a passer-by): Rishi's opening line → Anson pours and the beacon turns amber → Aashita triggers STOP WORK and the beacon alarms → Rishi: "Three hundred real sites, real weather and soil data, and a plan every evening at 6. Want the full two minutes?"
  
 **Five-minute deep dive** (Sperry, AI-track and hardware judges often have time and want depth). After the two-minute script, pick what fits the judge:
  
@@ -790,7 +817,7 @@ Lines in quotes are what to say. Adapt the wording naturally, but keep the order
 - **Data coverage:** how many sites have USDA data, weather, both, or gaps, and how fresh each source is.
 - **Safety tests:** show the passing tests for the STOP WORK override and "missing data never means safe."
 - **AI grounding:** the Gemini prompt contract, schema validation, the number check against backend data, and the deterministic fallback working with Gemini switched off.
-- **Photo-tag evaluation:** the labeled sample results, including the ones it got wrong.
+- **ML forecast:** the 2025 holdout scores (section 4.1), including the Florida sites where the rules beat it, and why it stays advisory.
 - **Hardware integrity:** unplug the USB cable live. Within 6 seconds the beacon shows `NO LINK` and never shows green; plug it back in and it recovers.
 - **Time series:** the beacon's pressure and temperature log over the whole event (from Tiger Data, if integrated).
 - **Code:** the GitHub README and repo structure, if the judge asks.
@@ -885,7 +912,10 @@ The ticked items pass in `pytest backend/tests hardware/tests`; `backend/tests/t
 | Simulated sensor replay (`scripts/replay_sensor_v2.py`) | UI shows `Recorded demo`; values are simulated, not recorded |
 | Vehicles/weights/rental costs for demonstration | `Scenario assumption • adjustable` |
 | Rules/thresholds and mat layers | `Prototype policy • supervisor review required` |
-| AI photo tag | `AI suggested • unverified` |
+| Crew lightning report | `Crew report (unverified)` on the alert; not a strike-detection network |
+| Wildfire nearby | `NIFC WFIGS` with distance and fetch time |
+| Alligator sightings | `iNaturalist community observations (unverified)` |
+| ML forecast | `Advisory; the rules decide STOP WORK`, with its 2025 test AUC for that region |
 | LLM briefing | `Generated narrative from structured records` |
  
 ---
@@ -896,7 +926,7 @@ The ticked items pass in `pytest backend/tests hardware/tests`; `backend/tests/t
 No. It helps with advance planning using soil survey information, forecast conditions, and configurable vehicle rules. An engineer/supervisor still needs to assess ground support and site conditions.
  
 **Q: Isn't your "ML" just rules?**  
-The safety and access engine uses transparent rules on purpose. ML/CV assists with hazard photo categorization and, if available, supports a validated historical storm model. We do not pretend a model trained to reproduce provider soil moisture forecasts is a novel vehicle-access predictor.
+The safety and access engine uses transparent rules on purpose. Next to it there is a real ML forecast: a logistic regression trained on NOAA Storm Events and Open-Meteo history for 2023–24 and tested on 2025, which it never saw. It ranks storm days better than our rules overall (AUC 0.88 vs 0.83) but worse on the Florida demo sites (0.87 vs 0.90), so it is advisory only and every site says which numbers apply to it.
  
 **Q: How do you know the data for 50 sites is real?**  
 We store real coordinates and show the exact provider, time, and missing-value status for soil/weather variables. We count how many sites have complete retrieved data; we do not call fabricated locations actual customer work orders.
@@ -911,19 +941,25 @@ No. It proves the physical ingestion-to-decision pipeline; the demo tray has a d
 Never. Weather STOP WORK overrides any ground-access recommendation.
  
 **Q: What exactly does AI do?**  
-It can suggest labels for crew hazard photos and write grounded 6 PM summaries. The deterministic engine owns numeric scoring and safety overrides.
+Gemini writes the 6 PM summary from structured facts, with a number check and a template fallback, and a small ML model gives an advisory storm and flood forecast. We dropped AI photo tagging. The deterministic engine owns numeric scoring and safety overrides.
  
 **Q: Why an Arduino instead of just a Raspberry Pi?**  
 The Uno has analog inputs for the moisture and light sensors, which a Pi lacks, and its USB link to the laptop keeps the physical demo independent of venue Wi-Fi.
  
 **Q: What does the barometer add?**  
-It logs real pressure and temperature at the venue throughout the event and shows a 3-hour pressure tendency as an advisory note. Official NWS alerts remain the only STOP WORK trigger.
+It logs real pressure and temperature at the venue throughout the event and shows a 3-hour pressure tendency as an advisory note. It never triggers STOP WORK; official NWS alerts and crew lightning reports do.
  
 **Q: What happens if the beacon loses its connection?**  
 Within 6 seconds it shows `NO LINK`, and it never displays green on stale data.
  
+**Q: Where does the lightning data come from?**  
+From crew reports: anyone on the crew can report lightning, and every site within 10 miles stops for 30 minutes after the newest report. We don't have a licensed strike-detection network, so we say so on every alert; a utility would plug its strike feed into the same rule.
+
+**Q: Are the wildlife and wildfire data real?**  
+Yes: wildfires are NIFC's official active incidents, and alligator sightings are iNaturalist community observations, labelled unverified. Wildlife only adds a briefing note; a fire within 10 miles raises caution.
+
 **Q: Does touching the beacon clear STOP WORK?**  
-No. It acknowledges the alarm and logs who saw it and when; only the weather logic can clear STOP WORK.
+No. It acknowledges the alarm and logs who saw it and when; only the weather logic, or a lightning all clear running out, can clear STOP WORK.
  
 ---
  

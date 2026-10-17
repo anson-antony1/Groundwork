@@ -178,7 +178,29 @@ For index ~6.25: **pickup = MATS_FOR_REVIEW; heavy truck = NO_GO_FOR_REVIEW**. T
 It means **a regular Python calculator with explicit rules**: same inputs + same rules = same output. It isn't the LLM improvising safety decisions. `backend/app/services/hazard.py` holds those formulas. You can tell a judge exactly which inputs made the number change.
 
 ### “Risk intelligence” in plain English
-It is the part that **turns raw weather/soil numbers into an ordered to-do list**: which sites need attention first, why, what data are missing, which vehicle is impacted and what supplies may help. “Intelligence” here means useful analysis, not necessarily machine learning.
+It is the part that **turns raw weather/soil numbers into an ordered to-do list**: which sites need attention first, why, what data are missing, which vehicle is impacted and what supplies may help. “Intelligence” here means useful analysis, not necessarily machine learning. (There is now also a small, tested ML forecast; see section 7b. It's advisory and never decides.)
+
+## 7b. New for Sperry's PlanIT brief: lightning, wildfire, wildlife, ML forecast
+Sperry's brief for this event ("PlanIT Control") asked for four things the first version didn't have. All four are live.
+
+**Lightning: stop within 10 miles, 30-minute all clear.** When a crew member reports lightning (report category "lightning observed"), every site within 10 miles goes to STOP WORK until 30 minutes after the newest report, and each new report restarts the clock. The beacon shows it: `STOP - CLR 29:41` counting down, then `ACKD - CLR …` after someone taps it. Tapping silences the buzzer but never ends the stop; a new strike sounds it again. Honest line: *"We don't have a licensed lightning network, so strikes come from crew reports, and every alert says so. A utility would plug its strike feed into the same rule."* A supervisor rejecting the report cancels it. It's switched off during storm replays, which show only historical data.
+
+**Wildfire.** Every 3 hours we pull the official list of active wildfires (NIFC, not yet 100% contained). A fire within 10 miles raises a NORMAL site to CAUTION (demo policy); each site also shows how many fires are within 25 miles. At the Oct 17 fetch: 199 active fires nationwide, 8 of our sites with one within 25 miles.
+
+**Wildlife.** For each site we count American alligator sightings within 10 km in the last 30 days from iNaturalist, a community wildlife app. It's a "brief the crew" note only, labelled unverified, and never changes a status. At the Oct 17 fetch: 72 sites had sightings (81 near the UF venue itself).
+
+**ML forecast (brief item 6).** A small machine-learning model (logistic regression) learned from 2023–24 history: NOAA's Storm Events database says when a real storm or flood (thunderstorm wind, hail, lightning, tornado, flash flood, flood, heavy rain) happened within 25 km of a site, and Open-Meteo says what the weather was. Each site now gets a line like *"ML forecast: 7.8/10 (riskier than 78% of past site-days; 5% chance …)"* next to the rule-based score. It was tested on 2025, a year it never saw:
+
+| 2025 test (AUC: 1.0 = perfect ranking, 0.5 = coin flip) | ML forecast | Our rules |
+|---|---|---|
+| All test sites | **0.877** | 0.831 |
+| Nationwide sites | **0.902** | 0.827 |
+| Florida demo sites | 0.871 | **0.899** |
+
+- **It's more than "summer is stormy":** guessing from the month alone scores 0.745; within the same month the model still scores 0.835.
+- **Its flagged days are a weak but real signal:** of the 5% of days it rated riskiest, 13% had an actual event (6.5× the normal 2%), and those days caught a third of all events.
+- **Say this plainly to judges:** *"Nationwide it beats our rules; on our Florida sites the simple rules do better. That's why it's advisory and the rules decide STOP WORK."*
+- **Limits:** heat isn't in the labels (heat events have no coordinates); it learned from actual past weather but runs on forecasts, so live accuracy is lower; 60 of the 300 sites were used (free data-limit).
 
 ## 8. What are ground mats, and why show money?
 **Ground protection mats** are portable panels laid along a soft access path so vehicles can distribute load and protect the ground. Mats can be useful in some situations, but they **cannot make an unsafe storm safe**, and a mat recommendation is not an engineering load rating.
@@ -346,10 +368,13 @@ Ranked enhancements:
 | Replay exit | stop replay | restore cached/live | Fill | screen |
 | n8n email | button | latest briefing emailed | Fill | email timestamp |
 | MCP follow-up | Claude asks about site | correct API result | Fill | Claude result |
+| Lightning report | crew report at the venue | STOP_WORK + beacon counts down from 30:00; new report restarts it | verified on the live API Oct 17 | `hardware/check_countdown_v1.py` output |
+| ML forecast | 2025 holdout | AUC 0.877 overall, rules better on Florida sites | measured Oct 17 | `policies/ml_hazard_model_v1.json` metrics |
 
 ## 18. The actual repo status: what you can and cannot claim
 As of the reviewed `main` code:
 - **Present in code:** FastAPI endpoints, React UI, weather/USDA/NWS refresh, deterministic hazard/access rules, mat/cost estimate, saved briefing, Gemini narration fallback, n8n workflow JSON, MCP server source, storm replay logic, SQLite, photos/reports screens and hardware integration files.
+- **Added Oct 17 for the PlanIT brief:** lightning stop-work with the restarting 30-minute all clear, NIFC wildfire, iNaturalist wildlife, and the advisory ML forecast (section 7b).
 - **Not verified by static code review:** that production cloud deployment works, API keys are valid, 6 PM schedule actually ran autonomously, all Arduino pieces function together in person, or any given external provider is responding right now.
 - **Historical handoff notes may describe unmerged branches or local files.** The `main` repository tree is the better reference for what exists remotely; still test actual running behavior.
 - **Do not pitch** universal soil engineering certification, zero hallucinations, live ground sensors at all substations, or official utility partnerships.
@@ -460,6 +485,7 @@ Avoid `POST /replay/start`, `POST /briefings/generate`, or `/demo/reset` in casu
 **65–85 sec:** Open the 6 PM Brief. Show ranked sites, source labels, Gemini or deterministic label.  
 **85–100 sec:** Use the n8n email button *if the workflow has been verified*.  
 **100–115 sec:** Show Claude Desktop asking “Which sites are STOP_WORK and why?” via MCP, *if connected*.  
+**Lightning (if the beacon is connected, ~15 sec):** submit a “lightning observed” report at the venue; the beacon alarms and counts down 30:00. “Every site within 10 miles stops; each new strike restarts the 30 minutes, as Sperry's brief asks. Crew-reported, not a strike network.”  
 **115–120 sec:** “Everything is a preliminary screening recommendation; the human supervisor makes the final call.”
 
 Only run Replay/Arduino in the middle if it is rehearsed; always label scenarios and restore current mode.
