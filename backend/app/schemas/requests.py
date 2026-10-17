@@ -46,19 +46,22 @@ class EvaluationIn(RequestModel):
     vehicle: Vehicle = "pickup"
     unit: Literal["ft", "m"] = "ft"
     route_length: float = Field(gt=0, le=100_000)
-    route_width: float = Field(gt=0, le=1_000)
-    mat_length: float = Field(gt=0, le=100)
-    mat_width: float = Field(gt=0, le=100)
-    layers: int = Field(1, ge=1, le=3)
-    margin_min: float = Field(0.10, ge=0, le=1)
-    margin_max: float = Field(0.25, ge=0, le=1)
+    # Left blank -> taken from policies/mats_defaults.json (see GET /policies).
+    route_width: float | None = Field(None, gt=0, le=1_000)
+    mat_length: float | None = Field(None, gt=0, le=100, description="Effective coverage per mat, after overlap")
+    mat_width: float | None = Field(None, gt=0, le=100, description="Effective coverage per mat, after overlap")
+    layers: int | None = Field(None, ge=1, le=3)
+    margin_min: float | None = Field(None, ge=0, le=1)
+    margin_max: float | None = Field(None, ge=0, le=1)
     mats_in_inventory: int = Field(0, ge=0)
+    override_quantity: int | None = Field(None, ge=0, le=100_000, description="Supervisor override of planned mats")
+    override_reason: str | None = Field(None, min_length=3, max_length=200)
     costs: CostInputs = Field(default_factory=CostInputs)
 
     @model_validator(mode="after")
-    def _margins_ordered(self) -> "EvaluationIn":
-        if self.margin_min > self.margin_max:
-            raise ValueError("margin_min must be <= margin_max")
+    def _override_needs_reason(self) -> "EvaluationIn":
+        if (self.override_quantity is None) != (self.override_reason is None):
+            raise ValueError("override_quantity and override_reason must be given together")
         return self
 
 

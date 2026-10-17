@@ -1,5 +1,10 @@
 """Demo policy thresholds. These are labeled demo values, not regulatory or engineering limits."""
-from ..config import SENSOR_STALE_SECONDS
+import json
+
+from ..config import REPO_ROOT, SENSOR_STALE_SECONDS
+
+# Editable mat staging defaults (README file layout: policies/mats_defaults.json).
+MAT_DEFAULTS = json.loads((REPO_ROOT / "policies" / "mats_defaults.json").read_text(encoding="utf-8"))
 
 DEMO_POLICY = {
     "label": "DEMO POLICY - not regulatory limits or certified engineering values",
@@ -11,4 +16,5 @@ DEMO_POLICY = {
     },
     "hazard_weights": {"rain": 0.25, "wind": 0.15, "heat": 0.20, "flood": 0.20, "storm": 0.20},
     "sensor_stale_seconds": SENSOR_STALE_SECONDS,
+    "mat_defaults": MAT_DEFAULTS,
 }

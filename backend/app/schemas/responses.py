@@ -76,13 +76,33 @@ class SiteDetailOut(SiteOut):
     reports: list[ReportOut]
 
 
+class MatInputsOut(BaseModel):
+    route_length: float
+    route_width: float
+    mat_length: float
+    mat_width: float
+    layers: int
+    margin_min: float
+    margin_max: float
+
+
+class MatOverrideOut(BaseModel):
+    quantity: int
+    reason: str
+
+
 class MatsEstimateOut(BaseModel):
+    inputs: MatInputsOut
+    defaults_applied: list[str]
     base_mats: int
     min_estimate: int
     max_estimate: int
+    planned_quantity: int
+    override: MatOverrideOut | None
     mats_in_inventory: int
     shortfall: int
     unit: Literal["ft", "m"]
+    steps: list[str]
     method: str
     caveat: str
 
@@ -217,8 +237,20 @@ class HazardWeightsOut(BaseModel):
     storm: float
 
 
+class MatDefaultsOut(BaseModel):
+    label: str
+    unit: Literal["ft", "m"]
+    route_width: float
+    mat_length: float
+    mat_width: float
+    layers: dict[str, int]
+    margin_min: float
+    margin_max: float
+
+
 class PolicyOut(BaseModel):
     label: str
     demo_tray_access: DemoTrayAccessOut
     hazard_weights: HazardWeightsOut
     sensor_stale_seconds: int
+    mat_defaults: MatDefaultsOut
