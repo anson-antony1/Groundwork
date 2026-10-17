@@ -1,7 +1,12 @@
-from datetime import datetime, timezone
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+
+from .api import briefing, devices, events, policies, replay, reports, sensors, sites
+from .config import FIXTURES_DIR, UPLOADS_DIR
+from .envelope import envelope
+from .services.sites import load_sites
+from .state import store
 
 app = FastAPI(title="Groundwork API", version="0.1.0")
 
@@ -13,14 +18,23 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+API_PREFIX = "/api/v1"
+for module in (sites, sensors, devices, reports, replay, briefing, events, policies):
+    app.include_router(module.router, prefix=API_PREFIX)
 
-@app.get("/api/v1/health")
+UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
+app.mount("/uploads", StaticFiles(directory=UPLOADS_DIR), name="uploads")
+
+
+@app.get(f"{API_PREFIX}/health", tags=["health"])
 def health():
-    return {
-        "data": {"status": "ok"},
-        "mode": "live",
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "sources": [],
-        "missing_fields": [],
-        "errors": [],
+    fixtures = ["sites_50.json", "storm_replay.json", "sensor_replay.csv", "display_states.json"]
+    data = {
+        "status": "ok",
+        "storage": "in-memory (resets on restart)",
+        "sites_loaded": len(load_sites()),
+        "replay_active": store.replay_active,
+        "fixtures": {name: (FIXTURES_DIR / name).exists() for name in fixtures},
+        "connectors": {"open_meteo": "not_built", "usda_nrcs": "not_built", "nws": "not_built"},
     }
+    return envelope(data, "replay" if store.replay_active else "live")
