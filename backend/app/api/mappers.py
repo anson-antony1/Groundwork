@@ -30,6 +30,7 @@ def site_out(s: SiteStatus) -> SiteOut:
         hazard_subscores=HazardSubscoresOut(**s.hazard_subscores) if s.hazard_subscores else None,
         alerts=[WeatherAlertOut(**a) for a in s.alerts],
         reasons=CallReasonsOut(**s.reasons) if s.reasons else None,
+        advisories=list(s.advisories),
     )
 
 
