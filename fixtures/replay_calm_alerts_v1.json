@@ -1,0 +1,91 @@
+{
+  "scenario_id": "calm-day",
+  "day": "2024-07-15",
+  "window_utc": [
+    "2024-07-15T04:00:00Z",
+    "2024-07-16T04:00:00Z"
+  ],
+  "scenario_source": "Ordinary summer day (comparison), 2024-07-15. Rain, gust and apparent-temperature values are real Open-Meteo archive data. NWS alerts are the real warnings, watches and advisories active that day (US Eastern), from the Iowa Environmental Mesonet NWS archive, matched to each site by warning polygon or alert zone.",
+  "source": {
+    "name": "Iowa Environmental Mesonet NWS VTEC archive",
+    "url": "https://mesonet.agron.iastate.edu/vtec/",
+    "fetched_at": "2026-10-17T16:48:22Z",
+    "state": "FL",
+    "alerts_active_in_state": 10
+  },
+  "events": {
+    "MLB-FA.Y-0038": {
+      "event": "Flood Advisory",
+      "wfo": "MLB",
+      "issued_at": "2024-07-15T21:49:00Z",
+      "expires_at": "2024-07-15T23:45:00Z",
+      "source_url": "https://mesonet.agron.iastate.edu/vtec/?year=2024&wfo=KMLB&phenomena=FA&significance=Y&eventid=0038"
+    }
+  },
+  "sites": {
+    "SITE-001": [],
+    "SITE-002": [],
+    "SITE-003": [],
+    "SITE-004": [],
+    "SITE-005": [],
+    "SITE-006": [],
+    "SITE-007": [
+      "MLB-FA.Y-0038"
+    ],
+    "SITE-008": [
+      "MLB-FA.Y-0038"
+    ],
+    "SITE-009": [],
+    "SITE-010": [],
+    "SITE-011": [],
+    "SITE-012": [],
+    "SITE-013": [],
+    "SITE-014": [],
+    "SITE-015": [],
+    "SITE-016": [],
+    "SITE-017": [],
+    "SITE-018": [],
+    "SITE-019": [],
+    "SITE-020": [],
+    "SITE-021": [],
+    "SITE-022": [],
+    "SITE-023": [],
+    "SITE-024": [],
+    "SITE-025": [],
+    "SITE-026": [],
+    "SITE-027": [],
+    "SITE-028": [],
+    "SITE-029": [],
+    "SITE-030": [],
+    "SITE-031": [],
+    "SITE-032": [],
+    "SITE-033": [],
+    "SITE-034": [],
+    "SITE-035": [],
+    "SITE-036": [],
+    "SITE-037": [],
+    "SITE-038": [],
+    "SITE-039": [],
+    "SITE-040": [],
+    "SITE-041": [],
+    "SITE-042": [],
+    "SITE-043": [],
+    "SITE-044": [],
+    "SITE-045": [],
+    "SITE-046": [],
+    "SITE-047": [],
+    "SITE-048": [],
+    "SITE-049": [],
+    "SITE-050": [],
+    "SITE-051": [],
+    "SITE-052": [],
+    "SITE-053": [],
+    "SITE-054": [],
+    "SITE-055": [],
+    "SITE-056": [],
+    "SITE-057": [],
+    "SITE-058": [],
+    "SITE-059": [],
+    "SITE-060": []
+  }
+}
