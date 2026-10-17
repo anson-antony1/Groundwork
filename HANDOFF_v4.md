@@ -19,7 +19,7 @@ Open: https://github.com/anson-antony1/Groundwork/pull/new/docs/status-marks . C
 
 ## Requirement status (README table on main: P1-P7, P11, P13 done)
 - P8: VERIFIED via API (range 13-14 mats, steps, ft units, engineering caveat, editable layers 1-3, inputs change the result). Marked on docs/status-marks.
-- P9: NOT marked. Cost inputs move the right side of the comparison and the label says "Not guaranteed savings", but there is NO hours input (nine dollar fields only). Tell Aashita and Rishi: add hours or accept dollars-only.
+- P9: DONE in PR feature/p9-hours: idle_hours, labor_rate_per_hour and equipment_rate_per_hour added to the postpone side (idle_hours x (labor + equipment rate), on top of the flat amounts); backend tests pass. Still to do: UI check (8 h, $50, $25 raises the Postpone total by $600). Tell Rishi the three new field names.
 - P10: backend saves reports with site, text, timestamp, verification "unreviewed"; UI says "crew report, not an official alert". Not yet checked through the UI. AI image tagging is NOT implemented (reports.py sets category_ai None). A Gemini tagger was tried and dropped: image calls took 10-15 s and often returned 504, and the minimum deadline is 10 s. Idea for later: tag in the background after saving (needs an update method on the reports repository).
 - P12/P15: DEMO-TRAY shows UNKNOWN ("NO SENSOR DATA") because tray-01 has sent no readings; expected without the beacon. fixtures/sensor_replay.csv (simulated, not recorded) and fixtures/display_states.json now exist on main, and replay_sensor_v2.py --loop --interval 2 --token dev-sensor-token posts the CSV as tray-01 (dashboard only; do not run with the beacon plugged in). README says the unplugged fallback is hardware/serial_bridge.py --replay fixtures/sensor_replay.csv; check that hardware/ exists. Owners: Anson and Aashita.
 - P14: not verified. Needs a timed run in live mode with wifi off following README 14.4, plus the beacon steps with Anson. API-only offline run passed earlier.
@@ -38,7 +38,7 @@ Open: https://github.com/anson-antony1/Groundwork/pull/new/docs/status-marks . C
 1. Confirm one generate returns narrative_source llm, then make the newest saved briefing a replay one (replay/start, briefings/generate, replay/stop, online). Newest first at GET /api/v1/briefings. Never click Generate offline or twice. A briefing call takes about 20 s; Gemini fell back to the template once overnight and recovered after a restart from the repo root.
 2. Warn Anson before any replay with the beacon plugged in: replays force the tray to STOP_WORK and re-arm the alarm.
 3. Tell judges: replay weather is real Hurricane Milton data (Oct 2024); the warning is simulated.
-4. Team message to send: warning is simulated, AI tagging is not implemented (do not mention it), P9 has no hours input, sensor replay fixtures are missing, health endpoint shows connectors as not_built.
+4. Team message to send: warning is simulated, AI tagging is not implemented (do not mention it), sensor replay is simulated although the UI labels it Recorded demo, health endpoint shows connectors as not_built, hardware/serial_bridge.py and the Arduino firmware are not in the repo (Anson to push), P9 hours fields added (Rishi to review the panel).
 
 ## After the hackathon
 - DELETE ALL Gemini keys in AI Studio (pasted in chat and shell history). Keep .env at chmod 600, gitignored, with a private backup.
