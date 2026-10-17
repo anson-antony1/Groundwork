@@ -2,10 +2,11 @@
 // because screens show its mode, sources, missing_fields and errors alongside the data.
 import { API_PREFIX } from './config'
 import { ApiError } from './errors'
-import type { BriefingView, DemoResetResult, DisplayView, ReplayScenario, ReportReviewInput, ReportView, SiteDetailView, SiteView } from './proposed'
+import type { BriefingView, DisplayView, ReplayScenario, ReportReviewInput, ReportView, SiteDetailView, SiteView } from './proposed'
 import { getTransport } from './transport'
 import type { ApiRequest } from './transport'
 import type {
+  DemoResetResult,
   DeviceEvent,
   Envelope,
   Evaluation,
@@ -62,6 +63,9 @@ export const api = {
   display: (deviceId: string, signal?: AbortSignal) =>
     call<DisplayView>({ method: 'GET', path: `${P}/devices/${seg(deviceId)}/display`, signal }),
 
+  /** Supervisor clears a crew flag raised from the beacon button; returns the updated display. */
+  clearCrewFlag: (deviceId: string) => call<Envelope<DisplayView>>({ method: 'DELETE', path: `${P}/devices/${seg(deviceId)}/crew-flag` }),
+
   deviceEvents: (deviceId: string, limit = 50, signal?: AbortSignal) =>
     call<PageEnvelope<DeviceEvent>>({ method: 'GET', path: `${P}/devices/${seg(deviceId)}/events`, query: { limit }, signal }),
 
@@ -102,7 +106,7 @@ export const api = {
 
   policies: (signal?: AbortSignal) => call<Envelope<Policy>>({ method: 'GET', path: `${P}/policies`, signal }),
 
-  /** PROPOSED endpoint. The sensor token is entered by the operator at reset time, never bundled. */
+  /** The sensor token is entered by the operator at reset time, never bundled. */
   resetDemo: (token: string) =>
     call<Envelope<DemoResetResult>>({
       method: 'POST',

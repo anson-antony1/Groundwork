@@ -6,12 +6,13 @@ import { DEMO_SITE_ID } from '../../api/config'
 import type { SiteDetailView } from '../../api/proposed'
 import type { Policy, Reading, Vehicle } from '../../api/types'
 import { Card } from '../../components/Card'
+import { ClearCrewFlag } from '../../components/ClearCrewFlag'
 import { cx } from '../../components/cx'
 import { fieldIcon } from '../../components/fieldIcons'
 import { MissingValue } from '../../components/Provenance'
 import { StatusTag, WeatherTag } from '../../components/StatusTag'
 import { TONE_SOFT } from '../../components/tone'
-import { VEHICLE_LABEL, fieldLabel, fmtNum, fmtValue } from '../../domain/format'
+import { VEHICLE_LABEL, fieldLabel, fmtNum, fmtObservation } from '../../domain/format'
 import { LABELS } from '../../domain/provenance'
 import type { Tone } from '../../domain/status'
 
@@ -81,7 +82,12 @@ export function WhyThisCall({ site, vehicle, policy, reading, readingFresh }: Wh
   const GateIcon = gate.icon
   const observed = new Map(site.observations.map((o) => [o.variable, o]))
   const weatherInputs = ['rain_7d', 'rain_forecast', 'gust_forecast', 'apparent_temp']
-  const triggers = site.reasons?.weather_triggers ?? []
+  // Official alerts from the API (alert_events), or the mock fixture's triggers.
+  const alerts = site.alert_events?.length ? site.alert_events : (site.reasons?.weather_triggers ?? [])
+  const nws = observed.get('nws_alerts')
+  const nwsText = alerts.length ? alerts.join('; ') : nws && nws.value !== null ? 'None active' : null
+  const explanation = site.hazard_explanation ?? []
+  const soil = observed.get('usda_soil')
 
   return (
     <Card title="Why this call?" icon={<Lightbulb aria-hidden className="size-4" />} footer={`Decision rule (README §3): STOP WORK overrides everything; missing data is never safe; otherwise the vehicle's access call stands. ${LABELS.prototypePolicy}`}>
@@ -94,23 +100,18 @@ export function WhyThisCall({ site, vehicle, policy, reading, readingFresh }: Wh
               const o = observed.get(name)
               return (
                 <Input key={name} name={name}>
-                  {o && o.value !== null ? fmtValue(o.value, o.unit) : <MissingValue what={fieldLabel(name)} />}
+                  {o && o.value !== null ? fmtObservation(o) : <MissingValue what={fieldLabel(name)} />}
                 </Input>
               )
             })
           )}
-          {!isDemo && (
-            <Input name="nws_alerts">
-              {site.missing_fields.includes('nws_alerts') ? (
-                <MissingValue what="NWS alerts" />
-              ) : triggers.length ? (
-                triggers.join('; ')
-              ) : (
-                <span className="text-muted">None active</span>
-              )}
-            </Input>
-          )}
-          {isDemo && triggers.length > 0 && <li className="py-1.5 text-[0.9rem] font-semibold">{triggers.join('; ')}</li>}
+          {!isDemo && <Input name="nws_alerts">{nwsText ?? <MissingValue what="NWS alerts" />}</Input>}
+          {isDemo && alerts.length > 0 && <li className="py-1.5 text-[0.9rem] font-semibold">{alerts.join('; ')}</li>}
+          {explanation.map((line) => (
+            <li key={line} className="py-1 text-[0.85rem] text-muted">
+              {line}
+            </li>
+          ))}
         </Lane>
 
         <div className="flex items-center justify-center gap-2">
@@ -119,6 +120,7 @@ export function WhyThisCall({ site, vehicle, policy, reading, readingFresh }: Wh
             <GateIcon aria-hidden className="size-7" />
             <p className="label-caps">{gate.title}</p>
             <p className="text-[0.85rem] text-muted">{gate.detail}</p>
+            {isDemo && gate.title === 'Crew flag' && <ClearCrewFlag />}
           </div>
           <ArrowLeft aria-hidden className="hidden size-6 text-faint xl:block" />
         </div>
@@ -137,9 +139,11 @@ export function WhyThisCall({ site, vehicle, policy, reading, readingFresh }: Wh
             </>
           ) : (
             <>
-              <Input name="usda_soil">{site.reasons?.soil_drainage ?? <MissingValue what="USDA soil drainage" />}</Input>
+              <Input name="usda_soil">
+                {soil && soil.value !== null ? fmtObservation(soil) : (site.reasons?.soil_drainage ?? <MissingValue what="USDA soil drainage" />)}
+              </Input>
               <Input name="rain_7d">
-                {observed.get('rain_7d')?.value != null ? fmtValue(observed.get('rain_7d')!.value, observed.get('rain_7d')!.unit) : <MissingValue what="7-day rainfall" />}
+                {observed.get('rain_7d')?.value != null ? fmtObservation(observed.get('rain_7d')!) : <MissingValue what="7-day rainfall" />}
               </Input>
             </>
           )}

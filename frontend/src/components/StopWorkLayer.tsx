@@ -5,7 +5,7 @@ import { describeError } from '../api/errors'
 import { useDisplay, useReplayControl, useSites } from '../api/queries'
 import { useServerCtx } from '../api/serverCtx'
 import { fmtClock } from '../domain/format'
-import { replayLabel } from '../domain/provenance'
+import { replayLabel, shortReplaySource } from '../domain/provenance'
 import { cx } from './cx'
 
 const TAKEOVER_MS = 5_000
@@ -58,7 +58,7 @@ export function StopWorkLayer({ compact = false }: { compact?: boolean }) {
   if (!active) return null
 
   const names = stopSites.slice(0, 3).map((s) => s.name).join(', ') + (stopSites.length > 3 ? ` and ${stopSites.length - 3} more` : '')
-  const source = replay?.active ? replayLabel(replay.source) : total ? 'Active weather override from the backend' : names
+  const source = replay?.active ? replayLabel(shortReplaySource(replay.source)) : total ? 'Active weather override from the backend' : names
   const started = replay?.active && replay.started_at ? ` · started ${fmtClock(replay.started_at)}` : ''
   const ack = display?.code === 'STOP' ? display.acknowledged_at : null
   const alarm = display?.code === 'STOP' && display.alarm

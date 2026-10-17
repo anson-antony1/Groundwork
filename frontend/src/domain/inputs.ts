@@ -21,3 +21,35 @@ export function inputsSummary(site: Pick<Site, 'observations' | 'missing_fields'
     stale: site.data_status === 'stale' || site.observations.some((o) => o.quality === 'stale'),
   }
 }
+
+export interface SourceCoverage {
+  label: string
+  /** Sites with a usable value from this source. */
+  have: number
+  total: number
+  /** Newest fetch time seen for this source, if any. */
+  fetchedAt: string | null
+}
+
+const SOURCES: [label: string, variable: string][] = [
+  ['Open-Meteo weather', 'rain_forecast'],
+  ['USDA soil survey', 'usda_soil'],
+  ['NWS alerts', 'nws_alerts'],
+]
+
+/**
+ * Per-source coverage across sites, counted from the observations the API actually returned
+ * (README §15 validation metrics). More trustworthy than a connector flag that can lag the data.
+ */
+export function sourceCoverage(sites: readonly Pick<Site, 'observations'>[]): SourceCoverage[] {
+  return SOURCES.map(([label, variable]) => {
+    let have = 0
+    let fetchedAt: string | null = null
+    for (const site of sites) {
+      const o = site.observations.find((x) => x.variable === variable)
+      if (o && o.value !== null && o.quality !== 'missing') have++
+      if (o && (!fetchedAt || o.fetched_at > fetchedAt)) fetchedAt = o.fetched_at
+    }
+    return { label, have, total: sites.length, fetchedAt }
+  })
+}

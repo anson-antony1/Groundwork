@@ -14,9 +14,9 @@ import { replayLabel } from '../../domain/provenance'
 
 const DEFAULT_SCENARIO: ReplayScenario = {
   id: 'demo-storm',
-  title: 'Demo storm',
-  event: 'Historical severe-weather event',
-  source: 'Attached by the backend when the replay starts (fixtures/storm_replay.json)',
+  title: 'Recorded storm',
+  event: 'The historical severe-weather event in the backend’s storm fixture',
+  source: 'Shown above once the replay starts (fixtures/storm_replay.json)',
 }
 
 /** Screen 4 (README §9): replay a sourced historical storm; exiting restores live data, never blended. */
@@ -56,7 +56,7 @@ export function ReplayScreen() {
         >
           <div className="flex flex-col gap-5">
             <div className={cx('flex items-center gap-4 rounded-[4px] border-2 p-5', active ? 'border-stop bg-stop/15' : 'border-line-hi bg-steel')}>
-              {active ? <OctagonX aria-hidden className="size-14 text-stop-glow" /> : <CloudSun aria-hidden className="size-14 text-muted" />}
+              {active ? <OctagonX aria-hidden className="size-14 shrink-0 text-stop-glow" /> : <CloudSun aria-hidden className="size-14 shrink-0 text-muted" />}
               <div>
                 <p className="font-display text-4xl font-bold tracking-wide uppercase">{active ? 'Historical replay active' : 'Live data'}</p>
                 <p className="mt-1 text-muted">

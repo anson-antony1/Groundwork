@@ -1,6 +1,7 @@
 import { Flag, Hand, ListChecks } from 'lucide-react'
 import { useDeviceEvents } from '../../api/queries'
 import { Card } from '../../components/Card'
+import { ClearCrewFlag } from '../../components/ClearCrewFlag'
 import { QualityChip } from '../../components/Provenance'
 import { EmptyBlock, ErrorBlock, LoadingBlock } from '../../components/States'
 import { StatusTag } from '../../components/StatusTag'
@@ -12,13 +13,14 @@ const EVENT = {
 } as const
 
 /** Beacon acknowledgments and crew flags, newest first (README §9 Screen 3, P15). */
-export function AckLog() {
+export function AckLog({ flagged }: { flagged: boolean }) {
   const events = useDeviceEvents()
   const rows = events.data?.data ?? []
   return (
     <Card
       title="Acknowledgment and crew-flag log"
       icon={<ListChecks aria-hidden className="size-4" />}
+      right={flagged ? <ClearCrewFlag /> : undefined}
       footer="A touch silences the alarm and is logged; it never clears STOP WORK. A crew flag puts the tray into supervisor review without changing the weather."
     >
       {events.isLoading && <LoadingBlock label="Loading beacon events" />}

@@ -201,6 +201,16 @@ export function useGenerateBriefing() {
   })
 }
 
+export function useClearCrewFlag(deviceId = DEMO_DEVICE_ID) {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: () => api.clearCrewFlag(deviceId),
+    onSuccess: () => {
+      for (const key of ['display', 'site', 'sites', 'device-events']) void queryClient.invalidateQueries({ queryKey: [key] })
+    },
+  })
+}
+
 export function useResetDemo() {
   const queryClient = useQueryClient()
   return useMutation({

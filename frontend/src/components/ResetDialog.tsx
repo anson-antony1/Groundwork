@@ -92,6 +92,13 @@ export function ResetDialog({ open, onClose }: { open: boolean; onClose: () => v
           <div className="mt-5 flex flex-col items-center gap-3 text-center">
             <CircleCheckBig aria-hidden className="size-14 text-ink" />
             <p className="text-xl font-semibold">Demo reset</p>
+            {reset.data && (
+              <p>
+                {reset.data.data.replay_stopped ? 'Replay ended · ' : ''}
+                {reset.data.data.reports_cleared} crew report{reset.data.data.reports_cleared === 1 ? '' : 's'} and {reset.data.data.device_events_cleared} beacon
+                event{reset.data.data.device_events_cleared === 1 ? '' : 's'} cleared
+              </p>
+            )}
             <p className="text-muted">Probe back in the dry tray, wipe it, refill the cup. Check the beacon shows green GO.</p>
           </div>
         ) : (

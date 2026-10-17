@@ -8,6 +8,7 @@ import { checkPhoto, readHead } from '../domain/upload'
 import { db, iso, newId, notify } from './db'
 import {
   DEMO_DEVICE_ID,
+  DEMO_SITE_ID,
   POLICY,
   SENSOR_TOKEN,
   allSiteStatuses,
@@ -297,6 +298,18 @@ const routes: [ApiRequest['method'], string, Handler][] = [
 
   ['GET', '/api/v1/devices/:device/events', ({ params, query }) => requireDevice(params.device) ?? page(newestFirst(db.deviceEvents), query, 'sensor_demo')],
 
+  ['DELETE', '/api/v1/devices/:device/crew-flag', ({ params, now }) => {
+    const missing = requireDevice(params.device)
+    if (missing) return missing
+    if (db.demo.crewFlagAt !== null) {
+      db.demo.crewFlagAt = null
+      recordTimeline('crew_flag_cleared', `Crew flag cleared on ${params.device}`, now, DEMO_SITE_ID)
+      notify()
+    }
+    const display = buildDisplay(now)
+    return ok(display, display.mode)
+  }],
+
   ['POST', '/api/v1/devices/:device/events', ({ params, req, now }) => {
     const denied = requireToken(req) ?? requireDevice(params.device)
     if (denied) return denied
@@ -384,11 +397,11 @@ const routes: [ApiRequest['method'], string, Handler][] = [
 
   ['GET', '/api/v1/policies', () => ok(POLICY, 'simulated')],
 
-  // PROPOSED: between judge groups (README §14.3). Needs the sensor token, like the real one will.
+  // Between judge groups (README §14.3). Needs the sensor token, like the backend's.
   ['POST', '/api/v1/demo/reset', ({ req, now }) => {
     const denied = requireToken(req)
     if (denied) return denied
-    const result = { replay_active: false, cleared_reports: db.reports.length, cleared_acknowledgments: db.deviceEvents.length }
+    const result = { replay_stopped: db.demo.replayActive, reports_cleared: db.reports.length, device_events_cleared: db.deviceEvents.length }
     if (db.demo.replayActive) recordTimeline('replay_stopped', 'Demo reset: storm replay ended', now)
     Object.assign(db.demo, {
       replayActive: false,
@@ -402,7 +415,7 @@ const routes: [ApiRequest['method'], string, Handler][] = [
     db.reports = []
     db.deviceEvents = []
     notify()
-    return ok(result, 'live')
+    return ok(result, 'sensor_demo')
   }],
 ]
 

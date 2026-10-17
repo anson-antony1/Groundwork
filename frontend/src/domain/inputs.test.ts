@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { Observation } from '../api/types'
-import { inputsSummary } from './inputs'
+import { inputsSummary, sourceCoverage } from './inputs'
 
 const obs = (variable: string, value: number | null, quality: Observation['quality'] = 'available'): Observation => ({
   variable,
@@ -30,5 +30,20 @@ describe('inputsSummary', () => {
 
   it('flags stale data', () => {
     expect(inputsSummary({ observations: [obs('rain_7d', 4, 'stale')], missing_fields: [], data_status: 'stale' }).stale).toBe(true)
+  })
+})
+
+describe('sourceCoverage', () => {
+  it('counts usable values per source from the observations themselves', () => {
+    const sites = [
+      { observations: [obs('rain_forecast', 0), obs('usda_soil', 3), obs('nws_alerts', 0)] },
+      { observations: [obs('rain_forecast', 1.2), obs('usda_soil', null, 'missing')] },
+      { observations: [] },
+    ]
+    expect(sourceCoverage(sites).map((c) => [c.label, c.have, c.total])).toEqual([
+      ['Open-Meteo weather', 2, 3],
+      ['USDA soil survey', 1, 3],
+      ['NWS alerts', 1, 3],
+    ])
   })
 })

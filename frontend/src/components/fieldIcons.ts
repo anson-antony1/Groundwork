@@ -8,6 +8,7 @@ const FIELD_ICONS: Record<string, LucideIcon> = {
   apparent_temp: Thermometer,
   nws_alerts: Siren,
   usda_soil: Layers3,
+  usda_clay_pct: Layers3,
   demo_tray_moisture: Droplets,
   moisture_index: Droplets,
   light_index: Sun,

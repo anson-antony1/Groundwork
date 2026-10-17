@@ -35,7 +35,7 @@ function Harness() {
   const { vehicle } = useDemoUi()
   return (
     <>
-      <HazardCard site={site} policy={POLICY} stale={false} />
+      <HazardCard site={site} stale={false} />
       <AccessCard site={site} vehicle={vehicle} policy={POLICY} reading={null} now={NOW} stale={false} />
     </>
   )

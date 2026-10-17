@@ -2,7 +2,7 @@ import { ExternalLink, Table2 } from 'lucide-react'
 import type { SiteDetailView } from '../../api/proposed'
 import { Card } from '../../components/Card'
 import { MissingValue, QualityChip } from '../../components/Provenance'
-import { fieldLabel, fmtValue, fmtWhen } from '../../domain/format'
+import { fieldLabel, fmtObservation, fmtWhen } from '../../domain/format'
 import { observationLabel } from '../../domain/provenance'
 
 const KIND: Record<string, string> = { forecast: 'Forecast', modeled: 'Model', survey: 'Survey', observed: 'Observed' }
@@ -30,7 +30,7 @@ export function ProvenanceTable({ site }: { site: SiteDetailView }) {
             {site.observations.map((o) => (
               <tr key={o.variable} className="border-b border-line/60" title={observationLabel(o)}>
                 <td className="px-4 py-2.5 font-semibold">{fieldLabel(o.variable)}</td>
-                <td className="px-3 py-2.5 num">{o.value === null ? <MissingValue what={fieldLabel(o.variable)} /> : fmtValue(o.value, o.unit)}</td>
+                <td className="px-3 py-2.5 num">{o.value === null ? <MissingValue what={fieldLabel(o.variable)} /> : fmtObservation(o)}</td>
                 <td className="px-3 py-2.5">{KIND[o.kind] ?? o.kind}</td>
                 <td className="px-3 py-2.5">
                   {o.reference_url ? (

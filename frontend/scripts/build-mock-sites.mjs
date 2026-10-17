@@ -28,13 +28,14 @@ const STOP = new Set([6, 22, 41])
 const CAUTION = new Set([2, 11, 17, 29, 35, 48, 55])
 const UNKNOWN = new Set([4, 14, 26, 38, 52, 58])
 const STALE = new Set([9, 44])
-const DRAINAGE = ['Poorly drained', 'Somewhat poorly drained', 'Moderately well drained', 'Well drained']
 const WORSE = { GO_FOR_REVIEW: 'MATS_FOR_REVIEW', MATS_FOR_REVIEW: 'NO_GO_FOR_REVIEW', NO_GO_FOR_REVIEW: 'NO_GO_FOR_REVIEW' }
 
 const out = sites.map((site, i) => {
   let observations = snapshot.sites[site.id] ?? []
   const stale = STALE.has(i)
   if (stale) observations = observations.map((o) => ({ ...o, quality: o.value === null ? 'missing' : 'stale' }))
+  // An UNKNOWN site models a failed NWS alert check: the backend then refuses to call weather safe.
+  if (UNKNOWN.has(i)) observations = observations.map((o) => (o.variable === 'nws_alerts' ? { ...o, value: null, quality: 'missing' } : o))
 
   let weather_state = 'NORMAL'
   if (STOP.has(i)) weather_state = 'STOP_WORK'
@@ -61,13 +62,16 @@ const out = sites.map((site, i) => {
     heavy = rand() < 0.6 ? WORSE[pickup] : pickup
   }
 
-  const missing = weather_state === 'UNKNOWN' ? ['nws_alerts', 'usda_soil'] : []
-  const triggers =
+  const missing = UNKNOWN.has(i) ? ['nws_alerts'] : []
+  const alert_events =
     weather_state === 'STOP_WORK'
       ? ['Severe Thunderstorm Warning (demo fixture)']
       : weather_state === 'CAUTION'
-        ? [pick(['Gusts above caution policy (demo fixture)', 'Heavy rain forecast (demo fixture)', 'Heat index above caution policy (demo fixture)'])]
+        ? [pick(['Heat Advisory (demo fixture)', 'Wind Advisory (demo fixture)', 'Flood Watch (demo fixture)'])]
         : []
+  const hazard_explanation = subs
+    ? [`Sub-scores: rain ${subs.rain}, wind ${subs.wind}, heat ${subs.heat} (demo fixture)`, ...alert_events.map((a) => `Active alert: ${a}`)]
+    : ['NWS alert check failed: weather UNKNOWN, never treated as safe (demo fixture)']
 
   return {
     id: site.id,
@@ -84,14 +88,8 @@ const out = sites.map((site, i) => {
       access: { pickup, heavy_truck: heavy },
       missing_fields: missing,
       stale,
-      alerts:
-        weather_state === 'STOP_WORK'
-          ? [{ event: 'Severe Thunderstorm Warning', source: 'Demo fixture (not a real NWS alert)', severity: 'Severe', reference_url: null }]
-          : [],
-      reasons: {
-        weather_triggers: triggers,
-        soil_drainage: weather_state === 'UNKNOWN' ? null : `${pick(DRAINAGE)} (demo fixture)`,
-      },
+      alert_events,
+      hazard_explanation,
     },
   }
 })

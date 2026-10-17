@@ -85,7 +85,7 @@ export function SiteDetailScreen({ siteId }: { siteId: string }) {
       <EffectiveBanner site={site} vehicle={vehicle} status={stale ? 'STALE' : site.effective_status[vehicle]} />
 
       <div className="grid items-start gap-5 xl:grid-cols-2">
-        <HazardCard site={site} policy={policy} stale={stale} />
+        <HazardCard site={site} stale={stale} />
         <AccessCard site={site} vehicle={vehicle} policy={policy} reading={reading} now={now} stale={stale} />
       </div>
 

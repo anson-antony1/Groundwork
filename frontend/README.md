@@ -105,22 +105,26 @@ src/screens/    one folder per screen; /style is the living style tile
 
 ## Open questions for Aashita (contract gaps)
 
-1. `POST /api/v1/demo/reset` isn't built. It needs the sensor token, which can't live in `VITE_*`; proposal: the
-   Reset dialog asks for it once and keeps it in sessionStorage. Confirm reset leaves `demo_vehicle = heavy_truck`.
-2. README §3 says unknown weather/access → `SUPERVISOR_REVIEW`; the backend returns `UNKNOWN`. The UI handles both.
-3. `observations[]` landed on `SiteOut` (thanks). Still missing for "Why this call?": `hazard_subscores`,
-   NWS `alerts[]`, and `reasons {weather_triggers, soil_drainage, vehicle_class}`.
+Resolved on main and wired up: `POST /demo/reset` (token-gated; the Reset dialog uses it), `DELETE …/crew-flag`
+("Clear crew flag" in the Sensor Lab and the demo tray's "Why this call?"), `alert_events` and `hazard_explanation`
+(hazard card and "Why this call?"), NWS/USDA observations (access basis, provenance), the sourced Milton replay.
+
+Still open:
+
+1. `/health` reports `usda_nrcs` and `nws` as `not_built` although every site now has USDA and NWS observations.
+   The UI counts coverage from the observations instead; please update the health flags.
+2. `/policies` still returns the old `hazard_weights` (rain 0.25…), but the README now says rain 4 + gusts 3 + heat 3.
+   The UI no longer shows weights; please align `/policies` with `HAZARD_POLICY`.
+3. README §3 says unknown weather/access → `SUPERVISOR_REVIEW`; the backend returns `UNKNOWN`. The UI handles both.
 4. Per-site `mode` (LIVE / CACHED / REPLAY / SIMULATED / SENSOR DEMO markers) and a `priority_rank` shared with the
    briefing. Until then the list order mirrors `briefings._priority_key`.
 5. No endpoint to confirm/correct an AI photo tag. Proposed `POST /api/v1/reports/{id}/review
-   {category_user?, verification}` (POST: CORS allows GET/POST only) and `ai_status: pending|done|unavailable`.
-   Is `severity` (README §7) in or out?
-6. Replay: on/off switch or timeline? Proposed `GET /api/v1/replay/scenarios` → `{id, title, event, source,
-   reference_url, onset, expires}`. No playback-speed control unless frames exist.
-7. Sensor history caps at 500 rows (~8 min at 1 Hz). Needs `?since=` or downsampling, plus a backend
+   {category_user?, verification}` and `ai_status: pending|done|unavailable`. Is `severity` (README §7) in or out?
+6. Sensor history caps at 500 rows (~8 min at 1 Hz). Needs `?since=` or downsampling, plus a backend
    `pressure_tendency` (UNKNOWN under 3 h).
-8. Briefing: when Gemini succeeds the deterministic text is lost. Always return `deterministic_summary` + optional
+7. Briefing: when Gemini succeeds the deterministic text is lost. Always return `deterministic_summary` + optional
    `narrative`; add `mat_staging[]` and `sources[]`.
-9. Expose mat/cost defaults via `/policies`; until then UI defaults are labeled "Scenario assumption • adjustable".
-10. OK to treat `backend/openapi.json` as the shared contract instead of `shared/contracts.ts`?
-11. Optional: add `vehicle` to `DisplayOut` so the mirror needn't parse "HVY" from the LCD text.
+8. Expose mat/cost defaults via `/policies`; until then UI defaults are labeled "Scenario assumption • adjustable".
+9. OK to treat `backend/openapi.json` as the shared contract instead of `shared/contracts.ts`?
+10. Optional: add `vehicle` to `DisplayOut` so the mirror needn't parse "HVY" from the LCD text, and
+    `GET /replay/scenarios` if more than one storm is ever offered.

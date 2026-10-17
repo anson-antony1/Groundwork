@@ -89,12 +89,26 @@ const FIELD_LABELS: Record<string, string> = {
   gust_forecast: 'Max wind gust forecast',
   apparent_temp: 'Max apparent temperature',
   nws_alerts: 'NWS alerts',
-  usda_soil: 'USDA soil survey',
+  usda_soil: 'Soil drainage (USDA)',
+  usda_clay_pct: 'Soil clay content (USDA)',
   demo_tray_moisture: 'Demo tray moisture',
   moisture_index: 'Moisture index',
   light_index: 'Light index',
   pressure_hpa: 'Pressure',
   temp_c: 'Temperature',
+}
+
+/**
+ * A sourced observation's value in words. Most are "value unit"; a few backend units read better spelled out
+ * ("0 active" NWS alerts, "rank 3 of 4" drainage wetness). Missing stays "Missing".
+ */
+export function fmtObservation(o: { variable: string; value: number | null; unit: string }): string {
+  if (!isNumber(o.value)) return MISSING
+  if (o.variable === 'nws_alerts') return o.value === 0 ? 'None active' : `${o.value.toFixed(0)} active`
+  const rank = /rank (\d+)\s*[-–]\s*(\d+)/.exec(o.unit)
+  if (rank) return `${o.value.toFixed(0)} of ${rank[2]} (wetness rank)`
+  if (o.unit === '%') return `${o.value.toFixed(1)}%`
+  return fmtValue(o.value, o.unit)
 }
 
 export function fieldLabel(name: string): string {

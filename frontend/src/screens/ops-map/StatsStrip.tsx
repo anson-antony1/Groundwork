@@ -3,11 +3,10 @@ import type { LucideIcon } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { DEMO_SITE_ID } from '../../api/config'
 import type { SiteView } from '../../api/proposed'
-import { useHealth } from '../../api/queries'
 import type { Vehicle } from '../../api/types'
 import { cx } from '../../components/cx'
 import { VEHICLE_LABEL, fmtWhen } from '../../domain/format'
-import { inputsSummary } from '../../domain/inputs'
+import { inputsSummary, sourceCoverage } from '../../domain/inputs'
 
 interface TileProps {
   label: string
@@ -42,29 +41,22 @@ function Tile({ label, value, sub, icon: Icon, alert, children }: TileProps) {
   )
 }
 
-/** Where each data source stands, from the backend's own health and observations. */
+/** Where each data source stands, counted from the observations each site actually has. */
 function Coverage({ fieldSites }: { fieldSites: SiteView[] }) {
-  const health = useHealth().data?.data
-  const withWeather = fieldSites.filter((s) => s.observations.some((o) => o.value !== null)).length
-  const fetchedAt = fieldSites.flatMap((s) => s.observations.map((o) => o.fetched_at)).sort().at(-1)
-  const connector = (name: string) => health?.connectors[name] ?? 'unknown'
-  const rows: [string, string][] = [
-    ['Open-Meteo weather', `${withWeather} of ${fieldSites.length} sites${fetchedAt ? ` · fetched ${fmtWhen(fetchedAt)}` : ''} · ${connector('open_meteo')}`],
-    ['USDA soil survey', connector('usda_nrcs').replace('not_built', 'not connected yet')],
-    ['NWS alerts', connector('nws').replace('not_built', 'not connected yet')],
-  ]
   return (
     <details className="relative mt-1.5">
       <summary className="inline-block cursor-pointer list-none text-[0.75rem] text-accent label-caps hover:underline">
         Data coverage ▾
       </summary>
       <div className="absolute left-0 z-[1100] mt-2 w-80 rounded-[4px] border border-line-hi bg-panel p-4 shadow-[0_14px_32px_rgb(0_0_0/0.55)]">
-        <p className="mb-2 text-[0.78rem] text-muted label-caps">Data coverage</p>
+        <p className="mb-2 text-[0.78rem] text-muted label-caps">Data coverage · field sites</p>
         <dl className="flex flex-col gap-2 text-[0.88rem]">
-          {rows.map(([k, v]) => (
-            <div key={k}>
-              <dt className="font-semibold">{k}</dt>
-              <dd className="text-muted">{v}</dd>
+          {sourceCoverage(fieldSites).map((c) => (
+            <div key={c.label}>
+              <dt className="font-semibold">{c.label}</dt>
+              <dd className={c.have < c.total ? 'text-unknown' : 'text-muted'}>
+                {c.have} of {c.total} sites{c.fetchedAt && ` · fetched ${fmtWhen(c.fetchedAt)}`}
+              </dd>
             </div>
           ))}
         </dl>

@@ -80,14 +80,11 @@ export interface DisplayExtras {
 }
 export type DisplayView = Display & DisplayExtras
 
-export interface DemoResetResult {
-  replay_active: boolean
-  cleared_reports: number
-  cleared_acknowledgments: number
-}
-
+/** Endpoints the UI uses only once the backend serves them (checked against endpoints.gen.ts). */
 export const PROPOSED_ENDPOINTS = {
   reportReview: 'POST /api/v1/reports/{report_id}/review',
-  demoReset: 'POST /api/v1/demo/reset',
   replayScenarios: 'GET /api/v1/replay/scenarios',
+  // Shipped by the backend since; kept here so older contracts degrade gracefully.
+  demoReset: 'POST /api/v1/demo/reset',
+  clearCrewFlag: 'DELETE /api/v1/devices/{device_id}/crew-flag',
 } as const

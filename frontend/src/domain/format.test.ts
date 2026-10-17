@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { MISSING, ageSeconds, categoryLabel, fieldLabel, fmtAgo, fmtMoney, fmtNum, fmtValue, fmtWhen } from './format'
+import { MISSING, ageSeconds, categoryLabel, fieldLabel, fmtAgo, fmtMoney, fmtNum, fmtObservation, fmtValue, fmtWhen } from './format'
 
 describe('missing values never render as zero', () => {
   it.each([null, undefined, Number.NaN, Number.POSITIVE_INFINITY])('fmtNum(%s) is "Missing"', (value) => {
@@ -42,6 +42,20 @@ describe('time formatting', () => {
   it('shows date-only values as a calendar day', () => {
     expect(fmtWhen('2026-10-17')).toMatch(/Sat.*Oct.*17/)
     expect(fmtWhen(undefined)).toBe(MISSING)
+  })
+})
+
+describe('fmtObservation', () => {
+  it('spells out the backend units that read badly raw', () => {
+    expect(fmtObservation({ variable: 'nws_alerts', value: 0, unit: 'count' })).toBe('None active')
+    expect(fmtObservation({ variable: 'nws_alerts', value: 2, unit: 'count' })).toBe('2 active')
+    expect(fmtObservation({ variable: 'usda_soil', value: 3, unit: 'drainage wetness rank 0-4' })).toBe('3 of 4 (wetness rank)')
+    expect(fmtObservation({ variable: 'usda_clay_pct', value: 1.5, unit: '%' })).toBe('1.5%')
+    expect(fmtObservation({ variable: 'rain_7d', value: 43.5, unit: 'mm' })).toBe('43.5 mm')
+  })
+
+  it('keeps missing observations missing', () => {
+    expect(fmtObservation({ variable: 'nws_alerts', value: null, unit: 'count' })).toBe(MISSING)
   })
 })
 

@@ -16,7 +16,7 @@ const ajv = new Ajv2020({ strict: false, allErrors: true })
 addFormats(ajv)
 ajv.addSchema({ $id: ID, components: spec.components })
 
-type Method = 'get' | 'post'
+type Method = 'get' | 'post' | 'delete'
 
 function validatorFor(method: Method, template: string, status: number) {
   const response = spec.paths[template]?.[method]?.responses?.[String(status)]
@@ -100,6 +100,14 @@ describe('mock responses match backend/openapi.json', () => {
     await expectContract('get', '/api/v1/policies', { path: '/api/v1/policies' }, 200)
   })
 
+  it('demo reset and clearing a crew flag', async () => {
+    await handle({ method: 'POST', path: '/api/v1/devices/tray-01/events', headers: AUTH, json: { event: 'crew_flag', recorded_at: new Date().toISOString() } })
+    const cleared = await expectContract('delete', '/api/v1/devices/{device_id}/crew-flag', { path: '/api/v1/devices/tray-01/crew-flag' }, 200)
+    expect(cleared.data.effective_status).not.toBe('SUPERVISOR_REVIEW')
+    await expectContract('post', '/api/v1/demo/reset', { path: '/api/v1/demo/reset', headers: AUTH }, 200)
+    await expectContract('post', '/api/v1/demo/reset', { path: '/api/v1/demo/reset' }, 401)
+  })
+
   it('uses the shared error shape', async () => {
     await expectContract('get', '/api/v1/sites/{site_id}', { path: '/api/v1/sites/NOPE' }, 404)
     await expectContract('post', '/api/v1/sites/{site_id}/evaluate', { path: '/api/v1/sites/DEMO-TRAY/evaluate', json: { ...EVALUATION, surprise: 1 } }, 422)
@@ -130,6 +138,18 @@ describe('mock mirrors backend behavior from backend/tests/test_api.py', () => {
     expect(display.code).toBe('MATS')
     const site = (await handle({ method: 'GET', path: '/api/v1/sites/DEMO-TRAY' })).body as { data: { access_call: unknown } }
     expect(site.data.access_call).toEqual({ pickup: 'GO_FOR_REVIEW', heavy_truck: 'MATS_FOR_REVIEW' })
+  })
+
+  it('clearing a crew flag returns the tray to its access call without touching weather', async () => {
+    resetDb()
+    await handle({ method: 'POST', path: '/api/v1/sensors/readings', headers: AUTH, json: { device_id: 'tray-01', site_id: 'DEMO-TRAY', moisture_index: 50, recorded_at: new Date().toISOString(), mode: 'sensor_demo' } })
+    await handle({ method: 'POST', path: '/api/v1/devices/tray-01/events', headers: AUTH, json: { event: 'crew_flag', recorded_at: new Date().toISOString() } })
+    const flagged = (await handle({ method: 'GET', path: '/api/v1/sites/DEMO-TRAY' })).body as { data: { weather_state: string; effective_status: Record<string, string> } }
+    expect(flagged.data.effective_status.pickup).toBe('SUPERVISOR_REVIEW')
+    await handle({ method: 'DELETE', path: '/api/v1/devices/tray-01/crew-flag' })
+    const after = (await handle({ method: 'GET', path: '/api/v1/sites/DEMO-TRAY' })).body as { data: { weather_state: string; effective_status: Record<string, string> } }
+    expect(after.data.effective_status).toEqual({ pickup: 'GO_FOR_REVIEW', heavy_truck: 'MATS_FOR_REVIEW' })
+    expect(after.data.weather_state).toBe(flagged.data.weather_state)
   })
 
   it('touch acknowledges STOP WORK without clearing it', async () => {

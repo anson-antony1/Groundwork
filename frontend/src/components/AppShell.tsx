@@ -5,7 +5,7 @@ import { API_MODE } from '../api/config'
 import { useSites } from '../api/queries'
 import { useServerCtx } from '../api/serverCtx'
 import { fmtClock } from '../domain/format'
-import { LABELS, MODE_LABEL, replayLabel } from '../domain/provenance'
+import { LABELS, MODE_LABEL, replayLabel, shortReplaySource } from '../domain/provenance'
 import { isTypingTarget, useHotkeys } from '../hooks/useHotkeys'
 import { useLongPress } from '../hooks/useLongPress'
 import { useNow } from '../hooks/useNow'
@@ -134,8 +134,8 @@ function DemoBanner({ compact }: { compact: boolean }) {
         <span className="text-ink">Hackathon prototype · not certified safety guidance</span>
       )}
       {replay?.active ? (
-        <span className="font-semibold text-ink">
-          {replayLabel(replay.source)}
+        <span className="font-semibold text-ink" title={replay.source ?? undefined}>
+          {replayLabel(shortReplaySource(replay.source))}
           {replay.started_at && ` · started ${fmtClock(replay.started_at)}`}
         </span>
       ) : (

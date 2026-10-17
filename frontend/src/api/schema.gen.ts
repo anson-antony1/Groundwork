@@ -55,6 +55,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/demo/reset": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Demo only: end replay, clear session reports/acks, re-arm beacon */
+        post: operations["reset_demo_api_v1_demo_reset_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/devices/{device_id}/crew-flag": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** Clear a crew flag (supervisor); returns the updated beacon display */
+        delete: operations["clear_crew_flag_api_v1_devices__device_id__crew_flag_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/devices/{device_id}/display": {
         parameters: {
             query?: never;
@@ -451,6 +485,15 @@ export interface components {
              */
             rescheduling: number;
         };
+        /** DemoResetOut */
+        DemoResetOut: {
+            /** Device Events Cleared */
+            device_events_cleared: number;
+            /** Replay Stopped */
+            replay_stopped: boolean;
+            /** Reports Cleared */
+            reports_cleared: number;
+        };
         /** DemoTrayAccessOut */
         DemoTrayAccessOut: {
             /** Basis */
@@ -570,9 +613,49 @@ export interface components {
             /** Sources */
             sources?: string[];
         };
+        /** Envelope[DemoResetOut] */
+        Envelope_DemoResetOut_: {
+            data: components["schemas"]["DemoResetOut"];
+            /** Errors */
+            errors?: string[];
+            /**
+             * Generated At
+             * Format: date-time
+             */
+            generated_at: string;
+            /** Missing Fields */
+            missing_fields?: string[];
+            /**
+             * Mode
+             * @enum {string}
+             */
+            mode: "live" | "cached" | "replay" | "simulated" | "sensor_demo" | "sensor_replay";
+            /** Sources */
+            sources?: string[];
+        };
         /** Envelope[DeviceEventOut] */
         Envelope_DeviceEventOut_: {
             data: components["schemas"]["DeviceEventOut"];
+            /** Errors */
+            errors?: string[];
+            /**
+             * Generated At
+             * Format: date-time
+             */
+            generated_at: string;
+            /** Missing Fields */
+            missing_fields?: string[];
+            /**
+             * Mode
+             * @enum {string}
+             */
+            mode: "live" | "cached" | "replay" | "simulated" | "sensor_demo" | "sensor_replay";
+            /** Sources */
+            sources?: string[];
+        };
+        /** Envelope[DisplayOut] */
+        Envelope_DisplayOut_: {
+            data: components["schemas"]["DisplayOut"];
             /** Errors */
             errors?: string[];
             /**
@@ -1217,6 +1300,8 @@ export interface components {
         /** SiteDetailOut */
         SiteDetailOut: {
             access_call: components["schemas"]["VehicleAccessOut"];
+            /** Alert Events */
+            alert_events?: string[];
             /**
              * Data Status
              * @enum {string}
@@ -1228,6 +1313,8 @@ export interface components {
              * Format: date-time
              */
             evaluated_at: string;
+            /** Hazard Explanation */
+            hazard_explanation?: string[];
             /** Hazard Score */
             hazard_score?: number | null;
             /** Id */
@@ -1257,6 +1344,8 @@ export interface components {
         /** SiteOut */
         SiteOut: {
             access_call: components["schemas"]["VehicleAccessOut"];
+            /** Alert Events */
+            alert_events?: string[];
             /**
              * Data Status
              * @enum {string}
@@ -1268,6 +1357,8 @@ export interface components {
              * Format: date-time
              */
             evaluated_at: string;
+            /** Hazard Explanation */
+            hazard_explanation?: string[];
             /** Hazard Score */
             hazard_score?: number | null;
             /** Id */
@@ -1305,7 +1396,7 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "ack_touch" | "crew_flag" | "hazard_report" | "replay_started" | "replay_stopped" | "briefing_generated";
+            kind: "ack_touch" | "crew_flag" | "crew_flag_cleared" | "hazard_report" | "replay_started" | "replay_stopped" | "briefing_generated";
             /** Ref Id */
             ref_id: string | null;
             /** Site Id */
@@ -1465,6 +1556,120 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Envelope_BriefingOut_"];
+                };
+            };
+            /** @description Resource not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation failed */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Rate limit exceeded */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unexpected server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    reset_demo_api_v1_demo_reset_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_DemoResetOut_"];
+                };
+            };
+            /** @description Missing or invalid sensor token */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation failed */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Rate limit exceeded */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unexpected server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    clear_crew_flag_api_v1_devices__device_id__crew_flag_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                device_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_DisplayOut_"];
                 };
             };
             /** @description Resource not found */

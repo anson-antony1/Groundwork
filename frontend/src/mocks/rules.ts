@@ -51,8 +51,8 @@ interface MockSite {
     access: Record<Vehicle, AccessCall>
     missing_fields: string[]
     stale: boolean
-    alerts: NonNullable<SiteView['alerts']>
-    reasons: { weather_triggers: string[]; soil_drainage: string | null }
+    alert_events: string[]
+    hazard_explanation: string[]
   }
 }
 
@@ -102,12 +102,9 @@ function effective(weather: WeatherState, access: Record<Vehicle, AccessCall>, c
   return out
 }
 
-const REPLAY_ALERT = {
-  event: 'Severe Thunderstorm Warning (historical replay)',
-  source: 'Mock storm scenario — not a real NWS event',
-  severity: 'Severe',
-  reference_url: null,
-}
+/** Like the backend's Milton replay: a simulated warning, and every field site at the scale maximum. */
+const REPLAY_ALERT = 'Hurricane Warning (SIMULATED, mock replay)'
+const REPLAY_SCORE = 7
 
 function fieldSiteStatus(site: MockSite, now: number): SiteView {
   const replay = db.demo.replayActive
@@ -120,7 +117,7 @@ function fieldSiteStatus(site: MockSite, now: number): SiteView {
     longitude: site.longitude,
     region: site.region,
     location_origin: site.location_origin,
-    hazard_score: site.scenario.hazard_score,
+    hazard_score: replay ? REPLAY_SCORE : site.scenario.hazard_score,
     weather_state,
     access_call: site.scenario.access,
     effective_status: effective(weather_state, site.scenario.access, false),
@@ -130,10 +127,10 @@ function fieldSiteStatus(site: MockSite, now: number): SiteView {
     evaluated_at: iso(now),
     mode: replay ? 'replay' : 'cached',
     hazard_subscores: site.scenario.hazard_subscores ?? undefined,
-    alerts: replay ? [REPLAY_ALERT] : site.scenario.alerts,
-    reasons: replay
-      ? { ...site.scenario.reasons, weather_triggers: ['Historical storm replay: STOP WORK for all vehicles'] }
-      : site.scenario.reasons,
+    alert_events: replay ? [REPLAY_ALERT] : site.scenario.alert_events,
+    hazard_explanation: replay
+      ? [`Historical storm replay: hazard ${REPLAY_SCORE}.0 (scale maximum)`, `Active alert: ${REPLAY_ALERT} forces STOP WORK`]
+      : site.scenario.hazard_explanation,
   }
 }
 
@@ -155,10 +152,8 @@ function demoSiteStatus(now: number): SiteView {
     missing_fields: reading ? [] : ['demo_tray_moisture'],
     evaluated_at: iso(now),
     mode: replay ? 'replay' : 'sensor_demo',
-    reasons: {
-      weather_triggers: replay ? ['Historical storm replay: STOP WORK for all vehicles'] : [],
-      soil_drainage: null,
-    },
+    alert_events: replay ? [REPLAY_ALERT] : [],
+    hazard_explanation: [],
   }
 }
 

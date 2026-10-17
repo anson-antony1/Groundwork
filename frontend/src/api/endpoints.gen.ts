@@ -3,6 +3,7 @@
 export const API_VERSION = "0.2.0"
 
 export const ENDPOINTS: readonly string[] = [
+  "DELETE /api/v1/devices/{device_id}/crew-flag",
   "GET /api/v1/briefings",
   "GET /api/v1/briefings/{briefing_id}",
   "GET /api/v1/devices/{device_id}/display",
@@ -18,6 +19,7 @@ export const ENDPOINTS: readonly string[] = [
   "GET /api/v1/sites",
   "GET /api/v1/sites/{site_id}",
   "POST /api/v1/briefings/generate",
+  "POST /api/v1/demo/reset",
   "POST /api/v1/devices/{device_id}/events",
   "POST /api/v1/replay/start",
   "POST /api/v1/replay/stop",

@@ -1,7 +1,7 @@
 import { API_MODE } from './config'
 
 export interface ApiRequest {
-  method: 'GET' | 'POST'
+  method: 'GET' | 'POST' | 'DELETE'
   /** Absolute API path, e.g. /api/v1/sites. */
   path: string
   query?: Record<string, string | number | boolean | null | undefined>

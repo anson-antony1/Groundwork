@@ -1,8 +1,9 @@
 import { Bot, Camera, CircleSlash, FileText, Loader2, OctagonX, Printer, RefreshCw, ScrollText } from 'lucide-react'
 import { useState } from 'react'
 import { Link } from 'wouter'
+import { DEMO_SITE_ID } from '../../api/config'
 import type { BriefingView } from '../../api/proposed'
-import { useGenerateBriefing, useHealth, useLatestBriefing, useSites } from '../../api/queries'
+import { useGenerateBriefing, useLatestBriefing, useSites } from '../../api/queries'
 import { Card } from '../../components/Card'
 import { cx } from '../../components/cx'
 import { MissingValue } from '../../components/Provenance'
@@ -11,6 +12,7 @@ import { EmptyBlock, ErrorBlock, LoadingBlock } from '../../components/States'
 import { StatusTag, WeatherTag } from '../../components/StatusTag'
 import { useNow } from '../../hooks/useNow'
 import { fieldLabel, fmtAgo, fmtNum, fmtShortClock, fmtWhen } from '../../domain/format'
+import { sourceCoverage } from '../../domain/inputs'
 import { LABELS, MODE_LABEL } from '../../domain/provenance'
 
 /** The plan is for the day after it was generated. */
@@ -63,7 +65,6 @@ function Stat({ label, value, tone }: { label: string; value: number; tone?: 'st
 export function BriefingScreen() {
   const latest = useLatestBriefing()
   const generate = useGenerateBriefing()
-  const health = useHealth().data?.data
   const sites = useSites().data
   const now = useNow(5000)
   const envelope = latest.data
@@ -111,7 +112,7 @@ export function BriefingScreen() {
 
       {generate.isPending && (
         <p role="status" className="text-muted">
-          Ranking every site and writing the summary. AI narration can take up to 15 s; if it’s slow or fails, the deterministic version is used automatically.
+          Ranking every site and writing the summary. Gemini narration takes about 20 seconds; if it’s slow or fails, the deterministic version is used automatically. Tip: generate before the demo and show the saved plan.
         </p>
       )}
       {generate.isError && <ErrorBlock title="Couldn’t generate a new plan" error={generate.error} onRetry={() => generate.mutate()} />}
@@ -219,18 +220,19 @@ export function BriefingScreen() {
 
             <Card title="Sources" icon={<FileText aria-hidden className="size-4" />}>
               <ul className="flex flex-col gap-2">
+                {sourceCoverage((sites?.data ?? []).filter((s) => s.id !== DEMO_SITE_ID)).map((c) => (
+                  <li key={c.label} className="flex items-center justify-between gap-3 border-b border-line/60 py-1.5">
+                    <span>{c.label}</span>
+                    <span className={cx('text-[0.85rem]', c.have < c.total ? 'text-unknown' : 'text-muted')}>
+                      {c.have} of {c.total} sites{c.fetchedAt && ` · ${fmtWhen(c.fetchedAt)}`}
+                    </span>
+                  </li>
+                ))}
                 {[...new Set([...(envelope?.sources ?? []), ...(brief.sources ?? [])])].map((s) => (
-                  <li key={s} className="flex items-center gap-2">
+                  <li key={s} className="flex items-center gap-2 text-[0.9rem]">
                     <span className="size-1.5 rounded-full bg-muted" /> {s}
                   </li>
                 ))}
-                {health &&
-                  Object.entries(health.connectors).map(([name, state]) => (
-                    <li key={name} className="flex items-center justify-between gap-3 border-b border-line/60 py-1.5">
-                      <span>{{ open_meteo: 'Open-Meteo weather', usda_nrcs: 'USDA soil survey', nws: 'NWS alerts' }[name] ?? name}</span>
-                      <span className={cx('text-[0.8rem] label-caps', state === 'ok' ? 'text-ink' : 'text-unknown')}>{state === 'not_built' ? 'Not connected' : state}</span>
-                    </li>
-                  ))}
                 <li className="pt-1 text-[0.85rem] text-muted">Demo tray: {LABELS.demoSensor}</li>
               </ul>
             </Card>

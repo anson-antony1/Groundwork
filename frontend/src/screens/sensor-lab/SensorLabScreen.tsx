@@ -94,7 +94,7 @@ export function SensorLabScreen() {
       <MoistureChart readings={series} policy={policy} now={now} />
 
       <div className="grid items-start gap-5 xl:grid-cols-2">
-        <AckLog />
+        <AckLog flagged={display.data?.effective_status === 'SUPERVISOR_REVIEW'} />
         <PressurePanel readings={series} now={now} />
       </div>
     </div>

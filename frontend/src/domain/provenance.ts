@@ -28,6 +28,16 @@ export function replayLabel(reference: string | null | undefined): string {
   return `Historical replay • source ${reference ?? 'not attached'}`
 }
 
+/**
+ * First sentence of a replay source, for banners. If the full source says its alert is simulated,
+ * that stays visible ("· alert simulated") however short the line gets.
+ */
+export function shortReplaySource(source: string | null | undefined): string | null {
+  if (!source) return null
+  const first = source.split(/(?<=\.)\s+/)[0].replace(/\.$/, '')
+  return /simulated/i.test(source) && !/simulated/i.test(first) ? `${first} · alert simulated` : first
+}
+
 /** Provenance line for one sourced value, chosen by its kind. */
 export function observationLabel(o: Pick<Observation, 'kind' | 'source' | 'valid_at' | 'fetched_at'>): string {
   switch (o.kind) {

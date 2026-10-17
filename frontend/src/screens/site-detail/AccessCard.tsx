@@ -8,8 +8,8 @@ import { cx } from '../../components/cx'
 import { MissingValue, ProvenanceLine } from '../../components/Provenance'
 import { StatusTag } from '../../components/StatusTag'
 import { VehicleSwitch } from '../../components/VehicleSwitch'
-import { VEHICLE_LABEL, ageSeconds, fmtAgo, fmtNum, fmtValue } from '../../domain/format'
-import { LABELS } from '../../domain/provenance'
+import { VEHICLE_LABEL, ageSeconds, fmtAgo, fmtNum, fmtObservation } from '../../domain/format'
+import { LABELS, observationLabel, surveyLabel } from '../../domain/provenance'
 import { accessVisual } from '../../domain/status'
 
 /** Where the tray's reading sits on the policy's thresholds for this vehicle (values from /policies). */
@@ -53,6 +53,8 @@ export function AccessCard({ site, vehicle, policy, reading, now, stale }: Acces
   const readingAge = reading ? ageSeconds(reading.received_at, now) : null
   const readingFresh = reading !== null && readingAge !== null && readingAge <= (policy?.sensor_stale_seconds ?? 15)
   const rain7d = site.observations.find((o) => o.variable === 'rain_7d')
+  const soil = site.observations.find((o) => o.variable === 'usda_soil')
+  const clay = site.observations.find((o) => o.variable === 'usda_clay_pct')
 
   return (
     <Card
@@ -118,16 +120,23 @@ export function AccessCard({ site, vehicle, policy, reading, now, stale }: Acces
               {policy && <p className="text-[0.78rem] text-muted">{policy.demo_tray_access.basis} · {policy.label}</p>}
             </>
           ) : (
-            <dl className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-              <div>
+            <dl className="grid grid-cols-1 gap-x-4 gap-y-3 sm:grid-cols-2">
+              <div title={soil ? observationLabel(soil) : undefined}>
                 <dt className="flex items-center gap-1.5 text-[0.82rem] text-muted">
                   <Layers3 aria-hidden className="size-4" /> Soil drainage
                 </dt>
-                <dd className="font-semibold">{site.reasons?.soil_drainage ?? <MissingValue what="USDA soil drainage" />}</dd>
+                <dd className="font-semibold">
+                  {soil && soil.value !== null ? fmtObservation(soil) : (site.reasons?.soil_drainage ?? <MissingValue what="USDA soil drainage" />)}
+                </dd>
+                {soil && <dd className="text-[0.75rem] text-muted">{surveyLabel(soil.source, soil.fetched_at)}</dd>}
+              </div>
+              <div title={clay ? observationLabel(clay) : undefined}>
+                <dt className="text-[0.82rem] text-muted">Soil clay content</dt>
+                <dd className="font-semibold">{clay && clay.value !== null ? fmtObservation(clay) : <MissingValue what="soil clay content" />}</dd>
               </div>
               <div>
                 <dt className="text-[0.82rem] text-muted">Recent rain (7 days)</dt>
-                <dd className="font-semibold">{rain7d ? fmtValue(rain7d.value, rain7d.unit) : <MissingValue what="7-day rainfall" />}</dd>
+                <dd className="font-semibold">{rain7d && rain7d.value !== null ? fmtObservation(rain7d) : <MissingValue what="7-day rainfall" />}</dd>
               </div>
               <div>
                 <dt className="text-[0.82rem] text-muted">Vehicle class</dt>
