@@ -1,4 +1,4 @@
-import { Activity, Gauge } from 'lucide-react'
+import { Activity } from 'lucide-react'
 import { CartesianGrid, Line, LineChart, ReferenceArea, ReferenceDot, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import type { Policy, Reading } from '../../api/types'
 import { Card } from '../../components/Card'
@@ -51,7 +51,7 @@ export function MoistureChart({ readings, policy, now }: { readings: Reading[]; 
   const heavy = policy?.demo_tray_access.heavy_truck
   return (
     <Card
-      title="Soil moisture index · last 5 minutes"
+      title="Soil moisture · last 5 minutes"
       icon={<Activity aria-hidden className="size-4" />}
       right={<span className="text-[0.78rem] text-muted">Bands: heavy-truck policy, which the beacon evaluates</span>}
       footer={`${LABELS.demoSensor} · ${policy?.label ?? 'Demo policy'}`}
@@ -102,41 +102,6 @@ export function MoistureChart({ readings, policy, now }: { readings: Reading[]; 
             </table>
           </details>
         </>
-      )}
-    </Card>
-  )
-}
-
-/** Venue pressure log (Tier 3). Advisory only: official NWS alerts are the only STOP WORK trigger. */
-export function PressurePanel({ readings, now }: { readings: Reading[]; now: number }) {
-  const data = points(readings, (r) => r.pressure_hpa, now)
-  const values = data.map((p) => p.v)
-  const lo = Math.floor(Math.min(...values) - 0.5)
-  const hi = Math.ceil(Math.max(...values) + 0.5)
-  return (
-    <Card
-      title="Venue pressure · last 5 minutes"
-      icon={<Gauge aria-hidden className="size-4" />}
-      footer={`${LABELS.demoBeacon} · station pressure, not sea-level adjusted · never a STOP WORK trigger`}
-    >
-      <p className="mb-3 text-[0.95rem]">
-        3-hour tendency: <span className="font-semibold text-unknown">Unknown</span>{' '}
-        <span className="text-muted">needs 3 hours of readings, and the backend doesn't report a tendency yet.</span>
-      </p>
-      {data.length < 2 ? (
-        <EmptyBlock title="Barometer not reporting">Connect the Grove barometer (Tier 3) to start the pressure log.</EmptyBlock>
-      ) : (
-        <div className="h-44" role="img" aria-label={`Station pressure over the last 5 minutes, now ${data.at(-1)?.v.toFixed(1)} hPa`}>
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={data} margin={{ top: 6, right: 12, bottom: 4, left: 0 }}>
-              <CartesianGrid stroke="var(--color-line)" strokeWidth={1} vertical={false} />
-              <XAxis dataKey="t" type="number" scale="time" domain={[now - WINDOW_MS, now]} ticks={minuteTicks(now)} tickFormatter={(t: number) => fmtShortClock(new Date(t).toISOString())} {...AXIS} />
-              <YAxis domain={[lo, hi]} ticks={Array.from({ length: hi - lo + 1 }, (_, i) => lo + i)} width={52} {...AXIS} />
-              <Tooltip content={<Readout unit="hPa" label="station pressure" />} cursor={{ stroke: 'var(--color-muted)', strokeWidth: 1 }} isAnimationActive={false} />
-              <Line dataKey="v" type="monotone" stroke="var(--color-ink)" strokeWidth={2} dot={false} isAnimationActive={false} />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
       )}
     </Card>
   )

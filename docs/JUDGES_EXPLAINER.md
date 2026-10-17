@@ -53,7 +53,7 @@ Publicly mapped site locations OR future supervisor-entered work sites
            /api/v1/... JSON endpoints
                           |
               React/Vite website
-       Map | Site detail | 6 PM Brief | Replay | Sensor Lab
+       Map | Site detail | Demo Tray | Replay | 6 PM Brief
                           |
        “Email this plan” -> n8n webhook -> SMTP email
                           |

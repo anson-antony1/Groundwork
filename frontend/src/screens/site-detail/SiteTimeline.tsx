@@ -21,10 +21,10 @@ const KIND: Record<TimelineKind, { icon: LucideIcon; label: string }> = {
 export function SiteTimeline({ siteId }: { siteId: string }) {
   const events = useEvents(siteId)
   return (
-    <Card collapsedByDefault title="Event log" icon={<History aria-hidden className="size-4" />}>
+    <Card collapsedByDefault title="History" icon={<History aria-hidden className="size-4" />}>
       {events.isLoading && <LoadingBlock label="Loading events" />}
-      {events.isError && !events.data && <ErrorBlock title="Event log unavailable" error={events.error} />}
-      {events.data && events.data.data.length === 0 && <EmptyBlock title="Nothing logged yet">Acknowledgments, crew reports and replays appear here.</EmptyBlock>}
+      {events.isError && !events.data && <ErrorBlock title="History unavailable" error={events.error} />}
+      {events.data && events.data.data.length === 0 && <EmptyBlock title="Nothing logged yet">Status changes, crew reports, alarm taps and replays for this site appear here.</EmptyBlock>}
       {events.data && events.data.data.length > 0 && (
         <ol className="flex flex-col">
           {events.data.data.slice(0, 12).map((e) => {

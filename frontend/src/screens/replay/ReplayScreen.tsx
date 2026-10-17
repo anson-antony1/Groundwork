@@ -58,7 +58,7 @@ export function ReplayScreen() {
           title="Replay state"
           icon={<Radio aria-hidden className="size-4" />}
           tone={active ? 'stop' : undefined}
-          footer="State comes from the server (GET /replay), so a replay started from any laptop shows here within 2 seconds."
+          footer="Everyone viewing Groundwork sees the replay until you stop it."
         >
           <div className="flex flex-col gap-5">
             <div className={cx('flex items-center gap-4 rounded-[4px] border-2 p-5', active ? 'border-stop bg-stop/15' : 'border-line-hi bg-steel')}>

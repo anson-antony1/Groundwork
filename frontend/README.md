@@ -74,7 +74,7 @@ The types come straight from the backend's committed contract, so they can't sil
 
 ## Hotkeys
 
-`1` Map · `2` Demo tray · `3` Sensor lab · `4` Storm replay · `5` 6 PM brief · `V` toggle vehicle · `?` help ·
+`1` Map · `2` Demo tray · `3` Storm replay · `4` 6 PM brief · `V` toggle vehicle · `?` help ·
 `Esc` collapse the STOP WORK takeover · `Shift+Alt+R` (or hold the logo 2 s) reset demo · `Shift+M` mock rehearsal panel.
 Ignored while typing in a field.
 
@@ -106,8 +106,8 @@ src/screens/    one folder per screen; /style is the living style tile
 ## Open questions for Aashita (contract gaps)
 
 Resolved on main and wired up: `POST /demo/reset` (token-gated; the Reset dialog uses it), `DELETE …/crew-flag`
-("Clear crew flag" in the Sensor Lab and the demo tray's "Why this call?"), `alert_events` and `hazard_explanation`
-(hazard card and "Why this call?"), NWS/USDA observations (access basis, provenance), the sourced Milton replay,
+("Clear crew flag" on the Demo Tray tab), `alert_events` and `hazard_explanation`
+(the weather card), NWS/USDA observations (access basis, provenance), the sourced Milton replay,
 P8 mat staging (the mats panel shows `planned_quantity` and the backend's calculation `steps`; the mock mirrors
 `services/mats.py` and `policies/mats_defaults.json`), scenario-aware replay (the Replay screen counts STOP sites
 instead of assuming all of them).

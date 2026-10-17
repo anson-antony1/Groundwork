@@ -1,4 +1,4 @@
-import { Cable, CircleCheckBig, CircleHelp, CloudLightning, Footprints, ImagePlus, Loader2, MapPinned, Route, Send, ThermometerSun, Trash2, TreePine, Waves } from 'lucide-react'
+import { ArrowLeft, Cable, CircleCheckBig, CircleHelp, CloudLightning, Footprints, ImagePlus, Loader2, MapPinned, Route, Send, ThermometerSun, Trash2, TreePine, Waves } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { useEffect, useRef, useState } from 'react'
@@ -139,6 +139,9 @@ export function ReportScreen({ siteId }: { siteId?: string }) {
       }}
     >
       <header>
+        <Link href={`/sites/${site}`} className="mb-2 inline-flex items-center gap-1.5 text-[0.85rem] text-accent label-caps hover:underline">
+          <ArrowLeft aria-hidden className="size-4" /> Back to site
+        </Link>
         <h1 className="font-display text-4xl leading-none font-bold tracking-wide uppercase">Report a hazard</h1>
         <p className="mt-2 text-muted">Crew reports appear on the map right away. They flag a site for review; they never set its status.</p>
       </header>

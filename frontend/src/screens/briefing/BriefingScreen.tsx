@@ -94,6 +94,9 @@ export function BriefingScreen() {
         <div>
           <p className="text-accent label-caps">6 PM briefing</p>
           <h1 className="font-display text-[2.8rem] leading-none font-bold tracking-wide uppercase">{brief ? `Plan for ${planDay(brief.generated_at)}` : 'Tomorrow’s plan'}</h1>
+          <p className="mt-1 max-w-3xl text-muted print:hidden">
+            Made every evening at 6 PM for tomorrow’s crews. Generate makes one now; Email sends it.
+          </p>
           {brief && (
             <p className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-muted">
               <span title={fmtWhen(brief.generated_at)}>
@@ -270,6 +273,9 @@ export function BriefingScreen() {
               </div>
             )}
           </Card>
+          <p className="text-muted print:hidden">
+            Questions about a site? Ask Claude: it reads the same Groundwork data through our connector (MCP server), so it can explain any site’s call.
+          </p>
         </>
       )}
     </div>
