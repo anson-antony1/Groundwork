@@ -171,9 +171,9 @@ Use this only as an **illustrative initial formula**, with scores calibrated by 
 | Lightning: strike within 10 mi → stop work, 30-minute all clear that restarts with each strike | A crew lightning report stops every site within 10 mi until 30 min after the newest strike; each new report restarts it. Shown as an alert whose `expires` is the all-clear time, and on the beacon as `STOP - CLR 29:59` (`ACKD - CLR …` after a touch). A new strike near the tray re-sounds the alarm. Not applied during storm replays | `services/field_hazards.py`, `services/display.py` |
 | Wildfire in the combined picture | NIFC active incidents; a fire within 10 mi raises NORMAL to CAUTION (demo policy) | `scripts/fetch_hazards_v1.py`, `fixtures/hazards_snapshot.json` |
 | Wildlife sightings | iNaturalist alligator sightings within 10 km in the last 30 days, as an observation and a "brief the crew" note | same |
-| Hazard index (0–10) from an ML model trained on historical data | A logistic regression on NOAA Storm Events + Open-Meteo history gives an advisory "ML forecast x/10" next to the rule-based score. It never sets STOP WORK | `scripts/train_hazard_model_v1.py`, `policies/ml_hazard_model_v1.json`, `services/ml_index.py` |
+| Hazard index (0–10) from an ML model trained on historical data | The site page's "Learned forecast" panel: chance of a STOP-WORK-class NWS alert tomorrow, with the factors behind it (held-out AUC 0.85 vs 0.78 for the rules; §8). The NOAA model below gives an "ML forecast x/10" line where that model has no prediction. Neither ever sets STOP WORK | `backend/ml/`, `services/forecast_model.py`; `scripts/train_hazard_model_v1.py`, `policies/ml_hazard_model_v1.json`, `services/ml_index.py` |
 
-**The ML forecast, honestly.** It predicts the chance of a located severe storm or flood event (thunderstorm wind, hail, lightning, tornado, flash flood, flood, heavy rain) within 25 km of a site that day, from that day's rain, gusts and apparent temperature plus the prior week's rain. It was trained on 60 sites for 2023–24 (43,860 site-days, 846 events) and tested on 2025, which it never saw (21,900 site-days, 437 events, 2% base rate). The 0–10 index is a percentile: 7.8 means riskier than 78% of past site-days.
+**The NOAA ML forecast, honestly** (the fallback model; the shown model and a head-to-head of the two are in §8 "Built: learned STOP-WORK forecast"). It predicts the chance of a located severe storm or flood event (thunderstorm wind, hail, lightning, tornado, flash flood, flood, heavy rain) within 25 km of a site that day, from that day's rain, gusts and apparent temperature plus the prior week's rain. It was trained on 60 sites for 2023–24 (43,860 site-days, 846 events) and tested on 2025, which it never saw (21,900 site-days, 437 events, 2% base rate). The 0–10 index is a percentile: 7.8 means riskier than 78% of past site-days.
 
 | 2025 test (AUC: 1.0 perfect, 0.5 coin flip) | ML forecast | Rule-based score |
 |---|---|---|
@@ -951,7 +951,7 @@ The ticked items pass in `pytest backend/tests hardware/tests`; `backend/tests/t
 | Crew lightning report | `Crew report (unverified)` on the alert; not a strike-detection network |
 | Wildfire nearby | `NIFC WFIGS` with distance and fetch time |
 | Alligator sightings | `iNaturalist community observations (unverified)` |
-| ML forecast | `Advisory; the rules decide STOP WORK`, with its 2025 test AUC for that region |
+| Learned forecast | `Advisory`: probability, usual rate, top factors and held-out AUC; the rules decide STOP WORK |
 | LLM briefing | `Generated narrative from structured records` |
  
 ---
@@ -962,7 +962,7 @@ The ticked items pass in `pytest backend/tests hardware/tests`; `backend/tests/t
 No. It helps with advance planning using soil survey information, forecast conditions, and configurable vehicle rules. An engineer/supervisor still needs to assess ground support and site conditions.
  
 **Q: Isn't your "ML" just rules?**  
-The safety and access engine uses transparent rules on purpose. Next to it there is a real ML forecast: a logistic regression trained on NOAA Storm Events and Open-Meteo history for 2023–24 and tested on 2025, which it never saw. It ranks storm days better than our rules overall (AUC 0.88 vs 0.83) but worse on the Florida demo sites (0.87 vs 0.90), so it is advisory only and every site says which numbers apply to it.
+The safety and access engine uses transparent rules on purpose. Next to it there is a real ML forecast: a logistic regression trained on 3 years of archived forecasts and real NWS alerts at 300 sites, tested on a year it never saw. It ranks STOP-WORK days better than our rules (AUC 0.85 vs 0.78) and also beats a second model the team built on NOAA storm reports, even on that model's own target (0.90 vs 0.89). In Florida it only ties the rules, so it stays advisory and never sets a status.
  
 **Q: How do you know the data for 50 sites is real?**  
 We store real coordinates and show the exact provider, time, and missing-value status for soil/weather variables. We count how many sites have complete retrieved data; we do not call fabricated locations actual customer work orders.

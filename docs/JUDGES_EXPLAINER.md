@@ -189,6 +189,8 @@ Sperry's brief for this event ("PlanIT Control") asked for four things the first
 
 **Wildlife.** For each site we count American alligator sightings within 10 km in the last 30 days from iNaturalist, a community wildlife app. It's a "brief the crew" note only, labelled unverified, and never changes a status. At the Oct 17 fetch: 72 sites had sightings (81 near the UF venue itself).
 
+**Update (Oct 17, evening):** the site page now shows the *learned STOP-WORK forecast* (`backend/ml/`, README §8): trained on archived forecasts and real NWS alerts at all 300 sites, it scores AUC 0.85 vs 0.78 for the rules on a held-out year, and beats the NOAA model below on both models' targets. The NOAA model's line appears only where that model has no prediction. Its description below is still accurate.
+
 **ML forecast (brief item 6).** A small machine-learning model (logistic regression) learned from 2023–24 history: NOAA's Storm Events database says when a real storm or flood (thunderstorm wind, hail, lightning, tornado, flash flood, flood, heavy rain) happened within 25 km of a site, and Open-Meteo says what the weather was. Each site now gets a line like *"ML forecast: 7.8/10 (riskier than 78% of past site-days; 5% chance …)"* next to the rule-based score. It was tested on 2025, a year it never saw:
 
 | 2025 test (AUC: 1.0 = perfect ranking, 0.5 = coin flip) | ML forecast | Our rules |
