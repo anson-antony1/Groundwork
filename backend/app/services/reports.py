@@ -40,7 +40,8 @@ def create_report(site_id: str, description: str, category: str, photo: bytes | 
 
     rec = repo.reports.add(ReportRecord(
         id=report_id, site_id=site_id, description=description, category_user=category,
-        category_ai=None, ai_confidence=None,  # filled by the advisory image tagger later
+        # AI photo tagging was dropped from scope; these stay null so the report contract is unchanged.
+        category_ai=None, ai_confidence=None,
         image_filename=filename, reported_at=now, verification="unreviewed",
     ))
     timeline.record("hazard_report", f"Crew report ({category}): {description[:80]}", now, site_id=site_id, ref_id=report_id)

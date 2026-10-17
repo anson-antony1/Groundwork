@@ -3147,6 +3147,7 @@
                 "type": "null"
               }
             ],
+            "description": "Always null: AI photo tagging is out of scope",
             "title": "Ai Confidence"
           },
           "ai_status": {
@@ -3179,6 +3180,7 @@
                 "type": "null"
               }
             ],
+            "description": "Always null: AI photo tagging is out of scope",
             "title": "Category Ai"
           },
           "category_user": {
