@@ -48,3 +48,6 @@ The beacon feeds only the DEMO-TRAY site (moisture reading, calm demo weather, c
 - Server: uvicorn backend.app.main:app --reload --port 8000. --reload does not watch .env or fixtures/: restart after changing them. Port stuck: lsof -ti :8000 | xargs kill
 - Use new versioned file names for scripts, never overwrite.
 - macOS: use python heredocs, not sed -i. Paste commands only, not prompt lines.
+
+## n8n note
+n8n workflow ran end to end, but that run returned narrative_source deterministic_template (no Gemini call, about 0.4 s). Before the demo, confirm a generate returns narrative_source llm, then regenerate a replay briefing so it is newest.
