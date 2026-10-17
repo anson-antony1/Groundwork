@@ -24,6 +24,7 @@ TOP_N = 10
 TIMEOUT_MS = 45000
 NUM_RE = re.compile(r"\d+(?:\.\d+)?")
 GLUE_RE = re.compile(r"\b(for|and|to|at|of|in|by|on|with)(?=[A-Z][a-z])")  # fixes "forWindermere"
+DROPPED_SPACE_RE = re.compile(r"\b([Tt]here)(are|is|were|was)\b")  # fixes "Thereare"
 LEAK_RE = re.compile(
     r"\bN others\b|top_priority_sites|stop_work_sites|stop_work_count|unknown_weather_count|data_mode|"
     r"sites_evaluated|vehicle_access|vehicle_status|missing_fields|unreviewed_crew_reports|sites_with_missing")
@@ -112,6 +113,7 @@ def narrate(facts: dict[str, Any]) -> str | None:
         ok, bad = numbers_are_grounded(text, facts)
         if not ok:
             raise RuntimeError(f"ungrounded numbers {sorted(bad)}")
+        text = DROPPED_SPACE_RE.sub(r"\1 \2", text)
         return GLUE_RE.sub(r"\1 ", text)
     except Exception as e:  # never break the briefing endpoint over narration
         log.warning("narration skipped: %s", e)

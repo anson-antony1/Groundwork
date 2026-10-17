@@ -2324,6 +2324,13 @@
           "access_call": {
             "$ref": "#/components/schemas/VehicleAccessOut"
           },
+          "alert_events": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Alert Events",
+            "type": "array"
+          },
           "data_status": {
             "enum": [
               "sensor_demo",
@@ -2341,6 +2348,13 @@
             "format": "date-time",
             "title": "Evaluated At",
             "type": "string"
+          },
+          "hazard_explanation": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Hazard Explanation",
+            "type": "array"
           },
           "hazard_score": {
             "anyOf": [
@@ -2442,6 +2456,13 @@
           "access_call": {
             "$ref": "#/components/schemas/VehicleAccessOut"
           },
+          "alert_events": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Alert Events",
+            "type": "array"
+          },
           "data_status": {
             "enum": [
               "sensor_demo",
@@ -2459,6 +2480,13 @@
             "format": "date-time",
             "title": "Evaluated At",
             "type": "string"
+          },
+          "hazard_explanation": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Hazard Explanation",
+            "type": "array"
           },
           "hazard_score": {
             "anyOf": [

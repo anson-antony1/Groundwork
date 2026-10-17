@@ -24,6 +24,7 @@ def site_out(s: SiteStatus) -> SiteOut:
         effective_status=VehicleStatusOut(**s.effective_status),
         data_status=s.data_status, observations=[ObservationOut(**o) for o in s.observations],
         missing_fields=list(s.missing_fields), evaluated_at=s.evaluated_at,
+        hazard_explanation=list(s.hazard_explanation), alert_events=list(s.alert_events),
     )
 
 

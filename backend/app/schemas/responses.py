@@ -56,6 +56,8 @@ class SiteOut(BaseModel):
     observations: list[ObservationOut]
     missing_fields: list[str]
     evaluated_at: datetime
+    hazard_explanation: list[str] = Field(default_factory=list)
+    alert_events: list[str] = Field(default_factory=list)
 
 
 class ReportOut(BaseModel):

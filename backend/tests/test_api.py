@@ -135,3 +135,13 @@ def test_timeline_records_actions(client):
     client.post("/api/v1/replay/stop")
     kinds = [e["kind"] for e in client.get("/api/v1/events").json()["data"]]
     assert kinds == ["replay_stopped", "replay_started"]
+
+
+def test_sites_expose_hazard_explanation(client):
+    """README P3: every scored field site shows why (sub-scores) and any active alert names."""
+    sites = client.get("/api/v1/sites").json()["data"]
+    scored = [s for s in sites if s["id"] != "DEMO-TRAY" and s["hazard_score"] is not None]
+    assert scored, "no scored field sites in the snapshot"
+    for s in scored:
+        assert s["hazard_explanation"], s["id"]
+        assert isinstance(s["alert_events"], list)
