@@ -242,3 +242,63 @@ def test_bridge_end_to_end_over_pty(api_url, tmp_path):
     assert len(recorder.path.read_text().strip().splitlines()) == 3  # header + 2 readings
     link.close()
     os.close(master)
+
+
+# --- rehearsal latency (README section 15) ------------------------------------
+
+GO, MATS = "S|GO|DEMO TRAY   HVY|GO FOR REVIEW|0", "S|MATS|DEMO TRAY   HVY|MATS FOR REVIEW|0"
+STOP, ACKD = "S|STOP|DEMO TRAY   HVY|STOP WORK - ACK?|1", "S|STOP|DEMO TRAY   HVY|STOP WORK - ACKD|0"
+
+
+def test_latency_times_moisture_changes_from_the_newest_reading():
+    lat = sb.Latency()
+    lat.reading_at = 10.0
+    assert lat.changed(GO, MATS, 10.8) == "800 ms after the reading"
+    assert lat.changed(None, GO, 11.0) is None                                 # first line after start
+    assert lat.changed("S|UNKNOWN|DEMO TRAY|NO SENSOR DATA|0", GO, 11.0) is None  # not a moisture change
+    assert lat.changed(sb.NO_SERVER_LINE, MATS, 11.0) is None                   # server came back
+    assert lat.changed(MATS, STOP, 11.0) is None                                # a replay, not the beacon
+
+
+def test_latency_times_a_touch_once_and_only_while_fresh():
+    lat = sb.Latency()
+    lat.event_at = 20.0
+    assert lat.changed(STOP, ACKD, 20.45) == "450 ms after the touch"
+    assert lat.changed(ACKD, STOP, 21.0) is None                                # used up
+    lat.event_at = 30.0
+    assert lat.changed(STOP, ACKD, 30.0 + sb.Latency.EVENT_WINDOW + 1) is None  # too late to be the touch
+
+
+def test_latency_summary():
+    lat = sb.Latency()
+    assert lat.summary() == "nothing timed"
+    for seconds in (0.1, 0.3, 0.2):
+        lat.accepted(seconds)
+    lat.reading_at = 0.0
+    lat.changed(GO, MATS, 1.5)
+    assert lat.summary() == ("reading accepted by API n=3 median 200 ms max 300 ms; "
+                             "reading -> LCD n=1 median 1500 ms max 1500 ms")
+
+
+@pytest.mark.skipif(sys.platform == "win32", reason="needs a POSIX pty")
+def test_link_survives_the_beacon_disappearing_and_reconnects():
+    master, slave = os.openpty()
+    tty.setraw(slave)
+    link = sb.SerialLink(os.ttyname(slave), reset_wait=0)
+    assert link.write_line("S|GO|DEMO TRAY|GO FOR REVIEW|0")
+    os.close(master)  # cable pulled
+    assert link.write_line("S|GO|DEMO TRAY|GO FOR REVIEW|0") is False
+    assert not link.connected and link.read_lines() == []
+
+    master2, slave2 = os.openpty()  # plugged back in (here, as a different device)
+    tty.setraw(slave2)
+    link.requested, link.next_retry = os.ttyname(slave2), 0
+    assert link.read_lines() == [] and link.connected and link.port == os.ttyname(slave2)
+    os.write(master2, b'{"type":"hello","fw":"x"}\r\n')
+    deadline, lines = time.monotonic() + 2, []
+    while not lines and time.monotonic() < deadline:
+        lines = link.read_lines()
+    assert lines == ['{"type":"hello","fw":"x"}']
+    link.close()
+    for fd in (slave, master2, slave2):
+        os.close(fd)
