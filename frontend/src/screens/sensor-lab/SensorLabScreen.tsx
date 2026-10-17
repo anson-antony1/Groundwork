@@ -8,7 +8,7 @@ import { cx } from '../../components/cx'
 import { StatusTag } from '../../components/StatusTag'
 import { useNow } from '../../hooks/useNow'
 import { VEHICLE_LABEL, ageSeconds, fmtAgo } from '../../domain/format'
-import { LABELS } from '../../domain/provenance'
+import { LABELS, sensorReplayLabel } from '../../domain/provenance'
 import { STALE_BUDGET_MS, isStale } from '../../domain/staleness'
 import { AckLog } from './AckLog'
 import { MoistureChart, PressurePanel } from './charts'
@@ -57,7 +57,9 @@ export function SensorLabScreen() {
         </div>
         <div className="flex flex-wrap items-center gap-3">
           {recorded && (
-            <span className="rounded-[3px] border-2 border-accent bg-accent/15 px-3 py-1.5 text-lg text-accent label-caps">Recorded demo · not live hardware</span>
+            <span className="rounded-[3px] border-2 border-accent bg-accent/15 px-3 py-1.5 text-lg text-accent label-caps">
+              {sensorReplayLabel(reading?.calibration)} · not live hardware
+            </span>
           )}
           <span
             role="status"

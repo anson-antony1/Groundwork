@@ -60,6 +60,14 @@ export const MODE_LABEL: Record<DataMode, string> = {
   sensor_replay: 'Recorded demo',
 }
 
+/**
+ * "Recorded demo" (README §15) promises readings recorded from the real beacon. A replay CSV whose
+ * calibration says simulated (replay_sensor_v2.py posts simulated_replay_v1) must say so instead.
+ */
+export function sensorReplayLabel(calibration: string | null | undefined): string {
+  return calibration?.toLowerCase().startsWith('simulated') ? 'Simulated sensor replay' : LABELS.recordedDemo
+}
+
 export const QUALITY_LABEL: Record<ObservationQuality, string> = {
   available: 'Available',
   stale: 'Stale',

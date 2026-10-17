@@ -5,7 +5,7 @@ import type { Reading } from '../../api/types'
 import { cx } from '../../components/cx'
 import { QualityChip } from '../../components/Provenance'
 import { fmtAgo } from '../../domain/format'
-import { LABELS } from '../../domain/provenance'
+import { LABELS, sensorReplayLabel } from '../../domain/provenance'
 
 /** A module that isn't plugged in sends nothing (README §5.7). Shown as such, never as zero. */
 function NoValue({ text }: { text: string }) {
@@ -55,7 +55,13 @@ function Tile({ label, icon: Icon, value, digits, unit, provenance, hero, stale,
 
 export function ReadingTiles({ reading, now, stale }: { reading: Reading | null; now: number; stale: boolean }) {
   const when = reading ? `recorded ${fmtAgo(reading.recorded_at, now)}` : 'no reading yet'
-  const quality = reading ? <QualityChip quality={reading.mode} className="ml-1" /> : null
+  const quality = reading ? (
+    <QualityChip
+      quality={reading.mode}
+      label={reading.mode === 'sensor_replay' ? sensorReplayLabel(reading.calibration) : undefined}
+      className="ml-1"
+    />
+  ) : null
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 2xl:grid-cols-3">
       <Tile

@@ -25,7 +25,7 @@ export function ProvenanceLine({ children, className }: { children: ReactNode; c
 }
 
 /** Data-quality chip: Available / Stale / Missing / Simulated / Demo sensor / Recorded demo. */
-export function QualityChip({ quality, className }: { quality: ObservationQuality; className?: string }) {
+export function QualityChip({ quality, label, className }: { quality: ObservationQuality; label?: string; className?: string }) {
   return (
     <span
       className={cx(
@@ -34,7 +34,7 @@ export function QualityChip({ quality, className }: { quality: ObservationQualit
         className,
       )}
     >
-      {QUALITY_LABEL[quality]}
+      {label ?? QUALITY_LABEL[quality]}
     </span>
   )
 }
