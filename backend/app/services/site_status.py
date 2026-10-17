@@ -1,9 +1,10 @@
 """Per-site status: weather safety and per-vehicle ground access, kept as separate decisions."""
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import datetime
 
 from .. import repositories as repo
 from ..config import DEMO_DEVICE_ID, DEMO_SITE_ID
+from . import site_insights
 from .access import demo_tray_access
 from .display import fresh_reading
 from .hazard import assess
@@ -28,9 +29,26 @@ class SiteStatus:
     evaluated_at: datetime
     hazard_explanation: tuple[str, ...] = ()
     alert_events: tuple[str, ...] = ()
+    hazard_subscores: dict | None = None
+    alerts: tuple[dict, ...] = ()
+    reasons: dict | None = None
+    priority_rank: int | None = None  # set by list_statuses / get_status across all sites
 
 
-from .storm_replay_v2 import replay_site_v2
+from .storm_replay_v2 import replay_inputs, replay_site_v2
+
+ACCESS_RANK = {"NO_GO_FOR_REVIEW": 0, "MATS_FOR_REVIEW": 1, "UNKNOWN": 2, "GO_FOR_REVIEW": 3}
+
+
+def priority_key(s: SiteStatus) -> tuple:
+    """Shared by the site list and the 6 PM briefing. Critical alerts first, then hazard score,
+    then access restriction, then missing data."""
+    return (
+        s.weather_state != "STOP_WORK",
+        -(s.hazard_score or 0),
+        min(ACCESS_RANK[a] for a in s.access_call.values()),
+        -len(s.missing_fields),
+    )
 
 
 def evaluate_status(site: Site, now: datetime) -> SiteStatus:
@@ -45,11 +63,11 @@ def evaluate_status(site: Site, now: datetime) -> SiteStatus:
     moisture = reading.moisture_index if reading else None
 
     assessed = None
+    details = None if is_demo else details_for(site.id)
     if is_demo:
         access = {v: demo_tray_access(moisture, v) for v in VEHICLES}
     else:
         # events=None (no snapshot details, or the NWS call failed) means weather cannot be declared safe.
-        details = details_for(site.id)
         assessed = assess(values, details["alerts"] if details else None)
         access = dict(assessed.access_call)
 
@@ -90,6 +108,22 @@ def evaluate_status(site: Site, now: datetime) -> SiteStatus:
     if is_demo and reading is None:
         missing = ("demo_tray_moisture",)
 
+    # Sub-scores, alert details and reasons come from the same inputs that decided weather_state.
+    sub, alerts, reasons = None, (), None
+    if not is_demo:
+        if state.replay_active:
+            inputs = replay_inputs(site.id, state.replay_scenario_id)
+            used_values, events = (inputs["values"], inputs["events"]) if inputs else (None, None)
+            alerts = tuple(inputs["alerts"]) if inputs else ()
+        else:
+            used_values, events = values, (details["alerts"] if details else None)
+            alerts = tuple(site_insights.live_alerts(events, site.latitude, site.longitude))
+        if used_values is not None:
+            sub = site_insights.subscores(used_values, events)
+            reasons = {"weather_triggers": site_insights.weather_triggers(used_values, events),
+                       "soil_drainage": details.get("drainage") if details else None,
+                       "vehicle_class": None}  # access is per vehicle; the client knows which one is selected
+
     if is_demo:
         data_status = "sensor_demo"
     elif not observations:
@@ -112,18 +146,25 @@ def evaluate_status(site: Site, now: datetime) -> SiteStatus:
                             else assessed.explanation if assessed else ()),
         alert_events=(replay_info["alert_events"] if state.replay_active and replay_info
                       else assessed.alert_events if assessed else ()),
+        hazard_subscores=sub,
+        alerts=alerts,
+        reasons=reasons,
     )
 
 
 def list_statuses(now: datetime, weather_state: str | None = None) -> list[SiteStatus]:
+    """All sites in their usual order, each tagged with its rank across ALL sites (1 = most urgent)."""
     statuses = [evaluate_status(s, now) for s in load_sites()]
+    ranks = {id(s): i for i, s in enumerate(sorted(statuses, key=priority_key), start=1)}
+    statuses = [replace(s, priority_rank=ranks[id(s)]) for s in statuses]
     if weather_state is not None:
         statuses = [s for s in statuses if s.weather_state == weather_state]
     return statuses
 
 
 def get_status(site_id: str, now: datetime) -> SiteStatus:
-    return evaluate_status(require_site(site_id), now)
+    require_site(site_id)  # 404 before ranking every site
+    return next(s for s in list_statuses(now) if s.site.id == site_id)
 
 
 def portfolio_mode() -> str:

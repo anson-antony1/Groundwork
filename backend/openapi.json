@@ -159,6 +159,47 @@
         "title": "BriefingOut",
         "type": "object"
       },
+      "CallReasonsOut": {
+        "description": "'Why this call?' inputs (README section 8).",
+        "properties": {
+          "soil_drainage": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Soil Drainage"
+          },
+          "vehicle_class": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vehicle Class"
+          },
+          "weather_triggers": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Weather Triggers",
+            "type": "array"
+          }
+        },
+        "required": [
+          "weather_triggers",
+          "soil_drainage",
+          "vehicle_class"
+        ],
+        "title": "CallReasonsOut",
+        "type": "object"
+      },
       "CostComparisonOut": {
         "properties": {
           "assumptions": {
@@ -1457,6 +1498,75 @@
           "notes"
         ],
         "title": "EvaluationOut",
+        "type": "object"
+      },
+      "HazardSubscoresOut": {
+        "description": "Parts behind hazard_score. rain + wind + heat are the points that sum to the score (max 4/3/3).\nflood and storm are alert-driven: 10 if a matching NWS alert is active (it forces STOP WORK rather\nthan adding points), 0 if the alert check found none, null if the check failed.",
+        "properties": {
+          "flood": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Flood"
+          },
+          "heat": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Heat"
+          },
+          "rain": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rain"
+          },
+          "storm": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Storm"
+          },
+          "wind": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Wind"
+          }
+        },
+        "required": [
+          "rain",
+          "wind",
+          "heat",
+          "flood",
+          "storm"
+        ],
+        "title": "HazardSubscoresOut",
         "type": "object"
       },
       "HazardWeightsOut": {
@@ -2902,6 +3012,13 @@
             "title": "Alert Events",
             "type": "array"
           },
+          "alerts": {
+            "items": {
+              "$ref": "#/components/schemas/WeatherAlertOut"
+            },
+            "title": "Alerts",
+            "type": "array"
+          },
           "data_status": {
             "enum": [
               "sensor_demo",
@@ -2940,6 +3057,16 @@
             ],
             "title": "Hazard Score"
           },
+          "hazard_subscores": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HazardSubscoresOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "id": {
             "title": "Id",
             "type": "string"
@@ -2963,6 +3090,18 @@
             "title": "Missing Fields",
             "type": "array"
           },
+          "mode": {
+            "enum": [
+              "live",
+              "cached",
+              "replay",
+              "simulated",
+              "sensor_demo",
+              "sensor_replay"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
           "name": {
             "title": "Name",
             "type": "string"
@@ -2984,9 +3123,25 @@
                 "type": "null"
               }
             ],
+<<<<<<< HEAD
+            "description": "Rank across all sites, 1 = most urgent; same order as the 6 PM briefing",
+            "title": "Priority Rank"
+          },
+          "reasons": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CallReasonsOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+=======
             "description": "Position in the 6 PM briefing's ranking across all sites (1 = most urgent); list only",
             "title": "Priority Rank"
           },
+>>>>>>> fbe81baf269f988837db77d93d924de7de1dd797
           "region": {
             "anyOf": [
               {
@@ -3030,6 +3185,7 @@
           "observations",
           "missing_fields",
           "evaluated_at",
+          "mode",
           "reports"
         ],
         "title": "SiteDetailOut",
@@ -3045,6 +3201,13 @@
               "type": "string"
             },
             "title": "Alert Events",
+            "type": "array"
+          },
+          "alerts": {
+            "items": {
+              "$ref": "#/components/schemas/WeatherAlertOut"
+            },
+            "title": "Alerts",
             "type": "array"
           },
           "data_status": {
@@ -3085,6 +3248,16 @@
             ],
             "title": "Hazard Score"
           },
+          "hazard_subscores": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HazardSubscoresOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "id": {
             "title": "Id",
             "type": "string"
@@ -3108,6 +3281,18 @@
             "title": "Missing Fields",
             "type": "array"
           },
+          "mode": {
+            "enum": [
+              "live",
+              "cached",
+              "replay",
+              "simulated",
+              "sensor_demo",
+              "sensor_replay"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
           "name": {
             "title": "Name",
             "type": "string"
@@ -3129,9 +3314,25 @@
                 "type": "null"
               }
             ],
+<<<<<<< HEAD
+            "description": "Rank across all sites, 1 = most urgent; same order as the 6 PM briefing",
+            "title": "Priority Rank"
+          },
+          "reasons": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CallReasonsOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+=======
             "description": "Position in the 6 PM briefing's ranking across all sites (1 = most urgent); list only",
             "title": "Priority Rank"
           },
+>>>>>>> fbe81baf269f988837db77d93d924de7de1dd797
           "region": {
             "anyOf": [
               {
@@ -3167,7 +3368,8 @@
           "data_status",
           "observations",
           "missing_fields",
-          "evaluated_at"
+          "evaluated_at",
+          "mode"
         ],
         "title": "SiteOut",
         "type": "object"
@@ -3297,6 +3499,70 @@
           "heavy_truck"
         ],
         "title": "VehicleStatusOut",
+        "type": "object"
+      },
+      "WeatherAlertOut": {
+        "properties": {
+          "event": {
+            "title": "Event",
+            "type": "string"
+          },
+          "expires": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expires"
+          },
+          "onset": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Onset"
+          },
+          "reference_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reference Url"
+          },
+          "severity": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Severity"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          }
+        },
+        "required": [
+          "event",
+          "source"
+        ],
+        "title": "WeatherAlertOut",
         "type": "object"
       }
     },
