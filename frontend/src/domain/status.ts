@@ -66,7 +66,7 @@ const STATUS: Record<StatusKey, StatusVisual> = {
     tone: 'caution',
     label: 'SUPERVISOR REVIEW',
     short: 'REVIEW',
-    hint: 'Weather caution, a nearby wildfire or a crew flag. A supervisor decides.',
+    hint: 'A supervisor decides: weather caution, a wildfire within 10 miles, or a crew flag (someone at the site held the beacon’s button to report a problem).',
     icon: UserCheck,
     shape: 'square',
     beacon: 'REVIEW',

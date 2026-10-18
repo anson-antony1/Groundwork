@@ -16,6 +16,7 @@
 ## Before each judge group (60 s reset)
 
 - [ ] Weather is fresh: no "stale" tag on a site page. If stale, run `python -m backend.scripts.refresh_weather_loop_v2 --once` (4–5 min, so do it before 9:30).
+- [ ] **Signed in as supervisor** on the demo laptop (mats and cost and the 6 PM plan need it) and as **crew** on Rishi's phone (the lightning report needs it).
 - [ ] **Reset demo** pressed (clears replay, reports, acknowledgments; re-arms the beacon).
 - [ ] Map on screen, vehicle set to **Pickup** (the judge switches it).
 - [ ] Beacon green, probe in the **dry corner**; damp patch reads **40–60**.
@@ -48,7 +49,7 @@ Quotes are what to say. Keep the order and timing; the wording can be your own. 
 ### 1:00–1:15 · Aashita · Mats and cost
 **Do:** open the demo site; scroll to the mats and cost cards.
 
-> "Our backend sizes it: about 42 to 48 mats on a 100-foot route, and mats versus postponing the job side by side. Every cost is editable, because these are planning assumptions, not quotes."
+> "Our backend sizes it: about 13 to 14 standard 14-by-8-foot mats for a 100-foot access route, plus 10 to 25 percent for overlap, and mats versus postponing the job side by side. Every cost is editable, because these are planning assumptions, not quotes."
 
 *Read the mat range off the screen if the route settings were changed.*
 
@@ -89,7 +90,7 @@ Quotes are what to say. Keep the order and timing; the wording can be your own. 
 |---|---|---|
 | Beacon or USB fails | Anson | Unplugged, it shows `NO LINK` within 6 s. Run `python scripts/replay_sensor_v2.py --loop --interval 2 --token dev-sensor-token`: "The USB link dropped, so this is a simulated sequence standing in for the beacon, labeled Recorded demo." |
 | Probe skips MATS and goes straight to NO GO | Anson | "Even wetter: now it's NO GO for the heavy truck." Then move back to the damp patch. |
-| A page errors or loads slowly | Aashita | Show `http://localhost:8000/docs`: "Every screen sits on a documented API; here's the call." |
+| A page errors or loads slowly | Aashita | Show `https://groundwork-api-hsiu.onrender.com/docs`: "Every screen sits on a documented API; here's the call." |
 | Site page shows "stale" weather | Aashita | "Data older than 6 hours reads UNKNOWN rather than old." Refresh between groups. |
 | Learned forecast box missing | Rithika | It hides when weather is stale or an input is missing. Show `backend/ml/EVALUATION.md` instead. |
 | Gemini slow or offline | Rithika | Show the saved briefing; the template summary works with no AI. |

@@ -47,7 +47,9 @@ function Hazard({ value }: { value: number | null | undefined }) {
         <span className="font-display text-[1.75rem] leading-none font-bold">{fmtNum(value)}</span>
         <span className="text-[0.8rem] text-muted">/10</span>
       </span>
-      <span className="text-[0.68rem] text-muted label-caps">Weather risk</span>
+      <span className="text-[0.68rem] text-muted label-caps" title="Weather only, 0 calm to 10 severe. The color is the overall call: soft ground can make a site amber or red even when this is low.">
+        Weather risk
+      </span>
     </span>
   )
 }

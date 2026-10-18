@@ -35,7 +35,10 @@ function BeaconNote({ flagged }: { flagged: boolean }) {
   const latest = useDeviceEvents().data?.data[0]
   return (
     <div className="flex flex-col gap-1.5 px-1 text-[0.88rem] text-muted">
-      <p>Tap the beacon to silence an alarm (it never clears STOP WORK). Hold its button 2 s to flag a problem for a supervisor.</p>
+      <p>
+        The buzzer sounds only for STOP WORK (a storm or a lightning report) and keeps going until someone taps the beacon; tapping never clears STOP WORK. Ground calls
+        (go, mats, no-go) change the lights and screen but stay silent. Hold the button 2 s to flag a problem for a supervisor.
+      </p>
       {latest && (
         <p className="text-ink">
           <time dateTime={latest.recorded_at} title={fmtWhen(latest.recorded_at)}>

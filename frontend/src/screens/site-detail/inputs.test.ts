@@ -1,16 +1,28 @@
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { DEFAULT_FORM, toEvaluationInput } from './inputs'
 
 describe('mat and cost form → EvaluationIn', () => {
-  it('turns the defaults into the README example request', () => {
+  it('starts from the policy mat defaults, so the site page and the 6 PM brief give the same mat count', () => {
+    const policy = JSON.parse(readFileSync(resolve(process.cwd(), '../policies/mats_defaults.json'), 'utf8'))  // tests run from frontend/
+    expect(DEFAULT_FORM.unit).toBe(policy.unit)
+    expect(Number(DEFAULT_FORM.mats.route_width)).toBe(policy.route_width)
+    expect(Number(DEFAULT_FORM.mats.mat_length)).toBe(policy.mat_length)
+    expect(Number(DEFAULT_FORM.mats.mat_width)).toBe(policy.mat_width)
+    expect(Number(DEFAULT_FORM.mats.margin_min) / 100).toBeCloseTo(policy.margin_min)
+    expect(Number(DEFAULT_FORM.mats.margin_max) / 100).toBeCloseTo(policy.margin_max)
+  })
+
+  it('turns the defaults into an evaluate request', () => {
     const result = toEvaluationInput(DEFAULT_FORM, 'heavy_truck')
     expect('input' in result && result.input).toMatchObject({
       vehicle: 'heavy_truck',
       unit: 'ft',
       route_length: 100,
       route_width: 12,
-      mat_length: 8,
-      mat_width: 4,
+      mat_length: 14,
+      mat_width: 8,
       layers: 1,
       margin_min: 0.1,
       margin_max: 0.25,

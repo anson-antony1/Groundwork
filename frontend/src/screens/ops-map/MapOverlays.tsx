@@ -54,7 +54,10 @@ export function MapLegend({ vehicle }: { vehicle: Vehicle }) {
               </ul>
             </div>
           ))}
-          <p className="mt-2 border-t border-line pt-2 text-muted">Score /10 = tomorrow's weather risk: 0 calm, 10 severe. A supervisor makes the final call.</p>
+          <p className="mt-2 border-t border-line pt-2 text-muted">
+            Score /10 = tomorrow’s weather risk only (0 calm, 10 severe). The color is the overall call, so soft ground can make a site amber or red even when its
+            weather score is low. A supervisor makes the final call.
+          </p>
           <ul className="mt-2.5 flex flex-col gap-1.5 border-t border-line pt-2.5 text-muted">
             <li className="flex items-center gap-2">
               <Svg html={markerSvg('octagon', 'stop', { size: 22, hatched: true })} /> Hatched: historical replay
