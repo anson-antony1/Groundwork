@@ -24,3 +24,5 @@ frontend/dist/
 
 # ML: raw API responses (rebuild with python -m backend.ml.build_dataset)
 backend/ml/cache/
+do.md
+message.txt
