@@ -20,8 +20,12 @@ export function AccountButton() {
     <span className="flex shrink-0 items-center gap-2">
       <span className="hidden items-center gap-2 rounded-[3px] border border-line-hi px-2.5 py-1.5 text-[0.8rem] sm:flex" title={session.name ?? undefined}>
         <UserRound aria-hidden className="size-4 text-muted" />
-        <span className="max-w-[10rem] truncate">{session.name}</span>
-        <span className="text-muted label-caps">· {roleLabel(session.roles)}</span>
+        {/* The address only fits beside the tabs on extra-wide screens; it's always in the tooltip. */}
+        <span className="hidden max-w-[10rem] truncate 2xl:inline">{session.name}</span>
+        <span className="label-caps 2xl:text-muted">
+          <span className="hidden 2xl:inline">· </span>
+          {roleLabel(session.roles)}
+        </span>
       </span>
       <button
         type="button"

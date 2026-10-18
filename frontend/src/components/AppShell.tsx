@@ -64,7 +64,7 @@ function TopBar({ compact, onReset }: { compact: boolean; onReset: () => void })
         <span className="gw-scanline" />
       </span>
       <div className="flex h-[4.25rem] items-stretch gap-3 px-3 sm:px-5 xl:gap-4">
-        <Link href="/" className="flex min-w-0 items-center pr-1" aria-label="Groundwork home" {...hold}>
+        <Link href="/" className="flex shrink-0 items-center pr-1" aria-label="Groundwork home" {...hold}>
           <Wordmark />
         </Link>
         {!compact && (
@@ -91,9 +91,9 @@ function TopBar({ compact, onReset }: { compact: boolean; onReset: () => void })
           </nav>
         )}
         <div className="ml-auto flex items-center gap-4">
-          {/* Narrower screens get the switch inside the map and site screens instead. */}
+          {/* Only extra-wide screens fit it beside the tabs and the signed-in badge; others get it inside the map and site screens. */}
           {!compact && (
-            <div className="hidden xl:block">
+            <div className="hidden 2xl:block">
               <VehicleSwitch />
             </div>
           )}
