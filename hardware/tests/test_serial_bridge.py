@@ -191,6 +191,64 @@ def test_api_sends_bearer_token_and_drops_rejected(api_url):
     assert not api.readings
 
 
+class FakeAuth0:
+    """Stands in for https://<tenant>/oauth/token: counts calls, can fail, hands out numbered tokens."""
+
+    def __init__(self, fail=False, expires_in=3600):
+        self.calls, self.fail, self.expires_in = [], fail, expires_in
+
+    def post(self, url, json):
+        self.calls.append((url, json))
+        if self.fail:
+            raise ConnectionError("Auth0 unreachable")
+        return FakeResponse({"access_token": f"machine-{len(self.calls)}", "expires_in": self.expires_in, "token_type": "Bearer"})
+
+
+class FakeResponse:
+    def __init__(self, body):
+        self.body = body
+
+    def raise_for_status(self):
+        pass
+
+    def json(self):
+        return self.body
+
+
+def test_machine_token_uses_client_credentials_and_caches_until_near_expiry():
+    clock = [1000.0]
+    auth0 = FakeAuth0(expires_in=600)
+    machine = sb.MachineToken("groundwork.us.auth0.com", "cid", "shh", "https://groundwork-api", client=auth0, clock=lambda: clock[0])
+    assert machine.get() == "machine-1"
+    url, body = auth0.calls[0]
+    assert url == "https://groundwork.us.auth0.com/oauth/token"
+    assert body == {"grant_type": "client_credentials", "client_id": "cid", "client_secret": "shh", "audience": "https://groundwork-api"}
+    clock[0] += 500  # 100 s left: still cached
+    assert machine.get() == "machine-1" and len(auth0.calls) == 1
+    clock[0] += 50  # under a minute left: renewed early
+    assert machine.get() == "machine-2"
+
+
+def test_machine_token_failure_falls_back_and_waits_before_retrying():
+    clock = [0.0]
+    auth0 = FakeAuth0(fail=True)
+    machine = sb.MachineToken("t.auth0.com", "cid", "shh", "aud", client=auth0, clock=lambda: clock[0])
+    assert machine.get() is None
+    assert machine.get() is None and len(auth0.calls) == 1  # no hammering Auth0
+    clock[0] += 31
+    auth0.fail = False
+    assert machine.get() == "machine-2"
+
+
+def test_api_sends_the_machine_token_and_falls_back_to_the_sensor_token(api_url):
+    machine = sb.MachineToken("t.auth0.com", "cid", "shh", "aud", client=FakeAuth0())
+    sb.Api(api_url, "good", "tray-01", machine=machine).submit_reading({"n": 1})
+    assert FakeApi.posts[-1][1] == "Bearer machine-1"
+    down = sb.MachineToken("t.auth0.com", "cid", "shh", "aud", client=FakeAuth0(fail=True))
+    assert sb.Api(api_url, "good", "tray-01", machine=down).submit_reading({"n": 2}) == "ok"
+    assert FakeApi.posts[-1][1] == "Bearer good"
+
+
 def test_api_queues_offline_then_sends_newest_reading_first(api_url):
     api = sb.Api("http://127.0.0.1:9", "good", "tray-01", timeout=0.5)
     assert api.submit_reading({"n": 1}) == "queued"

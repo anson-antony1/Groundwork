@@ -9,7 +9,7 @@ export function AccountButton() {
     return (
       <button
         type="button"
-        onClick={session.login}
+        onClick={() => session.login()}
         className="flex min-h-10 shrink-0 items-center gap-2 rounded-[3px] border-2 border-accent px-3 text-[0.85rem] text-accent label-caps hover:bg-accent/10"
       >
         <LogIn aria-hidden className="size-4" /> Log in
@@ -43,7 +43,7 @@ export function SupervisorOnly({ what, roles = 'a supervisor' }: { what: string;
         Log in as {roles} to {what}.
       </span>
       {session.configured && !session.loggedIn && (
-        <button type="button" onClick={session.login} className="flex min-h-10 items-center gap-2 rounded-[3px] border-2 border-accent px-3 text-[0.85rem] text-accent label-caps hover:bg-accent/10">
+        <button type="button" onClick={() => session.login()} className="flex min-h-10 items-center gap-2 rounded-[3px] border-2 border-accent px-3 text-[0.85rem] text-accent label-caps hover:bg-accent/10">
           <LogIn aria-hidden className="size-4" /> Log in
         </button>
       )}

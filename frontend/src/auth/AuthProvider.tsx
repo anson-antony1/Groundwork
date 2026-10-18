@@ -7,6 +7,11 @@ import { ANONYMOUS, SessionContext } from './session'
 import type { Session } from './session'
 import { rolesFromToken, setAccessTokenProvider } from './token'
 
+/** Where Auth0 should send the user after login: an in-app path, else the current page. */
+function backTo(returnTo: unknown): string {
+  return typeof returnTo === 'string' && returnTo.startsWith('/') ? returnTo : window.location.pathname + window.location.search
+}
+
 /** Exposes the Auth0 login as a Session, and hands the access token to the HTTP transport. */
 function SessionBridge({ children }: { children: ReactNode }) {
   const { isLoading, isAuthenticated, user, loginWithRedirect, logout, getAccessTokenSilently } = useAuth0()
@@ -36,7 +41,9 @@ function SessionBridge({ children }: { children: ReactNode }) {
       loggedIn: isAuthenticated,
       name: user?.name ?? user?.email ?? null,
       roles: !isAuthenticated ? [] : Array.isArray(idRoles) ? (idRoles as string[]) : tokenRoles,
-      login: () => void loginWithRedirect({ appState: { returnTo: window.location.pathname + window.location.search } }),
+      // Called directly as onClick handlers too, so anything but a string means "come back here".
+      login: (returnTo?: unknown) => void loginWithRedirect({ appState: { returnTo: backTo(returnTo) } }),
+      signup: (returnTo?: unknown) => void loginWithRedirect({ appState: { returnTo: backTo(returnTo) }, authorizationParams: { screen_hint: 'signup' } }),
       logout: () => void logout({ logoutParams: { returnTo: window.location.origin } }),
     }
   }, [isLoading, isAuthenticated, user, tokenRoles, loginWithRedirect, logout])

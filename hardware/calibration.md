@@ -132,6 +132,20 @@ water evenly into a dry corner beforehand (the damp patch, index ~45–55), then
 dry corner (GO) → damp patch (MATS) → pour on it (NO GO). Water poured 2 inches from the probe
 did not reach it within 2 minutes.
 
+**Auth0 machine login (optional).** Instead of the shared sensor token, the bridge can log in as its own
+Auth0 machine-to-machine app. In Auth0: Applications → Create → Machine to Machine, authorize it for the
+Groundwork API (identifier `https://groundwork-api`). Then, in the terminal that runs the bridge:
+
+```bash
+export AUTH0_DOMAIN=groundwork.us.auth0.com
+export GROUNDWORK_BRIDGE_CLIENT_ID=<the app's client ID>
+export GROUNDWORK_BRIDGE_CLIENT_SECRET=<paste the app's client secret; never commit it>
+python hardware/serial_bridge.py --port auto --api https://groundwork-api-hsiu.onrender.com
+```
+
+The bridge logs `auth: Auth0 machine login as client ...abcd` and `Auth0 machine token issued, valid N min`,
+renews the token a minute before it expires, and uses the sensor token whenever Auth0 can't be reached.
+
 **Cable pulled or board reset mid-demo:** the bridge logs `beacon disconnected`, keeps running
 (anything already queued still goes to the API) and retries the port every 2 s; plug it back into the same
 USB socket (or run with `--port auto`) and it logs `beacon reconnected` and resends the status.
