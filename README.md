@@ -1080,20 +1080,23 @@ flowchart LR
   API --> ACCESS[Ground access by vehicle + mats]
   SAFETY --> OVERRIDE{STOP WORK override}
   ACCESS --> OVERRIDE
-  OVERRIDE --> UI[React map: 50+ sites]
+  OVERRIDE --> UI[React map: 301 sites]
   OVERRIDE --> DISPLAY[Beacon LCD, LEDs, buzzer]
   DISPLAY -->|touch ack, button flag| API
   ACCESS --> COST[Editable mats vs postpone cost]
   COST --> UI
-  API --> PHOTO[Gemini photo tags - optional]
-  PHOTO --> UI
+  CREW -.flags a site for.-> REVIEW[Supervisor review of crew reports]
+  REVIEW --> UI
+  API --> ML[Learned STOP-WORK forecast - advisory]
+  ML --> UI
   API --> BRIEF[6 PM structured briefing + Gemini narrative]
   BRIEF --> UI
-  API -.optional time-series persistence.-> TIGER[(Tiger Data)]
+  BRIEF --> N8N[n8n: 6 PM email]
+  API --> MCP[MCP server: Claude Desktop questions]
   UI --> CREW
 ```
  
-**Live demo:** pour water → sensor reading, dashboard and beacon change → switch vehicles and compare costs → replay storm STOP WORK (beacon alarm, touch to acknowledge) → submit photo report → show 50+ sites and briefing. Sensor tray data is *not* evidence about a remote site.
+**Live demo:** pour water → sensor reading, dashboard and beacon change → switch vehicles and compare costs → replay storm STOP WORK (beacon alarm, touch to acknowledge) → submit a crew report → show the 301 sites and the briefing. Sensor tray data is *not* evidence about a remote site.
 
 ## Risk intelligence notes (hazard, replay, briefing)
 

@@ -49,7 +49,7 @@
 **Say:**
 > “If mats might help, GroundWork estimates how many you'd need based on the access route and compares that with the estimated cost of postponing the job. The numbers are editable planning estimates, not real vendor quotes.”
 
-**Optional concrete example if displayed:** “For a 100-foot route, our sample settings estimate roughly 42 to 48 mats.”
+**Optional concrete example if displayed:** “For a 100-foot route, our sample settings estimate about 13 to 14 mats.”
 
 ### 1:15–1:40 — Aashita + Anson: Storm replay and safety override
 
