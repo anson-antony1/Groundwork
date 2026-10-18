@@ -26,3 +26,53 @@ def test_errors_quoting_the_key_are_redacted(monkeypatch, caplog):
         assert narration.narrate(FACTS) is None
     assert FAKE_KEY not in caplog.text
     assert "[REDACTED]" in caplog.text and "ValueError" in caplog.text
+
+
+class _QuotaError(Exception):
+    def __init__(self, code):
+        super().__init__(f"{code} error")
+        self.code = code
+
+
+def _fake_client(outcomes: dict, calls: list):
+    """A stand-in genai.Client: each model either raises the given error code or answers."""
+    class Models:
+        def generate_content(self, model, contents):
+            calls.append(model)
+            result = outcomes.get(model, "ok")
+            if isinstance(result, int):
+                raise _QuotaError(result)
+            return type("Resp", (), {"text": f"narrated by {model}"})()
+
+    class Client:
+        def __init__(self, **_kw):
+            self.models = Models()
+    return Client
+
+
+def test_model_chain_starts_with_gemini_model_and_skips_duplicates(monkeypatch):
+    monkeypatch.setenv("GEMINI_MODEL", "model-a")
+    monkeypatch.setenv("GEMINI_FALLBACK_MODELS", "model-b, model-a ,model-c,")
+    assert narration.model_chain() == ["model-a", "model-b", "model-c"]
+
+
+def test_out_of_quota_or_overloaded_model_falls_through_to_the_next(monkeypatch):
+    from google import genai
+    calls = []
+    monkeypatch.setenv("GEMINI_API_KEY", FAKE_KEY)
+    monkeypatch.setenv("GEMINI_MODEL", "model-a")
+    monkeypatch.setenv("GEMINI_FALLBACK_MODELS", "model-b,model-c")
+    monkeypatch.setattr(genai, "Client", _fake_client({"model-a": 429, "model-b": 503}, calls))
+    assert narration._call_gemini(FACTS) == "narrated by model-c"
+    assert calls == ["model-a", "model-b", "model-c"]
+
+
+def test_other_errors_stop_at_the_first_model(monkeypatch):
+    from google import genai
+    calls = []
+    monkeypatch.setenv("GEMINI_API_KEY", FAKE_KEY)
+    monkeypatch.setenv("GEMINI_MODEL", "model-a")
+    monkeypatch.setenv("GEMINI_FALLBACK_MODELS", "model-b")
+    monkeypatch.setattr(genai, "Client", _fake_client({"model-a": 403}, calls))
+    assert narration.narrate(FACTS) is None  # e.g. a bad key: trying more models would not help
+    assert calls == ["model-a"]
