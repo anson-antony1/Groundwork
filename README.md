@@ -1,6 +1,6 @@
 # Groundwork — Utility Crew Ground-Access and Hazard Planning
 
-<img width="1122" height="1402" alt="GroundWork System Architecture Flowchart" src="https://github.com/user-attachments/assets/f2bdd7cd-a2d6-449d-bf6f-bdb9405b19e0" />
+<img width="1162" height="1353" alt="GroundWork Updated System Architecture" src="https://github.com/user-attachments/assets/f50ec684-78d0-4aed-b78a-1b0e922aa17e" />
 
  
 > **SwampHacks XII · 36-hour hackathon · Team of 4**  
@@ -833,7 +833,7 @@ Lines in quotes are what to say. Adapt the wording naturally, but keep the order
 |---|---|---|---|
 | **0:00–0:10** | Rishi | Operations map on screen | "It's 6 PM. A utility supervisor has 300 job sites tomorrow, a week of rain behind them and storms in the forecast. Groundwork turns all of that into one plan for tomorrow." |
 | **0:10–0:30** | Anson | Probe starts in the dry corner (green); he moves it into the damp patch, then points at the beacon | "This is our site beacon, reading real soil. Dry ground: green, go. This patch has had water mixed in, like ground after a week of rain. The reading climbs, our server re-scores the site, and the beacon turns amber: mats for review." |
-| **0:30–0:55** | Rishi | On the tray's mats and cost page, hands the judge the mouse to switch Pickup → Heavy truck; the mats count and mats vs postponing sit at the top | "Go ahead and switch it to a heavy truck. Same ground, different vehicle: the pickup is fine, but the heavy truck needs roughly 42 to 48 mats. Here's mats versus postponing the job. Every cost is editable, because these are planning assumptions, not quotes." |
+| **0:30–0:55** | Rishi | On the tray's mats and cost page, hands the judge the mouse to switch Pickup → Heavy truck; the mats count and mats vs postponing sit at the top | "Go ahead and switch it to a heavy truck. Same ground, different vehicle: the pickup is fine, but the heavy truck needs about 13 to 14 mats on a 100-foot route. Here's mats versus postponing the job. Every cost is editable, because these are planning assumptions, not quotes." |
 | **0:55–1:25** | Aashita (Anson guides the tap) | Starts the storm replay; the beacon turns red and the buzzer sounds; Anson invites the judge to tap the beacon; Aashita stops the replay at the end (lightning reports are ignored during a replay) | "Now a real storm: this is real weather data from Hurricane Milton, October 2024, replayed, with the real Weather Service warnings issued that day from the Iowa Environmental Mesonet archive. Even with mats staged, every vehicle goes to STOP WORK. Safety always overrides access, and it can't be averaged away. Go ahead and tap the beacon. That records that the crew saw the alarm, but it doesn't clear STOP WORK. Only the weather logic can." |
 | **1:25–1:45** | Rithika, then Anson | Submits a **Lightning observed** report for the venue (DEMO-TRAY) from the phone; the pin appears, the beacon alarms again and its screen counts down from `STOP - CLR 30:00` | **Rithika:** "A crew member at the venue reports lightning. It lands on the map, marked unverified until a supervisor reviews it." **Anson:** "Because it's within 10 miles, the site stops work and the beacon starts a 30-minute all clear, and every new strike restarts it, as Sperry's brief asks. It's crew-reported lightning, not a strike-detection network, and AI never sets a site's status." |
 | **1:45–2:00** | Rithika, then Rishi | Opens the 6 PM briefing, then zooms out to all sites | **Rithika:** "At 6 PM, here's tomorrow's plan: 300 real sites ranked, every number traced to USDA, Open-Meteo or the Weather Service with a timestamp, and the data gaps called out." **Rishi:** "That's Groundwork. Happy to go deeper on anything." |
@@ -1080,20 +1080,23 @@ flowchart LR
   API --> ACCESS[Ground access by vehicle + mats]
   SAFETY --> OVERRIDE{STOP WORK override}
   ACCESS --> OVERRIDE
-  OVERRIDE --> UI[React map: 50+ sites]
+  OVERRIDE --> UI[React map: 301 sites]
   OVERRIDE --> DISPLAY[Beacon LCD, LEDs, buzzer]
   DISPLAY -->|touch ack, button flag| API
   ACCESS --> COST[Editable mats vs postpone cost]
   COST --> UI
-  API --> PHOTO[Gemini photo tags - optional]
-  PHOTO --> UI
+  CREW -.flags a site for.-> REVIEW[Supervisor review of crew reports]
+  REVIEW --> UI
+  API --> ML[Learned STOP-WORK forecast - advisory]
+  ML --> UI
   API --> BRIEF[6 PM structured briefing + Gemini narrative]
   BRIEF --> UI
-  API -.optional time-series persistence.-> TIGER[(Tiger Data)]
+  BRIEF --> N8N[n8n: 6 PM email]
+  API --> MCP[MCP server: Claude Desktop questions]
   UI --> CREW
 ```
  
-**Live demo:** pour water → sensor reading, dashboard and beacon change → switch vehicles and compare costs → replay storm STOP WORK (beacon alarm, touch to acknowledge) → submit photo report → show 50+ sites and briefing. Sensor tray data is *not* evidence about a remote site.
+**Live demo:** pour water → sensor reading, dashboard and beacon change → switch vehicles and compare costs → replay storm STOP WORK (beacon alarm, touch to acknowledge) → submit a crew report → show the 301 sites and the briefing. Sensor tray data is *not* evidence about a remote site.
 
 ## Risk intelligence notes (hazard, replay, briefing)
 
@@ -1127,6 +1130,10 @@ Off by default (`GROUNDWORK_AUTH_ENABLED=false`): every request runs as a labele
 | all `GET` routes | open |
 
 `GET /health` reports `"auth": "auth0" | "disabled"`. **Frontend login:** set `VITE_AUTH0_DOMAIN` and `VITE_AUTH0_CLIENT_ID` (plus audience and roles claim, matching the backend) in `frontend/.env.local`; the dashboard then logs in through Auth0 Universal Login and sends the access token with every API call (`frontend/src/auth/`). Turn both sides on together: backend auth on with the frontend unconfigured makes the supervisor buttons return 401. Backend enforcement is tested in `backend/tests/test_auth.py`.
+
+**Login page (`/login`).** With Auth0 configured, opening the dashboard signed out shows the login page first: **Log in** and **Create an account** both go to Auth0 Universal Login (the app only ever receives tokens), and **Continue as viewer** opens the read-only dashboard for that browser session, so judges can look around without an account. It also explains what a viewer, crew member and supervisor can each do. Without Auth0 (mock mode, or the variables unset) the dashboard opens straight away as before. Code: `frontend/src/screens/login/`, `frontend/src/auth/viewer.ts`.
+
+**Beacon machine login.** The serial bridge logs in as its own Auth0 machine-to-machine app (client-credentials grant, audience `https://groundwork-api`) when `AUTH0_DOMAIN`, `GROUNDWORK_BRIDGE_CLIENT_ID` and `GROUNDWORK_BRIDGE_CLIENT_SECRET` are set. It caches the token, renews it a minute before it expires, and falls back to the sensor token if Auth0 can't be reached. The secret is read only from the environment, never the command line. Setup: `hardware/calibration.md` §5.
 
 ## Running everything (start order)
 

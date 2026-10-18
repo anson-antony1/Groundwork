@@ -128,24 +128,26 @@ export function OpsMapScreen() {
             onSelect={setSelectedId}
             onHover={setHoveredId}
           />
-          {/* Wide screens have the vehicle switch in the header; narrower ones get it on the map. */}
-          <div className="absolute top-3 left-3 z-[1000] xl:hidden">
+          {/* Extra-wide screens have the vehicle switch in the header; the rest get it on the map. */}
+          <div className="absolute top-3 left-3 z-[1000] 2xl:hidden">
             <VehicleSwitch />
           </div>
-          <div className="absolute top-[5.5rem] right-3 z-[1000] flex flex-col items-end gap-2">
-            {basemap === 'offline' && (
+          {/* The map falls back to the bundled outline by itself when tiles fail or the laptop goes offline; the
+              button only appears then, to try the online tiles again. */}
+          {basemap === 'offline' && (
+            <div className="absolute top-[5.5rem] right-3 z-[1000] flex flex-col items-end gap-2">
               <span className="rounded-[3px] border border-dashed border-line-hi bg-panel/95 px-2.5 py-1 text-[0.75rem] text-muted label-caps">
-                Offline basemap · map tiles unavailable
+                Offline map · street map unavailable
               </span>
-            )}
-            <button
-              type="button"
-              onClick={() => setBasemap(basemap === 'tiles' ? 'offline' : 'tiles')}
-              className="rounded-[3px] border border-line-hi bg-panel/95 px-2.5 py-1.5 text-[0.75rem] text-ink label-caps hover:bg-steel-hi"
-            >
-              {basemap === 'tiles' ? 'Use offline basemap' : 'Try map tiles again'}
-            </button>
-          </div>
+              <button
+                type="button"
+                onClick={() => setBasemap('tiles')}
+                className="rounded-[3px] border border-line-hi bg-panel/95 px-2.5 py-1.5 text-[0.75rem] text-ink label-caps hover:bg-steel-hi"
+              >
+                Try the street map again
+              </button>
+            </div>
+          )}
           <MapLegend vehicle={vehicle} />
           {selected && (
             <SitePreview

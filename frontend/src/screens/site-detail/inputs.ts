@@ -13,13 +13,14 @@ export interface PlanForm {
 }
 
 /**
- * Starting values: the README's own worked examples (§6 and backend/tests/test_api.py), so the first
- * numbers on screen are ones the team has checked by hand. All labeled "Scenario assumption • adjustable".
+ * Starting values. Route width, mat size and margins match policies/mats_defaults.json (the same defaults the
+ * 6 PM brief quotes), so the site page and the brief give the same mat count; inputs.test.ts checks this.
+ * Route length, mats on hand and costs are placeholders. All labeled "Scenario assumption • adjustable".
  */
 export const DEFAULT_FORM: PlanForm = {
   unit: 'ft',
   layers: 1,
-  mats: { route_length: '100', route_width: '12', mat_length: '8', mat_width: '4', margin_min: '10', margin_max: '25', mats_in_inventory: '40' },
+  mats: { route_length: '100', route_width: '12', mat_length: '14', mat_width: '8', margin_min: '10', margin_max: '25', mats_in_inventory: '40' },
   costs: {
     mats_rental: '600',
     delivery: '150',
