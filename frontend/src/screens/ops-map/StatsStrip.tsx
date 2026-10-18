@@ -78,12 +78,15 @@ function HowWeDecide() {
             <dt className="font-semibold">Weather · every vehicle</dt>
             <dd className="text-muted">
               Tomorrow's rain, wind gusts and feels-like heat (Open-Meteo), plus Weather Service alerts. A thunderstorm, tornado, hurricane, flash-flood or
-              lightning warning means STOP WORK. The score /10 is this weather risk: 0 calm, 10 severe.
+              lightning warning means STOP WORK. The score /10 is this weather risk only: 0 calm, 10 severe.
             </dd>
           </div>
           <div>
             <dt className="font-semibold">Ground · each vehicle</dt>
-            <dd className="text-muted">The last 7 days of rain, tomorrow's rain and how well the soil drains (USDA soil survey). Heavier vehicles need firmer ground.</dd>
+            <dd className="text-muted">
+              The last 7 days of rain, tomorrow's rain and how well the soil drains (USDA soil survey). Heavier vehicles need firmer ground. Ground is judged
+              separately from the weather score, so a site with calm weather can still need mats or be NO-GO.
+            </dd>
           </div>
           <div>
             <dt className="font-semibold">Also</dt>

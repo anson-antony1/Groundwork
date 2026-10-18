@@ -36,6 +36,31 @@ const POSTPONE_COSTS: [CostField, string][] = [
   ['equipment_rate_per_hour', 'Equipment rate per hour'],
 ]
 
+type Situation = 'mats' | 'go' | 'nogo' | 'stop' | 'unknown'
+
+/** Mats only make sense for a MATS call: firm ground doesn't need them, NO-GO ground is too soft even with them,
+ * and severe weather stops work whatever is staged. */
+function situationOf(site: SiteDetailView, vehicle: Vehicle): Situation {
+  if (site.weather_state === 'STOP_WORK') return 'stop'
+  if (site.weather_state === 'UNKNOWN') return 'unknown'
+  const call = site.access_call[vehicle]
+  return call === 'MATS_FOR_REVIEW' ? 'mats' : call === 'GO_FOR_REVIEW' ? 'go' : call === 'NO_GO_FOR_REVIEW' ? 'nogo' : 'unknown'
+}
+
+function situationText(situation: Exclude<Situation, 'mats'>, vehicle: Vehicle): string {
+  const v = VEHICLE_LABEL[vehicle].toLowerCase()
+  switch (situation) {
+    case 'go':
+      return `No mats needed: the ground is firm enough for the ${v}.`
+    case 'nogo':
+      return `Mats won't be enough: the ground is too soft for the ${v} even with mats. Send a lighter vehicle or postpone the job.`
+    case 'stop':
+      return 'Nothing to stage: severe weather stops all work here, and mats don’t make it safe.'
+    case 'unknown':
+      return 'Can’t plan mats yet: data for this site is missing, so its ground call is unknown.'
+  }
+}
+
 function differenceSentence(diff: number): string {
   if (diff > 0) return `Postponing is modeled to cost ${fmtMoney(diff)} more than staging mats.`
   if (diff < 0) return `Staging mats is modeled to cost ${fmtMoney(-diff)} more than postponing.`
@@ -49,6 +74,7 @@ function differenceSentence(diff: number): string {
 export function MatsCostPanel({ site, vehicle }: { site: SiteDetailView; vehicle: Vehicle }) {
   const [form, setForm] = useState<PlanForm>(DEFAULT_FORM)
   const [editing, setEditing] = useState(false)
+  const [anyway, setAnyway] = useState(false)
   const parsed = toEvaluationInput(form, vehicle)
   const errors = 'errors' in parsed ? parsed.errors : {}
 
@@ -79,6 +105,9 @@ export function MatsCostPanel({ site, vehicle }: { site: SiteDetailView; vehicle
   const hasErrors = Object.keys(errors).length > 0
   const showInputs = editing || hasErrors
   const mats = result?.mats_estimate
+  const situation = situationOf(site, vehicle)
+  const showNumbers = situation === 'mats' || anyway
+  const m = form.mats
 
   return (
     <Card
@@ -88,84 +117,105 @@ export function MatsCostPanel({ site, vehicle }: { site: SiteDetailView; vehicle
       footer={<ProvenanceLine>The backend computes every count and dollar figure shown from the assumptions you enter.</ProvenanceLine>}
     >
       <div className="flex flex-col gap-5">
-        <p className="text-muted">Only needed when a vehicle shows MATS. The numbers come from the assumptions under Edit assumptions; change any of them.</p>
+        {situation !== 'mats' && (
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-[4px] border-2 border-line bg-bg/40 p-4">
+            <p className="text-lg">{situationText(situation, vehicle)}</p>
+            <button
+              type="button"
+              aria-expanded={anyway}
+              onClick={() => setAnyway((a) => !a)}
+              className="min-h-10 rounded-[3px] border-2 border-line-hi px-3 text-[0.85rem] label-caps hover:bg-steel-hi"
+            >
+              {anyway ? 'Hide the estimate' : 'Show the estimate anyway'}
+            </button>
+          </div>
+        )}
 
-        <div className={cx('grid gap-4 transition-opacity md:grid-cols-2', recalculating && 'opacity-60')} aria-live="polite">
-          <section aria-label="Mat estimate" className="flex flex-col gap-2 rounded-[4px] border-2 border-line bg-bg/40 p-4">
-            <p className="text-[0.75rem] text-muted label-caps">Mats to stage · {VEHICLE_LABEL[vehicle]}</p>
-            {result && mats ? (
-              <>
-                <p className="flex items-baseline gap-2">
-                  <span className="font-display text-[3.6rem] leading-none font-bold">
-                    {mats.min_estimate === mats.max_estimate ? mats.max_estimate : `${mats.min_estimate}–${mats.max_estimate}`}
-                  </span>
-                  <span className="text-xl text-muted">mats</span>
-                </p>
-                <p className={cx('text-lg font-semibold', mats.shortfall > 0 ? 'text-caution' : 'text-ink')}>
-                  {/* planned_quantity arrived with P8; an older backend leaves it out. */}
-                  {mats.shortfall > 0
-                    ? `${mats.shortfall} short of the ${mats.mats_in_inventory} on hand (plan ${mats.planned_quantity ?? mats.max_estimate})`
-                    : `Covered by the ${mats.mats_in_inventory} on hand (plan ${mats.planned_quantity ?? mats.max_estimate})`}
-                </p>
-                {result.notes.length > 0 ? (
-                  <p className="flex items-center gap-2 rounded-[3px] border border-stop bg-stop/15 px-3 py-2 font-semibold">
-                    <OctagonX aria-hidden className="size-5 shrink-0 text-stop-glow" />
-                    {result.notes[0]}
+        {showNumbers && (
+          <>
+            <p className="text-muted">
+              For a {m.route_length} × {m.route_width} {unit} access route with {m.mat_length} × {m.mat_width} {unit} mats, plus {m.margin_min}–{m.margin_max}% for overlap and
+              waste. Costs are placeholders, the same for every site until you enter this job’s quotes under Edit assumptions.
+            </p>
+
+            <div className={cx('grid gap-4 transition-opacity md:grid-cols-2', recalculating && 'opacity-60')} aria-live="polite">
+              <section aria-label="Mat estimate" className="flex flex-col gap-2 rounded-[4px] border-2 border-line bg-bg/40 p-4">
+                <p className="text-[0.75rem] text-muted label-caps">Mats to stage · {VEHICLE_LABEL[vehicle]}</p>
+                {result && mats ? (
+                  <>
+                    <p className="flex items-baseline gap-2">
+                      <span className="font-display text-[3.6rem] leading-none font-bold">
+                        {mats.min_estimate === mats.max_estimate ? mats.max_estimate : `${mats.min_estimate}–${mats.max_estimate}`}
+                      </span>
+                      <span className="text-xl text-muted">mats</span>
+                    </p>
+                    <p className={cx('text-lg font-semibold', mats.shortfall > 0 ? 'text-caution' : 'text-ink')}>
+                      {/* planned_quantity arrived with P8; an older backend leaves it out. */}
+                      {mats.shortfall > 0
+                        ? `${mats.shortfall} short of the ${mats.mats_in_inventory} on hand (plan ${mats.planned_quantity ?? mats.max_estimate})`
+                        : `Covered by the ${mats.mats_in_inventory} on hand (plan ${mats.planned_quantity ?? mats.max_estimate})`}
+                    </p>
+                    {result.notes.length > 0 ? (
+                      <p className="flex items-center gap-2 rounded-[3px] border border-stop bg-stop/15 px-3 py-2 font-semibold">
+                        <OctagonX aria-hidden className="size-5 shrink-0 text-stop-glow" />
+                        {result.notes[0]}
+                      </p>
+                    ) : result.mats_recommended ? (
+                      <p className="flex flex-wrap items-center gap-2">
+                        <StatusTag status="MATS_FOR_REVIEW" size="sm" /> Mats recommended for the {VEHICLE_LABEL[vehicle].toLowerCase()}
+                      </p>
+                    ) : (
+                      <p className="text-muted">
+                        Not needed for the {VEHICLE_LABEL[vehicle].toLowerCase()} (ground: {accessVisual(result.access_call).label}). This shows what staging would take.
+                      </p>
+                    )}
+                  </>
+                ) : evaluation.isError ? (
+                  <p role="alert" className="text-caution">
+                    Couldn’t calculate: {describeError(evaluation.error)}
                   </p>
-                ) : result.mats_recommended ? (
-                  <p className="flex flex-wrap items-center gap-2">
-                    <StatusTag status="MATS_FOR_REVIEW" size="sm" /> Mats recommended for the {VEHICLE_LABEL[vehicle].toLowerCase()}
-                  </p>
+                ) : hasErrors ? (
+                  <p className="text-muted">Fix the highlighted inputs to calculate.</p>
                 ) : (
-                  <p className="text-muted">
-                    Not needed for the {VEHICLE_LABEL[vehicle].toLowerCase()} (ground: {accessVisual(result.access_call).label}). This shows what staging would take.
+                  <p className="flex items-center gap-2 text-muted">
+                    <Loader2 aria-hidden className="size-4 animate-spin" /> Calculating…
                   </p>
                 )}
-              </>
-            ) : evaluation.isError ? (
-              <p role="alert" className="text-caution">
-                Couldn’t calculate: {describeError(evaluation.error)}
-              </p>
-            ) : hasErrors ? (
-              <p className="text-muted">Fix the highlighted inputs to calculate.</p>
-            ) : (
-              <p className="flex items-center gap-2 text-muted">
-                <Loader2 aria-hidden className="size-4 animate-spin" /> Calculating…
-              </p>
-            )}
-          </section>
+              </section>
 
-          <section aria-label="Mats versus postponing" className="flex flex-col gap-2 rounded-[4px] border-2 border-line-hi bg-bg/40 p-4">
-            <p className="flex flex-wrap items-baseline justify-between gap-2 text-[0.75rem] text-muted label-caps">
-              Mats vs postponing the job <span className="text-caution">{LABELS.illustrativeCost}</span>
-            </p>
-            {result ? (
-              <>
-                <p className="font-display text-4xl font-bold">{fmtMoney(Math.abs(result.cost_comparison.modeled_difference))}</p>
-                <p className="text-lg">{differenceSentence(result.cost_comparison.modeled_difference)}</p>
-                <p className="text-[0.88rem] text-muted">
-                  Stage mats {fmtMoney(result.cost_comparison.mats_option)} · postpone {fmtMoney(result.cost_comparison.postpone_option)}
+              <section aria-label="Mats versus postponing" className="flex flex-col gap-2 rounded-[4px] border-2 border-line-hi bg-bg/40 p-4">
+                <p className="flex flex-wrap items-baseline justify-between gap-2 text-[0.75rem] text-muted label-caps">
+                  Mats vs postponing the job <span className="text-caution">{LABELS.illustrativeCost}</span>
                 </p>
-                <p className="text-[0.82rem] text-muted">{result.cost_comparison.label} These defaults are placeholders: enter vendor quotes and crew costs.</p>
-              </>
-            ) : (
-              <p className="text-muted">—</p>
-            )}
-          </section>
-        </div>
+                {result ? (
+                  <>
+                    <p className="font-display text-4xl font-bold">{fmtMoney(Math.abs(result.cost_comparison.modeled_difference))}</p>
+                    <p className="text-lg">{differenceSentence(result.cost_comparison.modeled_difference)}</p>
+                    <p className="text-[0.88rem] text-muted">
+                      Stage mats {fmtMoney(result.cost_comparison.mats_option)} · postpone {fmtMoney(result.cost_comparison.postpone_option)}
+                    </p>
+                    <p className="text-[0.82rem] text-muted">{result.cost_comparison.label} These defaults are placeholders: enter vendor quotes and crew costs.</p>
+                  </>
+                ) : (
+                  <p className="text-muted">—</p>
+                )}
+              </section>
+            </div>
 
-        <div>
-          <button
-            type="button"
-            aria-expanded={showInputs}
-            onClick={() => setEditing((e) => !e)}
-            className="flex min-h-10 items-center gap-2 rounded-[3px] border-2 border-line-hi px-3 text-[0.85rem] text-ink label-caps hover:bg-steel-hi"
-          >
-            {showInputs ? 'Hide assumptions' : 'Edit assumptions'} <ChevronDown aria-hidden className={cx('size-4', showInputs && 'rotate-180')} />
-          </button>
-        </div>
+            <div>
+              <button
+                type="button"
+                aria-expanded={showInputs}
+                onClick={() => setEditing((e) => !e)}
+                className="flex min-h-10 items-center gap-2 rounded-[3px] border-2 border-line-hi px-3 text-[0.85rem] text-ink label-caps hover:bg-steel-hi"
+              >
+                {showInputs ? 'Hide assumptions' : 'Edit assumptions'} <ChevronDown aria-hidden className={cx('size-4', showInputs && 'rotate-180')} />
+              </button>
+            </div>
+          </>
+        )}
 
-        {showInputs && (
+        {showNumbers && showInputs && (
           <div className="grid gap-8 xl:grid-cols-2">
             <section aria-label="Mat assumptions" className="flex flex-col gap-4">
               <h3 className="text-lg label-caps">Route and mats</h3>

@@ -213,12 +213,12 @@ low  = ceil(base × layers × (1 + min_margin))
 high = ceil(base × layers × (1 + max_margin))
 shortfall = max(0, planned_quantity − mats_in_inventory)
 ```
-**Worked example (made-up logistics inputs):** 100-ft route × 12-ft width = 1,200 sq ft. A mat effectively covers 8 ft × 4 ft = 32 sq ft. Base = ceil(1200/32) = 38 mats. One layer and 10–25% margin → **42–48 mats**. With 30 in stock and planning 48, shortfall = **18**. The calculator doesn't verify whether those mats can support the truck.
+**Worked example (the app's starting values, `policies/mats_defaults.json`):** 100-ft route × 12-ft width = 1,200 sq ft. A standard access mat effectively covers 14 ft × 8 ft = 112 sq ft. Base = ceil(1200/112) = 11 mats. One layer and 10–25% margin for overlap and waste → **13–14 mats**. With 10 in stock and planning 14, shortfall = **4**. The calculator doesn't verify whether those mats can support the truck.
 
-**Money example (hypothetical user inputs):**
-- Rent/deliver/install/remove mats = $1,800 + $300 + $300 + $100 = **$2,500**.
-- Delay 8 hours, labor $50/hr and equipment $25/hr = $600, plus rescheduling $2,000 → **$2,600**.
-- Modeled difference = postpone $2,600 − mats $2,500 = **$100 favoring mats** under those assumptions. It is *not verified savings*, does not include hidden costs unless entered, and is irrelevant if weather says STOP_WORK.
+**Money example (the app's placeholder costs, the same for every site until a supervisor types in real quotes):**
+- Stage mats = rental $600 + delivery $150 + installation $100 + removal $50 = **$900**.
+- Postpone the job = paid idle labor $1,800 + idle equipment $600 + rescheduling $400 = **$2,800**.
+- Modeled difference = postpone $2,800 − mats $900 = **$1,900 favoring mats** under those assumptions. It is *not verified savings*, does not include hidden costs unless entered, and is irrelevant if weather says STOP_WORK.
 
 **Does it help?** Yes, the logistics-and-cost comparison turns a generic red map into an actionable planning tool. But present it as **conditional**: determine safety and technical suitability first; compare money second.
 

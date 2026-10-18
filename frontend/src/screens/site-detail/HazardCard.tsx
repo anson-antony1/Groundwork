@@ -57,7 +57,7 @@ export function HazardCard({ site, stale }: { site: SiteDetailView; stale: boole
           <p className="max-w-xs pb-1 text-[0.85rem] text-muted">
             {isDemo && !hasScore
               ? 'The tray sits at the venue and has no forecast of its own. A storm replay or a lightning report still stops it.'
-              : 'Tomorrow’s weather risk, 0 calm to 10 severe. The same for every vehicle. A severe-weather warning means STOP WORK whatever the score.'}
+              : 'Tomorrow’s weather risk only, 0 calm to 10 severe, the same for every vehicle. A severe-weather warning means STOP WORK whatever the score. The ground is judged separately (Ground access).'}
           </p>
         </div>
 
