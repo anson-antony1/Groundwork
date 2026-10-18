@@ -15,6 +15,18 @@ AUTH = {"Authorization": f"Bearer {SENSOR_TOKEN}"}
 TRAY = "/api/v1/devices/tray-01"
 
 
+@pytest.fixture(autouse=True)
+def _no_live_gemini(monkeypatch):
+    """Tests never reach Gemini (slow, flaky, spends the real key): the client fails like a network error, so
+    narration falls back to the template as it does offline. Key validation before the call still runs.
+    A test that needs an LLM narrative patches narration itself."""
+    from google import genai
+
+    def offline(*_a, **_k):
+        raise RuntimeError("Gemini is disabled in tests")
+    monkeypatch.setattr(genai, "Client", offline)
+
+
 @pytest.fixture
 def client():
     repositories.reset_all()

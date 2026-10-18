@@ -1140,7 +1140,7 @@ Off by default (`GROUNDWORK_AUTH_ENABLED=false`): every request runs as a labele
 From the repo root with the venv active: `cd ~/Desktop/Groundwork && source .venv/bin/activate`.
 
 1. **Backend (required):** `uvicorn backend.app.main:app --reload --port 8000`. Docs at http://localhost:8000/docs, API prefix `/api/v1`. `--reload` does not watch `.env` or `fixtures/`, so restart after changing either. Port stuck: `lsof -ti :8000 | xargs kill`.
-2. **Gemini key:** in `.env` (gitignored; keep a private backup). Without it, or offline, the briefing falls back to a short template summary. Check that a generate returns `narrative_source: llm` before a demo.
+2. **Gemini key:** in `.env` (gitignored; keep a private backup). Without it, or offline, the briefing falls back to a short template summary. The free tier caps each model at about 20 requests a day, so `GEMINI_FALLBACK_MODELS` lists models to try in order when one is out of quota or overloaded (see `.env.example`). Check that a generate returns `narrative_source: llm` before a demo.
 3. **Frontend:** see `frontend/README.md`.
 4. **n8n and Claude Desktop (optional):** see the agent layer section above.
 5. **Tests** (backend stopped): `python -m pytest backend/tests hardware/tests -q` and `cd frontend && npm run check` (typecheck, lint, tests, build).

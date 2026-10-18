@@ -4,6 +4,7 @@ import { Link } from 'wouter'
 import { DEMO_SITE_ID } from '../../api/config'
 import type { BriefingView } from '../../api/proposed'
 import { useGenerateBriefing, useLatestBriefing, useSites } from '../../api/queries'
+import { AskClaudeButton } from './AskClaudeButton'
 import { EmailBriefingButton } from './EmailBriefingButton'
 import { Card } from '../../components/Card'
 import { cx } from '../../components/cx'
@@ -109,8 +110,9 @@ export function BriefingScreen() {
             </p>
           )}
         </div>
-        <div className="flex gap-3 print:hidden">
+        <div className="flex flex-wrap items-center gap-3 print:hidden">
           <EmailBriefingButton disabled={!brief} />
+          <AskClaudeButton disabled={!brief} />
           {brief && (
             <button type="button" onClick={() => window.print()} className="flex min-h-12 items-center gap-2 rounded-[3px] border-2 border-line-hi px-4 label-caps hover:bg-steel-hi">
               <Printer aria-hidden className="size-5" /> Print

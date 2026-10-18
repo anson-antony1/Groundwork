@@ -4,7 +4,9 @@ Contract (matches the note at the top of briefings.py): the narration NEVER sets
 rewrites facts the deterministic briefing already computed into a readable summary. If anything goes wrong
 (no key, network error, timeout, bad output) narrate() returns None and the caller keeps the deterministic summary.
 
-Env vars: GEMINI_API_KEY (required for narration), GEMINI_MODEL (default gemini-3.8-flash).
+Env vars: GEMINI_API_KEY (required for narration), GEMINI_MODEL (first choice, default gemini-3.8-flash),
+GEMINI_FALLBACK_MODELS (comma-separated, tried in order when a model is out of quota, overloaded or retired;
+the free tier caps each model separately, so a second model keeps the briefing narrated).
 """
 import json
 import logging
@@ -22,6 +24,10 @@ except ImportError:
 
 TOP_N = 10
 TIMEOUT_MS = 45000
+DEFAULT_MODEL = "gemini-3.8-flash"
+DEFAULT_FALLBACKS = "gemini-3.5-flash-lite,gemini-3.1-flash-lite,gemini-3.7-flash,gemini-3.5-flash"
+# Worth trying the next model: out of quota (429), overloaded (503), model retired or renamed (404).
+NEXT_MODEL_CODES = {404, 429, 503}
 NUM_RE = re.compile(r"\d+(?:\.\d+)?")
 GLUE_RE = re.compile(r"\b(for|and|to|at|of|in|by|on|with)(?=[A-Z][a-z])")  # fixes "forWindermere"
 DROPPED_SPACE_RE = re.compile(r"\b([Tt]here)(are|is|were|was)\b")  # fixes "Thereare"
@@ -101,11 +107,26 @@ def _call_gemini(facts: dict[str, Any]) -> str:
         # e.g. two .env lines pasted into one dashboard field; never echo the value
         raise RuntimeError("GEMINI_API_KEY contains spaces or several lines; set it to the key alone")
     client = genai.Client(api_key=api_key, http_options=types.HttpOptions(timeout=TIMEOUT_MS))
-    resp = client.models.generate_content(
-        model=os.environ.get("GEMINI_MODEL", "gemini-3.8-flash"),
-        contents=PROMPT.format(facts=json.dumps(facts, indent=2)),
-    )
-    return (resp.text or "").strip()
+    contents = PROMPT.format(facts=json.dumps(facts, indent=2))
+    models = model_chain()
+    for i, model in enumerate(models):
+        try:
+            resp = client.models.generate_content(model=model, contents=contents)
+        except Exception as e:
+            if getattr(e, "code", None) in NEXT_MODEL_CODES and i < len(models) - 1:
+                log.info("gemini model %s unavailable (%s), trying %s", model, e.code, models[i + 1])
+                continue
+            raise
+        log.info("briefing narrated by %s", model)
+        return (resp.text or "").strip()
+    raise RuntimeError("no Gemini model configured")
+
+
+def model_chain() -> list[str]:
+    """GEMINI_MODEL first, then GEMINI_FALLBACK_MODELS, without duplicates."""
+    first = (os.environ.get("GEMINI_MODEL") or DEFAULT_MODEL).strip()
+    rest = os.environ.get("GEMINI_FALLBACK_MODELS", DEFAULT_FALLBACKS).split(",")
+    return list(dict.fromkeys(m.strip() for m in [first, *rest] if m.strip()))
 
 
 def narrate(facts: dict[str, Any]) -> str | None:
