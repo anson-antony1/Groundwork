@@ -128,8 +128,8 @@ export function OpsMapScreen() {
             onSelect={setSelectedId}
             onHover={setHoveredId}
           />
-          {/* Wide screens have the vehicle switch in the header; narrower ones get it on the map. */}
-          <div className="absolute top-3 left-3 z-[1000] xl:hidden">
+          {/* Extra-wide screens have the vehicle switch in the header; the rest get it on the map. */}
+          <div className="absolute top-3 left-3 z-[1000] 2xl:hidden">
             <VehicleSwitch />
           </div>
           <div className="absolute top-[5.5rem] right-3 z-[1000] flex flex-col items-end gap-2">
