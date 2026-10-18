@@ -1,6 +1,6 @@
 # Groundwork — Utility Crew Ground-Access and Hazard Planning
 
-<img width="1122" height="1402" alt="GroundWork System Architecture Flowchart" src="https://github.com/user-attachments/assets/f2bdd7cd-a2d6-449d-bf6f-bdb9405b19e0" />
+<img width="1162" height="1353" alt="GroundWork Updated System Architecture" src="https://github.com/user-attachments/assets/f50ec684-78d0-4aed-b78a-1b0e922aa17e" />
 
  
 > **SwampHacks XII · 36-hour hackathon · Team of 4**  
