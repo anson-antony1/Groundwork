@@ -1128,6 +1128,10 @@ Off by default (`GROUNDWORK_AUTH_ENABLED=false`): every request runs as a labele
 
 `GET /health` reports `"auth": "auth0" | "disabled"`. **Frontend login:** set `VITE_AUTH0_DOMAIN` and `VITE_AUTH0_CLIENT_ID` (plus audience and roles claim, matching the backend) in `frontend/.env.local`; the dashboard then logs in through Auth0 Universal Login and sends the access token with every API call (`frontend/src/auth/`). Turn both sides on together: backend auth on with the frontend unconfigured makes the supervisor buttons return 401. Backend enforcement is tested in `backend/tests/test_auth.py`.
 
+**Login page (`/login`).** With Auth0 configured, opening the dashboard signed out shows the login page first: **Log in** and **Create an account** both go to Auth0 Universal Login (the app only ever receives tokens), and **Continue as viewer** opens the read-only dashboard for that browser session, so judges can look around without an account. It also explains what a viewer, crew member and supervisor can each do. Without Auth0 (mock mode, or the variables unset) the dashboard opens straight away as before. Code: `frontend/src/screens/login/`, `frontend/src/auth/viewer.ts`.
+
+**Beacon machine login.** The serial bridge logs in as its own Auth0 machine-to-machine app (client-credentials grant, audience `https://groundwork-api`) when `AUTH0_DOMAIN`, `GROUNDWORK_BRIDGE_CLIENT_ID` and `GROUNDWORK_BRIDGE_CLIENT_SECRET` are set. It caches the token, renews it a minute before it expires, and falls back to the sensor token if Auth0 can't be reached. The secret is read only from the environment, never the command line. Setup: `hardware/calibration.md` §5.
+
 ## Running everything (start order)
 
 From the repo root with the venv active: `cd ~/Desktop/Groundwork && source .venv/bin/activate`.

@@ -1,6 +1,7 @@
 import { QueryClientProvider } from '@tanstack/react-query'
 import { Suspense, lazy, useEffect } from 'react'
-import { Link, Route, Router, Switch, useLocation } from 'wouter'
+import type { ReactNode } from 'react'
+import { Link, Redirect, Route, Router, Switch, useLocation, useSearch } from 'wouter'
 import { API_MODE } from './api/config'
 import { queryClient } from './api/queryClient'
 import { ServerCtxProvider } from './api/ServerCtxProvider'
@@ -12,6 +13,8 @@ import { LoadingBlock } from './components/States'
 import { reloadingImport } from './components/staleBuild'
 import { viewTransitionNav } from './components/viewTransitionNav'
 import { AuthProvider } from './auth/AuthProvider'
+import { useSession } from './auth/session'
+import { isViewer, needsLoginPage } from './auth/viewer'
 import { OpsMapScreen } from './screens/ops-map/OpsMapScreen'
 import { SiteDetailScreen } from './screens/site-detail/SiteDetailScreen'
 import { DemoUiProvider } from './state/DemoUiProvider'
@@ -25,12 +28,14 @@ const loadBriefing = reloadingImport(() => import('./screens/briefing/BriefingSc
 const loadReport = reloadingImport(() => import('./screens/report/ReportScreen'))
 const loadStyle = reloadingImport(() => import('./screens/style/StyleScreen'))
 const loadWelcome = reloadingImport(() => import('./screens/welcome/WelcomeScreen'))
+const loadLogin = reloadingImport(() => import('./screens/login/LoginScreen'))
 const SensorLabScreen = lazy(() => loadSensorLab().then((m) => ({ default: m.SensorLabScreen })))
 const ReplayScreen = lazy(() => loadReplay().then((m) => ({ default: m.ReplayScreen })))
 const BriefingScreen = lazy(() => loadBriefing().then((m) => ({ default: m.BriefingScreen })))
 const ReportScreen = lazy(() => loadReport().then((m) => ({ default: m.ReportScreen })))
 const StyleScreen = lazy(() => loadStyle().then((m) => ({ default: m.StyleScreen })))
 const WelcomeScreen = lazy(() => loadWelcome().then((m) => ({ default: m.WelcomeScreen })))
+const LoginScreen = lazy(() => loadLogin().then((m) => ({ default: m.LoginScreen })))
 
 function usePrefetchScreens() {
   useEffect(() => {
@@ -55,6 +60,19 @@ function NotFound() {
       </p>
     </Card>
   )
+}
+
+/** With Auth0 on, signed-out visitors see the login page first (they can still continue as a viewer). */
+function LoginGate({ children }: { children: ReactNode }) {
+  const session = useSession()
+  const [location] = useLocation()
+  const search = useSearch()
+  const viewer = isViewer()
+  if (session.configured && !session.ready && !viewer) return <LoadingBlock label="Checking sign-in" />
+  if (needsLoginPage(session, location, viewer)) {
+    return <Redirect to={`/login?next=${encodeURIComponent(location + (search ? `?${search}` : ''))}`} replace />
+  }
+  return children
 }
 
 /** The operations console: everything behind the top bar, polling the server's live/replay context. */
@@ -108,8 +126,17 @@ export function App() {
             </Suspense>
           </ErrorBoundary>
         </Route>
+        <Route path="/login">
+          <ErrorBoundary>
+            <Suspense fallback={<LoadingBlock label="Loading" />}>
+              <LoginScreen />
+            </Suspense>
+          </ErrorBoundary>
+        </Route>
         <Route>
-          <OpsApp />
+          <LoginGate>
+            <OpsApp />
+          </LoginGate>
         </Route>
       </Switch>
       </AuthProvider>

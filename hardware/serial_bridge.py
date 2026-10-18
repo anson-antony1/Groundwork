@@ -249,21 +249,70 @@ def reading_payload(msg: dict, cal: dict, device_id: str, site_id: str, mode: st
 # ---------------------------------------------------------------------------
 
 
+class MachineToken:
+    """The bridge's own Auth0 login: a machine-to-machine access token from the client-credentials
+    grant, cached until a minute before it expires. The client secret comes only from the environment
+    (GROUNDWORK_BRIDGE_CLIENT_SECRET), never the command line, so it stays out of shell history. If
+    Auth0 can't be reached it waits 30 s before asking again; the caller falls back to the sensor token."""
+
+    REFRESH_EARLY_S = 60
+    RETRY_AFTER_S = 30
+
+    def __init__(self, domain: str, client_id: str, client_secret: str, audience: str,
+                 client=None, clock=time.time):
+        import httpx
+
+        self.url = f"https://{domain.removeprefix('https://').rstrip('/')}/oauth/token"
+        self.body = {"grant_type": "client_credentials", "client_id": client_id,
+                     "client_secret": client_secret, "audience": audience}
+        self.client = client or httpx.Client(timeout=5.0)
+        self.clock = clock
+        self.token: Optional[str] = None
+        self.expires_at = 0.0
+        self.retry_at = 0.0
+
+    def get(self) -> Optional[str]:
+        now = self.clock()
+        if self.token and now < self.expires_at - self.REFRESH_EARLY_S:
+            return self.token
+        if now < self.retry_at:
+            return self.token if self.token and now < self.expires_at else None
+        try:
+            response = self.client.post(self.url, json=self.body)
+            response.raise_for_status()
+            body = response.json()
+            self.token = str(body["access_token"])
+            lifetime = float(body.get("expires_in", 3600))
+        except Exception as exc:  # noqa: BLE001 - any failure means "use the fallback for now"
+            self.retry_at = now + self.RETRY_AFTER_S
+            log(f"Auth0 machine login failed ({exc.__class__.__name__}: {str(exc)[:120]}); "
+                f"using the sensor token, retry in {self.RETRY_AFTER_S} s")
+            return self.token if self.token and now < self.expires_at else None
+        self.expires_at = now + lifetime
+        log(f"Auth0 machine token issued, valid {lifetime / 60:.0f} min")
+        return self.token
+
+
 class Api:
     """Posts readings (newest first, so the dashboard stays live) and events
     (oldest first, none dropped unless the server rejects them). After a
-    network failure it backs off instead of blocking the serial loop."""
+    network failure it backs off instead of blocking the serial loop. Each
+    request carries the Auth0 machine token when one is configured, else the
+    static sensor token."""
 
-    def __init__(self, base_url: str, token: str, device_id: str, timeout: float = 1.5):
+    def __init__(self, base_url: str, token: str, device_id: str, timeout: float = 1.5,
+                 machine: Optional[MachineToken] = None):
         import httpx
 
         self._httpx = httpx
         self.base_url = base_url.rstrip("/")
         self.device_id = device_id
+        self.static_token = token
+        self.machine = machine
         self.client = httpx.Client(
             base_url=self.base_url,
             timeout=timeout,
-            headers={"Authorization": f"Bearer {token}", "User-Agent": "groundwork-bridge/1.0"},
+            headers={"User-Agent": "groundwork-bridge/1.0"},
         )
         self.readings: deque[dict] = deque(maxlen=600)
         self.events: deque[dict] = deque(maxlen=200)
@@ -279,6 +328,10 @@ class Api:
             log(message)
             self._last_logged[key] = now
 
+    def _auth(self) -> dict:
+        token = (self.machine.get() if self.machine else None) or self.static_token
+        return {"Authorization": f"Bearer {token}"}
+
     @property
     def available(self) -> bool:
         return time.monotonic() >= self.down_until
@@ -291,7 +344,7 @@ class Api:
 
     def _post(self, path: str, body: dict) -> str:
         try:
-            response = self.client.post(path, json=body)
+            response = self.client.post(path, json=body, headers=self._auth())
         except self._httpx.HTTPError as exc:
             self._network_failed(exc)
             return "retry"
@@ -300,7 +353,8 @@ class Api:
             self.sent += 1
             return "ok"
         if response.status_code < 500:
-            hint = " (GROUNDWORK_SENSOR_TOKEN differs from the backend)" if response.status_code == 401 else ""
+            hint = (" (check the Auth0 machine app, or that GROUNDWORK_SENSOR_TOKEN matches the backend)"
+                    if response.status_code in (401, 403) else "")
             self._log_once(f"http{response.status_code}",
                            f"API rejected {path}: HTTP {response.status_code}{hint} {response.text[:200]}")
             self.rejected += 1
@@ -342,7 +396,7 @@ class Api:
         if not self.available:
             return None
         try:
-            response = self.client.get(f"/api/v1/devices/{self.device_id}/display")
+            response = self.client.get(f"/api/v1/devices/{self.device_id}/display", headers=self._auth())
         except self._httpx.HTTPError as exc:
             self._network_failed(exc)
             return None
@@ -716,7 +770,16 @@ def cmd_bridge(args: argparse.Namespace) -> int:
     if not is_calibrated(cal, "moisture") and not args.replay:
         log("warning: moisture not calibrated, so moisture_index is omitted (raw is still sent). "
             "Run --calibrate moisture-dry and moisture-wet.")
-    api = Api(args.api, args.token, args.device)
+    machine = None
+    secret = os.environ.get("GROUNDWORK_BRIDGE_CLIENT_SECRET", "")
+    if args.auth0_domain and args.auth0_client_id and secret:
+        machine = MachineToken(args.auth0_domain, args.auth0_client_id, secret, args.auth0_audience)
+        log(f"auth: Auth0 machine login as client ...{args.auth0_client_id[-4:]} (sensor token as fallback)")
+    elif args.auth0_domain and args.auth0_client_id:
+        log("auth: GROUNDWORK_BRIDGE_CLIENT_SECRET isn't set, so the bridge uses the sensor token")
+    else:
+        log("auth: sensor token")
+    api = Api(args.api, args.token, args.device, machine=machine)
     health = api.health()
     log(f"API {'ok' if health else 'NOT reachable'} at {args.api}")
     replay = None
@@ -866,6 +929,13 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--api", default=env("GROUNDWORK_API", "http://localhost:8000"))
     parser.add_argument("--token", default=env("GROUNDWORK_SENSOR_TOKEN", "dev-sensor-token"),
                         help="sensor token; must match the backend (env GROUNDWORK_SENSOR_TOKEN)")
+    parser.add_argument("--auth0-domain", default=env("AUTH0_DOMAIN", ""),
+                        help="Auth0 tenant for the bridge's machine login, e.g. groundwork.us.auth0.com (env AUTH0_DOMAIN)")
+    parser.add_argument("--auth0-client-id", default=env("GROUNDWORK_BRIDGE_CLIENT_ID", ""),
+                        help="client ID of the bridge's Auth0 machine-to-machine app (env GROUNDWORK_BRIDGE_CLIENT_ID); "
+                             "its secret is read only from env GROUNDWORK_BRIDGE_CLIENT_SECRET")
+    parser.add_argument("--auth0-audience", default=env("AUTH0_AUDIENCE", "https://groundwork-api"),
+                        help="Auth0 API identifier the token is for; must match the backend's AUTH0_AUDIENCE")
     parser.add_argument("--device", default="tray-01")
     parser.add_argument("--site", default="DEMO-TRAY")
     parser.add_argument("--calibration", default=str(DEFAULT_CALIBRATION))

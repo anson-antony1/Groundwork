@@ -11,7 +11,10 @@ export interface Session {
   loggedIn: boolean
   name: string | null
   roles: readonly string[]
-  login: () => void
+  /** Auth0 Universal Login; comes back to `returnTo` (default: the current page). */
+  login: (returnTo?: string) => void
+  /** The same, opened on Auth0's sign-up screen. */
+  signup: (returnTo?: string) => void
   logout: () => void
 }
 
@@ -22,6 +25,7 @@ export const ANONYMOUS: Session = {
   name: null,
   roles: [],
   login: () => {},
+  signup: () => {},
   logout: () => {},
 }
 
