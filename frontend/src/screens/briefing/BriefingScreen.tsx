@@ -110,7 +110,7 @@ export function BriefingScreen() {
             </p>
           )}
         </div>
-        <div className="flex gap-3 print:hidden">
+        <div className="flex flex-wrap items-center gap-3 print:hidden">
           <EmailBriefingButton disabled={!brief} />
           <AskClaudeButton disabled={!brief} />
           {brief && (

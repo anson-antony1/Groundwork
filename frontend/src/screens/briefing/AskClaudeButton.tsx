@@ -13,15 +13,13 @@ export const ASK_CLAUDE_PROMPT =
 export function AskClaudeButton({ disabled }: { disabled?: boolean }) {
   const href = `claude://claude.ai/new?q=${encodeURIComponent(ASK_CLAUDE_PROMPT)}`
   return (
-    <div className="flex flex-col items-end gap-1">
-      <a
-        href={disabled ? undefined : href}
-        aria-disabled={disabled || undefined}
-        className="flex min-h-12 items-center gap-2 rounded-[3px] border-2 border-line-hi px-4 label-caps hover:bg-steel-hi aria-disabled:pointer-events-none aria-disabled:opacity-60"
-      >
-        <Bot aria-hidden className="size-5" /> Ask Claude
-      </a>
-      <p className="max-w-56 text-right text-[0.75rem] text-muted">Opens Claude Desktop with our MCP tools</p>
-    </div>
+    <a
+      href={disabled ? undefined : href}
+      aria-disabled={disabled || undefined}
+      title="Opens Claude Desktop with our Groundwork MCP tools"
+      className="flex min-h-12 items-center gap-2 rounded-[3px] border-2 border-line-hi px-4 label-caps hover:bg-steel-hi aria-disabled:pointer-events-none aria-disabled:opacity-60"
+    >
+      <Bot aria-hidden className="size-5" /> Ask Claude
+    </a>
   )
 }
